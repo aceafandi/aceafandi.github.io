@@ -1200,6 +1200,9 @@
           e.preventDefault();
           showAll = !showAll;
           render();
+          if (!showAll) {
+            document.getElementById('portfolioGrid').scrollIntoView({behavior: 'smooth', block: 'start'});
+          }
         };
       }
     }
