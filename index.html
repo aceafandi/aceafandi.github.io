@@ -718,6 +718,119 @@
       .specs-table th, .specs-table td { padding: 8px 10px; font-size: 0.8125rem; }
       .modal-body { padding: var(--space-md); }
     }
+
+    /* ═══════════════════════════════════════════
+       QUOTE FORM
+       ═══════════════════════════════════════════ */
+    .quote-section {
+      background: var(--navy);
+      color: var(--white);
+      padding: var(--space-4xl) 0;
+    }
+    .quote-section h2 { color: var(--white); }
+    .quote-section p { color: var(--text-on-dark); }
+
+    .quote-form-wrap {
+      max-width: 600px; margin: 0 auto;
+    }
+
+    .form-progress {
+      margin-bottom: var(--space-xl);
+    }
+    .form-progress-bar {
+      width: 100%; height: 4px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .form-progress-fill {
+      height: 100%; width: 0%;
+      background: var(--orange);
+      border-radius: 2px;
+      transition: width 0.4s ease;
+    }
+    .form-progress-text {
+      text-align: right; margin-top: var(--space-xs);
+      font-size: 0.75rem; color: var(--text-on-dark);
+      font-weight: 500;
+    }
+
+    .quote-form {
+      display: flex; flex-direction: column; gap: var(--space-md);
+    }
+    .quote-form .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+    }
+    .quote-form input,
+    .quote-form select,
+    .quote-form textarea {
+      width: 100%;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.06);
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-sm);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      transition: all 0.25s ease;
+      outline: none;
+    }
+    .quote-form input::placeholder,
+    .quote-form textarea::placeholder {
+      color: var(--text-muted);
+    }
+    .quote-form select {
+      cursor: pointer;
+      color: var(--text-on-dark);
+    }
+    .quote-form select option {
+      background: var(--navy-dark);
+      color: var(--white);
+    }
+    .quote-form input:focus,
+    .quote-form select:focus,
+    .quote-form textarea:focus {
+      border-color: var(--orange);
+      background: rgba(255,255,255,0.1);
+      box-shadow: 0 0 0 3px rgba(255,107,53,0.12);
+    }
+    .quote-form input.filled,
+    .quote-form select.filled,
+    .quote-form textarea.filled {
+      border-color: var(--olive-light);
+    }
+    .quote-form textarea {
+      min-height: 100px; resize: vertical;
+    }
+    .quote-form .btn-submit {
+      width: 100%;
+      padding: 16px;
+      background: var(--orange);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 1rem; font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      letter-spacing: 0.02em;
+    }
+    .quote-form .btn-submit:hover {
+      background: var(--orange-dark);
+      box-shadow: var(--shadow-orange);
+      transform: translateY(-2px);
+    }
+    .quote-form .btn-submit:disabled {
+      opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none;
+    }
+
+    @media (max-width: 768px) {
+      .quote-form .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -905,6 +1018,45 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote Form -->
+  <section class="quote-section" id="quote">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Get Started</span>
+        <h2>Request a Quote</h2>
+        <p>Tell us about your project. No commitment — our engineering team will respond within 24 hours.</p>
+      </div>
+      <div class="quote-form-wrap reveal">
+        <div class="form-progress">
+          <div class="form-progress-bar">
+            <div class="form-progress-fill" id="progressFill"></div>
+          </div>
+          <div class="form-progress-text" id="progressText">0 of 5 fields</div>
+        </div>
+        <form class="quote-form" id="quoteForm" action="mailto:sales@scodenoindonesia.com" method="post" enctype="text/plain">
+          <div class="form-row">
+            <input type="text" name="company" id="fieldCompany" placeholder="Company Name" required>
+            <input type="email" name="email" id="fieldEmail" placeholder="Work Email" required>
+          </div>
+          <select name="project" id="fieldProject" required>
+            <option value="" disabled selected>Select Project Type</option>
+            <option>Factory Automation</option>
+            <option>Oil &amp; Gas</option>
+            <option>Power &amp; Utility</option>
+            <option>Transportation</option>
+            <option>Mining</option>
+            <option>Smart City / IoT</option>
+            <option>Telecom Infrastructure</option>
+            <option>Other</option>
+          </select>
+          <input type="text" name="phone" id="fieldPhone" placeholder="Phone Number (optional)">
+          <textarea name="message" id="fieldMessage" placeholder="Brief description of your networking needs — number of ports, environment, timeline..."></textarea>
+          <button type="submit" class="btn-submit" id="btnSubmit" disabled>Submit Request →</button>
+        </form>
       </div>
     </div>
   </section>
@@ -1317,6 +1469,62 @@
     document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('open'))close();});
 
     render(sel1.value,sel2.value);
+  })();
+  </script>
+
+  <!-- Quote Form Progress Bar -->
+  <script>
+  (function() {
+    var fields = ['fieldCompany','fieldEmail','fieldProject','fieldPhone','fieldMessage'];
+    var fill = document.getElementById('progressFill');
+    var text = document.getElementById('progressText');
+    var btn = document.getElementById('btnSubmit');
+    var required = ['fieldCompany','fieldEmail','fieldProject','fieldMessage'];
+
+    function updateProgress() {
+      var filled = fields.filter(function(id) {
+        var el = document.getElementById(id);
+        return el && el.value.trim() !== '';
+      }).length;
+
+      var pct = (filled / fields.length) * 100;
+      fill.style.width = pct + '%';
+      text.textContent = filled + ' of ' + fields.length + ' fields';
+
+      // Enable button only when all required fields are filled
+      var allRequired = required.every(function(id) {
+        var el = document.getElementById(id);
+        return el && el.value.trim() !== '';
+      });
+      btn.disabled = !allRequired;
+    }
+
+    fields.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', updateProgress);
+        el.addEventListener('change', updateProgress);
+      }
+    });
+
+    // Form submit: build mailto body
+    document.getElementById('quoteForm').addEventListener('submit', function(e) {
+      var company = document.getElementById('fieldCompany').value;
+      var email = document.getElementById('fieldEmail').value;
+      var project = document.getElementById('fieldProject').value;
+      var phone = document.getElementById('fieldPhone').value || '—';
+      var message = document.getElementById('fieldMessage').value;
+
+      var body = encodeURIComponent(
+        'Company: ' + company + '\\n' +
+        'Email: ' + email + '\\n' +
+        'Project Type: ' + project + '\\n' +
+        'Phone: ' + phone + '\\n' +
+        'Message: ' + message
+      );
+
+      this.action = 'mailto:sales@scodenoindonesia.com?subject=Quote Request: ' + encodeURIComponent(company) + '&body=' + body;
+    });
   })();
   </script>
 </body>
