@@ -601,6 +601,123 @@
       .container { padding: 0 var(--space-md); }
       .trust-bar { gap: var(--space-lg); }
     }
+
+    /* ═══════════════════════════════════════════
+       COMPARE SPECS MODAL
+       ═══════════════════════════════════════════ */
+    .btn-compare {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: var(--space-sm);
+      padding: 8px 16px;
+      background: transparent;
+      border: 1.5px solid var(--navy);
+      border-radius: var(--radius-sm);
+      color: var(--navy);
+      font-size: 0.8125rem; font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-compare:hover {
+      background: var(--navy);
+      color: var(--white);
+      transform: translateY(-1px);
+    }
+
+    .modal-overlay {
+      display: none; position: fixed; z-index: 2000;
+      left: 0; top: 0; width: 100%; height: 100%;
+      background: rgba(26,34,48,0.88);
+      backdrop-filter: blur(4px);
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.open { display: flex; }
+
+    .modal-dialog {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      width: 90%; max-width: 820px; max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      animation: modalIn 0.25s ease;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(20px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .modal-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: var(--space-lg) var(--space-xl);
+      border-bottom: 1px solid var(--gray-100);
+      position: sticky; top: 0; background: var(--white);
+      z-index: 1; border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+    .modal-header h2 { color: var(--navy); font-size: 1.25rem; margin: 0; }
+    .modal-close {
+      background: none; border: none; font-size: 1.5rem;
+      cursor: pointer; color: var(--text-muted);
+      padding: 4px 8px; border-radius: var(--radius-sm);
+      transition: all 0.15s; line-height: 1;
+    }
+    .modal-close:hover { background: var(--concrete); color: var(--navy); }
+
+    .modal-body { padding: var(--space-xl); }
+
+    .compare-selector {
+      display: flex; align-items: center; justify-content: center;
+      gap: var(--space-md); margin-bottom: var(--space-xl);
+      flex-wrap: wrap;
+    }
+    .compare-selector select {
+      padding: 10px 14px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      background: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.9375rem; font-weight: 500;
+      color: var(--navy);
+      cursor: pointer;
+      min-width: 220px;
+      transition: border-color 0.2s;
+    }
+    .compare-selector select:focus {
+      outline: none; border-color: var(--orange);
+    }
+    .compare-vs {
+      font-weight: 700; color: var(--orange);
+      font-size: 1rem;
+    }
+
+    .specs-table {
+      width: 100%; border-collapse: collapse;
+    }
+    .specs-table th {
+      background: var(--navy); color: var(--white);
+      padding: 12px 16px; text-align: left;
+      font-size: 0.75rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .specs-table th:first-child { border-radius: var(--radius-sm) 0 0 0; }
+    .specs-table th:last-child { border-radius: 0 var(--radius-sm) 0 0; }
+    .specs-table td {
+      padding: 12px 16px; border-bottom: 1px solid var(--gray-100);
+      font-size: 0.9375rem; color: var(--text-primary);
+    }
+    .specs-table tr:nth-child(even) td { background: var(--gray-50); }
+    .specs-table tr:hover td { background: rgba(255,107,53,0.06); }
+    .specs-table .spec-label { font-weight: 600; color: var(--navy); }
+
+    .compare-cta {
+      text-align: center; padding: var(--space-lg) 0 0;
+    }
+
+    @media (max-width: 768px) {
+      .modal-dialog { width: 95%; max-height: 90vh; margin: var(--space-md); }
+      .compare-selector { flex-direction: column; }
+      .compare-selector select { width: 100%; min-width: 0; }
+      .specs-table th, .specs-table td { padding: 8px 10px; font-size: 0.8125rem; }
+      .modal-body { padding: var(--space-md); }
+    }
   </style>
 </head>
 <body>
@@ -690,6 +807,7 @@
           <h3>Unmanaged Industrial Switches</h3>
           <p>Plug-and-play DIN-rail switches. Wide temperature -40°C to 75°C, IP40 rated. Available in 4, 5, 8, and 16 ports.</p>
           <a href="#products" class="product-link">View Series →</a>
+          <button class="btn-compare" data-model="unmanaged">Compare Specs</button>
         </div>
 
         <div class="product-card reveal">
@@ -699,6 +817,7 @@
           <h3>Managed Industrial Switches</h3>
           <p>Layer 2/3 managed switches with VLAN, QoS, SNMP, and ERPS ring redundancy. Full network control for critical infrastructure.</p>
           <a href="#products" class="product-link">View Series →</a>
+          <button class="btn-compare" data-model="managed">Compare Specs</button>
         </div>
 
         <div class="product-card reveal">
@@ -708,6 +827,7 @@
           <h3>PoE Industrial Switches</h3>
           <p>Power over Ethernet up to 90W per port (PoE++). Ideal for IP cameras, wireless APs, and IoT devices in remote locations.</p>
           <a href="#products" class="product-link">View Series →</a>
+          <button class="btn-compare" data-model="poe">Compare Specs</button>
         </div>
 
         <div class="product-card reveal">
@@ -717,6 +837,7 @@
           <h3>Data Center Switches</h3>
           <p>High-density 10G/25G/100G switches. Marvell, Broadcom, and Centec platforms. Redundant power, smart cooling.</p>
           <a href="#products" class="product-link">View Series →</a>
+          <button class="btn-compare" data-model="datacenter">Compare Specs</button>
         </div>
 
         <div class="product-card reveal">
@@ -726,6 +847,7 @@
           <h3>xPON / Fiber Solutions</h3>
           <p>OLT, ONU, and PON modules. Full fiber network solutions for campus and metro deployments.</p>
           <a href="#products" class="product-link">View Series →</a>
+          <button class="btn-compare" data-model="xpon">Compare Specs</button>
         </div>
 
         <div class="product-card reveal">
@@ -735,6 +857,7 @@
           <h3>Smart Box &amp; IoT</h3>
           <p>Solar-powered IoT smart boxes with integrated remote communication. All-in-one power and connectivity for field deployments.</p>
           <a href="#products" class="product-link">View Series →</a>
+          <button class="btn-compare" data-model="iot">Compare Specs</button>
         </div>
 
       </div>
@@ -1093,5 +1216,108 @@
   })();
   </script>
 
+
+  <!-- Compare Specs Modal -->
+  <div class="modal-overlay" id="compareModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h2>Compare Industrial Switch Specifications</h2>
+        <button class="modal-close" id="modalClose">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="compare-selector">
+          <select id="model1"></select>
+          <span class="compare-vs">vs</span>
+          <select id="model2"></select>
+        </div>
+        <table class="specs-table" id="specsTable">
+          <thead>
+            <tr>
+              <th style="width:25%">Specification</th>
+              <th id="model1Name" style="width:37.5%">—</th>
+              <th id="model2Name" style="width:37.5%">—</th>
+            </tr>
+          </thead>
+          <tbody id="specsBody"></tbody>
+        </table>
+        <div class="compare-cta">
+          <a href="mailto:sales@scodenoindonesia.com" class="btn btn-primary">
+            Request Full Specifications →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Compare Specs Logic -->
+  <script>
+  (function() {
+    var specs = {
+      unmanaged:  {name:'Unmanaged Industrial Switch',ports:'4/5/8/16 × Gigabit RJ45',ipRating:'IP40',temp:'-40°C to 75°C',power:'5–12W (fanless)',mounting:'DIN-Rail, Wall-mount',redundancy:'— (unmanaged)',management:'Plug-and-play',price:'Economy'},
+      managed:    {name:'Managed Industrial Switch',ports:'8/16/24 × Gigabit + SFP',ipRating:'IP40 / IP67',temp:'-40°C to 75°C',power:'12–24W (fanless)',mounting:'DIN-Rail, Rack-mount',redundancy:'ERPS, RSTP, MSTP, MRP',management:'CLI, Web, SNMP v3, VLAN',price:'Mid-range'},
+      poe:        {name:'PoE Industrial Switch',ports:'4/8/16 × Gigabit PoE 30W',ipRating:'IP40 / IP67',temp:'-40°C to 75°C',power:'120–240W PoE budget',mounting:'DIN-Rail',redundancy:'Dual power, alarm relay',management:'PoE scheduling, per-port',price:'Mid-range'},
+      datacenter: {name:'Data Center Switch',ports:'24/48 × 10G/25G + 100G',ipRating:'IP20 (DC)',temp:'0°C to 45°C',power:'Redundant PSU, smart fan',mounting:'1U Rack-mount',redundancy:'MLAG, VRRP, Stack',management:'L2/L3, BGP, OSPF, VXLAN',price:'Premium'},
+      xpon:       {name:'xPON / Fiber Solution',ports:'OLT 4/8/16 PON + 10G',ipRating:'IP40',temp:'-20°C to 65°C',power:'25–60W',mounting:'1U Rack-mount',redundancy:'Dual PSU, Type-B PON',management:'OMCI, TR-069, Web',price:'Mid-to-Premium'},
+      iot:        {name:'Smart Box & IoT',ports:'4 × Gigabit + LTE/5G',ipRating:'IP67 / IP69K',temp:'-40°C to 75°C',power:'Solar-ready 12–48VDC',mounting:'Pole-mount, Wall-mount',redundancy:'Battery, dual SIM',management:'MQTT, Modbus, Cloud',price:'Custom'}
+    };
+
+    var modal = document.getElementById('compareModal');
+    var sel1 = document.getElementById('model1');
+    var sel2 = document.getElementById('model2');
+    var n1 = document.getElementById('model1Name');
+    var n2 = document.getElementById('model2Name');
+    var body = document.getElementById('specsBody');
+    var keys = Object.keys(specs);
+    var rows = [
+      ['Port Configuration','ports'],['IP Rating','ipRating'],['Temperature Range','temp'],
+      ['Power','power'],['Mounting','mounting'],['Redundancy','redundancy'],
+      ['Management','management'],['Price Tier','price']
+    ];
+
+    keys.forEach(function(k,i){
+      var o = '<option value="'+k+'">'+specs[k].name+'</option>';
+      sel1.innerHTML += o; sel2.innerHTML += o;
+    });
+    sel2.value = keys[1];
+
+    function render(m1,m2){
+      var a=specs[m1],b=specs[m2];
+      n1.textContent=a.name; n2.textContent=b.name;
+      var h='';
+      rows.forEach(function(r){
+        h+='<tr><td class="spec-label">'+r[0]+'</td><td>'+a[r[1]]+'</td><td>'+b[r[1]]+'</td></tr>';
+      });
+      body.innerHTML=h;
+    }
+
+    function open(model){
+      var other = model===keys[0]?keys[1]:keys[0];
+      sel1.value=model; sel2.value=other;
+      render(model,other);
+      modal.classList.add('open');
+      document.body.style.overflow='hidden';
+    }
+
+    function close(){
+      modal.classList.remove('open');
+      document.body.style.overflow='';
+    }
+
+    document.querySelectorAll('.btn-compare').forEach(function(b){
+      b.addEventListener('click',function(e){
+        e.preventDefault();
+        open(this.getAttribute('data-model'));
+      });
+    });
+
+    sel1.addEventListener('change',function(){render(sel1.value,sel2.value);});
+    sel2.addEventListener('change',function(){render(sel1.value,sel2.value);});
+    document.getElementById('modalClose').addEventListener('click',close);
+    modal.addEventListener('click',function(e){if(e.target===modal)close();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('open'))close();});
+
+    render(sel1.value,sel2.value);
+  })();
+  </script>
 </body>
 </html>
