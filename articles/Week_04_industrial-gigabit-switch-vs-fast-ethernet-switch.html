@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Industrial Gigabit Switch vs Fast Ethernet Switch — Scodeno Indonesia</title>
+<meta name="description" content="Industrial Gigabit Switch vs Fast Ethernet Switch">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+--blue: #0068B4; --blue-light: #0095E0; --blue-dark: #004A82; --blue-bg: #E7F3FB;
+--blue-glow: rgba(0,104,180,0.20);
+--black: #0A0E14; --near-black: #141A22; --dark-card: #1A202A;
+--white: #FFFFFF; --off-white: #F5F7FA; --gray-50: #F9FAFB; --gray-100: #E8ECF0;
+--gray-200: #C8CDD4; --gray-300: #9BA2AB; --gray-400: #6B7280; --gray-500: #4B5563;
+--text-dark: #1A1A1A; --text-light: #E2E8F0; --text-muted: #9BA2AB;
+--content-max: 780px; --radius-sm: 2px; --radius-md: 4px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+font-family: 'Inter', system-ui, -apple-system, sans-serif;
+color: var(--text-dark); background: var(--white);
+line-height: 1.7; -webkit-font-smoothing: antialiased;
+}
+    /* ===== NAVIGATION ===== */
+.nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+background: rgba(10,14,20,0.94); backdrop-filter: blur(12px);
+border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-inner {
+max-width: 1200px; margin: 0 auto;
+display: flex; align-items: center; justify-content: space-between;
+padding: 0 24px; height: 64px;
+}
+.nav-left { display: flex; align-items: center; gap: 32px; }
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-img { height: 28px; width: auto; }
+.nav-logo-text { font-weight: 800; font-size: 1.0625rem; color: var(--white); letter-spacing: -0.01em; white-space: nowrap; }
+.nav-logo-indonesia { color: var(--blue-light); margin-left: 2px; }
+.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+.nav-links a { color: var(--gray-300); text-decoration: none; font-size: 0.8125rem; font-weight: 500; padding: 8px 12px; border-radius: 4px; transition: all 0.15s; white-space: nowrap; }
+.nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+    /* Dropdown */
+.nav-dropdown { position: relative; }
+.nav-dropdown > a { display: flex; align-items: center; gap: 4px; }
+.nav-dropdown > a::after { content: '▾'; font-size: 0.625rem; margin-left: 2px; }
+.nav-dropdown-menu {
+position: absolute; top: 100%; left: 0; min-width: 200px;
+background: var(--dark-card); border: 1px solid rgba(255,255,255,0.08);
+border-radius: 6px; padding: 6px 0; opacity: 0; visibility: hidden;
+transform: translateY(4px); transition: all 0.18s ease;
+box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+}
+.nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+.nav-dropdown-menu a {
+display: block; padding: 8px 16px !important; font-size: 0.8125rem !important;
+color: var(--gray-300) !important; border-radius: 0 !important;
+}
+.nav-dropdown-menu a:hover { background: rgba(255,255,255,0.06) !important; color: var(--white) !important; }
+.nav-dropdown-menu .dropdown-label {
+font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.06em;
+color: var(--gray-400); padding: 6px 16px 2px; font-weight: 600;
+}
+    .nav-cta {
+background: var(--blue); color: var(--white) !important;
+padding: 8px 18px !important; border-radius: 4px !important;
+font-weight: 600 !important; font-size: 0.8125rem !important;
+}
+.nav-cta:hover { background: var(--blue-light) !important; }
+    /* ===== ARTICLE HEADER ===== */
+.article-header {
+background: var(--black); color: var(--white);
+padding: calc(64px + 64px) 24px 64px;
+position: relative; overflow: hidden;
+}
+.article-header::before {
+content: ''; position: absolute; top: -30%; right: -20%;
+width: 500px; height: 500px;
+background: radial-gradient(circle, var(--blue-glow) 0%, transparent 70%);
+pointer-events: none;
+}
+.article-header-inner { max-width: var(--content-max); margin: 0 auto; position: relative; z-index: 1; }
+.article-tag {
+display: inline-block; background: rgba(0,149,224,0.15); color: var(--blue-light);
+font-size: 0.75rem; font-weight: 600; padding: 4px 12px;
+border-radius: 2px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.06em;
+}
+.article-header h1 {
+font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800;
+line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px;
+}
+.article-header .article-meta { color: var(--text-muted); font-size: 0.875rem; display: flex; gap: 20px; }
+    /* ===== ARTICLE BODY ===== */
+.article-body {
+max-width: var(--content-max); margin: 0 auto;
+padding: 64px 24px;
+}
+.article-body h2 {
+font-size: 1.5rem; font-weight: 700; color: var(--near-black);
+margin: 48px 0 16px; letter-spacing: -0.01em;
+}
+.article-body h3 {
+font-size: 1.25rem; font-weight: 600; color: var(--near-black);
+margin: 32px 0 12px;
+}
+.article-body h4 {
+font-size: 1.0625rem; font-weight: 600; color: var(--gray-500);
+margin: 24px 0 8px;
+}
+.article-body p {
+color: var(--gray-500); font-size: 1.0625rem;
+margin-bottom: 20px; line-height: 1.8;
+}
+.article-body ul, .article-body ol {
+color: var(--gray-500); font-size: 1.0625rem;
+margin-bottom: 20px; padding-left: 24px;
+}
+.article-body li { margin-bottom: 8px; line-height: 1.7; }
+.article-body strong { color: var(--text-dark); font-weight: 600; }
+.article-body a { color: var(--blue); text-decoration: underline; }
+.article-body a:hover { color: var(--blue-light); }
+.article-body hr { border: none; border-top: 1px solid var(--gray-100); margin: 48px 0; }
+.article-body blockquote {
+border-left: 3px solid var(--blue); padding-left: 20px;
+margin: 24px 0; color: var(--gray-500); font-style: italic;
+}
+    /* ===== EXCEL-STYLE TABLE ===== */
+.table-wrap {
+overflow-x: auto; margin: 28px 0; border-radius: 6px;
+border: 1px solid var(--gray-100);
+box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.article-body table {
+width: 100%; border-collapse: collapse;
+font-size: 0.875rem; line-height: 1.5;
+min-width: 600px;
+}
+.article-body thead th {
+background: linear-gradient(180deg, #E8F0F8 0%, #D4E4F2 100%);
+color: var(--blue-dark); font-weight: 600; font-size: 0.8125rem;
+text-transform: uppercase; letter-spacing: 0.03em;
+padding: 12px 14px; text-align: left;
+border-bottom: 2px solid #B8D0E8;
+border-right: 1px solid #C8D8E8;
+white-space: nowrap; position: sticky; top: 0;
+}
+.article-body thead th:last-child { border-right: none; }
+.article-body tbody td {
+padding: 10px 14px; border-bottom: 1px solid var(--gray-100);
+border-right: 1px solid var(--gray-100); color: var(--gray-500);
+vertical-align: top;
+}
+.article-body tbody td:last-child { border-right: none; }
+.article-body tbody tr:nth-child(even) td {
+background: var(--gray-50);
+}
+.article-body tbody tr:hover td {
+background: var(--blue-bg);
+}
+.article-body tbody td:first-child {
+font-weight: 500; color: var(--text-dark);
+}
+    /* ===== RELATED ARTICLES ===== */
+.related-section {
+background: var(--off-white); padding: 64px 24px;
+}
+.related-inner { max-width: var(--content-max); margin: 0 auto; }
+.related-inner h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.01em; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.related-card {
+background: var(--white); border: 1px solid var(--gray-100);
+border-radius: var(--radius-md); padding: 20px; text-decoration: none;
+transition: box-shadow 0.2s;
+}
+.related-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+.related-card h3 { font-size: 0.9375rem; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
+.related-card .tag { font-size: 0.6875rem; color: var(--blue); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+    /* ===== FOOTER ===== */
+.footer {
+background: var(--near-black); color: var(--text-muted);
+padding: 48px 24px 32px; border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-inner {
+max-width: 1200px; margin: 0 auto;
+display: flex; justify-content: space-between; align-items: center;
+font-size: 0.8125rem;
+}
+.footer-inner a { color: var(--blue-light); text-decoration: none; }
+.footer-inner a:hover { color: var(--white); }
+    @media (max-width: 768px) {
+.article-header { padding: calc(64px + 40px) 16px 40px; }
+.article-body { padding: 40px 16px; }
+.nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+<div class="nav-inner">
+<div class="nav-left">
+<a href="../index.html" class="nav-logo">
+<img src="../logo.png" alt="Scodeno" class="nav-logo-img">
+<span class="nav-logo-text">Scodeno<span class="nav-logo-indonesia">Indonesia</span></span>
+</a>
+<ul class="nav-links">
+<li class="nav-dropdown">
+<a href="../index.html#products">Products</a>
+<div class="nav-dropdown-menu">
+<a href="../index.html#products">Unmanaged Switches</a>
+<a href="../index.html#products">Managed Switches</a>
+<a href="../index.html#products">PoE Switches</a>
+<a href="../index.html#products">Data Center</a>
+<a href="../index.html#products">xPON / Fiber</a>
+<a href="../index.html#products">Smart Box &amp; IoT</a>
+</div>
+</li>
+<li class="nav-dropdown">
+<a href="../index.html#articles">Articles</a>
+<div class="nav-dropdown-menu">
+<a href="../index.html#articles">Fundamental</a>
+<a href="../index.html#articles">Selection Guide</a>
+<a href="../index.html#articles">Technology</a>
+<a href="../index.html#articles">Deployment</a>
+<a href="../index.html#articles">Network Design</a>
+</div>
+</li>
+<li><a href="../index.html#about">About</a></li>
+</ul>
+</div>
+<a href="../index.html#contact" class="nav-cta">Request Quote</a>
+</div>
+</nav>
+<header class="article-header">
+<div class="article-header-inner">
+<span class="article-tag">Selection Guide</span>
+<h1>Industrial Gigabit Switch vs Fast Ethernet Switch</h1>
+<div class="article-meta">
+<span>7 min read</span>
+</div>
+</div>
+</header>
+<article class="article-body">
+<p>Di lantai pabrik yang berpacu dengan milidetik, setiap sinyal harus tiba tanpa jeda. Switch industri menjadi simpul kritis yang menentukan apakah data dari sensor, penggerak, dan kamera inspeksi mengalir lancar ke pusat kendali. Dua pilihan utama kerap membingungkan para perancang sistem: gigabit industrial switch dan fast ethernet switch. Memilih di antara keduanya bukan sekadar urusan kecepatan, melainkan menyangkut determinisme jaringan, ketahanan terhadap gangguan elektromagnetik, hingga biaya total sepanjang usia pabrik.</p>
+<h2>Fondasi Teknis di Balik Dua Kelas Kecepatan</h2>
+<p>Fast Ethernet switch beroperasi pada laju 100 Mbps per port. Standar ini—IEEE 802.3u—telah mengawal otomasi industri sejak pertengahan 1990-an. Keandalannya teruji pada topologi ring sederhana dan komunikasi perangkat lapangan seperti sensor tekanan, sakelar batas, atau HMI berbasis teks.</p>
+<p>Gigabit industrial switch, mengacu pada IEEE 802.3ab, melipatgandakan kapasitas menjadi 1.000 Mbps per port. Peningkatan ini tidak hanya menambah lebar pita, tetapi juga membawa arsitektur chip yang lebih efisien dalam menangani data bertipe campuran: paket kecil berisi perintah kontrol berselang-seling dengan bingkai besar dari kamera visi. Switch gigabit kelas industri umumnya sudah mendukung jumbo frame hingga 9 Kbyte, fitur yang krusial untuk transmisi citra resolusi tinggi tanpa fragmentasi.</p>
+<p>Perbedaan lain terletak pada determinisme. Switch gigabit modern sering dibekali mekanisme <em>cut-through</em> dengan latensi di bawah 5 mikrodetik, sedangkan fast ethernet switch rata-rata mencatat 30–50 mikrodetik pada kondisi serupa. Dalam gerak terkoordinasi puluhan servo drive, selisih itu dapat menentukan cacat atau tidaknya hasil produksi.</p>
+<h2>Kapan Fast Ethernet Masih Menjadi Pilihan Cerdas</h2>
+<p>Fast ethernet switch industry tidak akan lenyap dalam waktu dekat. Banyak simpul di lapangan tidak memerlukan lebar pita besar. Karakteristik beban data yang rendah, seperti pembacaan suhu setiap dua detik atau status terbuka-tutup katup, membuat kelebihan bandwidth gigabit sia-sia.</p>
+<p>Keunggulan fast ethernet switch industry yang tetap relevan:</p>
+<ul>
+<li>Konsumsi daya per 8 port hanya 5–8 W, memungkinkan desain tanpa kipas yang tahan debu dan senyap.</li>
+<li>Harga per port bisa setengah dari gigabit, menekan belanja modal untuk jaringan dengan ribuan titik akses.</li>
+<li>Ekosistem perkabelan Cat5e hampir selalu tersedia dan tidak perlu diganti.</li>
+<li>Topologi ring sederhana dengan waktu pemulihan di bawah 50 ms masih mencukupi untuk banyak proses <em>non-safety</em>.</li>
+</ul>
+<p>Contoh nyata: di unit pengolahan air bersih, 200 sensor ketinggian dan kekeruhan hanya mengirimkan data beberapa byte per detik. Satu fast ethernet switch 24-port mampu menangani seluruh segmen tanpa pernah menyentuh 20% utilisasi bandwidth. Tabungan dari selisih harga switch bisa dialokasikan untuk redundansi catu daya yang lebih esensial.</p>
+<h2>Gigabit Industrial Switch: Tonggak Kinerja di Era Visualisasi</h2>
+<p>Revolusi IIoT mendorong migrasi besar-besaran menuju gigabit industrial switch. Pemicunya adalah kamera inspeksi beresolusi tinggi, profilometer laser, dan sistem motion control yang membutuhkan sinkronisasi waktu ketat via IEEE 1588v2.</p>
+<p>Lini perakitan otomotif memberikan gambaran paling jernih. Di sebuah pabrik kendaraan listrik, enam robot las bekerja serempak mengelas rangka baterai. Tiap robot memancarkan data posisi, torsi, dan citra dari kamera <em>seam tracking</em> secara simultan. Dengan fast ethernet, total throughput menyentuh 80 Mbps saat enam kamera 1,3 MP mengalirkan video 15 fps. Antrean paket mulai terbentuk, latensi melonjak ke 4–5 ms, dan jalur produksi terpaksa melambatkan siklus sebesar 10% agar koreksi posisi tetap akurat.</p>
+<p>Setelah upgrade ke gigabit industrial switch, utilisasi jaringan turun ke bawah 10%, latensi menetap di 0,8 ms, dan siklus kembali ke kecepatan rancangan. Pabrik mencatat kenaikan output harian hingga 8 unit. Bandwidth berlebih juga memberi ruang untuk menambah kamera inspeksi pasca-las tanpa mengubah topologi—investasi lindung masa depan yang kasat mata.</p>
+<p>Kontras terjadi di anjungan migas lepas pantai. Ratusan sensor tekanan, suhu, dan vibrasi mengirimkan data <em>time-series</em> berukuran kecil melalui fast ethernet switch di area berbahaya. Switch ini bersertifikasi ATEX/IECEx dan cukup dingin tanpa kipas. Namun, untuk pemantauan <em>flare stack</em> menggunakan kamera termal 1080p 30 fps, satu streaming memakan 8 Mbps. Empat kamera serupa akan memacetkan backbone 100 Mbps. Arsitektur hibrid pun dipilih: fast ethernet switch tetap menjadi ujung tombak di level sensor, sementara gigabit industrial switch bertindak sebagai agregator di ruang kontrol. Strategi ini memangkas biaya perangkat tanpa mengorbankan visibilitas aset kritis.</p>
+<h2>Perbandingan Spesifikasi dan Aplikasi</h2>
+<p>Tabel berikut merangkum perbedaan inti antara keduanya dalam konteks lantai pabrik:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr><th>Aspek</th><th>Fast Ethernet Switch</th><th>Gigabit Industrial Switch</th></tr>
+</thead>
+<tbody>
+<tr><td>Kecepatan per port</td><td>100 Mbps</td><td>1.000 Mbps</td></tr>
+<tr><td>Latensi tipikal (cut-through)</td><td>30–50 µs</td><td>1–5 µs</td></tr>
+<tr><td>Jumbo frame</td><td>Jarang (MTU 1.500 byte)</td><td>Hingga 9 KB</td></tr>
+<tr><td>Konsumsi daya (per 8 port)</td><td>5–8 W</td><td>10–20 W</td></tr>
+<tr><td>Suhu operasi (tipe industri)</td><td>-10°C s.d. 60°C</td><td>-40°C s.d. 75°C</td></tr>
+<tr><td>Protokol redundansi</td><td>RSTP, ring proprietary</td><td>RSTP, MRP, HSR/PRP</td></tr>
+<tr><td>Harga per port</td><td>1×</td><td>2–3×</td></tr>
+<tr><td>Aplikasi primer</td><td>Sensor, aktuator, HMI sederhana</td><td>Vision system, motion control, backbone</td></tr>
+</tbody>
+</table></div>
+<h2>Total Cost of Ownership: Menghitung Rupiah Sepanjang Usia Pabrik</h2>
+<p>Selisih harga beli sering menjadi argumen utama mempertahankan fast ethernet switch industry. Namun, analisis total cost of ownership (TCO) melukiskan angka yang berbeda. TCO mencakup biaya instalasi, konsumsi energi, pendinginan, pemeliharaan preventif, potensi <em>downtime</em>, dan masa pakai sebelum usang.</p>
+<p>Sebuah lini pengemasan farmasi harus berhenti total selama 45 menit setiap kali jaringan mengalami lonjakan latensi di atas 10 ms. Gangguan ini menyebabkan tablet yang sudah dicetak terbuang karena bobot tidak sesuai toleransi. Tim engineering Scodeno mencatat, kerugian produksi per insiden mencapai Rp 35 juta, belum termasuk bahan baku. Selisih harga antara switch gigabit dan fast ethernet untuk satu segmen berisi 12 perangkat hanya sekitar Rp 14 juta. Satu insiden saja sudah melampaui selisih tersebut. Setelah migrasi, stabilitas jaringan meningkat dan kejadian serupa tidak terulang selama 18 bulan berturut-turut.</p>
+<p>Dari sisi energi, kenaikan konsumsi daya gigabit industrial switch memang ada, tetapi pada sistem dengan banyak port, fitur <em>Energy-Efficient Ethernet</em> (IEEE 802.3az) mampu menekan perbedaan hingga di bawah 15% pada beban rendah. Umur pakai perangkat gigabit juga lebih panjang secara fungsional: saat kebutuhan bandwidth naik dua kali lipat, switch fast ethernet akan menjadi penghambat, sementara gigabit masih punya ruang. Biaya penggantian seluruh switch berserta rekayasa ulang logika jaringan bisa tiga kali lipat lebih besar daripada memilih gigabit sejak awal.</p>
+<h2>Faktor Penentu Kapan Upgrade Menjadi Keniscayaan</h2>
+<p>Tidak semua pabrik perlu langsung mengganti fast ethernet switch yang masih berfungsi. Namun, beberapa sinyal jelas bahwa upgrade ke gigabit industrial switch tak bisa ditunda:</p>
+<ol>
+<li>Kamera inspeksi resolusi 5 MP ke atas diadopsi, mendorong lalu lintas data lebih dari 100 Mbps per segmen.</li>
+<li>Sinkronisasi gerak antar servo membutuhkan protokol deterministik seperti EtherCAT atau PROFINET IRT yang bekerja lebih optimal di atas lapisan fisik gigabit.</li>
+<li>Jumlah perangkat IIoT melonjak akibat integrasi <em>condition monitoring</em> nirkabel yang gateway-nya mengumpulkan data besar.</li>
+<li>Sertifikasi terbaru seperti IEC 62443 untuk keamanan siber menuntut enkripsi data yang memakan bandwidth tambahan.</li>
+</ol>
+<p>Untuk proyek baru, rekomendasi kami seragam: pasang gigabit industrial switch setidaknya di tulang punggung dan segmen-segmen yang menangani citra atau kontrol gerak. Harga per port yang terus turun membuat argumen penghematan awal semakin pudar. Sebelum memutuskan, kaji arsitektur jaringan secara menyeluruh. Bagi yang ingin memahami peran fundamental switch dalam arsitektur industri, artikel <a href="Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html">switch ethernet industri</a> menjelaskan klasifikasi dan fitur inti yang wajib diperhatikan.</p>
+<h2>Menimbang Masa Depan Jaringan Pabrik</h2>
+<p>Keduanya sama-sama memiliki tempat, tetapi garis pijak sedang bergeser. Fast ethernet switch industry tetap andal untuk beban statis dan anggaran ketat di titik-titik ujung yang sederhana. Gigabit industrial switch hadir bukan semata untuk kecepatan, melainkan untuk determinisme, keluwesan ekspansi, dan efisiensi biaya jangka panjang. Menganalisis kebutuhan berdasarkan karakteristik data riil—bukan sekadar spesifikasi tertulis—adalah langkah awal yang menentukan.</p>
+<p>Konsultasikan rancangan jaringan pabrik Anda bersama teknisi Scodeno. Kami menyediakan portofolio switch industri lengkap, mulai dari fast ethernet hemat energi hingga gigabit bersertifikasi harsh environment, yang siap dikirim dalam waktu singkat. Kunjungi laman produk kami atau hubungi tim penjualan untuk mendapatkan kalkulasi TCO dan rekomendasi perangkat yang sesuai dengan lanskap lantai produksi Anda. Infrastuktur yang tepat hari ini adalah ketenangan produksi esok hari.</p>
+</article>
+
+  <!-- Article Navigation -->
+  <nav class="article-nav" style="max-width: var(--content-max); margin: 48px auto 0; padding: 0 24px; border-top: 1px solid var(--gray-100);">
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 24px 0;">
+      <a href="Week_03_ip-rating-pada-industrial-ethernet-switch-apa-artinya.html" style="display: flex; align-items: center; gap: 8px; color: var(--gray-500); text-decoration: none; font-size: 0.875rem; max-width: 40%;">
+        <span style="font-size:1.25rem;">←</span>
+        <span><small style="color:var(--gray-400);">Previous</small><br><strong style="color:var(--text-dark);">Week 03: IP Rating pada Industrial Ethernet Switch: Apa Art...</strong></span>
+      </a>
+      <a href="Week_05_industrial-switch-dengan-sfp-port-fungsi-dan-kegunaannya.html" style="display: flex; align-items: center; gap: 8px; color: var(--gray-500); text-decoration: none; font-size: 0.875rem; text-align: right; max-width: 40%;">
+        <span><small style="color:var(--gray-400);">Next</small><br><strong style="color:var(--text-dark);">Week 05: Industrial Switch dengan SFP Port: Fungsi dan Kegu...</strong></span>
+        <span style="font-size:1.25rem;">→</span>
+      </a>
+    </div>
+    <div style="text-align: center; padding-bottom: 24px;">
+      <a href="../index.html#articles" style="color: var(--blue); text-decoration: none; font-weight: 600; font-size: 0.875rem;">← Kembali ke Semua Artikel</a>
+    </div>
+  </nav>
+<section class="related-section">
+<div class="related-inner">
+<h2>Artikel Terkait</h2>
+<div class="related-grid">
+<a href="Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html" class="related-card"><span class="tag">Fundamental</span><h3>Kenapa Industrial Switch Menggunakan Desain Fanless</h3></a>
+<a href="Week_02_apa-itu-din-rail-industrial-switch-dan-mengapa-banyak-dipakai-di-pabrik.html" class="related-card"><span class="tag">Fundamental</span><h3>Apa Itu DIN-Rail Industrial Switch dan Mengapa Banyak Dipakai di Pabrik</h3></a>
+<a href="Week_03_ip-rating-pada-industrial-ethernet-switch-apa-artinya.html" class="related-card"><span class="tag">Fundamental</span><h3>IP Rating pada Industrial Ethernet Switch: Apa Artinya?</h3></a>
+<a href="Week_05_industrial-switch-dengan-sfp-port-fungsi-dan-kegunaannya.html" class="related-card"><span class="tag">Technology</span><h3>Industrial Switch dengan SFP Port: Fungsi dan Kegunaannya</h3></a>
+</div>
+</div>
+</section>
+<footer class="footer">
+<div class="footer-inner">
+<span>&copy; 2024 Scodeno Indonesia</span>
+<span>Didistribusikan oleh <a href="../index.html">PT Konexindo Unitama</a></span>
+</div>
+</footer>
+</body>
+</html>

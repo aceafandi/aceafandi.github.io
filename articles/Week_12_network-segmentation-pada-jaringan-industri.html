@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Network Segmentation pada Jaringan Industri — Scodeno Indonesia</title>
+<meta name="description" content="Network Segmentation pada Jaringan Industri">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+--blue: #0068B4; --blue-light: #0095E0; --blue-dark: #004A82; --blue-bg: #E7F3FB;
+--blue-glow: rgba(0,104,180,0.20);
+--black: #0A0E14; --near-black: #141A22; --dark-card: #1A202A;
+--white: #FFFFFF; --off-white: #F5F7FA; --gray-50: #F9FAFB; --gray-100: #E8ECF0;
+--gray-200: #C8CDD4; --gray-300: #9BA2AB; --gray-400: #6B7280; --gray-500: #4B5563;
+--text-dark: #1A1A1A; --text-light: #E2E8F0; --text-muted: #9BA2AB;
+--content-max: 780px; --radius-sm: 2px; --radius-md: 4px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+font-family: 'Inter', system-ui, -apple-system, sans-serif;
+color: var(--text-dark); background: var(--white);
+line-height: 1.7; -webkit-font-smoothing: antialiased;
+}
+    /* ===== NAVIGATION ===== */
+.nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+background: rgba(10,14,20,0.94); backdrop-filter: blur(12px);
+border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-inner {
+max-width: 1200px; margin: 0 auto;
+display: flex; align-items: center; justify-content: space-between;
+padding: 0 24px; height: 64px;
+}
+.nav-left { display: flex; align-items: center; gap: 32px; }
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-img { height: 28px; width: auto; }
+.nav-logo-text { font-weight: 800; font-size: 1.0625rem; color: var(--white); letter-spacing: -0.01em; white-space: nowrap; }
+.nav-logo-indonesia { color: var(--blue-light); margin-left: 2px; }
+.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+.nav-links a { color: var(--gray-300); text-decoration: none; font-size: 0.8125rem; font-weight: 500; padding: 8px 12px; border-radius: 4px; transition: all 0.15s; white-space: nowrap; }
+.nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+    /* Dropdown */
+.nav-dropdown { position: relative; }
+.nav-dropdown > a { display: flex; align-items: center; gap: 4px; }
+.nav-dropdown > a::after { content: '▾'; font-size: 0.625rem; margin-left: 2px; }
+.nav-dropdown-menu {
+position: absolute; top: 100%; left: 0; min-width: 200px;
+background: var(--dark-card); border: 1px solid rgba(255,255,255,0.08);
+border-radius: 6px; padding: 6px 0; opacity: 0; visibility: hidden;
+transform: translateY(4px); transition: all 0.18s ease;
+box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+}
+.nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+.nav-dropdown-menu a {
+display: block; padding: 8px 16px !important; font-size: 0.8125rem !important;
+color: var(--gray-300) !important; border-radius: 0 !important;
+}
+.nav-dropdown-menu a:hover { background: rgba(255,255,255,0.06) !important; color: var(--white) !important; }
+.nav-dropdown-menu .dropdown-label {
+font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.06em;
+color: var(--gray-400); padding: 6px 16px 2px; font-weight: 600;
+}
+    .nav-cta {
+background: var(--blue); color: var(--white) !important;
+padding: 8px 18px !important; border-radius: 4px !important;
+font-weight: 600 !important; font-size: 0.8125rem !important;
+}
+.nav-cta:hover { background: var(--blue-light) !important; }
+    /* ===== ARTICLE HEADER ===== */
+.article-header {
+background: var(--black); color: var(--white);
+padding: calc(64px + 64px) 24px 64px;
+position: relative; overflow: hidden;
+}
+.article-header::before {
+content: ''; position: absolute; top: -30%; right: -20%;
+width: 500px; height: 500px;
+background: radial-gradient(circle, var(--blue-glow) 0%, transparent 70%);
+pointer-events: none;
+}
+.article-header-inner { max-width: var(--content-max); margin: 0 auto; position: relative; z-index: 1; }
+.article-tag {
+display: inline-block; background: rgba(0,149,224,0.15); color: var(--blue-light);
+font-size: 0.75rem; font-weight: 600; padding: 4px 12px;
+border-radius: 2px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.06em;
+}
+.article-header h1 {
+font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800;
+line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px;
+}
+.article-header .article-meta { color: var(--text-muted); font-size: 0.875rem; display: flex; gap: 20px; }
+    /* ===== ARTICLE BODY ===== */
+.article-body {
+max-width: var(--content-max); margin: 0 auto;
+padding: 64px 24px;
+}
+.article-body h2 {
+font-size: 1.5rem; font-weight: 700; color: var(--near-black);
+margin: 48px 0 16px; letter-spacing: -0.01em;
+}
+.article-body h3 {
+font-size: 1.25rem; font-weight: 600; color: var(--near-black);
+margin: 32px 0 12px;
+}
+.article-body h4 {
+font-size: 1.0625rem; font-weight: 600; color: var(--gray-500);
+margin: 24px 0 8px;
+}
+.article-body p {
+color: var(--gray-500); font-size: 1.0625rem;
+margin-bottom: 20px; line-height: 1.8;
+}
+.article-body ul, .article-body ol {
+color: var(--gray-500); font-size: 1.0625rem;
+margin-bottom: 20px; padding-left: 24px;
+}
+.article-body li { margin-bottom: 8px; line-height: 1.7; }
+.article-body strong { color: var(--text-dark); font-weight: 600; }
+.article-body a { color: var(--blue); text-decoration: underline; }
+.article-body a:hover { color: var(--blue-light); }
+.article-body hr { border: none; border-top: 1px solid var(--gray-100); margin: 48px 0; }
+.article-body blockquote {
+border-left: 3px solid var(--blue); padding-left: 20px;
+margin: 24px 0; color: var(--gray-500); font-style: italic;
+}
+    /* ===== EXCEL-STYLE TABLE ===== */
+.table-wrap {
+overflow-x: auto; margin: 28px 0; border-radius: 6px;
+border: 1px solid var(--gray-100);
+box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.article-body table {
+width: 100%; border-collapse: collapse;
+font-size: 0.875rem; line-height: 1.5;
+min-width: 600px;
+}
+.article-body thead th {
+background: linear-gradient(180deg, #E8F0F8 0%, #D4E4F2 100%);
+color: var(--blue-dark); font-weight: 600; font-size: 0.8125rem;
+text-transform: uppercase; letter-spacing: 0.03em;
+padding: 12px 14px; text-align: left;
+border-bottom: 2px solid #B8D0E8;
+border-right: 1px solid #C8D8E8;
+white-space: nowrap; position: sticky; top: 0;
+}
+.article-body thead th:last-child { border-right: none; }
+.article-body tbody td {
+padding: 10px 14px; border-bottom: 1px solid var(--gray-100);
+border-right: 1px solid var(--gray-100); color: var(--gray-500);
+vertical-align: top;
+}
+.article-body tbody td:last-child { border-right: none; }
+.article-body tbody tr:nth-child(even) td {
+background: var(--gray-50);
+}
+.article-body tbody tr:hover td {
+background: var(--blue-bg);
+}
+.article-body tbody td:first-child {
+font-weight: 500; color: var(--text-dark);
+}
+    /* ===== RELATED ARTICLES ===== */
+.related-section {
+background: var(--off-white); padding: 64px 24px;
+}
+.related-inner { max-width: var(--content-max); margin: 0 auto; }
+.related-inner h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.01em; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.related-card {
+background: var(--white); border: 1px solid var(--gray-100);
+border-radius: var(--radius-md); padding: 20px; text-decoration: none;
+transition: box-shadow 0.2s;
+}
+.related-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+.related-card h3 { font-size: 0.9375rem; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
+.related-card .tag { font-size: 0.6875rem; color: var(--blue); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+    /* ===== FOOTER ===== */
+.footer {
+background: var(--near-black); color: var(--text-muted);
+padding: 48px 24px 32px; border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-inner {
+max-width: 1200px; margin: 0 auto;
+display: flex; justify-content: space-between; align-items: center;
+font-size: 0.8125rem;
+}
+.footer-inner a { color: var(--blue-light); text-decoration: none; }
+.footer-inner a:hover { color: var(--white); }
+    @media (max-width: 768px) {
+.article-header { padding: calc(64px + 40px) 16px 40px; }
+.article-body { padding: 40px 16px; }
+.nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+<div class="nav-inner">
+<div class="nav-left">
+<a href="../index.html" class="nav-logo">
+<img src="../logo.png" alt="Scodeno" class="nav-logo-img">
+<span class="nav-logo-text">Scodeno<span class="nav-logo-indonesia">Indonesia</span></span>
+</a>
+<ul class="nav-links">
+<li class="nav-dropdown">
+<a href="../index.html#products">Products</a>
+<div class="nav-dropdown-menu">
+<a href="../index.html#products">Unmanaged Switches</a>
+<a href="../index.html#products">Managed Switches</a>
+<a href="../index.html#products">PoE Switches</a>
+<a href="../index.html#products">Data Center</a>
+<a href="../index.html#products">xPON / Fiber</a>
+<a href="../index.html#products">Smart Box &amp; IoT</a>
+</div>
+</li>
+<li class="nav-dropdown">
+<a href="../index.html#articles">Articles</a>
+<div class="nav-dropdown-menu">
+<a href="../index.html#articles">Fundamental</a>
+<a href="../index.html#articles">Selection Guide</a>
+<a href="../index.html#articles">Technology</a>
+<a href="../index.html#articles">Deployment</a>
+<a href="../index.html#articles">Network Design</a>
+</div>
+</li>
+<li><a href="../index.html#about">About</a></li>
+</ul>
+</div>
+<a href="../index.html#contact" class="nav-cta">Request Quote</a>
+</div>
+</nav>
+<header class="article-header">
+<div class="article-header-inner">
+<span class="article-tag">Network Design</span>
+<h1>Network Segmentation pada Jaringan Industri</h1>
+<div class="article-meta">
+<span>8 min read</span>
+</div>
+</div>
+</header>
+<article class="article-body">
+<p>Lantai pabrik Anda mungkin tidak pernah sepi, tetapi lalu lintas data di dalamnya harus tertib. Segmentasi adalah disiplin yang menempatkan setiap paket di jalurnya, setiap perangkat dalam zona perlindungannya, dan setiap potensi ancaman dalam radius ledakan yang terkendali.</p>
+<p>Tim technical Scodeno memahami arsitektur network isolation OT dari pengalaman implementasi di berbagai sektor: manufaktur diskrit, proses kimia, pembangkit energi, hingga water treatment. Kami dapat membantu merancang segmentasi yang selaras dengan arsitektur Purdue tanpa mengorbankan kinerja real-time yang menjadi nadi operasional Anda.</p>
+<p><strong>Konsultasikan kebutuhan <a href="Week_10_vlan-dalam-industrial-ethernet-network.html">segmentasi jaringan industri</a> Anda dengan engineer kami. Kirim email ke sales@scodeno.com atau hubungi nomor yang tertera untuk penjadwalan site survey dan network assessment tanpa biaya.</strong></p>
+</article>
+
+  <!-- Article Navigation -->
+  <nav class="article-nav" style="max-width: var(--content-max); margin: 48px auto 0; padding: 0 24px; border-top: 1px solid var(--gray-100);">
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 24px 0;">
+      <a href="Week_11_qos-dalam-industrial-network.html" style="display: flex; align-items: center; gap: 8px; color: var(--gray-500); text-decoration: none; font-size: 0.875rem; max-width: 40%;">
+        <span style="font-size:1.25rem;">←</span>
+        <span><small style="color:var(--gray-400);">Previous</small><br><strong style="color:var(--text-dark);">Week 11: QoS dalam Industrial Network...</strong></span>
+      </a>
+      <div></div>
+    </div>
+    <div style="text-align: center; padding-bottom: 24px;">
+      <a href="../index.html#articles" style="color: var(--blue); text-decoration: none; font-weight: 600; font-size: 0.875rem;">← Kembali ke Semua Artikel</a>
+    </div>
+  </nav>
+<section class="related-section">
+<div class="related-inner">
+<h2>Artikel Terkait</h2>
+<div class="related-grid">
+<a href="Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html" class="related-card"><span class="tag">Fundamental</span><h3>Kenapa Industrial Switch Menggunakan Desain Fanless</h3></a>
+<a href="Week_02_apa-itu-din-rail-industrial-switch-dan-mengapa-banyak-dipakai-di-pabrik.html" class="related-card"><span class="tag">Fundamental</span><h3>Apa Itu DIN-Rail Industrial Switch dan Mengapa Banyak Dipakai di Pabrik</h3></a>
+<a href="Week_03_ip-rating-pada-industrial-ethernet-switch-apa-artinya.html" class="related-card"><span class="tag">Fundamental</span><h3>IP Rating pada Industrial Ethernet Switch: Apa Artinya?</h3></a>
+<a href="Week_04_industrial-gigabit-switch-vs-fast-ethernet-switch.html" class="related-card"><span class="tag">Selection Guide</span><h3>Industrial Gigabit Switch vs Fast Ethernet Switch</h3></a>
+</div>
+</div>
+</section>
+<footer class="footer">
+<div class="footer-inner">
+<span>&copy; 2024 Scodeno Indonesia</span>
+<span>Didistribusikan oleh <a href="../index.html">PT Konexindo Unitama</a></span>
+</div>
+</footer>
+</body>
+</html>

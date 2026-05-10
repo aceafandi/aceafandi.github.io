@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industrial Switch dengan PoE: Kapan Dibutuhkan? — Scodeno Indonesia</title>
+  <meta name="description" content="Industrial Switch dengan PoE: Kapan Dibutuhkan?">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #0068B4; --blue-light: #0095E0; --blue-dark: #004A82; --blue-bg: #E7F3FB;
+      --blue-glow: rgba(0,104,180,0.20);
+      --black: #0A0E14; --near-black: #141A22; --dark-card: #1A202A;
+      --white: #FFFFFF; --off-white: #F5F7FA; --gray-50: #F9FAFB; --gray-100: #E8ECF0;
+      --gray-200: #C8CDD4; --gray-300: #9BA2AB; --gray-400: #6B7280; --gray-500: #4B5563;
+      --text-dark: #1A1A1A; --text-light: #E2E8F0; --text-muted: #9BA2AB;
+      --content-max: 780px; --radius-sm: 2px; --radius-md: 4px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--text-dark); background: var(--white);
+      line-height: 1.7; -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== NAVIGATION ===== */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,14,20,0.94); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; height: 64px;
+    }
+    .nav-left { display: flex; align-items: center; gap: 32px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-img { height: 28px; width: auto; }
+    .nav-logo-text { font-weight: 800; font-size: 1.0625rem; color: var(--white); letter-spacing: -0.01em; white-space: nowrap; }
+    .nav-logo-indonesia { color: var(--blue-light); margin-left: 2px; }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a { color: var(--gray-300); text-decoration: none; font-size: 0.8125rem; font-weight: 500; padding: 8px 12px; border-radius: 4px; transition: all 0.15s; white-space: nowrap; }
+    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+
+    /* Dropdown */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a { display: flex; align-items: center; gap: 4px; }
+    .nav-dropdown > a::after { content: '▾'; font-size: 0.625rem; margin-left: 2px; }
+    .nav-dropdown-menu {
+      position: absolute; top: 100%; left: 0; min-width: 200px;
+      background: var(--dark-card); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px; padding: 6px 0; opacity: 0; visibility: hidden;
+      transform: translateY(4px); transition: all 0.18s ease;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+    }
+    .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown-menu a {
+      display: block; padding: 8px 16px !important; font-size: 0.8125rem !important;
+      color: var(--gray-300) !important; border-radius: 0 !important;
+    }
+    .nav-dropdown-menu a:hover { background: rgba(255,255,255,0.06) !important; color: var(--white) !important; }
+    .nav-dropdown-menu .dropdown-label {
+      font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--gray-400); padding: 6px 16px 2px; font-weight: 600;
+    }
+
+    .nav-cta {
+      background: var(--blue); color: var(--white) !important;
+      padding: 8px 18px !important; border-radius: 4px !important;
+      font-weight: 600 !important; font-size: 0.8125rem !important;
+    }
+    .nav-cta:hover { background: var(--blue-light) !important; }
+
+    /* ===== ARTICLE HEADER ===== */
+    .article-header {
+      background: var(--black); color: var(--white);
+      padding: calc(64px + 64px) 24px 64px;
+      position: relative; overflow: hidden;
+    }
+    .article-header::before {
+      content: ''; position: absolute; top: -30%; right: -20%;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, var(--blue-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .article-header-inner { max-width: var(--content-max); margin: 0 auto; position: relative; z-index: 1; }
+    .article-tag {
+      display: inline-block; background: rgba(0,149,224,0.15); color: var(--blue-light);
+      font-size: 0.75rem; font-weight: 600; padding: 4px 12px;
+      border-radius: 2px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .article-header h1 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800;
+      line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px;
+    }
+    .article-header .article-meta { color: var(--text-muted); font-size: 0.875rem; display: flex; gap: 20px; }
+
+    /* ===== ARTICLE BODY ===== */
+    .article-body {
+      max-width: var(--content-max); margin: 0 auto;
+      padding: 64px 24px;
+    }
+    .article-body h2 {
+      font-size: 1.5rem; font-weight: 700; color: var(--near-black);
+      margin: 48px 0 16px; letter-spacing: -0.01em;
+    }
+    .article-body h3 {
+      font-size: 1.25rem; font-weight: 600; color: var(--near-black);
+      margin: 32px 0 12px;
+    }
+    .article-body h4 {
+      font-size: 1.0625rem; font-weight: 600; color: var(--gray-500);
+      margin: 24px 0 8px;
+    }
+    .article-body p {
+      color: var(--gray-500); font-size: 1.0625rem;
+      margin-bottom: 20px; line-height: 1.8;
+    }
+    .article-body ul, .article-body ol {
+      color: var(--gray-500); font-size: 1.0625rem;
+      margin-bottom: 20px; padding-left: 24px;
+    }
+    .article-body li { margin-bottom: 8px; line-height: 1.7; }
+    .article-body strong { color: var(--text-dark); font-weight: 600; }
+    .article-body a { color: var(--blue); text-decoration: underline; }
+    .article-body a:hover { color: var(--blue-light); }
+    .article-body hr { border: none; border-top: 1px solid var(--gray-100); margin: 48px 0; }
+    .article-body blockquote {
+      border-left: 3px solid var(--blue); padding-left: 20px;
+      margin: 24px 0; color: var(--gray-500); font-style: italic;
+    }
+
+    /* ===== EXCEL-STYLE TABLE ===== */
+    .table-wrap {
+      overflow-x: auto; margin: 28px 0; border-radius: 6px;
+      border: 1px solid var(--gray-100);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .article-body table {
+      width: 100%; border-collapse: collapse;
+      font-size: 0.875rem; line-height: 1.5;
+      min-width: 600px;
+    }
+    .article-body thead th {
+      background: linear-gradient(180deg, #E8F0F8 0%, #D4E4F2 100%);
+      color: var(--blue-dark); font-weight: 600; font-size: 0.8125rem;
+      text-transform: uppercase; letter-spacing: 0.03em;
+      padding: 12px 14px; text-align: left;
+      border-bottom: 2px solid #B8D0E8;
+      border-right: 1px solid #C8D8E8;
+      white-space: nowrap; position: sticky; top: 0;
+    }
+    .article-body thead th:last-child { border-right: none; }
+    .article-body tbody td {
+      padding: 10px 14px; border-bottom: 1px solid var(--gray-100);
+      border-right: 1px solid var(--gray-100); color: var(--gray-500);
+      vertical-align: top;
+    }
+    .article-body tbody td:last-child { border-right: none; }
+    .article-body tbody tr:nth-child(even) td {
+      background: var(--gray-50);
+    }
+    .article-body tbody tr:hover td {
+      background: var(--blue-bg);
+    }
+    .article-body tbody td:first-child {
+      font-weight: 500; color: var(--text-dark);
+    }
+
+    /* ===== RELATED ARTICLES ===== */
+    .related-section {
+      background: var(--off-white); padding: 64px 24px;
+    }
+    .related-inner { max-width: var(--content-max); margin: 0 auto; }
+    .related-inner h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.01em; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .related-card {
+      background: var(--white); border: 1px solid var(--gray-100);
+      border-radius: var(--radius-md); padding: 20px; text-decoration: none;
+      transition: box-shadow 0.2s;
+    }
+    .related-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+    .related-card h3 { font-size: 0.9375rem; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
+    .related-card .tag { font-size: 0.6875rem; color: var(--blue); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--near-black); color: var(--text-muted);
+      padding: 48px 24px 32px; border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.8125rem;
+    }
+    .footer-inner a { color: var(--blue-light); text-decoration: none; }
+    .footer-inner a:hover { color: var(--white); }
+
+    @media (max-width: 768px) {
+      .article-header { padding: calc(64px + 40px) 16px 40px; }
+      .article-body { padding: 40px 16px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="../index.html" class="nav-logo">
+        <img src="../logo.png" alt="Scodeno" class="nav-logo-img">
+        <span class="nav-logo-text">Scodeno<span class="nav-logo-indonesia">Indonesia</span></span>
+      </a>
+      <ul class="nav-links">
+        <li class="nav-dropdown">
+          <a href="../index.html#products">Products</a>
+          <div class="nav-dropdown-menu">
+            <a href="../index.html#products">Unmanaged Switches</a>
+            <a href="../index.html#products">Managed Switches</a>
+            <a href="../index.html#products">PoE Switches</a>
+            <a href="../index.html#products">Data Center</a>
+            <a href="../index.html#products">xPON / Fiber</a>
+            <a href="../index.html#products">Smart Box &amp; IoT</a>
+          </div>
+        </li>
+        <li class="nav-dropdown">
+          <a href="../index.html#articles">Articles</a>
+          <div class="nav-dropdown-menu">
+            <a href="../index.html#articles">Fundamental</a>
+            <a href="../index.html#articles">Selection Guide</a>
+            <a href="../index.html#articles">Technology</a>
+            <a href="../index.html#articles">Deployment</a>
+            <a href="../index.html#articles">Network Design</a>
+          </div>
+        </li>
+        <li><a href="../index.html#about">About</a></li>
+      </ul>
+    </div>
+    <a href="../index.html#contact" class="nav-cta">Request Quote</a>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="article-header-inner">
+    <span class="article-tag">Deployment</span>
+    <h1>Industrial Switch dengan PoE: Kapan Dibutuhkan?</h1>
+    <div class="article-meta">
+      <span>7 min read</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+<p>Kabel yang berkelok di lantai pabrik sering menjadi sumber masalah. Teknisi harus menarik dua jalur: satu untuk data, satu lagi untuk listrik. Di lingkungan dengan suhu tinggi, debu, atau getaran, duplikasi ini memperbesar titik kegagalan. Di sinilah Power over Ethernet (PoE) menjawab kebutuhan. Lewat satu kabel twisted-pair, data dan daya listrik mengalir bersamaan. Sebuah <strong>industrial PoE switch</strong> mampu menyalakan kamera, sensor, atau access point tanpa perlu stop kontak terpisah. Pertanyaannya: kapan infrastruktur ini benar-benar dibutuhkan, dan kapan justru berlebihan?</p>
+<p>Artikel ini menguraikan situasi di mana PoE pada switch industrial menjadi pilihan cerdas—bukan sekadar mengikuti tren—serta rambu-rambu agar investasi Anda tepat sasaran.</p>
+<h2>Mengapa Listrik dan Data Perlu Satu Kabel?</h2>
+<p>Konsep PoE sudah matang sejak IEEE merilis standar 802.3af pada 2003. Kini, dengan varian 802.3at (PoE+) dan 802.3bt (PoE++), satu port mampu melepas daya hingga 90 watt. Standar ini mengandalkan perangkat <em>power sourcing equipment</em> (PSE) seperti switch atau injector, dan <em>powered device</em> (PD) di ujung kabel.</p>
+<p>Di lingkungan pabrik, manfaatnya langsung terasa. Perangkat yang dipasang di langit-langit tinggi, tiang di area parkir, atau gardu listrik pinggir kota seringkali jauh dari sumber AC. Menarik kabel daya baru berarti biaya material, tenaga kerja, dan waktu henti. Dengan PoE, Anda cukup memperpanjang kabel ethernet. Lebih dari itu, switch dengan fitur manajemen dapat memonitor konsumsi daya, memutus aliran jika terjadi anomali, dan mengurangi kunjungan teknisi ke lokasi.</p>
+<p>Namun, switch komersial biasa tidak akan bertahan. Switch industrial PoE dilengkapi selubung logam, rating suhu -40 hingga 75°C, serta proteksi lonjakan arus dan <em>electromagnetic interference</em> (EMI) yang lebih andal.</p>
+<h2>Kapan Industrial PoE Switch Menjadi Wajib?</h2>
+<p>Ada beberapa skenario operasional di mana memilih switch dengan kemampuan PoE bukan lagi opsi, melainkan keharusan teknis. Simak kondisi berikut.</p>
+<h3>Kamera Pengawas di Lingkungan Ekstrem</h3>
+<p>Sistem CCTV IP di area tambang, kilang minyak, atau pabrik kimia kerap menghadapi udara korosif dan fluktuasi suhu tajam. Kamera PTZ atau kamera dengan pemanas internal membutuhkan daya lebih besar—seringkali di atas 30 watt. Tanpa dukungan PoE+ atau PoE++, teknisi harus memasang kotak daya terpisah yang justru rawan korosi.</p>
+<p><strong>Industrial PoE switch</strong> dengan <em>fiber uplink</em> memungkinkan kamera diletakkan ratusan meter dari ruang kontrol. Data kembali melalui serat optik, sementara daya disalurkan lewat tembaga. Konfigurasi ini menyederhanakan topologi jaringan dan memperpanjang umur perangkat.</p>
+<h3>Access Point Nirkabel di Lantai Produksi</h3>
+<p>Pabrik modern semakin bergantung pada koneksi nirkabel untuk <em>automated guided vehicle</em> (AGV), tablet operator, atau sistem pelacakan aset. Access point (AP) wajib dipasang di titik-titik yang sulit dijangkau—di atas conveyor, di antara rak baja, atau di bawah atap tinggi.</p>
+<p>Memasang stop kontak di setiap titik bukan hanya mahal, melainkan juga menambah risiko korsleting karena debu konduktif atau percikan air. Industrial PoE switch dengan <em>managed Layer 2</em> memungkinkan Anda menjadwalkan reboot AP secara otomatis dan mendeteksi kegagalan daya sebelum berdampak pada proses produksi.</p>
+<h3>Sensor dan Edge Controller di Lapangan</h3>
+<p>Revolusi Industri 4.0 mendorong banyak sensor <em>vibration</em>, <em>temperature</em>, atau <em>humidity</em> diletakkan langsung di mesin-mesin tua yang belum tentu memiliki sumber listrik berlimpah. Sensor-sensor ini mengirim data ke PLC atau SCADA melalui ethernet.</p>
+<p>Dengan PoE, sebuah sensor <em>edge computing</em> dapat langsung berjalan tanpa adaptor tambahan. Di sisi switch, fitur <em>automatic classification</em> mengenali kelas daya yang dibutuhkan sehingga tidak terjadi <em>over-budget</em>. Hal ini krusial pada proyek brownfield yang memerlukan retrofit cerdas tanpa mengubah struktur elektrikal bangunan.</p>
+<h3>Sistem Telepon VoIP dan Paging Industrial</h3>
+<p>Komunikasi suara di pabrik sering mengandalkan telepon VoIP atau pengeras suara IP. Perangkat ini biasanya dipasang di area bising, koridor panjang, atau zona berbahaya. Catu daya terpusat lewat switch mengurangi kerumitan kabel dan memastikan perangkat tetap menyala meski panel listrik lokal mati, asalkan switch induk mendapat suplai dari UPS atau sumber redundan.</p>
+<h3>Digital Signage dan HMI di Jalur Produksi</h3>
+<p>Display operator (HMI) modern berupa layar sentuh yang membutuhkan koneksi ethernet. Letaknya sering di samping mesin yang getarannya tinggi. Industrial PoE switch memungkinkan satu kabel RJ45 yang sudah terlindung (<em>shielded</em>) menghantarkan sinyal video sekaligus daya, sehingga display tidak memerlukan adaptor AC-DC yang rentan rusak.</p>
+<h2>Kapan Anda Tidak Membutuhkan PoE?</h2>
+<p>Tidak semua peralatan industri bisa dipaksa menggunakan PoE. Motor listrik, VFD (<em>variable frequency drive</em>), atau PLC dengan konsumsi daya puluhan watt sampai kilowatt tetap memerlukan jalur listrik tiga fasa atau AC langsung. Switch non-PoE masih menjadi pilihan tepat untuk menghubungkan mesin-mesin ini, terutama di kabinet kontrol yang sudah dilengkapi terminal daya lengkap.</p>
+<p>Selain itu, jika jarak antara switch dan perangkat melebihi 100 meter dan Anda tidak bisa memasang <em>extender</em>, PoE lewat kabel tembaga menjadi tidak praktis. Solusi fiber dengan <em>media converter</em> lebih disarankan. Juga, perangkat lawas yang tidak mendukung standar IEEE mungkin rusak jika menerima tegangan lewat kabel data. Evaluasi jenis PD sebelum memutuskan beli switch PoE.</p>
+<h2>Memilih Spesifikasi yang Tepat</h2>
+<p>Membeli industrial PoE switch tidak bisa sembarangan. Berikut poin teknis yang wajib dicermati:</p>
+<ul>
+<li><strong>Standar dan total power budget</strong>: Hitung total daya yang ditarik oleh semua perangkat yang terhubung. Pilih switch dengan <em>power budget</em> yang cukup, misalnya 120W, 240W, atau 480W. Standar PoE++ (802.3bt) disarankan untuk perangkat berdaya besar.</li>
+<li><strong>Port density dan SFP</strong>: Pastikan jumlah port mencukupi untuk ekspansi. Slot SFP untuk fiber uplink adalah nilai tambah jika jarak ke pusat kontrol jauh.</li>
+<li><strong>Managed vs. unmanaged</strong>: Aplikasi kritis seperti kamera keamanan perlu switch managed untuk VLAN, QoS, dan manajemen daya jarak jauh. Untuk jaringan kecil yang statis, unmanaged bisa lebih ekonomis.</li>
+<li><strong>Ruggedness</strong>: Cari rating IP40 atau IP67 jika terpasang di luar kabinet. Sertifikasi seperti EN 50121-4 (perkeretaapian) atau IEC 61850-3 (substation) mungkin diperlukan.</li>
+<li><strong>Redundansi</strong>: Dukungan <em>ring protocol</em> seperti ERPS atau RSTP memastikan self-healing dalam milidetik.</li>
+</ul>
+<p>Pertimbangan lebih detail mengenai parameter teknis dan contoh konfigurasi bisa Anda pelajari di panduan kami: <a href="Week_08_fitur-penting-industrial-ethernet-switch-yang-harus-anda-ketahui.html">industrial PoE switch</a>.</p>
+<h2>Praktik Terbaik Implementasi di Lapangan</h2>
+<p>Pengalaman kami di berbagai proyek otomasi menunjukkan beberapa jebakan umum. Pertama, jangan abaikan kualitas kabel. Kabel tembaga CCA (<em>copper-clad aluminum</em>) tidak direkomendasikan untuk PoE karena resistansi tinggi menyebabkan <em>voltage drop</em> dan panas berlebih. Gunakan minimum CAT5e solid copper, idealnya CAT6 atau CAT6a <em>shielded</em> untuk menekan gangguan EMI.</p>
+<p>Kedua, perhatikan grounding. Di pabrik dengan banyak motor, arus liar dapat merambat melalui kabel ethernet dan merusak perangkat. Pastikan sistem pentanahan terintegrasi dengan baik.</p>
+<p>Ketiga, manfaatkan fitur <em>watchdog</em> dan <em>ping monitoring</em> pada switch managed. Fitur ini mampu merestart perangkat yang hang tanpa campur tangan manusia—sangat membantu untuk kamera di puncak cerobong atau AP di area terpencil.</p>
+<p>Terakhir, lakukan uji <em>throughput</em> dan <em>latency</em> setelah instalasi. Beban PoE pada kabel bisa mempengaruhi integritas sinyal jika instalasi tidak rapi. Switch industrial yang baik sudah memperhitungkan margin ini, tetapi pengujian lapangan tetap wajib.</p>
+<h2>Kesimpulan</h2>
+<p>Industrial PoE switch bukanlah aksesori opsional ketika perangkat edge Anda tersebar di lokasi-lokasi tanpa sumber listrik. Kamera IP, access point, sensor, hingga komunikasi suara menghadirkan alasan teknis yang kuat untuk mengintegrasikan data dan daya dalam satu kabel. Di sisi lain, beban tinggi seperti motor tetap memerlukan catu daya eksplisit.</p>
+<p>Kuncinya terletak pada pemetaan kebutuhan nyata di lapangan: daya total perangkat, jarak, kondisi lingkungan, dan tingkat kendali yang diinginkan. Dengan pemilihan spesifikasi yang tepat—seperti standar PoE++, power budget, dan perlindungan industri—Anda mendapat jaringan yang andal sekaligus efisien dari segi biaya dan perawatan.</p>
+<p>Scodeno menyediakan berbagai varian industrial switch dengan dukungan PoE, managed atau unmanaged, siap mendukung infrastruktur IIoT Anda. Kunjungi katalog produk kami atau hubungi tim teknisi untuk konsultasi mendalam. Dapatkan solusi yang bukan sekadar spesifikasi tinggi, melainkan benar-benar sesuai dengan medan kerja Anda.</p>
+</article>
+
+<section class="related-section">
+  <div class="related-inner">
+    <h2>Artikel Terkait</h2>
+    <div class="related-grid">
+      <a href="Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html" class="related-card"><span class="tag">Fundamental</span><h3>Kenapa Industrial Switch Menggunakan Desain Fanless</h3></a>
+      <a href="Week_02_apa-itu-din-rail-industrial-switch-dan-mengapa-banyak-dipakai-di-pabrik.html" class="related-card"><span class="tag">Fundamental</span><h3>Apa Itu DIN-Rail Industrial Switch dan Mengapa Banyak Dipakai di Pabrik</h3></a>
+      <a href="Week_03_ip-rating-pada-industrial-ethernet-switch-apa-artinya.html" class="related-card"><span class="tag">Fundamental</span><h3>IP Rating pada Industrial Ethernet Switch: Apa Artinya?</h3></a>
+      <a href="Week_04_industrial-gigabit-switch-vs-fast-ethernet-switch.html" class="related-card"><span class="tag">Selection Guide</span><h3>Industrial Gigabit Switch vs Fast Ethernet Switch</h3></a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span>&copy; 2024 Scodeno Indonesia</span>
+    <span>Didistribusikan oleh <a href="../index.html">PT Konexindo Unitama</a></span>
+  </div>
+</footer>
+  <nav class="article-nav" style="max-width:780px;margin:48px auto 0;padding:0 24px;border-top:1px solid #E8ECF0;"><div style="display:flex;justify-content:space-between;padding:24px 0;"><a href="Week_06_managed-vs-unmanaged-industrial-switch-mana-yang-tepat.html" style="color:#6B7280;text-decoration:none;font-size:0.875rem;"><span style="font-size:1.25rem;">←</span> Previous<br><strong>Week 06: Managed vs Unmanaged</strong></a><a href="Week_08_fitur-penting-industrial-ethernet-switch-yang-harus-anda-ketahui.html" style="color:#6B7280;text-decoration:none;font-size:0.875rem;text-align:right;">Next <span style="font-size:1.25rem;">→</span><br><strong>Week 08: Fitur Penting</strong></a></div><div style="text-align:center;padding-bottom:24px;"><a href="../index.html#articles" style="color:#0068B4;text-decoration:none;font-weight:600;">← Kembali ke Semua Artikel</a></div></nav>
+
+</body>
+</html>

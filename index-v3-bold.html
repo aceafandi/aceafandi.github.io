@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scodeno Indonesia — Industrial-Grade Networking</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue:        #0068B4;
+      --blue-light:  #0095E0;
+      --blue-glow:   rgba(0,104,180,0.25);
+      --black:       #060A10;
+      --dark:        #0C121C;
+      --card:        #111820;
+      --border:      #1E2A38;
+      --white:       #FFFFFF;
+      --text:        #E8EDF4;
+      --text-muted:  #7B8A9E;
+      --text-dim:    #4A5568;
+      --content-max: 1200px;
+      --radius-sm: 2px;
+      --radius-md: 4px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--black); color: var(--text);
+      line-height: 1.5; -webkit-font-smoothing: antialiased;
+    }
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(6,10,16,0.94); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: var(--content-max); margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 24px; height: 64px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo-img { height: 32px; width: auto; }
+    .nav-logo-text { font-weight: 800; font-size: 1.125rem; color: var(--white); letter-spacing: -0.01em; }
+    .nav-logo-indonesia { color: var(--blue-light); margin-left: 2px; }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--blue); color: var(--white); padding: 8px 18px;
+      border-radius: var(--radius-sm); font-weight: 700; font-size: 0.75rem;
+      text-decoration: none; text-transform: uppercase; letter-spacing: 0.06em;
+      transition: background 0.15s;
+    }
+    .nav-cta:hover { background: var(--blue-light); }
+
+    .section { padding: 96px 24px; }
+    .container { max-width: var(--content-max); margin: 0 auto; }
+
+    /* Hero — full dark, dramatic */
+    .hero {
+      background: var(--black); min-height: 90vh;
+      display: flex; align-items: center; padding-top: calc(64px + 48px);
+      position: relative; overflow: hidden;
+    }
+    .hero::after {
+      content: ''; position: absolute; right: -20%; top: 10%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, var(--blue-glow) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--blue-light); font-weight: 700; font-size: 0.75rem;
+      text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 24px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 24px; height: 2px;
+      background: var(--blue-light);
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900;
+      line-height: 0.95; letter-spacing: -0.03em;
+      text-transform: uppercase; margin-bottom: 24px;
+    }
+    .hero h1 .accent { color: var(--blue-light); }
+    .hero p {
+      font-size: 1.0625rem; color: var(--text-muted);
+      max-width: 500px; margin-bottom: 36px; line-height: 1.7;
+    }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: var(--radius-sm);
+      font-weight: 700; font-size: 0.8125rem; text-decoration: none;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      transition: all 0.15s; cursor: pointer; border: none;
+    }
+    .btn-primary { background: var(--blue); color: var(--white); }
+    .btn-primary:hover { background: var(--blue-light); }
+    .btn-outline {
+      background: transparent; color: var(--white);
+      border: 2px solid rgba(255,255,255,0.12);
+    }
+    .btn-outline:hover { border-color: var(--white); }
+
+    /* Spec bar */
+    .spec-bar {
+      background: var(--card); border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border); padding: 32px 0;
+    }
+    .spec-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 32px;
+      text-align: center;
+    }
+    .spec-item .spec-value { font-size: 1.75rem; font-weight: 900; color: var(--white); margin-bottom: 4px; }
+    .spec-item .spec-label { font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+    .spec-item .spec-highlight { color: var(--blue-light); }
+
+    /* Section headers */
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--blue-light); font-weight: 700; font-size: 0.75rem;
+      text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 12px;
+    }
+    .section-label::before { content: ''; display: block; width: 16px; height: 2px; background: var(--blue-light); }
+    .section-header { margin-bottom: 64px; }
+    .section-header h2 { font-size: clamp(1.75rem, 3.5vw, 2.75rem); font-weight: 800; color: var(--white); margin-bottom: 12px; letter-spacing: -0.01em; text-transform: uppercase; }
+    .section-header p { color: var(--text-muted); max-width: 520px; font-size: 1rem; }
+
+    /* Products — dense grid */
+    .section-card { background: var(--dark); }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .product-card {
+      background: var(--card); padding: 36px;
+      transition: background 0.2s;
+    }
+    .product-card:hover { background: #161E2A; }
+    .product-card .spec-tag {
+      display: inline-block; color: var(--blue-light); font-size: 0.6875rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+    .product-card h3 { font-size: 1.125rem; font-weight: 800; color: var(--white); margin-bottom: 8px; text-transform: uppercase; letter-spacing: -0.01em; }
+    .product-card p { color: var(--text-dim); font-size: 0.875rem; margin-bottom: 16px; line-height: 1.6; }
+    .product-specs { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .product-specs span { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; padding: 3px 8px; background: rgba(255,255,255,0.03); border-radius: 2px; }
+    .product-link { color: var(--blue-light); font-weight: 700; font-size: 0.8125rem; text-decoration: none; text-transform: uppercase; letter-spacing: 0.06em; display: inline-flex; align-items: center; gap: 6px; }
+    .product-link:hover { color: var(--white); }
+
+    /* Articles */
+    .article-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .article-card { background: var(--card); padding: 32px; transition: background 0.2s; }
+    .article-card:hover { background: #161E2A; }
+    .article-card .article-tag {
+      display: inline-block; color: var(--blue-light); font-size: 0.6875rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+    .article-card h3 { font-size: 1.125rem; font-weight: 800; color: var(--white); margin-bottom: 8px; text-transform: uppercase; letter-spacing: -0.01em; line-height: 1.3; }
+    .article-card p { color: var(--text-dim); font-size: 0.875rem; margin-bottom: 12px; }
+    .article-meta { font-size: 0.75rem; color: var(--text-dim); display: flex; gap: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+
+    /* CTA */
+    .cta-section {
+      background: var(--black); text-align: center; padding: 96px 24px;
+      position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: ''; position: absolute; bottom: -30%; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 400px;
+      background: radial-gradient(ellipse, var(--blue-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-section .container { position: relative; z-index: 1; }
+    .cta-section h2 { font-size: clamp(1.75rem, 3.5vw, 2.75rem); font-weight: 800; margin-bottom: 16px; text-transform: uppercase; letter-spacing: -0.01em; }
+    .cta-section p { color: var(--text-muted); max-width: 480px; margin: 0 auto 32px; font-size: 1rem; }
+    .cta-section .btn-primary { font-size: 0.875rem; padding: 16px 36px; }
+
+    /* Footer */
+    .footer { background: var(--dark); color: var(--text-dim); padding: 64px 24px 32px; border-top: 1px solid var(--border); }
+    .footer-grid { max-width: var(--content-max); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--border); }
+    .footer-brand h3 { color: var(--white); font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 8px; }
+    .footer-brand p { font-size: 0.8125rem; }
+    .footer-col h4 { color: var(--white); font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+    .footer-col a { display: block; color: var(--text-dim); text-decoration: none; font-size: 0.8125rem; padding: 3px 0; transition: color 0.15s; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom { max-width: var(--content-max); margin: 0 auto; padding-top: 24px; display: flex; justify-content: space-between; font-size: 0.75rem; }
+
+    @media (max-width: 768px) {
+      .spec-grid { grid-template-columns: repeat(3, 1fr); }
+      .nav-links { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .hero h1 { font-size: clamp(2rem, 8vw, 3rem); }
+      .section { padding: 64px 16px; }
+    }
+    @media (max-width: 480px) {
+      .spec-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-buttons { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="logo.png" alt="Scodeno" class="nav-logo-img">
+      <span class="nav-logo-text">Scodeno<span class="nav-logo-indonesia">Indonesia</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#products">Products</a></li>
+      <li><a href="#articles">Articles</a></li>
+      <li><a href="#specs">Specifications</a></li>
+      <li><a href="#contact" class="nav-cta">Quote</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <span class="hero-eyebrow">Industrial-Grade Networking</span>
+    <h1>Built for<br><span class="accent">Extreme</span><br>Environments</h1>
+    <p>Rugged industrial switches engineered for 24/7 operation. From -40°C factory floors to high-EMC substations — zero compromise.</p>
+    <div class="hero-buttons">
+      <a href="#products" class="btn btn-primary">View Portfolio</a>
+      <a href="#articles" class="btn btn-outline">Technical Library</a>
+    </div>
+  </div>
+</section>
+
+<section class="spec-bar" id="specs">
+  <div class="container">
+    <div class="spec-grid">
+      <div class="spec-item"><div class="spec-value spec-highlight">-40°C</div><div class="spec-label">Min Operating Temp</div></div>
+      <div class="spec-item"><div class="spec-value spec-highlight">+75°C</div><div class="spec-label">Max Operating Temp</div></div>
+      <div class="spec-item"><div class="spec-value">IP<span class="spec-highlight">50</span></div><div class="spec-label">Protection Rating</div></div>
+      <div class="spec-item"><div class="spec-value">&lt;<span class="spec-highlight">50</span>ms</div><div class="spec-label">ERPS Failover</div></div>
+      <div class="spec-item"><div class="spec-value"><span class="spec-highlight">90</span>W</div><div class="spec-label">Max PoE Per Port</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-card" id="products">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Product Lines</span>
+      <h2>Industrial Switch Series</h2>
+      <p>Every switch tested to Class A EMC standards. Full portfolio from 4-port DIN-rail to 48-port data center.</p>
+    </div>
+    <div class="product-grid">
+      <div class="product-card">
+        <span class="spec-tag">Plug &amp; Play</span>
+        <h3>Unmanaged Series</h3>
+        <p>Zero-configuration industrial switches. DIN-rail mount, wide temperature, hardened metal enclosure.</p>
+        <div class="product-specs"><span>4-16 Port</span><span>IP40</span><span>-40~75°C</span></div>
+        <a href="#" class="product-link">Explore &rarr;</a>
+      </div>
+      <div class="product-card">
+        <span class="spec-tag">Layer 2/3</span>
+        <h3>Managed Series</h3>
+        <p>Full network control with VLAN, QoS, IGMP snooping, ERPS ring, and SNMP management.</p>
+        <div class="product-specs"><span>8-28 Port</span><span>L2/L3</span><span>ERPS</span></div>
+        <a href="#" class="product-link">Explore &rarr;</a>
+      </div>
+      <div class="product-card">
+        <span class="spec-tag">PoE++ Ready</span>
+        <h3>PoE Series</h3>
+        <p>Power delivery up to 90W per port. Ideal for surveillance, wireless backhaul, and IoT endpoints.</p>
+        <div class="product-specs"><span>4-24 Port</span><span>90W</span><span>802.3bt</span></div>
+        <a href="#" class="product-link">Explore &rarr;</a>
+      </div>
+      <div class="product-card">
+        <span class="spec-tag">High Density</span>
+        <h3>Data Center Series</h3>
+        <p>10G/25G/100G switching on Marvell, Broadcom &amp; Centec silicon. Redundant power, smart cooling.</p>
+        <div class="product-specs"><span>48 Port</span><span>100G Uplink</span><span>Redundant PSU</span></div>
+        <a href="#" class="product-link">Explore &rarr;</a>
+      </div>
+      <div class="product-card">
+        <span class="spec-tag">Fiber Access</span>
+        <h3>xPON Series</h3>
+        <p>OLT, ONU &amp; PON modules for full fiber deployments. GPON and EPON standards.</p>
+        <div class="product-specs"><span>GPON/EPON</span><span>OLT+ONU</span><span>Fiber</span></div>
+        <a href="#" class="product-link">Explore &rarr;</a>
+      </div>
+      <div class="product-card">
+        <span class="spec-tag">Remote Sites</span>
+        <h3>Smart Box Series</h3>
+        <p>Solar-powered IoT smart boxes with integrated 4G/5G backhaul. All-in-one power &amp; connectivity.</p>
+        <div class="product-specs"><span>Solar</span><span>4G/5G</span><span>IP65</span></div>
+        <a href="#" class="product-link">Explore &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="articles">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Engineering Notes</span>
+      <h2>Technical Articles</h2>
+      <p>In-depth analysis and practical deployment guides from our engineering team.</p>
+    </div>
+    <div class="article-grid">
+      <article class="article-card">
+        <span class="article-tag">Architecture</span>
+        <h3>Managed vs Unmanaged: The Decision Framework</h3>
+        <p>When VLAN segmentation and ring redundancy become non-negotiable for your network.</p>
+        <div class="article-meta"><span>12 min</span><span>Design</span></div>
+      </article>
+      <article class="article-card">
+        <span class="article-tag">Reliability</span>
+        <h3>ERPS: Sub-50ms Failover Explained</h3>
+        <p>How Ethernet Ring Protection Switching eliminates single points of failure in ring topologies.</p>
+        <div class="article-meta"><span>8 min</span><span>Protocols</span></div>
+      </article>
+      <article class="article-card">
+        <span class="article-tag">Power</span>
+        <h3>PoE Budgeting for Industrial Surveillance</h3>
+        <p>Calculating per-port power draw for large-scale IP camera deployments in harsh environments.</p>
+        <div class="article-meta"><span>6 min</span><span>Deployment</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="container">
+    <h2>Ready to Deploy?</h2>
+    <p>Our engineering team provides site surveys, custom configurations, and technical consultation for Indonesian industrial projects.</p>
+    <a href="mailto:sales@scodenoindonesia.com" class="btn btn-primary">Request Consultation &rarr;</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Scodeno Indonesia</h3>
+      <p>Exclusive distributor. PT Konexindo Unitama.</p>
+    </div>
+    <div class="footer-col"><h4>Products</h4><a href="#">Unmanaged</a><a href="#">Managed</a><a href="#">PoE</a><a href="#">Data Center</a><a href="#">xPON</a></div>
+    <div class="footer-col"><h4>Resources</h4><a href="#">Articles</a><a href="#">Datasheets</a><a href="#">Case Studies</a></div>
+    <div class="footer-col"><h4>Company</h4><a href="#">About</a><a href="#">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><span>&copy; 2024 Scodeno Indonesia</span><span>PT Konexindo Unitama</span></div>
+</footer>
+
+</body>
+</html>
