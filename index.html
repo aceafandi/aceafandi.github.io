@@ -539,7 +539,23 @@
       transition: all 0.2s;
     }
     .footer-cert:hover { border-color: var(--orange); color: var(--white); }
+    .filter-chip:hover { border-color: var(--navy); color: var(--navy); }
+    .filter-chip.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
 
+    .filter-toggle { display: flex; align-items: center; gap: 10px; cursor: pointer; user-select: none; }
+    .filter-toggle input { display: none; }
+    .toggle-slider {
+      width: 38px; height: 20px; background: var(--gray-200);
+      border-radius: 10px; position: relative; transition: background 0.25s;
+    }
+    .toggle-slider::after {
+      content: ''; position: absolute; top: 2px; left: 2px;
+      width: 16px; height: 16px; background: var(--white);
+      border-radius: 50%; transition: transform 0.25s;
+    }
+    .filter-toggle input:checked + .toggle-slider { background: var(--orange); }
+    .filter-toggle input:checked + .toggle-slider::after { transform: translateX(18px); }
+    .toggle-label { font-size: 0.8125rem; font-weight: 500; color: var(--text-secondary); }
     /* ═══════════════════════════════════════════
        MICRO-INTERACTIONS — Scroll Reveal
        ═══════════════════════════════════════════ */
@@ -927,10 +943,12 @@
           <button class="filter-chip" data-filter="managed">Managed</button>
           <button class="filter-chip" data-filter="unmanaged">Unmanaged</button>
         </div>
-        <div class="filter-group" id="poeFilterGroup">
-          <button class="filter-chip poe-chip" data-poe="all">All Power</button>
-          <button class="filter-chip poe-chip" data-poe="poe">PoE</button>
-          <button class="filter-chip poe-chip" data-poe="non-poe">Non-PoE</button>
+        <div class="filter-group">
+          <label class="filter-toggle">
+            <input type="checkbox" id="poeToggle">
+            <span class="toggle-slider"></span>
+            <span class="toggle-label">PoE Only</span>
+          </label>
         </div>
       </div>
 
@@ -961,11 +979,10 @@
     var grid = document.getElementById('portfolioGrid');
     var cnt = document.getElementById('portfolioCount');
     var sfpFilters = document.getElementById('sfpFilters');
-    var poeGroup = document.getElementById('poeFilterGroup');
 
     var activeTab = 'commercial';
     var activeFilter = 'all';
-    var activePoE = 'all';
+    var filterPoE = false;
     var sfpCat = 'all';
     var sfpSpeed = 'all';
 
@@ -1006,11 +1023,9 @@
         return true;
       });
 
-      // PoE filter (chips)
-      if (activePoE === 'poe') {
+      // PoE filter (toggle)
+      if (filterPoE) {
         filtered = filtered.filter(function(item) { return item.poe; });
-      } else if (activePoE === 'non-poe') {
-        filtered = filtered.filter(function(item) { return !item.poe; });
       }
 
       // SFP sub-filters
@@ -1059,39 +1074,33 @@
         document.querySelectorAll('.port-tab').forEach(function(x) { x.classList.remove('active'); });
         t.classList.add('active');
         activeTab = t.dataset.tab;
-        activeFilter = 'all'; activePoE = 'all';
-        document.querySelectorAll('.filter-chip:not(.poe-chip)').forEach(function(c) { c.classList.remove('active'); });
+        activeFilter = 'all'; filterPoE = false;
+        document.querySelectorAll('.filter-chip:not(.sfp-chip):not(.sfp-speed)').forEach(function(c) { c.classList.remove('active'); });
         document.querySelector('.filter-chip[data-filter="all"]').classList.add('active');
-        document.querySelectorAll('.poe-chip').forEach(function(c) { c.classList.remove('active'); });
-        document.querySelector('.poe-chip[data-poe="all"]').classList.add('active');
+        document.getElementById('poeToggle').checked = false;
         resetSfp();
 
         // Show/hide filters
         sfpFilters.style.display = (activeTab === 'sfp') ? 'flex' : 'none';
-        poeGroup.style.display = (activeTab === 'commercial' || activeTab === 'industrial') ? 'flex' : 'none';
         render();
       };
     });
 
     // ── Managed/Unmanaged chips ──
-    document.querySelectorAll('.filter-chip:not(.poe-chip):not(.sfp-chip):not(.sfp-speed)').forEach(function(c) {
+    document.querySelectorAll('.filter-chip:not(.sfp-chip):not(.sfp-speed)').forEach(function(c) {
       c.onclick = function() {
-        document.querySelectorAll('.filter-chip:not(.poe-chip):not(.sfp-chip):not(.sfp-speed)').forEach(function(x) { x.classList.remove('active'); });
+        document.querySelectorAll('.filter-chip:not(.sfp-chip):not(.sfp-speed)').forEach(function(x) { x.classList.remove('active'); });
         c.classList.add('active');
         activeFilter = c.dataset.filter;
         render();
       };
     });
 
-    // ── PoE chips ──
-    document.querySelectorAll('.poe-chip').forEach(function(c) {
-      c.onclick = function() {
-        document.querySelectorAll('.poe-chip').forEach(function(x) { x.classList.remove('active'); });
-        c.classList.add('active');
-        activePoE = c.dataset.poe;
-        render();
-      };
-    });
+    // ── PoE toggle ──
+    document.getElementById('poeToggle').onchange = function() {
+      filterPoE = this.checked;
+      render();
+    };
 
     // ── SFP category chips ──
     document.querySelectorAll('.sfp-chip').forEach(function(c) {
