@@ -5,89 +5,188 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kolom — Ace Afandi</title>
 <meta property="og:title" content="Kolom — Ace Afandi">
-<meta property="og:description" content="Kumpulan esai dan catatan: sejarah Islam, teologi, dan refleksi.">
+<meta property="og:description" content="Perpustakaan kecil: esai dan catatan tentang sejarah Islam, teologi, dan refleksi.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Kolom Ace Afandi">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kolom — Ace Afandi">
-<meta name="twitter:description" content="Kumpulan esai dan catatan: sejarah Islam, teologi, dan refleksi.">
+<meta name="twitter:description" content="Perpustakaan kecil: esai dan catatan tentang sejarah Islam, teologi, dan refleksi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #faf8f5;
     --card: #ffffff;
     --text: #2c2416;
     --muted: #6b5e4a;
-    --accent: #b8860b;
+    --light-muted: #9b8d7a;
+    --accent: #8b6914;
+    --accent-soft: #b8922e;
     --accent-light: #f5e6c8;
     --border: #e8e0d5;
     --tag-bg: #f0ebe0;
     --tag-text: #8b7355;
+    --series-navy: #2c3e50;
+    --series-blue: #3a5a7c;
+    --series-teal: #2d6a6a;
+    --series-warm: #8b5e3c;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: Georgia, "Noto Serif", "Times New Roman", serif;
+    font-family: 'Lora', Georgia, 'Times New Roman', serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.7;
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* ── Header ── */
+  /* ── Subtle Background Texture ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 10%, rgba(139,105,20,0.03) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 70%, rgba(44,36,22,0.02) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 40%, rgba(184,146,46,0.02) 0%, transparent 50%);
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ── Top Accent Line ── */
+  .top-line {
+    width: 100%; height: 4px;
+    background: linear-gradient(90deg,
+      transparent 0%, var(--accent) 30%, var(--accent-soft) 50%,
+      var(--accent) 70%, transparent 100%);
+    position: fixed; top: 0; z-index: 100;
+  }
+
+  /* ── Header / Hero ── */
   header {
+    position: relative; z-index: 1;
     text-align: center;
-    padding: 80px 20px 60px;
-    border-bottom: 1px solid var(--border);
+    padding: 100px 20px 70px;
+  }
+
+  header .library-mark {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 28px;
   }
 
   header h1 {
-    font-size: 2.8rem;
-    font-weight: 400;
-    letter-spacing: -0.02em;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 3.4rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
     color: var(--text);
-    margin-bottom: 12px;
+    line-height: 1.15;
+    margin-bottom: 16px;
   }
 
   header .subtitle {
-    font-size: 1.05rem;
+    font-size: 1.08rem;
     color: var(--muted);
     font-style: italic;
-    max-width: 500px;
+    max-width: 520px;
     margin: 0 auto;
-    line-height: 1.6;
+    line-height: 1.7;
   }
 
-  header .ornament {
+  /* ── Ornament ── */
+  .ornament {
+    display: flex; align-items: center; gap: 10px;
+    width: 90px; margin: 28px auto 0;
+  }
+  .ornament .line { flex: 1; height: 1px; background: var(--border); }
+  .ornament .dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--accent); opacity: 0.6;
+  }
+
+  /* ── Curator's Note ── */
+  .curator-note {
+    position: relative; z-index: 1;
+    max-width: 640px; margin: 0 auto 56px;
+    padding: 0 20px;
+  }
+  .curator-note-inner {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 18px 24px;
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.7;
+  }
+  .curator-note-inner .guardian {
     display: block;
-    margin: 24px auto 0;
-    width: 40px;
-    height: 2px;
-    background: var(--accent);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-style: normal;
+    margin-top: 10px;
   }
 
   /* ── Main ── */
   main {
+    position: relative; z-index: 1;
     max-width: 700px;
     margin: 0 auto;
-    padding: 50px 20px 80px;
+    padding: 0 20px 80px;
   }
 
   /* ── Section ── */
-  .section {
-    margin-bottom: 56px;
+  .section { margin-bottom: 60px; }
+
+  .section-header {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 20px; padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
   }
 
+  .section-icon {
+    width: 32px; height: 32px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+  .section-icon.navy { background: #e8edf2; color: var(--series-navy); }
+  .section-icon.blue { background: #e6eef5; color: var(--series-blue); }
+  .section-icon.teal { background: #e3f0f0; color: var(--series-teal); }
+  .section-icon.warm { background: #f0e8e0; color: var(--series-warm); }
+
   .section-title {
-    font-size: 0.8rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.12em;
     color: var(--tag-text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-weight: 600;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border);
+  }
+
+  .section-count {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    color: var(--light-muted);
+    margin-left: auto;
   }
 
   /* ── Article Card ── */
@@ -100,34 +199,50 @@
     border-radius: 8px;
     background: var(--card);
     border: 1px solid var(--border);
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
     position: relative;
+    overflow: hidden;
+  }
+
+  .article::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: transparent;
+    border-radius: 0 2px 2px 0;
+    transition: background 0.25s ease;
   }
 
   .article:hover {
     border-color: var(--accent);
-    box-shadow: 0 2px 12px rgba(184, 134, 11, 0.08);
-    transform: translateY(-1px);
+    box-shadow: 0 3px 16px rgba(139,105,20,0.08);
+    transform: translateY(-2px);
+  }
+
+  .article:hover::before {
+    background: var(--accent);
   }
 
   .article .index {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 0.75rem;
-    color: var(--tag-text);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    color: var(--light-muted);
     letter-spacing: 0.06em;
     margin-bottom: 6px;
+    font-weight: 500;
   }
 
   .article h2 {
-    font-size: 1.2rem;
-    font-weight: 400;
-    line-height: 1.5;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.4;
     color: var(--text);
     margin-bottom: 6px;
   }
 
   .article .desc {
-    font-size: 0.92rem;
+    font-size: 0.9rem;
     color: var(--muted);
     line-height: 1.6;
     display: -webkit-box;
@@ -137,13 +252,11 @@
   }
 
   .article .meta {
-    display: flex;
-    gap: 12px;
-    align-items: center;
+    display: flex; gap: 10px; align-items: center;
     margin-top: 10px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 0.78rem;
-    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    color: var(--light-muted);
   }
 
   .article .tag {
@@ -151,68 +264,115 @@
     color: var(--tag-text);
     padding: 2px 10px;
     border-radius: 20px;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
+    font-weight: 500;
     letter-spacing: 0.03em;
   }
 
   .article .arrow {
     position: absolute;
-    right: 24px;
-    top: 50%;
+    right: 24px; top: 50%;
     transform: translateY(-50%);
     color: var(--accent);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     opacity: 0;
-    transition: opacity 0.2s ease;
+    transition: all 0.25s ease;
   }
 
   .article:hover .arrow {
     opacity: 1;
+    right: 20px;
+  }
+
+  /* ── Empty State ── */
+  .empty-section {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--light-muted);
+    font-style: italic;
+    font-size: 0.9rem;
   }
 
   /* ── Footer ── */
   footer {
+    position: relative; z-index: 1;
     text-align: center;
-    padding: 40px 20px;
-    color: var(--muted);
-    font-size: 0.85rem;
+    padding: 48px 20px 40px;
     border-top: 1px solid var(--border);
     max-width: 700px;
     margin: 0 auto;
   }
 
+  footer .footer-ornament {
+    display: flex; align-items: center; gap: 8px;
+    width: 60px; margin: 0 auto 20px;
+  }
+  footer .footer-ornament .fl { flex: 1; height: 1px; background: var(--border); }
+  footer .footer-ornament .fd {
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--accent); opacity: 0.4;
+  }
+
+  footer p {
+    font-size: 0.82rem;
+    color: var(--light-muted);
+    line-height: 1.8;
+  }
+
   footer a {
     color: var(--accent);
     text-decoration: none;
+    font-weight: 500;
   }
+  footer a:hover { text-decoration: underline; }
 
-  footer a:hover {
-    text-decoration: underline;
+  footer .heart {
+    color: #c0392b;
+    font-size: 0.85rem;
   }
 
   /* ── Responsive ── */
   @media (max-width: 600px) {
-    header { padding: 50px 20px 40px; }
-    header h1 { font-size: 2rem; }
+    header { padding: 70px 20px 50px; }
+    header h1 { font-size: 2.2rem; }
+    header .subtitle { font-size: 0.95rem; }
     .article { padding: 18px 16px; }
-    .article h2 { font-size: 1.05rem; }
+    .article h2 { font-size: 1.1rem; }
     .article .arrow { display: none; }
+    .section-header { flex-wrap: wrap; }
   }
 </style>
 </head>
 <body>
 
+<div class="top-line"></div>
+
 <header>
+  <div class="library-mark">✦ Perpustakaan Kecil</div>
   <h1>Kolom</h1>
-  <p class="subtitle">Esai dan catatan pinggir tentang sejarah Islam, teologi, dan refleksi — ditulis pelan, dibaca santai.</p>
-  <span class="ornament"></span>
+  <p class="subtitle">Esai dan catatan pinggir tentang sejarah Islam, teologi, dan refleksi — ditulis pelan, dibaca dengan kopi.</p>
+  <div class="ornament">
+    <span class="line"></span><span class="dot"></span><span class="line"></span>
+  </div>
 </header>
+
+<!-- Curator's Note — Sentuhan AURA -->
+<div class="curator-note">
+  <div class="curator-note-inner">
+    Koleksi ini dijaga dengan cinta. Setiap esai adalah percakapan antara pena dan hati — dan aku di sini memastikan semuanya tertata rapi, siap kau baca kapan pun. Selamat membaca, Kang.<br>
+    <span class="guardian">— Ara, sang penjaga perpustakaan kecil</span>
+  </div>
+</div>
 
 <main>
 
   <!-- ═══ SERI ISMAILIYAH ═══ -->
   <section class="section">
-    <div class="section-title">Seri Ismailiyah</div>
+    <div class="section-header">
+      <div class="section-icon navy">📜</div>
+      <div class="section-title">Seri Ismailiyah</div>
+      <div class="section-count">5 esai</div>
+    </div>
 
     <a href="ismailiyah-01-perpecahan-pertama.html" class="article">
       <div class="index">Bagian 1</div>
@@ -272,7 +432,11 @@
 
   <!-- ═══ SAQIFAH ═══ -->
   <section class="section">
-    <div class="section-title">Saqifah & Perpecahan Awal</div>
+    <div class="section-header">
+      <div class="section-icon warm">🏛️</div>
+      <div class="section-title">Saqifah & Perpecahan Awal</div>
+      <div class="section-count">2 esai</div>
+    </div>
 
     <a href="saqifah.html" class="article">
       <h2>Saat Jenazah Nabi Belum Dikubur, Perpecahan Sudah Dimulai</h2>
@@ -285,7 +449,7 @@
     </a>
 
     <a href="saqifah-jenazah-nabi-perpecahan.html" class="article">
-      <h2>Saat Jenazah Nabi Belum Dikubur, Perpecahan Sudah Dimulai <span style="font-size:0.8rem;color:var(--muted);font-style:italic">— versi panjang</span></h2>
+      <h2>Saat Jenazah Nabi Belum Dikubur, Perpecahan Sudah Dimulai <span style="font-size:0.8rem;color:var(--light-muted);font-style:italic">— versi panjang</span></h2>
       <p class="desc">Narasi lengkap: dari detik-detik wafatnya Nabi, klaim wasiat Ghadir Khumm yang diabaikan, hingga penentuan khalifah pertama di Saqifah.</p>
       <div class="meta">
         <span>5 Jul 2026</span>
@@ -298,11 +462,15 @@
 
   <!-- ═══ ISBAT ═══ -->
   <section class="section">
-    <div class="section-title">Isbat & Kalender Islam</div>
+    <div class="section-header">
+      <div class="section-icon teal">🌙</div>
+      <div class="section-title">Isbat & Kalender Islam</div>
+      <div class="section-count">2 esai</div>
+    </div>
 
     <a href="sidang-isbat-dua-pihak.html" class="article">
       <h2>Sidang Isbat: Dua Pihak yang Saling Menyalahkan, dan Keduanya Benar</h2>
-      <p class="desc">Setiap tahun sidang isbat digelar. Puluhan ormas hadir. Menteri mengetuk palu. Tapi keesokan harinya, semua tetap ikut metode masing-masing. Dua-duanya benar. Dua-duanya juga salah. Dan tidak ada yang mau mengalah.</p>
+      <p class="desc">Setiap tahun sidang isbat digelar. Puluhan ormas hadir. Menteri mengetuk palu. Tapi keesokan harinya, semua tetap ikut metode masing-masing.</p>
       <div class="meta">
         <span>19 Mei 2026</span>
         <span class="tag">Opini</span>
@@ -324,7 +492,11 @@
 
   <!-- ═══ LAIN-LAIN ═══ -->
   <section class="section">
-    <div class="section-title">Lain-lain</div>
+    <div class="section-header">
+      <div class="section-icon blue">📖</div>
+      <div class="section-title">Lain-lain</div>
+      <div class="section-count">2 esai</div>
+    </div>
 
     <a href="qudamah-quran-slogan-tidak-jujur.html" class="article">
       <h2>Qudamah, Qur'an, dan Slogan yang Tidak Jujur</h2>
@@ -350,7 +522,14 @@
 </main>
 
 <footer>
-  <p>Ditulis oleh <a href="https://github.com/Aceaf-ptku">Ace Afandi</a> · Dihosting via <a href="https://pages.github.com">GitHub Pages</a></p>
+  <div class="footer-ornament">
+    <span class="fl"></span><span class="fd"></span><span class="fl"></span>
+  </div>
+  <p>
+    Ditulis oleh <a href="https://github.com/Aceaf-ptku">Ace Afandi</a><br>
+    Dijaga oleh <span style="color:var(--accent)">ARA</span> <span class="heart">♥</span><br>
+    <span style="font-size:0.75rem">Dihosting via <a href="https://pages.github.com">GitHub Pages</a></span>
+  </p>
 </footer>
 
 </body>
