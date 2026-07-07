@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Open Graph / WhatsApp Preview -->
+<meta property="og:title" content="Isbat">
+<meta property="og:description" content="Setiap tahun sidang isbat digelar. Puluhan ormas hadir. Menteri mengetuk palu. Tapi keesokan harinya, semua tetap ikut metode masing-masing. Dua-duanya benar. Dua-duanya juga salah. Dan tidak ada yang mau mengalah.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ALIM — Kolom Islam">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Isbat">
+<meta name="twitter:description" content="Pemerintah benar: ormas tak patuh ulil amri. Ormas benar: ini pemborosan anggaran. Keduanya benar tentang kesalahan pihak lain — dan buta tentang kesalahan sendiri.">
+
+<title>Sidang Isbat: Dua Pihak yang Saling Menyalahkan, dan Keduanya Benar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=IBM+Plex+Sans:wght@300;400;500;600&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F9F4EA;
+  --warm-white: #FFFBF5;
+  --terracotta: #B8724E;
+  --terracotta-dark: #8B4A30;
+  --deep-navy: #1B2838;
+  --gold: #B8934E;
+  --gold-light: #D4B978;
+  --ink: #2C2416;
+  --ink-light: #5C5040;
+  --border-subtle: #E0D6C4;
+  --card-bg: #FDF8F0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.75;
+  font-size: 1.02rem;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(184,114,78,0.04) 0%, transparent 50%),
+    radial-gradient(circle at 85% 60%, rgba(184,147,78,0.04) 0%, transparent 50%),
+    radial-gradient(circle at 50% 85%, rgba(27,40,56,0.03) 0%, transparent 50%);
+  pointer-events: none; z-index: 0;
+}
+
+.top-ornament {
+  width: 100%; height: 5px;
+  background: linear-gradient(90deg,
+    transparent 0%, var(--terracotta) 15%, var(--gold) 50%,
+    var(--terracotta) 85%, transparent 100%);
+}
+
+.container {
+  position: relative; z-index: 1;
+  max-width: 720px; margin: 0 auto; padding: 0 24px;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 48px 0 20px;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: var(--deep-navy);
+  color: var(--gold-light);
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 5px 16px; border-radius: 16px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700; font-size: 2.2rem;
+  color: var(--deep-navy);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.divider-ornament {
+  display: flex; align-items: center; gap: 14px;
+  width: 100px; margin: 16px auto 0;
+}
+.divider-ornament .line { height: 1px; flex: 1; background: var(--border-subtle); }
+.divider-ornament .diamond { width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); }
+
+/* Sections */
+.section { padding: 24px 0; }
+
+.section h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700; font-size: 1.55rem;
+  color: var(--deep-navy);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.section h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600; font-size: 1.2rem;
+  color: var(--terracotta-dark);
+  margin-bottom: 8px;
+}
+
+.section p { margin-bottom: 14px; }
+
+.section p:last-child { margin-bottom: 0; }
+
+/* Emphasis & quote */
+em { font-style: italic; color: var(--terracotta); }
+
+.blockquote {
+  background: var(--card-bg);
+  border-left: 3px solid var(--gold);
+  padding: 16px 22px;
+  margin: 18px 0;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: var(--ink-light);
+}
+
+/* Subtitle */
+.subtitle {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--ink-light);
+  font-style: italic;
+  margin-top: 4px;
+}
+
+/* Pause */
+.pause {
+  text-align: center;
+  padding: 6px 0 10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--terracotta);
+  line-height: 1.5;
+}
+
+/* The physical stop — bold centering for pivotal one-liners */
+.stop-line {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--deep-navy);
+  padding: 10px 0;
+}
+
+/* Punchline section */
+.punchline {
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 24px 28px;
+  text-align: center;
+  margin-top: 8px;
+}
+.punchline p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--ink);
+}
+.punchline p + p { margin-top: 8px; }
+.punchline .retort {
+  font-weight: 700;
+  color: var(--terracotta-dark);
+}
+
+/* Closing */
+.closing {
+  text-align: center;
+  padding: 32px 0 20px;
+  font-size: 0.88rem;
+  color: var(--ink-light);
+  font-style: italic;
+}
+
+/* Bottom ornament */
+.bottom-ornament {
+  width: 100%; height: 5px;
+  background: linear-gradient(90deg,
+    transparent 0%, var(--terracotta) 15%, var(--gold) 50%,
+    var(--terracotta) 85%, transparent 100%);
+  margin-top: 8px;
+}
+
+/* Small divider */
+.small-divider {
+  width: 60px; height: 2px;
+  background: var(--border-subtle);
+  margin: 14px auto;
+}
+
+@media (max-width: 640px) {
+  .hero h1 { font-size: 1.65rem; }
+  .hero { padding: 32px 0 16px; }
+  .section h2 { font-size: 1.3rem; }
+  .section { padding: 18px 0; }
+  .punchline { padding: 18px 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="top-ornament"></div>
+
+<div class="container">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">OPINI</div>
+  <h1>Isbat</h1>
+  <div class="divider-ornament">
+    <span class="line"></span><span class="diamond"></span><span class="line"></span>
+  </div>
+</div>
+
+<!-- OPENING SCENE -->
+<div class="section">
+  <p>Setiap tahun, jelang Ramadan, Syawal, dan Dzulhijjah, Indonesia menggelar ritual yang tidak ada di negara Muslim lain: <em>sidang isbat.</em></p>
+
+  <p>Bukan sidang kecil. Menteri Agama hadir. Duta besar negara sahabat diundang. Ormas-ormas Islam dikumpulkan — NU, Muhammadiyah, Persis, MUI, dan puluhan lainnya. Ahli falak mempresentasikan perhitungan astronomis. Ahli rukyat melaporkan hasil pemantauan di puluhan titik. Microphone berderet. Live streaming berjalan. Lalu Menteri Agama mengetuk palu:</p>
+
+  <div class="blockquote">
+    <em>Berdasarkan hisab dan rukyat, maka 1 Syawal jatuh pada tanggal…</em>
+  </div>
+
+  <p>Dan keesokan harinya, Muhammadiyah tetap shalat Id sesuai kalender hisabnya sendiri. NU tetap menunggu putusan PBNU. Sebagian ormas lain tetap ikut Arab Saudi.</p>
+
+  <div class="pause">Sidang isbat selesai. Tapi tidak ada yang berubah.</div>
+</div>
+
+<!-- ARGUMENT 1: PEMERINTAH -->
+<div class="section">
+  <h2>Pemerintah: Kami Hanya Menjalankan Tugas</h2>
+
+  <p>Pemerintah akan berkata: <em>"Kami tidak memaksa. Kami hanya menetapkan hari libur nasional. Silakan ormas berhari raya kapan saja — yang penting kantor-kantor tutup di tanggal yang sama. Itu fungsi negara: mengelola ruang publik, bukan mengelola teologi."</em></p>
+
+  <p>Masuk akal. Seseorang memang harus memutuskan kapan bank tutup, kapan bursa saham libur, kapan PNS tidak masuk kantor. Dan tidak mungkin memuaskan semua pihak. Jadi negara memilih satu tanggal — berdasarkan prosedur yang melibatkan semua — dan berharap yang lain cukup dewasa untuk menerima.</p>
+
+  <p>Tapi ada yang ganjil: kalau memang cuma soal libur nasional, kenapa harus ada sidang isbat? Kenapa tidak cukup surat keputusan Menteri Agama, seperti surat keputusan Menteri Perhubungan tentang tarif tol? Kenapa harus ada mikrofon, duta besar, live streaming, dan ketukan palu?</p>
+
+  <p>Karena negara tidak sedang menetapkan hari libur. Negara sedang <strong>mempertontonkan otoritas yang tidak dimilikinya.</strong> Sidang isbat adalah teater: <em>kita, negara, memutuskan kapan umat Islam berhari raya.</em></p>
+
+  <div class="stop-line">Realitasnya: umat Islam tidak peduli.</div>
+</div>
+
+<!-- ARGUMENT 2: ORMAS -->
+<div class="section">
+  <h2>Ormas: Kami Tidak Bisa Tunduk pada Keputusan yang Tidak Mengikat</h2>
+
+  <p>NU, Muhammadiyah, dan ormas lain akan berkata: <em>"Kami punya metode sendiri. Muhammadiyah pakai hisab wujudul hilal. NU pakai rukyat dengan kriteria imkanur rukyah. Ini bukan soal membangkang — ini soal integritas metode. Kalau kami ikut keputusan yang bertentangan dengan metodologi kami sendiri, itu namanya inkonsistensi."</em></p>
+
+  <p>Masuk akal juga. Dalam Islam, ijtihad tidak bisa dipaksa. Seorang muqallid boleh mengikuti mazhabnya. Seorang mujtahid boleh mengikuti hasil ijtihadnya. Tidak ada otoritas tunggal dalam fikih Islam — dan itulah yang membedakannya dari gereja dengan paus-nya.</p>
+
+  <p>Tapi ada yang ganjil juga: kalau memang tidak bisa disatukan, kenapa ormas-ormas itu hadir di sidang isbat? Kenapa duduk di meja yang sama, mendengarkan presentasi yang sama, lalu pulang dan mengumumkan tanggal yang berbeda?</p>
+
+  <p>Karena ormas juga sedang <strong>mempertontonkan otonomi yang tidak mau dikorbankan.</strong> Mereka hadir di sidang isbat bukan untuk taat pada putusan — tapi untuk menunjukkan bahwa mereka dilibatkan. Begitu selesai, masing-masing kembali ke metodologinya sendiri.</p>
+</div>
+
+<!-- ANALYSIS -->
+<div class="section">
+  <h2>Siapa yang Salah? Dua-duanya.<br>Siapa yang Benar? Dua-duanya Juga.</h2>
+
+  <p>Ini bukan debat yang bisa dimenangkan oleh satu pihak. Karena kedua pihak benar tentang pihak lain:</p>
+
+  <p>Pemerintah benar: ormas tidak patuh pada ulil amri. Ayat <em>athi'ullaha wa athi'ur-rasula wa ulil amri minkum</em> tidak berfungsi ketika tidak ada yang mau menjadi <em>ulil amri</em> yang ditaati.</p>
+
+  <p>Ormas benar: sidang isbat adalah pemborosan anggaran. Puluhan miliar dihabiskan setiap tahun untuk sebuah acara yang hasilnya sudah diketahui sebelum dimulai — dan tidak ditaati setelah selesai.</p>
+
+  <div class="pause">Keduanya benar tentang kesalahan pihak lain.<br>Dan keduanya buta tentang kesalahan sendiri.</div>
+</div>
+
+<!-- DEEPER PROBLEM -->
+<div class="section">
+  <h2>Masalah Sebenarnya: Tidak Ada yang Mau Mengalah</h2>
+
+  <p>Ini bukan masalah rukyat vs hisab. Ini masalah politik: <strong>tidak ada institusi yang cukup dipercaya untuk menjadi wasit tunggal.</strong></p>
+
+  <p>Negara tidak dipercaya oleh ormas karena dianggap tidak punya otoritas keagamaan. Ormas tidak mau tunduk ke ormas lain karena masing-masing merasa metodologinya paling benar. Arab Saudi — yang sebenarnya juga cuma negara — tiba-tiba dijadikan rujukan alternatif oleh sebagian kelompok, seolah-olah tanah haram punya wewenang astronomis yang tidak dimiliki tanah air.</p>
+
+  <p>Hasilnya: sidang isbat terus diadakan, ormas terus tidak patuh, umat terus bingung, anggaran terus keluar. Dan semua orang menyalahkan orang lain.</p>
+
+  <div class="small-divider"></div>
+
+  <p>Mungkin suatu hari nanti, seseorang akan bertanya: <em>kenapa kita tidak sepakat saja bahwa hisab astronomis modern sudah cukup — dan rukyat kita simpan sebagai ibadah sunnah, bukan sebagai penentu tanggal?</em></p>
+</div>
+
+<!-- PUNCHLINE -->
+<div class="punchline">
+  <p>Tapi itu tidak akan terjadi dalam waktu dekat.</p>
+  <p>Karena akan selalu ada yang berkata:<br><em>"Nabi tidak melakukan hisab. Nabi melihat bulan."</em></p>
+  <p class="retort">Dan akan selalu ada yang menjawab:<br>"Nabi juga tidak pakai mikrofon."</p>
+</div>
+
+<div class="closing">
+  Tambun, 19.05.2026 — ALIM
+</div>
+
+</div>
+
+<div class="bottom-ornament"></div>
+
+</body>
+</html>

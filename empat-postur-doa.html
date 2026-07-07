@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Empat Postur Hati Saat Berdoa — Ibn 'Atha'illah al-Iskandari</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@300;400;500;600&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F9F4EA;
+  --warm-white: #FFFBF5;
+  --card-bg: #FDF8F0;
+  --terracotta: #B8724E;
+  --terracotta-dark: #8B4A30;
+  --deep-navy: #1B2838;
+  --gold: #B8934E;
+  --gold-light: #D4B978;
+  --ink: #2C2416;
+  --ink-light: #5C5040;
+  --border-subtle: #E0D6C4;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.8;
+  font-size: 1.02rem;
+}
+
+body::before {
+  content: '';
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(184,114,78,0.04) 0%, transparent 50%),
+    radial-gradient(circle at 85% 60%, rgba(184,147,78,0.04) 0%, transparent 50%),
+    radial-gradient(circle at 50% 85%, rgba(27,40,56,0.03) 0%, transparent 50%);
+  pointer-events: none; z-index: 0;
+}
+
+.top-ornament {
+  width: 100%; height: 6px;
+  background: linear-gradient(90deg,
+    transparent 0%, var(--terracotta) 20%, var(--gold) 50%,
+    var(--terracotta) 80%, transparent 100%);
+}
+
+.container {
+  position: relative; z-index: 1;
+  max-width: 780px; margin: 0 auto; padding: 0 24px;
+}
+
+/* Hero */
+.hero { padding: 56px 0 40px; text-align: center; }
+.hero-badge {
+  display: inline-block; background: var(--deep-navy);
+  color: var(--gold-light); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 6px 18px; border-radius: 20px;
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem; font-weight: 700;
+  color: var(--deep-navy); line-height: 1.25;
+  max-width: 600px; margin: 0 auto 12px;
+}
+.hero .subtitle {
+  font-size: 1.05rem; color: var(--ink-light);
+  font-style: italic; max-width: 480px; margin: 0 auto;
+}
+
+.divider-ornament {
+  display: flex; align-items: center; gap: 12px;
+  width: 120px; margin: 20px auto 0;
+}
+.divider-ornament .line { height: 1px; flex: 1; background: var(--border-subtle); }
+.divider-ornament .diamond {
+  width: 8px; height: 8px;
+  background: var(--gold); transform: rotate(45deg);
+}
+
+/* Intro */
+.intro { padding: 20px 0 36px; }
+.intro p { margin-bottom: 16px; color: var(--ink); }
+.intro p:last-child { margin-bottom: 0; }
+
+/* Hadith Block */
+.hadith-block {
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  border-right: 4px solid var(--gold);
+  border-radius: 12px;
+  padding: 32px 36px;
+  margin: 36px 0;
+  box-shadow: 0 1px 3px rgba(44,36,22,0.06);
+}
+.hadith-block .arabic {
+  font-family: 'Scheherazade New', serif;
+  font-size: 1.7rem; line-height: 2.4;
+  text-align: right; direction: rtl;
+  color: var(--deep-navy);
+  margin-bottom: 20px;
+}
+.hadith-block .translation {
+  font-size: 1rem; line-height: 1.9;
+  padding-left: 20px;
+  border-left: 2px solid var(--border-subtle);
+  color: var(--ink);
+}
+
+/* Section Number */
+.section-number {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--terracotta);
+  margin-bottom: 6px;
+}
+
+/* Posture Cards */
+.posture-card {
+  background: var(--warm-white);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 28px 32px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(44,36,22,0.05);
+  transition: box-shadow 0.2s;
+}
+.posture-card:hover { box-shadow: 0 4px 16px rgba(44,36,22,0.08); }
+.posture-card .number {
+  display: inline-block;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem; font-weight: 700;
+  color: var(--terracotta); opacity: 0.25;
+  margin-right: 12px; vertical-align: middle; line-height: 1;
+}
+.posture-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem; font-weight: 600;
+  color: var(--deep-navy); margin-bottom: 8px;
+  display: inline;
+}
+.posture-card .bad-word {
+  display: inline-block;
+  background: var(--terracotta);
+  color: white; font-size: 0.78rem; font-weight: 600;
+  padding: 3px 12px; border-radius: 12px;
+  margin-left: 10px; vertical-align: middle;
+  letter-spacing: 0.04em;
+}
+.posture-card .paraphrase {
+  font-size: 1.02rem; font-weight: 500; color: var(--terracotta-dark);
+  font-style: italic; margin: 10px 0 12px; padding-left: 16px;
+  border-left: 3px solid var(--terracotta);
+}
+.posture-card p { font-size: 0.95rem; color: var(--ink); line-height: 1.75; }
+
+/* Principle Bar */
+.principle-bar {
+  background: linear-gradient(135deg, var(--terracotta), var(--terracotta-dark));
+  color: white; padding: 24px 32px; border-radius: 12px;
+  text-align: center; font-weight: 500; font-size: 1.05rem;
+  line-height: 1.7;
+  box-shadow: 0 4px 20px rgba(44,36,22,0.08);
+  margin: 36px 0;
+}
+.principle-bar em { font-weight: 600; font-style: italic; }
+
+/* Sentilan */
+.sentilan {
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px; padding: 28px 32px;
+  margin: 28px 0 40px;
+}
+.sentilan .label {
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--terracotta); margin-bottom: 10px;
+}
+.sentilan p { font-size: 0.95rem; font-style: italic; color: var(--ink); }
+
+/* Closing */
+.closing {
+  text-align: center; padding: 40px 0 60px;
+  border-top: 1px solid var(--border-subtle); margin-top: 20px;
+}
+.closing .signature {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em;
+  color: var(--ink-light); text-transform: uppercase;
+}
+.closing .references {
+  margin-top: 16px; font-size: 0.8rem; color: var(--ink-light);
+  line-height: 1.8;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .hero h1 { font-size: 1.8rem; }
+  .hero .subtitle { font-size: 0.92rem; }
+  .hadith-block { padding: 22px 18px; }
+  .hadith-block .arabic { font-size: 1.35rem; }
+  .posture-card { padding: 20px 20px; }
+  .posture-card .number { font-size: 2rem; }
+  .container { padding: 0 16px; }
+}
+
+@media print {
+  body { background: white; }
+  .top-ornament { display: none; }
+  body::before { display: none; }
+  .hadith-block, .principle-bar { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="top-ornament"></div>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Tasawuf &amp; Tauhid</div>
+  <h1>Empat Postur Hati Saat Berdoa</h1>
+  <p class="subtitle">Ibn 'Atha'illah al-Iskandari membedah empat cara kita meminta — dan kenapa semuanya bermasalah</p>
+  <div class="divider-ornament">
+    <span class="line"></span>
+    <span class="diamond"></span>
+    <span class="line"></span>
+  </div>
+</header>
+
+<!-- Intro -->
+<section class="intro">
+  <p>Saya pernah duduk di satu kajian. Seseorang bertanya: "Ustadz, kenapa doa saya sering terasa kosong? Saya sudah angkat tangan, sudah baca Arabnya, sudah menangis — tapi seperti memantul ke langit-langit."</p>
+
+  <p>Pertanyaan yang jujur. Dan anehnya, jawaban paling tajam untuk pertanyaan ini datang bukan dari kitab fikih — melainkan dari seorang sufi Mesir abad ke-7 Hijriah.</p>
+
+  <p>Namanya <strong>Ibn 'Atha'illah al-Iskandari</strong>. Murid Abu al-'Abbas al-Mursi, penerus tradisi Syadziliyah, penulis <em>al-Hikam</em> — kitab yang dibaca di pesantren, di zawiyah, dan diam-diam juga di rak para aktivis harakah. Beliau wafat tahun 709 H di Kairo. Kuburannya di Qarafah masih diziarahi sampai hari ini.</p>
+
+  <p>Di hikmah ke-15, ia menulis empat kalimat. Pendek. Padat. Tapi setiap kalimatnya menusuk ke titik paling lunak dalam dada kita:</p>
+</section>
+
+<!-- Arabic Text -->
+<div class="hadith-block">
+  <div class="arabic">طلبك منه اتّهامٌ له. وطلبك له غيبةٌ منك عنه. وطلبك لغيره لقلّة حيائك منه. وطلبك من غيره لوجود بُعدك عنه.</div>
+  <div class="translation">
+    <em>Meminta dari-Nya adalah menuduh-Nya. Meminta kepada-Nya adalah keghaibanmu dari-Nya. Meminta kepada selain-Nya adalah minimnya rasa malumu kepada-Nya. Dan meminta dari selain-Nya adalah bukti jauhmu dari-Nya.</em>
+  </div>
+</div>
+
+<section class="intro">
+  <p>Empat postur <em>thalab</em>. Empat cara meminta. Dan semuanya, kata Ibn 'Atha'illah, bermasalah. Agar tidak salah paham: ia tidak sedang melarang doa. Ia sedang membedah <strong>posisi ruhani</strong> saat berdoa — sesuatu yang tidak tertangkap oleh fikih, tapi justru menentukan apakah doa kita sampai atau cuma mantul.</p>
+</section>
+
+<!-- Posture Cards -->
+<section style="padding: 20px 0 30px;">
+
+  <!-- Card 1 -->
+  <div class="posture-card">
+    <div class="section-number">Postur Pertama</div>
+    <span class="number">1</span>
+    <h3>Buruk Sangka Terselubung</h3>
+    <span class="bad-word">Ittihām</span>
+    <div class="paraphrase">Berdoa sambil meragukan kemurahan-Nya — itu buruk sangka terselubung.</div>
+    <p>Ini yang paling sering terjadi, paling jarang disadari. Kita berdoa, mengangkat tangan, tapi di sudut hati ada bisikan: <em>"Udah lama minta, kok belum dikasih juga?"</em> Ibn 'Ajiba, dalam syarah <em>Iqazh al-Himam</em>, menambahkan argumen yang menusuk: engkau hanya "mengingatkan" orang yang mungkin lupa. Engkau hanya "membangunkan" orang yang mungkin tidur. Kalau engkau benar-benar percaya Allah Maha Tahu — kenapa doamu terdengar seperti somasi? Padahal Allah berfirman: <em>"Aku sesuai persangkaan hamba-Ku kepada-Ku."</em> (HR. Bukhari-Muslim).</p>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="posture-card">
+    <div class="section-number">Postur Kedua</div>
+    <span class="number">2</span>
+    <h3>Merasa Jauh dari Yang Maha Dekat</h3>
+    <span class="bad-word">Ghaybah</span>
+    <div class="paraphrase">Mencari Tuhan yang kau rasa jauh — tandanya kau belum bermuraqabah.</div>
+    <p>Ini lebih halus. Engkau berdoa, berzikir, merindukan Allah. Apa salahnya? Ibn 'Atha'illah bilang: kalau kau merasa perlu <em>mencari</em> Allah — itu artinya kau merasa Dia <em>tidak di sini</em>. Padahal Al-Qur'an berkata: <em>"Kami lebih dekat kepadanya daripada urat lehernya."</em> (QS. Qaf: 16). Ibn 'Ajiba mengutip seorang penyair: <em>"Engkau bertanya tentang Najd — padahal engkau di dalamnya."</em> Mencari air di tengah lautan. Mencari matahari di siang bolong.</p>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="posture-card">
+    <div class="section-number">Postur Ketiga</div>
+    <span class="number">3</span>
+    <h3>Kehilangan Rasa Malu di Hadirat-Nya</h3>
+    <span class="bad-word">Qillat Hayā'</span>
+    <div class="paraphrase">Meminta pada selain-Nya — hatimu belum benar-benar malu pada-Nya.</div>
+    <p>Bayangkan: engkau berdiri di hadapan seorang raja. Raja itu menghadapmu — memberi perhatian penuh. Lalu engkau menoleh ke samping, tersenyum pada pelayan, dan mulai meminta sesuatu. Itu bukan syirik — tapi di mana rasa malumu? <em>Iyyāka nasta'īn.</em> Hanya kepada-Mu kami mohon pertolongan. Kalau engkau mengucapkan ini dalam shalat, lalu di luar shalat engkau bergantung sepenuhnya pada makhluk — di hadapan siapa engkau berdiri?</p>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="posture-card">
+    <div class="section-number">Postur Keempat</div>
+    <span class="number">4</span>
+    <h3>Bukti Jarak yang Belum Terjembatani</h3>
+    <span class="bad-word">Bu'd</span>
+    <div class="paraphrase">Bergantung pada makhluk — itu bukti kau belum merasakan dekat-Nya.</div>
+    <p>Ini yang paling parah. Bergantung pada makhluk adalah <em>bukti jarak</em>. Engkau merasa Allah jauh, maka kau butuh perantara. Padahal Dia lebih dekat dari urat lehermu. Masalahnya bukan pada jarak — tapi pada <em>radar</em>-mu yang rusak. Ibn 'Ajiba mengutip sebuah firman dalam kitab-kitab terdahulu: jika seorang hamba mengangkat kebutuhannya kepada Allah, tujuh langit dan tujuh bumi tidak akan bisa menahannya. Tapi jika ia mengangkatnya kepada selain-Nya — bumi diangkat dari bawahnya, langit dijatuhkan di atasnya, dan segala sebab diputuskan.</p>
+  </div>
+
+</section>
+
+<!-- Principle Bar -->
+<div class="principle-bar">
+  <em>Husnuzhan. Murāqabah. Hayā'. Qurb.</em><br>
+  Empat kata kunci yang tidak eksklusif milik sufi. Ia milik setiap muslim yang pernah membaca <em>"wa nahnu aqrabu ilayhi min hablil warīd"</em> — lalu bertanya: kalau Dia sedekat itu, kenapa doaku terasa jauh?
+</div>
+
+<!-- Sentilan -->
+<div class="sentilan">
+  <div class="label">Sentilan</div>
+  <p>Saya masih belajar. Kadang masih angkat tangan sambil batin: "Ya Allah, ini pesanan saya kok belum sampai?" — kayak customer service komplain ke call center langit. Tapi setidaknya sekarang saya tahu: masalah bukan di <em>call center</em>-nya. Masalah ada di <em>saya</em> yang ngotot jadi customer, bukan jadi hamba.</p>
+</div>
+
+<!-- Closing -->
+<footer class="closing">
+  <p class="signature">Tambun, 20.05.2026 — ALIM</p>
+  <div class="references">
+    Rujukan: Ibn 'Atha'illah al-Iskandari, <em>al-Hikam</em> (w. 709 H) — Syarah: Ibn 'Ajiba, <em>Iqazh al-Himam fi Syarh al-Hikam</em>, hlm. 47–48.
+  </div>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kolom — Ace Afandi</title>
+<meta property="og:title" content="Kolom — Ace Afandi">
+<meta property="og:description" content="Kumpulan esai dan catatan: sejarah Islam, teologi, dan refleksi.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kolom Ace Afandi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kolom — Ace Afandi">
+<meta name="twitter:description" content="Kumpulan esai dan catatan: sejarah Islam, teologi, dan refleksi.">
+<style>
+  :root {
+    --bg: #faf8f5;
+    --card: #ffffff;
+    --text: #2c2416;
+    --muted: #6b5e4a;
+    --accent: #b8860b;
+    --accent-light: #f5e6c8;
+    --border: #e8e0d5;
+    --tag-bg: #f0ebe0;
+    --tag-text: #8b7355;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: Georgia, "Noto Serif", "Times New Roman", serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  header {
+    text-align: center;
+    padding: 80px 20px 60px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  header h1 {
+    font-size: 2.8rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  header .subtitle {
+    font-size: 1.05rem;
+    color: var(--muted);
+    font-style: italic;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  header .ornament {
+    display: block;
+    margin: 24px auto 0;
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  /* ── Main ── */
+  main {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 50px 20px 80px;
+  }
+
+  /* ── Section ── */
+  .section {
+    margin-bottom: 56px;
+  }
+
+  .section-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--tag-text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── Article Card ── */
+  .article {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 22px 24px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  .article:hover {
+    border-color: var(--accent);
+    box-shadow: 0 2px 12px rgba(184, 134, 11, 0.08);
+    transform: translateY(-1px);
+  }
+
+  .article .index {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 0.75rem;
+    color: var(--tag-text);
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+
+  .article h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .article .desc {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .article .meta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .article .tag {
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+  }
+
+  .article .arrow {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent);
+    font-size: 1.3rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .article:hover .arrow {
+    opacity: 1;
+  }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    header { padding: 50px 20px 40px; }
+    header h1 { font-size: 2rem; }
+    .article { padding: 18px 16px; }
+    .article h2 { font-size: 1.05rem; }
+    .article .arrow { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Kolom</h1>
+  <p class="subtitle">Esai dan catatan pinggir tentang sejarah Islam, teologi, dan refleksi — ditulis pelan, dibaca santai.</p>
+  <span class="ornament"></span>
+</header>
+
+<main>
+
+  <!-- ═══ SERI ISMAILIYAH ═══ -->
+  <section class="section">
+    <div class="section-title">Seri Ismailiyah</div>
+
+    <a href="ismailiyah-01-perpecahan-pertama.html" class="article">
+      <div class="index">Bagian 1</div>
+      <h2>Satu Kematian yang Memecah Syiah Selamanya</h2>
+      <p class="desc">Kematian Ja'far al-Shadiq membelah Syiah menjadi dua jalur — Ismailiyah dan Itsna Asy'ariyah — yang nasibnya bertolak belakang selama berabad-abad.</p>
+      <div class="meta">
+        <span>5 Jul 2026</span>
+        <span class="tag">Sejarah</span>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+
+    <a href="ismailiyah-02-fatimiyah.html" class="article">
+      <div class="index">Bagian 2</div>
+      <h2>Sang Dai yang Disingkirkan oleh Imam yang Ia Bebaskan</h2>
+      <p class="desc">Kebangkitan Fatimiyah di Afrika Utara, revolusi dari padang pasir yang mengguncang kekhalifahan Abbasiyah.</p>
+      <div class="meta">
+        <span>6 Jul 2026</span>
+        <span class="tag">Sejarah</span>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+
+    <a href="ismailiyah-03-hasan-sabbah.html" class="article">
+      <div class="index">Bagian 3</div>
+      <h2>Orang Tua dari Gunung yang Tak Pernah Turun</h2>
+      <p class="desc">Hasan Sabbah mendirikan negara di puncak Alamut. Dari sana ia menggerakkan imperium tanpa pernah turun gunung selama 35 tahun.</p>
+      <div class="meta">
+        <span>6 Jul 2026</span>
+        <span class="tag">Sejarah</span>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+
+    <a href="ismailiyah-03-qiyama.html" class="article">
+      <div class="index">Bagian 4</div>
+      <h2>Kiamat yang Membebaskan</h2>
+      <p class="desc">Proklamasi Qiyama di Alamut — penghapusan syariat, pembebasan dari beban hukum, dan kontroversi terbesar dalam sejarah Ismailiyah.</p>
+      <div class="meta">
+        <span>6 Jul 2026</span>
+        <span class="tag">Teologi</span>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+
+    <a href="ismailiyah-fidaiyyun-assassinations.html" class="article">
+      <div class="index">Bagian 5</div>
+      <h2>Belati di Jantung Kekuasaan — Pembunuhan-Pembunuhan Fidā'iyyūn</h2>
+      <p class="desc">Nizam al-Mulk, Raymond II, Conrad of Montferrat — para fidaiyyun Ismailiyah menorehkan pembunuhan politik paling dramatis dalam sejarah abad pertengahan.</p>
+      <div class="meta">
+        <span>7 Jul 2026</span>
+        <span class="tag">Sejarah</span>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+  </section>
+
+  <!-- ═══ SAQIFAH ═══ -->
+  <section class="section">
+    <div class="section-title">Saqifah & Perpecahan Awal</div>
+
+    <a href="saqifah.html" class="article">
+      <h2>Saat Jenazah Nabi Belum Dikubur, Perpecahan Sudah Dimulai</h2>
+      <p class="desc">Apa yang terjadi di Saqifah Bani Sa'idah bukan sekadar pergantian pemimpin — ia adalah cetak biru semua perpecahan Islam yang bertahan hingga hari ini.</p>
+      <div class="meta">
+        <span>5 Jul 2026</span>
+        <span class="tag">Sejarah</span>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+
+    <a href="saqifah-jenazah-nabi-perpecahan.html" class="article">
+      <h2>Saat Jenazah Nabi Belum Dikubur, Perpecahan Sudah Dimulai <span style="font-size:0.8rem;color:var(--muted);font-style:italic">— versi panjang</span></h2>
+      <p class="desc">Narasi lengkap: dari detik-detik wafatnya Nabi, klaim wasiat Ghadir Khumm yang diabaikan, hingga penentuan khalifah pertama di Saqifah.</p>
+      <div class="meta">
+        <span>5 Jul 2026</span>
+        <span class="tag">Sejarah</span>
+        <span class="tag">Versi Panjang</span>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+  </section>
+
+  <!-- ═══ ISBAT ═══ -->
+  <section class="section">
+    <div class="section-title">Isbat & Kalender Islam</div>
+
+    <a href="sidang-isbat-dua-pihak.html" class="article">
+      <h2>Sidang Isbat: Dua Pihak yang Saling Menyalahkan, dan Keduanya Benar</h2>
+      <p class="desc">Setiap tahun sidang isbat digelar. Puluhan ormas hadir. Menteri mengetuk palu. Tapi keesokan harinya, semua tetap ikut metode masing-masing. Dua-duanya benar. Dua-duanya juga salah. Dan tidak ada yang mau mengalah.</p>
+      <div class="meta">
+        <span>19 Mei 2026</span>
+        <span class="tag">Opini</span>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+
+    <a href="isbat.html" class="article">
+      <h2>Isbat</h2>
+      <p class="desc">Versi ringkas dari esai Sidang Isbat.</p>
+      <div class="meta">
+        <span>19 Mei 2026</span>
+        <span class="tag">Opini</span>
+        <span class="tag">Ringkas</span>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+  </section>
+
+  <!-- ═══ LAIN-LAIN ═══ -->
+  <section class="section">
+    <div class="section-title">Lain-lain</div>
+
+    <a href="qudamah-quran-slogan-tidak-jujur.html" class="article">
+      <h2>Qudamah, Qur'an, dan Slogan yang Tidak Jujur</h2>
+      <p class="desc">Bagaimana slogan "kembali ke Qur'an dan Sunnah" seringkali menjadi senjata retoris yang mengabaikan kompleksitas sejarah penafsiran.</p>
+      <div class="meta">
+        <span>5 Jul 2026</span>
+        <span class="tag">Teologi</span>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+
+    <a href="empat-postur-doa.html" class="article">
+      <h2>Empat Postur Hati Saat Berdoa</h2>
+      <p class="desc">Ibn 'Atha'illah al-Iskandari mengajarkan empat keadaan hati dalam berdoa — dari yang paling rendah sampai maqam tertinggi para nabi.</p>
+      <div class="meta">
+        <span>20 Mei 2026</span>
+        <span class="tag">Tasawuf</span>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+  </section>
+
+</main>
+
+<footer>
+  <p>Ditulis oleh <a href="https://github.com/Aceaf-ptku">Ace Afandi</a> · Dihosting via <a href="https://pages.github.com">GitHub Pages</a></p>
+</footer>
+
+</body>
+</html>
