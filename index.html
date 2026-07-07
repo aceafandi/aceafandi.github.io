@@ -390,19 +390,14 @@
   .spotlight-visual {
     background: linear-gradient(135deg, #1a1a2e 0%, #2c3e50 50%, #3a5a7c 100%);
     display: flex; align-items: center; justify-content: center;
-    padding: 40px;
+    padding: 0;
     position: relative; overflow: hidden;
+    min-height: 260px;
   }
-  .spotlight-visual::before {
-    content: '';
+  .spotlight-visual img {
     position: absolute; inset: 0;
-    background:
-      radial-gradient(circle at 70% 30%, rgba(184,146,46,0.15) 0%, transparent 50%),
-      radial-gradient(circle at 30% 80%, rgba(139,105,20,0.1) 0%, transparent 40%);
-  }
-  .spotlight-icon {
-    position: relative; z-index: 1;
-    font-size: 4rem; opacity: 0.9;
+    width: 100%; height: 100%;
+    object-fit: cover;
   }
   .spotlight-info {
     padding: 36px;
@@ -694,7 +689,6 @@
     .article-grid { grid-template-columns: repeat(2, 1fr); }
     .series-spotlight { grid-template-columns: 1fr; }
     .spotlight-visual { min-height: 160px; }
-    .spotlight-icon { font-size: 3rem; }
     .hero { min-height: 420px; }
     .hero-content { padding: 80px 24px 52px; }
     .featured-series-grid { grid-template-columns: 1fr; }
@@ -795,7 +789,7 @@
 
     <a href="ismailiyah-01-perpecahan-pertama.html" class="series-spotlight">
       <div class="spotlight-visual">
-        <div class="spotlight-icon">🏔️</div>
+        <img src="images/tree-sage-spotlight.webp" alt="Pohon purba terbelah dua — emas dan perak — dengan sesepuh bersemedi di akarnya. Melambangkan dualitas dan perpecahan." loading="lazy">
       </div>
       <div class="spotlight-info">
         <div class="spotlight-label">Seri Ismailiyah</div>
