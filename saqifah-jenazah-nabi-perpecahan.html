@@ -78,6 +78,40 @@
   .punchline p { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.05rem; color: var(--text); }
   .punchline .retort { font-weight: 700; color: var(--accent); }
   .small-divider { width: 60px; height: 2px; background: var(--border); margin: 14px auto; }
+
+  /* ══════════════════════════════════════════
+     VISUAL ELEMENTS — hero, divider, infographic, quote
+     ══════════════════════════════════════════ */
+
+  /* 1. Hero Image — full-width di bawah hero section */
+  .hero-image { margin: 0 0 20px 0; text-align: center; }
+  .hero-image img { width: 100%; max-width: 700px; height: auto; border-radius: 8px; box-shadow: 0 4px 24px rgba(44,36,22,0.12); }
+  .hero-image .img-caption { font-family: 'Inter', sans-serif; font-size: 0.72rem; color: var(--light-muted); margin-top: 8px; font-style: italic; }
+
+  /* 2. Section Image — divider ornamental antar segmen */
+  .section-image { text-align: center; margin: 44px 0 40px; }
+  .section-image img { width: 100%; max-width: 540px; height: auto; border-radius: 6px; opacity: 0.85; }
+  .section-image .img-label { font-family: 'Inter', sans-serif; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--light-muted); margin-top: 6px; }
+
+  /* 3. Infographic Mini — timeline, silsilah, diagram */
+  .infographic { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 0; margin: 36px 0; overflow: hidden; box-shadow: var(--shadow-sm); }
+  .infographic .ig-header { display: flex; align-items: center; gap: 10px; padding: 16px 24px; background: linear-gradient(135deg, var(--card-warm), var(--card)); border-bottom: 1px solid var(--border); }
+  .infographic .ig-icon { font-size: 1.3rem; }
+  .infographic .ig-title { font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .infographic .ig-image { text-align: center; padding: 24px 24px 20px; }
+  .infographic .ig-image img { width: 100%; max-width: 620px; height: auto; border-radius: 6px; }
+  .infographic .ig-caption { padding: 0 24px 20px; font-size: 0.82rem; color: var(--muted); font-style: italic; text-align: center; line-height: 1.6; }
+
+  /* 4. Quote Pull — kutipan standout di antara paragraf */
+  .quote-pull { margin: 40px 0; padding: 28px 32px; background: var(--card); border: none; border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; box-shadow: var(--shadow-sm); }
+  .quote-pull .qp-text { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.35rem; font-weight: 500; line-height: 1.5; color: var(--text); font-style: italic; }
+  .quote-pull .qp-source { font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-top: 14px; padding-top: 12px; border-top: 1px dotted var(--border); }
+
+  /* lazy-load placeholder & fallback */
+  img[loading="lazy"] { transition: opacity 0.4s ease; }
+  img[loading="lazy"].loaded { opacity: 1; }
+  picture img { width: 100%; height: auto; }
+
   .section-label { font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
   @media (max-width: 640px) { .hero h1 { font-size: 1.7rem; } .hero .subtitle { font-size: 0.9rem; } .arabic-block { padding: 22px 18px; } .arabic-block .arabic-text { font-size: 1.2rem; } .info-card { padding: 20px 18px; } .info-card .card-num { font-size: 1.8rem; } .container { padding: 0 16px; } .content { font-size: 0.95rem; } }
   @media print { body { background: white; } .top-line, .progress-bar, .back-link { display: none; } .arabic-block, .highlight-bar, .info-card { break-inside: avoid; } }
@@ -102,6 +136,12 @@
     <span class="line"></span>
   </div>
 </header>
+
+<!-- 🖼️ HERO IMAGE — ganti src dengan gambar MJ nanti -->
+<figure class="hero-image">
+  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='320' viewBox='0 0 700 320'%3E%3Crect fill='%23f5e6c8' width='700' height='320' rx='8'/%3E%3Ctext x='350' y='155' text-anchor='middle' fill='%238b6914' font-family='Cormorant Garamond,serif' font-size='20' font-style='italic'%3E🕌 Suasana Madinah, malam pemakaman Nabi%3C/text%3E%3Ctext x='350' y='180' text-anchor='middle' fill='%239b8d7a' font-family='Inter,sans-serif' font-size='11'%3EHero image — ganti dengan hasil Midjourney%3C/text%3E%3C/svg%3E" alt="Suasana Madinah malam hari — ilustrasi hero artikel Saqifah" loading="lazy" width="700" height="320">
+  <figcaption class="img-caption">Ilustrasi: Suasana Madinah, malam pemakaman Nabi ﷺ</figcaption>
+</figure>
 
 <article class="content">
 <p class="dropcap">Malam Rabu, tahun 11 Hijriyah. Aisyah terbangun oleh suara yang tidak dikenalnya. <em>Thok. Thok. Thok.</em> Suara cangkul menghantam tanah.</p>
@@ -128,6 +168,12 @@
 
   <p><strong>Di sinilah benih Syiah ditanam.</strong> Bukan di Karbala. Bukan di Shiffin. Di Saqifah. Saat komunitas Islam belum genap 24 jam ditinggal Nabinya — dan sudah berkelahi soal siapa yang berhak memimpin.</p>
 
+  <!-- 🗣️ QUOTE PULL — kutipan standout -->
+  <div class="quote-pull">
+    <p class="qp-text">"Perpecahan umat Islam lahir saat jenazah Nabinya sendiri belum dikuburkan. Seolah kematian Nabi adalah trauma yang begitu besar sehingga komunitas tidak bisa menunggu."</p>
+    <p class="qp-source">— Esai ini</p>
+  </div>
+
   <div class="section-ornament">✦ ✦ ✦</div>
 
   <h2>Dua Kematian, Dua Penundaan, Satu Pelajaran</h2>
@@ -139,6 +185,18 @@
   <p>Kita — yang menonton dari jauh — bertanya: kenapa pemakamannya tertunda 126 hari? Bukankah hadis memerintahkan <em>asri'u bil-janazah</em> — segerakanlah jenazah?</p>
 
   <p>Tapi jarang yang ingat: <strong>Nabi sendiri tidak dimakamkan segera.</strong> Dua sampai tiga hari — jenazah manusia paling mulia dalam Islam — terbaring belum dikuburkan.</p>
+
+  <!-- 📊 INFOGRAPHIC MINI — timeline perbandingan -->
+  <figure class="infographic">
+    <div class="ig-header">
+      <span class="ig-icon">⏳</span>
+      <span class="ig-title">Timeline: Dua Kematian, Dua Penundaan</span>
+    </div>
+    <div class="ig-image">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='620' height='200' viewBox='0 0 620 200'%3E%3Crect fill='%23ffffff' width='620' height='200' rx='6'/%3E%3Cline x1='60' y1='70' x2='560' y2='70' stroke='%23e8e0d5' stroke-width='2'/%3E%3Ccircle cx='100' cy='70' r='8' fill='%238b6914'/%3E%3Ccircle cx='440' cy='70' r='8' fill='%238b6914'/%3E%3Ctext x='100' y='55' text-anchor='middle' fill='%232c2416' font-family='Inter,sans-serif' font-size='13' font-weight='600'%3E11 H / 632 M%3C/text%3E%3Ctext x='100' y='100' text-anchor='middle' fill='%236b5e4a' font-family='Lora,serif' font-size='12'%3ENabi Muhammad ﷺ%3C/text%3E%3Ctext x='100' y='120' text-anchor='middle' fill='%239b8d7a' font-family='Inter,sans-serif' font-size='10'%3ETertunda 2–3 hari%3C/text%3E%3Ctext x='440' y='55' text-anchor='middle' fill='%232c2416' font-family='Inter,sans-serif' font-size='13' font-weight='600'%3E2026 M%3C/text%3E%3Ctext x='440' y='100' text-anchor='middle' fill='%236b5e4a' font-family='Lora,serif' font-size='12'%3EAli Khamenei%3C/text%3E%3Ctext x='440' y='120' text-anchor='middle' fill='%239b8d7a' font-family='Inter,sans-serif' font-size='10'%3ETertunda 126 hari%3C/text%3E%3Ctext x='270' y='155' text-anchor='middle' fill='%236b5e4a' font-family='Inter,sans-serif' font-size='11' font-weight='500'%3ESatu pertanyaan sama: Siapa yang memimpin kami?%3C/text%3E%3Ctext x='270' y='180' text-anchor='middle' fill='%239b8d7a' font-family='Inter,sans-serif' font-size='9'%3EInfografik — ganti dengan hasil Midjourney%3C/text%3E%3C/svg%3E" alt="Timeline perbandingan penundaan pemakaman Nabi Muhammad dan Ali Khamenei" loading="lazy" width="620" height="200">
+    </div>
+    <figcaption class="ig-caption">Dua era, dua kematian, satu pertanyaan yang belum terjawab — dan perpecahan yang lahir dari jawabannya.</figcaption>
+  </figure>
 
   <p>Dan alasan penundaannya adalah <strong>politik.</strong> Bukan karena tidak tahu hukum. Bukan karena lalai. Tapi karena komunitas harus menyelesaikan pertanyaan yang lebih besar: <em>siapa yang memimpin kami setelah Nabi?</em> Tanpa menjawab itu, seluruh bangunan Islam bisa runtuh.</p>
 
@@ -153,6 +211,12 @@
   <p>Keduanya merujuk ke momen yang sama: <strong>hari-hari ketika jenazah Nabi belum dikuburkan.</strong> Dan 1.400 tahun kemudian, dua tradisi terbesar Islam masih berpisah — karena apa yang terjadi (atau tidak terjadi) di Madinah, saat Aisyah mendengar suara cangkul di tengah malam.</p>
 
   <p>Ironisnya: Khamenei sendiri adalah produk dari tradisi yang lahir di Saqifah. <em>Wilayat al-Faqih</em> — doktrin bahwa faqih memerintah menggantikan Imam Ghaib — adalah jawaban Syiah atas pertanyaan yang sama: <em>siapa yang berhak memimpin umat saat pemimpin sejati tidak hadir?</em></p>
+
+  <!-- 🏺 SECTION IMAGE — ornamen Islam sebagai jeda visual -->
+  <figure class="section-image">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='540' height='80' viewBox='0 0 540 80'%3E%3Crect fill='%23faf8f5' width='540' height='80'/%3E%3Ccircle cx='270' cy='40' r='18' fill='none' stroke='%238b6914' stroke-width='1.5' opacity='0.4'/%3E%3Cline x1='140' y1='40' x2='240' y2='40' stroke='%23e8e0d5' stroke-width='1'/%3E%3Cline x1='300' y1='40' x2='400' y2='40' stroke='%23e8e0d5' stroke-width='1'/%3E%3Ctext x='270' y='45' text-anchor='middle' fill='%239b8d7a' font-family='Inter,sans-serif' font-size='9' letter-spacing='2'%3ESECTION DIVIDER%3C/text%3E%3C/svg%3E" alt="Pembatas bagian — ornamen Islam geometris" loading="lazy" width="540" height="80">
+    <figcaption class="img-label">Ornamen Islam Geometris</figcaption>
+  </figure>
 
   <h2>Apa yang Bisa Kita Pelajari</h2>
 
