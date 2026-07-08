@@ -130,6 +130,7 @@
       radial-gradient(ellipse at 30% 70%, rgba(139,105,20,0.08) 0%, transparent 45%);
     z-index: 1;
   }
+  /* Islamic geometric pattern overlay */
   .hero-pattern-overlay {
     position: absolute; inset: 0; z-index: 1;
     opacity: 0.04;
@@ -282,7 +283,7 @@
     margin-left: auto;
   }
 
-  /* ── Article Grid (3-col) ── */
+  /* ── Article Grid ── */
   .article-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -425,109 +426,24 @@
     font-size: 0.7rem; color: var(--light-muted);
   }
 
-  /* ── Compact Card ── */
-  .compact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-bottom: 48px;
-  }
-  .compact-card {
-    display: flex; flex-direction: column;
-    text-decoration: none; color: inherit;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 28px 24px;
-    transition: all 0.25s ease;
-    position: relative;
-    opacity: 0; transform: translateY(12px);
-  }
-  .compact-card.visible { opacity: 1; transform: translateY(0); }
-  .compact-card:hover {
-    border-color: var(--accent);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
-  }
-  .compact-card h2 {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 1.15rem; font-weight: 600;
-    line-height: 1.3; color: var(--text);
-    margin-bottom: 8px;
-  }
-  .compact-card .cc-desc {
-    font-size: 0.85rem; color: var(--muted);
-    line-height: 1.55;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    margin-bottom: 14px;
-    flex: 1;
-  }
-  .compact-card .cc-meta {
-    display: flex; gap: 8px; align-items: center;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.7rem; color: var(--light-muted);
-    margin-top: auto;
-  }
-  .compact-card .cc-tag {
-    background: var(--tag-bg);
-    color: var(--tag-text);
-    padding: 3px 10px; border-radius: 20px;
-    font-size: 0.65rem; font-weight: 500;
-    letter-spacing: 0.03em;
-  }
-  .compact-card .cc-count {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.7rem; font-weight: 600;
-    letter-spacing: 0.08em;
-    color: var(--light-muted);
-    margin-bottom: 10px;
-    text-transform: uppercase;
-  }
-
-  /* ── Archive CTA ── */
-  .archive-cta {
-    display: flex; align-items: center; justify-content: center;
-    text-decoration: none;
-    background: var(--card);
-    border: 2px solid var(--accent);
-    border-radius: var(--radius-lg);
-    padding: 24px 36px;
-    max-width: 520px;
-    margin: 0 auto 64px;
-    transition: all 0.3s ease;
-    gap: 12px;
-  }
-  .archive-cta:hover {
-    background: var(--accent);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-  }
-  .archive-cta .cta-icon {
-    font-size: 1.8rem;
-    transition: transform 0.3s;
-  }
-  .archive-cta:hover .cta-icon { transform: scale(1.15); }
-  .archive-cta .cta-text {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.95rem; font-weight: 600;
-    color: var(--accent);
-    letter-spacing: 0.02em;
-    transition: color 0.3s;
-  }
-  .archive-cta:hover .cta-text { color: #fff; }
-  .archive-cta .cta-sub {
-    font-family: 'Lora', serif;
-    font-size: 0.78rem; color: var(--light-muted);
-    font-style: italic;
-    transition: color 0.3s;
-  }
-  .archive-cta:hover .cta-sub { color: rgba(255,255,255,0.7); }
+  /* ── Three-Column Feature Grid ── */
+  .feature-section { margin-bottom: 56px; }
+  .feature-section > .section-header { margin-bottom: 24px; }
 
   /* ── Section spacing ── */
   .content-section { margin-bottom: 56px; }
+
+  /* ── Divider ── */
+  .geo-divider {
+    display: flex; align-items: center; gap: 10px;
+    width: 140px; margin: 0 auto 60px; opacity: 0.4;
+  }
+  .geo-divider .gd-line { flex: 1; height: 1px; background: var(--border); }
+  .geo-divider .gd-diamond {
+    width: 5px; height: 5px;
+    background: var(--accent);
+    transform: rotate(45deg);
+  }
 
   /* ══════════════════════════════════════════
      FOOTER
@@ -561,6 +477,212 @@
   footer a:hover { text-decoration: underline; }
 
   /* ══════════════════════════════════════════
+     FEATURED SERIES — Staggered Layout
+     ══════════════════════════════════════════ */
+  .featured-series-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin-bottom: 48px;
+  }
+
+  .featured-card {
+    display: flex; flex-direction: column;
+    text-decoration: none; color: inherit;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 34px 36px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  .featured-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .featured-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--series-navy);
+    border-radius: 0 3px 3px 0;
+  }
+  .featured-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+  }
+  .featured-card:first-child {
+    grid-column: 1 / -1;
+  }
+  .featured-card:first-child::before {
+    background: linear-gradient(180deg, var(--series-navy) 0%, var(--series-blue) 100%);
+  }
+  .featured-card .fc-index {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--series-navy);
+    margin-bottom: 10px;
+  }
+  .featured-card h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.4rem; font-weight: 600;
+    line-height: 1.3; color: var(--text);
+    margin-bottom: 10px;
+  }
+  .featured-card .fc-desc {
+    font-size: 0.9rem; color: var(--muted);
+    line-height: 1.7; margin-bottom: 16px;
+    flex: 1;
+  }
+  .featured-card:first-child h2 { font-size: 1.7rem; }
+  .featured-card:first-child .fc-desc {
+    font-size: 0.95rem; max-width: 640px;
+  }
+  .featured-card .fc-meta {
+    display: flex; gap: 10px; align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem; color: var(--light-muted);
+    margin-top: auto;
+  }
+  .featured-card .fc-tag {
+    background: var(--series-navy);
+    color: #fff;
+    padding: 3px 12px; border-radius: 20px;
+    font-size: 0.62rem; font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .featured-card .fc-arrow {
+    position: absolute; right: 24px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent); font-size: 1.1rem;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .featured-card:hover .fc-arrow { opacity: 1; right: 20px; }
+
+  /* ══════════════════════════════════════════
+     WIDE CARD — Single Essay Sections
+     ══════════════════════════════════════════ */
+  .wide-card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-bottom: 48px;
+  }
+  .wide-card {
+    display: flex; flex-direction: row; align-items: center; gap: 24px;
+    text-decoration: none; color: inherit;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 28px 32px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    opacity: 0; transform: translateY(16px);
+  }
+  .wide-card.visible { opacity: 1; transform: translateY(0); }
+  .wide-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+  }
+  .wide-card .wc-icon {
+    font-size: 2.2rem; flex-shrink: 0;
+    width: 60px; height: 60px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .wide-card .wc-body { flex: 1; }
+  .wide-card h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.35rem; font-weight: 600;
+    line-height: 1.3; color: var(--text);
+    margin-bottom: 6px;
+  }
+  .wide-card .wc-desc {
+    font-size: 0.88rem; color: var(--muted);
+    line-height: 1.6;
+  }
+  .wide-card .wc-meta {
+    display: flex; gap: 8px; align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem; color: var(--light-muted);
+    margin-top: 8px;
+  }
+  .wide-card .wc-tag {
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 3px 10px; border-radius: 20px;
+    font-size: 0.65rem; font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+  .wide-card .wc-arrow {
+    color: var(--accent); font-size: 1.1rem;
+    opacity: 0; transition: all 0.3s;
+    flex-shrink: 0;
+  }
+  .wide-card:hover .wc-arrow { opacity: 1; }
+
+  /* ══════════════════════════════════════════
+     COMPACT GRID — Light Essays
+     ══════════════════════════════════════════ */
+  .compact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 48px;
+  }
+  .compact-card {
+    display: flex; flex-direction: column;
+    text-decoration: none; color: inherit;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 18px 20px;
+    transition: all 0.25s ease;
+    position: relative;
+    opacity: 0; transform: translateY(12px);
+  }
+  .compact-card.visible { opacity: 1; transform: translateY(0); }
+  .compact-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+  .compact-card h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.05rem; font-weight: 600;
+    line-height: 1.3; color: var(--text);
+    margin-bottom: 5px;
+  }
+  .compact-card .cc-desc {
+    font-size: 0.8rem; color: var(--muted);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  .compact-card .cc-meta {
+    display: flex; gap: 6px; align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem; color: var(--light-muted);
+    margin-top: auto;
+  }
+  .compact-card .cc-tag {
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 2px 8px; border-radius: 12px;
+    font-size: 0.62rem; font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+
+  /* ══════════════════════════════════════════
      RESPONSIVE
      ══════════════════════════════════════════ */
   @media (max-width: 900px) {
@@ -569,6 +691,8 @@
     .spotlight-visual { min-height: 160px; }
     .hero { min-height: 420px; }
     .hero-content { padding: 80px 24px 52px; }
+    .featured-series-grid { grid-template-columns: 1fr; }
+    .featured-card:first-child { grid-column: auto; }
     .compact-grid { grid-template-columns: 1fr; }
   }
 
@@ -589,9 +713,15 @@
     .section-header { flex-wrap: wrap; }
     .spotlight-info { padding: 24px; }
     .spotlight-info h3 { font-size: 1.2rem; }
-    .compact-card { padding: 20px 16px; }
+    .featured-card { padding: 24px 20px; }
+    .featured-card h2 { font-size: 1.15rem; }
+    .featured-card:first-child h2 { font-size: 1.3rem; }
+    .featured-card .fc-arrow { display: none; }
+    .wide-card { flex-direction: column; align-items: flex-start; padding: 20px; gap: 16px; }
+    .wide-card .wc-icon { width: 44px; height: 44px; font-size: 1.6rem; }
+    .wide-card h2 { font-size: 1.15rem; }
+    .compact-card { padding: 14px 16px; }
     .compact-card h2 { font-size: 0.95rem; }
-    .archive-cta { padding: 18px 24px; margin: 0 16px 48px; }
     main { padding: 48px 16px 60px; }
   }
 
@@ -612,7 +742,7 @@
     <a href="#" class="nav-brand">Kolom</a>
     <div class="nav-links">
       <a href="#series">Seri</a>
-      <a href="arsip/">Arsip</a>
+      <a href="#semua">Semua Esai</a>
       <a href="#tentang" class="nav-cta">Tentang</a>
     </div>
   </div>
@@ -649,15 +779,14 @@
 <!-- ═══ MAIN CONTENT ═══ -->
 <main>
 
-  <!-- ═══ SERI UNGGULAN ═══ -->
-  <section class="content-section" id="series">
+  <!-- ═══ FEATURED: SERI ISMAILIYAH ═══ -->
+  <section class="feature-section" id="series">
     <div class="section-header">
       <div class="section-icon navy">📜</div>
       <div class="section-title">Seri Unggulan</div>
-      <div class="section-count">8 esai</div>
+      <div class="section-count">9 esai</div>
     </div>
 
-    <!-- Ismailiyah Spotlight -->
     <a href="ismailiyah-01-perpecahan-pertama.html" class="series-spotlight">
       <div class="spotlight-visual">
         <img src="images/tree-sage-spotlight.webp" alt="Pohon purba terbelah dua — emas dan perak — dengan sesepuh bersemedi di akarnya. Melambangkan dualitas dan perpecahan." loading="lazy">
@@ -665,26 +794,165 @@
       <div class="spotlight-info">
         <div class="spotlight-label">Seri Ismailiyah</div>
         <h3>Dari Perpecahan Syiah Hingga Kiamat di Alamut</h3>
-        <p>Delapan esai yang menelusuri sejarah Syiah Ismailiyah: dari kematian Ja'far al-Shadiq yang memecah Syiah selamanya, kebangkitan Fatimiyah, pendirian negara Alamut oleh Hasan Sabbah, pembunuhan fidā'iyyūn, proklamasi Qiyama, hingga kritik al-Ghazālī.</p>
-        <div class="spotlight-meta">8 artikel · Sejarah Islam · Juli 2026</div>
+        <p>Lima esai yang menelusuri sejarah Syiah Ismailiyah: dari kematian Ja'far al-Shadiq yang memecah Syiah selamanya, kebangkitan Fatimiyah di Afrika Utara, pendirian negara Alamut oleh Hasan Sabbah, pembunuhan-pembunuhan fidā'iyyūn yang mengguncang imperium, hingga proklamasi Qiyama yang kontroversial.</p>
+        <div class="spotlight-meta">5 artikel · Sejarah Islam · Juli 2026</div>
       </div>
     </a>
+  </section>
 
-    <!-- Seri Lain: Saqifah + Isbat -->
-    <div class="compact-grid">
-      <a href="saqifah-jenazah-nabi-perpecahan.html" class="compact-card">
-        <div class="cc-count">🏛️ 1 Esai</div>
-        <h2>Saqifah & Perpecahan Awal</h2>
-        <p class="cc-desc">Narasi lengkap: dari detik-detik wafatnya Nabi, klaim wasiat Ghadir Khumm yang diabaikan, hingga penentuan khalifah pertama di Saqifah.</p>
-        <div class="cc-meta">
+  <!-- ═══ ALL ARTICLES BY SERIES ═══ -->
+
+  <!-- Seri Ismailiyah -->
+  <section class="content-section" id="semua">
+    <div class="section-header">
+      <div class="section-icon navy">📜</div>
+      <div class="section-title">Seri Ismailiyah</div>
+      <div class="section-count">9 esai</div>
+    </div>
+    <div class="featured-series-grid">
+      <!-- Bagian 1 — Full Width Opening -->
+      <a href="ismailiyah-01-perpecahan-pertama.html" class="featured-card">
+        <div class="fc-index">Bagian 1 — Fondasi Seri</div>
+        <h2>Satu Kematian yang Memecah Syiah Selamanya</h2>
+        <p class="fc-desc">Kematian Ja'far al-Shadiq membelah Syiah menjadi dua jalur — Ismailiyah dan Itsna Asy'ariyah — yang nasibnya bertolak belakang selama berabad-abad.</p>
+        <div class="fc-meta">
           <span>5 Jul 2026</span>
-          <span class="cc-tag">Sejarah</span>
+          <span class="fc-tag">Sejarah</span>
         </div>
+        <span class="fc-arrow">→</span>
       </a>
 
+      <!-- Bagian 2 -->
+      <a href="ismailiyah-02-fatimiyah.html" class="featured-card">
+        <div class="fc-index">Bagian 2</div>
+        <h2>Sang Dai yang Disingkirkan oleh Imam yang Ia Bebaskan</h2>
+        <p class="fc-desc">Kebangkitan Fatimiyah di Afrika Utara, revolusi dari padang pasir yang mengguncang kekhalifahan Abbasiyah.</p>
+        <div class="fc-meta">
+          <span>6 Jul 2026</span>
+          <span class="fc-tag">Sejarah</span>
+        </div>
+        <span class="fc-arrow">→</span>
+      </a>
+
+      <!-- Bagian 3 -->
+      <a href="ismailiyah-03-hasan-sabbah.html" class="featured-card">
+        <div class="fc-index">Bagian 3</div>
+        <h2>Orang Tua dari Gunung yang Tak Pernah Turun</h2>
+        <p class="fc-desc">Hasan Sabbah mendirikan negara di puncak Alamut. Dari sana ia menggerakkan imperium tanpa pernah turun gunung selama 35 tahun.</p>
+        <div class="fc-meta">
+          <span>6 Jul 2026</span>
+          <span class="fc-tag">Sejarah</span>
+        </div>
+        <span class="fc-arrow">→</span>
+      </a>
+
+      <!-- Bagian 4 -->
+      <a href="ismailiyah-04-fidaiyyun-assassinations.html" class="featured-card">
+        <div class="fc-index">Bagian 4</div>
+        <h2>Belati di Jantung Kekuasaan</h2>
+        <p class="fc-desc">Nizam al-Mulk, Raymond II, Conrad of Montferrat — para fidaiyyun Ismailiyah menorehkan pembunuhan politik paling dramatis dalam sejarah abad pertengahan.</p>
+        <div class="fc-meta">
+          <span>7 Jul 2026</span>
+          <span class="fc-tag">Sejarah</span>
+        </div>
+        <span class="fc-arrow">→</span>
+      </a>
+
+      <!-- Bagian 5 -->
+      <a href="ismailiyah-05-qiyama.html" class="featured-card">
+        <div class="fc-index">Bagian 5</div>
+        <h2>Kiamat yang Membebaskan</h2>
+        <p class="fc-desc">Proklamasi Qiyama di Alamut — penghapusan syariat, pembebasan dari beban hukum, dan kontroversi terbesar dalam sejarah Ismailiyah.</p>
+        <div class="fc-meta">
+          <span>6 Jul 2026</span>
+          <span class="fc-tag">Sejarah</span>
+        </div>
+        <span class="fc-arrow">→</span>
+      </a>
+
+      <!-- Bagian 6 — Arsitektur Teologi -->
+      <a href="ismailiyah-04-arsitektur-teologi.html" class="featured-card">
+        <div class="fc-index">Bagian 6</div>
+        <h2>Kitab yang Bisu, Imam yang Berbicara</h2>
+        <p class="fc-desc">Ada dua Qur'an dalam Islam: al-Qur'ān al-Ṣāmit dan al-Qur'ān al-Nāṭiq. Arsitektur teologi paling fundamental Ismailiyah — dan mengapa ia bertahan 1.200 tahun.</p>
+        <div class="fc-meta">
+          <span>8 Jul 2026</span>
+          <span class="fc-tag">Sejarah</span>
+        </div>
+        <span class="fc-arrow">→</span>
+      </a>
+
+      <!-- Bagian 7 — Du'ā' Harian -->
+      <a href="ismailiyah-05-dua-harian.html" class="featured-card">
+        <div class="fc-index">Bagian 7</div>
+        <h2>Enam Bagian, Tiga Kali Sehari</h2>
+        <p class="fc-desc">Du'ā' harian Nizārī Ismailiyah: 6 bagian, 3 kali sehari, 18 siklus. Seluruh teologi Qiyāma diringkas menjadi ritual harian — dan nama Aga Khan disebut 18 kali.</p>
+        <div class="fc-meta">
+          <span>8 Jul 2026</span>
+          <span class="fc-tag">Sejarah</span>
+        </div>
+        <span class="fc-arrow">→</span>
+      </a>
+
+      <!-- Bagian 8 — Al-Ghazālī -->
+      <a href="ismailiyah-06-al-ghazali.html" class="featured-card">
+        <div class="fc-index">Bagian 8</div>
+        <h2>Al-Ghazālī Menghunus Pedang</h2>
+        <p class="fc-desc"><em>Faḍā'iḥ al-Bāṭiniyya</em> — enam argumen al-Ghazālī yang membedah teologi Ismailiyah: ta'wīl tanpa kriteria, sirkularitas ta'līm, hingga ibāḥiyya. Pedang yang masih tajam 950 tahun kemudian.</p>
+        <div class="fc-meta">
+          <span>8 Jul 2026</span>
+          <span class="fc-tag">Sejarah</span>
+        </div>
+        <span class="fc-arrow">→</span>
+      </a>
+
+      <!-- Bagian 9 — Alamut ke Aiglemont -->
+      <a href="ismailiyah-07-alamut-aiglemont.html" class="featured-card">
+        <div class="fc-index">Bagian 9</div>
+        <h2>Dari Alamut ke Aiglemont, Dari Pedang ke Cek</h2>
+        <p class="fc-desc">Transformasi Ismailiyah: dari benteng Assassin ke jaringan filantropi global. Enam abad sunyi, kolonel Britania, <em>jubilee</em> emas & berlian, Harvard, dan paradoks yang belum selesai.</p>
+        <div class="fc-meta">
+          <span>8 Jul 2026</span>
+          <span class="fc-tag">Sejarah</span>
+        </div>
+        <span class="fc-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Saqifah -->
+  <section class="content-section">
+    <div class="section-header">
+      <div class="section-icon warm">🏛️</div>
+      <div class="section-title">Saqifah & Perpecahan Awal</div>
+      <div class="section-count">1 esai</div>
+    </div>
+    <div class="wide-card-grid">
+      <a href="saqifah-jenazah-nabi-perpecahan.html" class="wide-card">
+        <div class="wc-icon" style="background:#f0e8e0;">🏛️</div>
+        <div class="wc-body">
+          <h2>Saat Jenazah Nabi Belum Dikubur, Perpecahan Sudah Dimulai</h2>
+          <p class="wc-desc">Narasi lengkap: dari detik-detik wafatnya Nabi, klaim wasiat Ghadir Khumm yang diabaikan, hingga penentuan khalifah pertama di Saqifah.</p>
+          <div class="wc-meta">
+            <span>5 Jul 2026</span>
+            <span class="wc-tag">Sejarah</span>
+          </div>
+        </div>
+        <span class="wc-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Isbat -->
+  <section class="content-section">
+    <div class="section-header">
+      <div class="section-icon teal">🌙</div>
+      <div class="section-title">Isbat & Kalender Islam</div>
+      <div class="section-count">1 esai</div>
+    </div>
+    <div class="compact-grid">
       <a href="sidang-isbat-dua-pihak.html" class="compact-card">
-        <div class="cc-count">🌙 1 Esai</div>
-        <h2>Isbat & Kalender Islam</h2>
+        <h2>Sidang Isbat: Dua Pihak yang Saling Menyalahkan, dan Keduanya Benar</h2>
         <p class="cc-desc">Setiap tahun sidang isbat digelar. Puluhan ormas hadir. Menteri mengetuk palu. Tapi keesokan harinya, semua tetap ikut metode masing-masing.</p>
         <div class="cc-meta">
           <span>19 Mei 2026</span>
@@ -694,79 +962,43 @@
     </div>
   </section>
 
-  <!-- ═══ TERBARU — 5 Esai Terakhir ═══ -->
+  <!-- Lain-lain -->
   <section class="content-section">
     <div class="section-header">
-      <div class="section-icon blue">✨</div>
-      <div class="section-title">Terbaru</div>
-      <div class="section-count">5 esai</div>
+      <div class="section-icon blue">📖</div>
+      <div class="section-title">Lain-lain</div>
+      <div class="section-count">2 esai</div>
     </div>
-
-    <div class="article-grid">
-      <!-- 1. Al-Ghazālī — 8 Jul 2026 -->
-      <a href="ismailiyah-06-al-ghazali.html" class="article-card">
-        <div class="card-index">Bagian 8 — Seri Ismailiyah</div>
-        <h2>Al-Ghazālī Menghunus Pedang</h2>
-        <p class="card-desc">Faḍā'iḥ al-Bāṭiniyya — enam argumen al-Ghazālī yang membedah teologi Ismailiyah: ta'wīl tanpa kriteria, sirkularitas ta'līm, hingga ibāḥiyya.</p>
-        <div class="card-meta">
-          <span>8 Jul 2026</span>
-          <span class="card-tag">Sejarah</span>
+    <div class="compact-grid">
+      <a href="qudamah-quran-slogan-tidak-jujur.html" class="compact-card">
+        <h2>Qudamah, Qur'an, dan Slogan yang Tidak Jujur</h2>
+        <p class="cc-desc">Bagaimana slogan "kembali ke Qur'an dan Sunnah" seringkali menjadi senjata retoris yang mengabaikan kompleksitas sejarah penafsiran.</p>
+        <div class="cc-meta">
+          <span>5 Jul 2026</span>
+          <span class="cc-tag">Teologi</span>
         </div>
-        <span class="card-arrow">→</span>
       </a>
 
-      <!-- 2. Du'ā' Harian — 8 Jul 2026 -->
-      <a href="ismailiyah-05-dua-harian.html" class="article-card">
-        <div class="card-index">Bagian 7 — Seri Ismailiyah</div>
-        <h2>Enam Bagian, Tiga Kali Sehari</h2>
-        <p class="card-desc">Du'ā' harian Nizārī Ismailiyah: 6 bagian, 3 kali sehari, 18 siklus. Seluruh teologi Qiyāma diringkas menjadi ritual harian.</p>
-        <div class="card-meta">
-          <span>8 Jul 2026</span>
-          <span class="card-tag">Sejarah</span>
+      <a href="empat-postur-doa.html" class="compact-card">
+        <h2>Empat Postur Hati Saat Berdoa</h2>
+        <p class="cc-desc">Ibn 'Atha'illah al-Iskandari mengajarkan empat keadaan hati dalam berdoa — dari yang paling rendah sampai maqam tertinggi para nabi.</p>
+        <div class="cc-meta">
+          <span>20 Mei 2026</span>
+          <span class="cc-tag">Tasawuf</span>
         </div>
-        <span class="card-arrow">→</span>
-      </a>
-
-      <!-- 3. Arsitektur Teologi — 8 Jul 2026 -->
-      <a href="ismailiyah-04-arsitektur-teologi.html" class="article-card">
-        <div class="card-index">Bagian 6 — Seri Ismailiyah</div>
-        <h2>Kitab yang Bisu, Imam yang Berbicara</h2>
-        <p class="card-desc">Ada dua Qur'an dalam Islam: al-Qur'ān al-Ṣāmit dan al-Qur'ān al-Nāṭiq. Arsitektur teologi paling fundamental Ismailiyah.</p>
-        <div class="card-meta">
-          <span>8 Jul 2026</span>
-          <span class="card-tag">Sejarah</span>
-        </div>
-        <span class="card-arrow">→</span>
-      </a>
-
-      <!-- 4. Fidā'iyyūn — 7 Jul 2026 -->
-      <a href="ismailiyah-04-fidaiyyun-assassinations.html" class="article-card">
-        <div class="card-index">Bagian 4 — Seri Ismailiyah</div>
-        <h2>Belati di Jantung Kekuasaan</h2>
-        <p class="card-desc">Nizam al-Mulk, Raymond II, Conrad of Montferrat — para fidaiyyun Ismailiyah menorehkan pembunuhan politik paling dramatis dalam sejarah abad pertengahan.</p>
-        <div class="card-meta">
-          <span>7 Jul 2026</span>
-          <span class="card-tag">Sejarah</span>
-        </div>
-        <span class="card-arrow">→</span>
-      </a>
-
-      <!-- 5. Qiyama — 6 Jul 2026 -->
-      <a href="ismailiyah-05-qiyama.html" class="article-card">
-        <div class="card-index">Bagian 5 — Seri Ismailiyah</div>
-        <h2>Kiamat yang Membebaskan</h2>
-        <p class="card-desc">Proklamasi Qiyama di Alamut — penghapusan syariat, pembebasan dari beban hukum, dan kontroversi terbesar dalam sejarah Ismailiyah.</p>
-        <div class="card-meta">
-          <span>6 Jul 2026</span>
-          <span class="card-tag">Sejarah</span>
-        </div>
-        <span class="card-arrow">→</span>
       </a>
     </div>
   </section>
 
-  <!-- ═══ QUOTE + CTA ARSIP ═══ -->
-  <div style="text-align:center;max-width:520px;margin:0 auto 36px;">
+  <!-- ═══ Divider ═══ -->
+  <div class="geo-divider">
+    <span class="gd-line"></span>
+    <span class="gd-diamond"></span>
+    <span class="gd-line"></span>
+  </div>
+
+  <!-- ═══ About Blurb ═══ -->
+  <div style="text-align:center;max-width:520px;margin:0 auto;">
     <p style="font-size:0.88rem;color:var(--muted);line-height:1.75;font-style:italic;">
       "Emas tidak takut api. Iman tidak takut pertanyaan."
     </p>
@@ -774,14 +1006,6 @@
       — ACE AFANDI
     </p>
   </div>
-
-  <a href="arsip/" class="archive-cta">
-    <span class="cta-icon">📚</span>
-    <div>
-      <div class="cta-text">Arsip Lengkap →</div>
-      <div class="cta-sub">Semua esai, dikelompokkan berdasarkan kategori</div>
-    </div>
-  </a>
 
 </main>
 
@@ -799,8 +1023,8 @@
 
 <script>
 (function(){
-  // Staggered fade-in animation
-  const cards = document.querySelectorAll('.article-card, .compact-card');
+  // Staggered fade-in animation for article cards
+  const cards = document.querySelectorAll('.article-card, .featured-card, .wide-card, .compact-card');
   const observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry, i) {
       if (entry.isIntersecting) {
