@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiga Universitas, Tiga Dunia — Kolom Ace Afandi</title>
+  <meta name="description" content="Ketika masjid janda mengajarkan astronomi dan Oxford belajar dari terjemahan Arab — tiga universitas, tiga benua, tiga abad.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafaf8;
+      --text: #1f1a0e;
+      --accent: #6b4c12;
+      --muted: #6b6048;
+      --rule: #d4c8a8;
+      --quote-bg: #f5f0e5;
+      --dropcap: #6b4c12;
+      --arabic: #5c3a0a;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Crimson Text', Georgia, serif;
+      font-size: 1.25rem;
+      line-height: 1.85;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .series-badge {
+      display: inline-block;
+      font-family: system-ui, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      border: 1px solid var(--rule);
+      padding: 0.3em 1em;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-family: 'Amiri', 'Crimson Text', serif;
+      font-size: 2.2rem;
+      line-height: 1.35;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      font-style: italic;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+    .hero-image {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    .img-label {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 0.5rem;
+    }
+    .content { margin-top: 2rem; }
+    .content p { margin-bottom: 1.4rem; }
+    .dropcap::first-letter {
+      float: left;
+      font-family: 'Amiri', serif;
+      font-size: 4.2rem;
+      line-height: 0.85;
+      padding-right: 0.45rem;
+      padding-top: 0.05rem;
+      color: var(--dropcap);
+      font-weight: 700;
+    }
+    .section-ornament {
+      text-align: center;
+      color: var(--rule);
+      font-size: 1.2rem;
+      letter-spacing: 0.6em;
+      margin: 2.5rem 0;
+    }
+    blockquote {
+      background: var(--quote-bg);
+      border-left: 3px solid var(--accent);
+      padding: 1.2rem 1.5rem;
+      margin: 1.8rem 0;
+      font-style: italic;
+      color: #4a3f2f;
+      border-radius: 0 4px 4px 0;
+    }
+    blockquote p { margin: 0; }
+    h2 {
+      font-family: 'Amiri', serif;
+      font-size: 1.6rem;
+      margin: 2.5rem 0 1rem;
+      color: var(--accent);
+    }
+    strong { color: #1a150a; }
+    em { color: #4a3a22; }
+    hr {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 2.5rem 0;
+    }
+    .signature {
+      text-align: right;
+      font-style: italic;
+      color: var(--muted);
+      margin-top: 2rem;
+    }
+    .footnotes {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .footnotes p { margin-bottom: 0.5rem; }
+    .closing-ornament {
+      text-align: center;
+      color: var(--rule);
+      margin: 3rem 0 1rem;
+      font-size: 1rem;
+    }
+    .nav-series {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.95rem;
+    }
+    .nav-series a {
+      color: var(--accent);
+      text-decoration: none;
+      font-style: italic;
+    }
+    .nav-series a:hover { text-decoration: underline; }
+    @media (max-width: 600px) {
+      body { font-size: 1.1rem; padding: 1.2rem 1rem 3rem; }
+      h1 { font-size: 1.7rem; }
+      .dropcap::first-letter { font-size: 3.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="series-badge">Esai · Sejarah Pendidikan</div>
+  <h1>Tiga Universitas, Tiga Dunia</h1>
+  <p class="subtitle">Ketika masjid janda mengajarkan astronomi dan Oxford belajar dari terjemahan Arab</p>
+</header>
+
+<!-- 🖼️ HERO — Jam Air Al-Qarawiyyin -->
+<figure class="hero-image">
+  <img src="images/hero-tiga-universitas.webp" alt="Jam air Al-Qarawiyyin — replika di Museum Istanbul, simbol rantai pengetahuan yang tak pernah berhenti" loading="lazy" width="700" height="394">
+  <figcaption class="img-label">Jam air abad ke-14 dari Dar al-Muwaqqit — kini dipajang di Istanbul</figcaption>
+</figure>
+
+<article class="content">
+
+<p class="dropcap">Mereka tidak hidup di abad yang sama. Dan justru itu intinya.</p>
+
+<p>Di Fez, Maroko, sekitar tahun 1320, seorang profesor bernama Ibn al-Banna al-Marrakushi berdiri di Dar al-Muwaqqit — sebuah ruangan khusus di lantai atas menara masjid Al-Qarawiyyin. Di hadapannya: astrolabe, jam air hidrolik, tabel-tabel astronomi. Ia mengajarkan murid-muridnya menghitung posisi bintang, menentukan awal bulan, dan mengkalibrasi jam mekanik. Di bawah, di halaman masjid, profesor lain mengajarkan pembedahan dari kitab al-Zahrawi. Di sudut lain, seorang syaikh membacakan <em>al-Muwatta'</em> — kitab hadis dan fiqh tertua yang sampai kepada kita, karya Imam Malik. Di perpustakaan, 4.000 manuskrip tersimpan — termasuk Al-Qur'an abad ke-9 di atas kulit unta dan naskah asli <em>Muqaddimah</em> Ibn Khaldun. Al-Qarawiyyin sudah berusia 460 tahun.</p>
+
+<p>Di Kairo, Mesir, satu abad kemudian — sekitar 1425 — Ibn Hajar al-Asqalani duduk di halaman Al-Azhar. Ribuan murid mengelilinginya: dari Afrika, dari Syam, dari Anatolia. Ia mengajarkan <em>Fath al-Bari</em>, syarah Shahih Bukhari yang kelak menjadi kitab paling otoritatif dalam ilmu hadis. Di bawah wakaf berlimpah para sultan Mamluk, Al-Azhar adalah penjaga. Penjaga ortodoksi. Penjaga sanad. Penjaga warisan yang baru saja selamat dari gelombang Mongol yang membakar Baghdad.</p>
+
+<p>Di Oxford, Inggris, mundur lagi ke sekitar 1230 — dan suasananya jauh berbeda. Seorang mahasiswa berusia 15 tahun bangun dari tempat tidur jerami di sebuah <em>hall</em> kayu. Ia mengenakan jubah panjang seperti biarawan — karena semua mahasiswa Oxford memang berstatus <em>cleric</em>. Sarapannya: roti dan bir encer. Di ruang kuliah — bukan gedung batu, tapi aula sewaan — ia mendengarkan ceramah dalam bahasa Latin tentang logika Aristoteles. Yang tidak ia ketahui: buku teks yang ia pegang telah menempuh perjalanan hampir seribu tahun — dari Yunani ke Suriah, diterjemahkan ke Arab di Baghdad, dibawa ke Toledo, lalu berubah menjadi Latin sebelum tiba di mejanya. Di luar, penduduk kota dan mahasiswa baru saja selesai bentrok. Dua puluh tahun lalu, beberapa scholar melarikan diri dari tawuran dan mendirikan universitas tandingan. Namanya Cambridge. Oxford baru berusia 130 tahun — dan masih belajar berjalan.</p>
+
+<div class="section-ornament">✦ ✦ ✦</div>
+
+<h2>Yang Masjid, yang Madrasah, yang Kolegium</h2>
+
+<p>Tiga universitas. Tiga benua. Tiga abad yang berbeda.</p>
+
+<p>Ketiga institusi ini tidak pernah saling berkirim surat. Tidak pernah menandatangani perjanjian. Tidak pernah sepakat membangun satu tradisi bersama. Namun sejarah sering bergerak tanpa upacara. Pengetahuan berpindah melalui manuskrip yang disalin, penerjemah yang bekerja diam-diam, dan pengembara yang membawa gagasan melintasi benua — sering kali tanpa disadari oleh mereka yang mewarisinya. Itulah kisah tiga universitas ini.</p>
+
+<p>Al-Qarawiyyin di puncak kejayaan sebagai pabrik polymath. Al-Azhar di puncak sebagai benteng penyelamat peradaban. Oxford di awal — remaja yang baru belajar, dengan buku teks dari bahasa yang tidak ia mengerti asal-usulnya.</p>
+
+<hr>
+
+<h2>Al-Qarawiyyin: Pabrik Polimatik</h2>
+
+<p>Menurut tradisi yang dipegang kuat di Fez, Al-Qarawiyyin didirikan tahun 859 M oleh Fatimah al-Fihri — seorang janda dari Tunisia yang mewarisi kekayaan ayahnya, seorang pedagang. Sejarawan mencatat: sumber tertulis tertua tentang Fatimah baru muncul abad ke-14, lima ratus tahun setelah masa hidupnya. Tapi tradisi ini bertahan. Bukan sultan. Bukan khalifah. Uangnya dari pasar, bukan baitul mal.</p>
+
+<p>Dari masjid sederhana di tepi Sungai Fez ini lahir institusi yang oleh Guinness World Records diakui sebagai universitas tertua di dunia yang masih beroperasi — meskipun klaim ini diperdebatkan: Universitas Bologna (1088) juga mengajukan status sebagai institusi pemberi gelar tertua. Tapi perdebatan itu teknis. Yang tak bisa dibantah adalah luasnya kurikulum Al-Qarawiyyin untuk ukuran abad pertengahan.</p>
+
+<p>Para mahasiswa belajar tafsir, fiqh, nahwu, retorika, logika — itu wajib. Tapi juga matematika, astronomi, kedokteran, hingga bahasa Yunani dan Latin.[^1] Mereka membaca Ibn al-Haytham untuk optik. Al-Zahrawi untuk pembedahan. Al-Razi untuk diagnosis klinis.</p>
+
+<p>Pada 1286, Dinasti Marinid menambahkan <strong>Dar al-Muwaqqit</strong> — ruangan khusus di menara masjid untuk <em>timekeeping</em> astronomis, lengkap dengan jam air hidrolik yang kini replikanya dipamerkan di Museum Sejarah Sains dan Teknologi Islam di Istanbul.[^2] Bukan sekadar penunjuk waktu shalat — ini laboratorium hidup astronomi komputasional.</p>
+
+<p>Dari sini lahir <strong>Ibn Khaldun</strong>, yang dengan <em>Muqaddimah</em>-nya merintis sosiologi modern — sebuah kitab yang ditulis di abad ke-14 tetapi masih menjadi bacaan wajib di universitas-universitas abad ke-21. Lahir juga <strong>Maimonides</strong> — filsuf Yahudi terbesar abad pertengahan — yang konon menimba ilmu di sini sebelum menulis karya yang menyatukan Aristoteles dengan tradisi Yahudi. <strong>Leo Africanus</strong>, yang karya geografisnya menjadi rujukan utama Eropa tentang Afrika selama tiga abad. <strong>Ibn al-Banna al-Marrakushi</strong> — matematikawan yang mengajar di ruangan yang sama dengan jam air pembuka artikel ini.</p>
+
+<p>Al-Qarawiyyin melahirkan dialog Islam-Yahudi-Afrika — sesuatu yang hampir mustahil dibayangkan di Eropa abad pertengahan.</p>
+
+<hr>
+
+<h2>Al-Azhar: Benteng Sunyi</h2>
+
+<p>Al-Azhar didirikan tahun 970 M oleh Dinasti Fatimiyah — khalifah Syiah Ismailiyah yang baru menaklukkan Mesir. Nama "Al-Azhar" konon diambil dari <em>al-Zahra'</em>, gelar Fatimah putri Nabi — sebuah pernyataan ideologis sejak awal.</p>
+
+<p>Tapi Al-Azhar yang kita kenal bukanlah Al-Azhar Fatimiyah. Tahun 1171, Salahuddin al-Ayyubi menggulingkan Fatimiyah dan mengalihkan orientasi Al-Azhar menjadi Sunni. Ia mencabut hak Al-Azhar menyelenggarakan shalat Jumat — larangan yang bertahan nyaris seabad, sampai Mamluk memulihkannya sekitar tahun 1260-an.</p>
+
+<p>Di bawah Mamluk, Al-Azhar menjadi penjaga ortodoksi. Fungsinya bukan mendorong batas ilmu — tapi <strong>menjaga warisan agar tidak lenyap.</strong> Filsafat dicurigai. Ilmu alam dianggap <em>fadl</em> (opsional), bukan <em>fard</em> (wajib).</p>
+
+<p>Konteksnya penting: Baghdad dibakar tahun 1258. Legenda mengatakan perpustakaan Baitul Hikmah dibuang ke Sungai Tigris — dan tintanya mengubah warna air menjadi hitam selama tiga hari. Dalam trauma seperti itu, fungsi Al-Azhar bergeser menjadi arsip. Menjaga sanad. Menyalin manuskrip yang hampir musnah. Kurikulum Al-Azhar sampai tahun 1961 — ya, <strong>1961</strong> — masih terbatas pada Al-Qur'an, ilmu-ilmu Islam, logika, nahwu, dan retorika. Kedokteran, teknik, dan astronomi baru ditambahkan tahun itu.[^3]</p>
+
+<p>Apakah Al-Azhar hanya konservatif? Tokoh-tokohnya membuktikan sebaliknya. <strong>Ibn Hajar al-Asqalani</strong> menulis <em>Fath al-Bari</em> — syarah Shahih Bukhari yang hingga hari ini menjadi rujukan paling otoritatif dalam ilmu hadis. <strong>Al-Suyuthi</strong> menghasilkan 600 kitab seumur hidup: tafsir, hadis, fiqh, sejarah, kedokteran, astronomi — spektrum yang jarang tertandingi sarjana mana pun di zamannya. <strong>Al-Maqrizi</strong> merekam sejarah Mesir dengan ketelitian yang membuat para sejarawan modern masih merujuknya sebagai sumber primer. Dan ratusan tahun kemudian, <strong>Muhammad Abduh</strong> membawa semangat reformasi ke Al-Azhar, mendorong pembaruan kurikulum yang akhirnya terwujud dalam undang-undang 1961.</p>
+
+<p>Secara institusional, Al-Azhar mengkhususkan diri: menjaga, bukan menjelajah. Dan dalam pilihan itu, ia menyelamatkan sesuatu yang tidak ternilai.</p>
+
+<hr>
+
+<h2>Oxford: Remaja yang Belajar dari Orang Tua</h2>
+
+<p>Oxford mulai mengajar sekitar 1096. Tapi baru meledak tahun 1167 — ketika Henry II melarang mahasiswa Inggris belajar di Universitas Paris. Tiba-tiba ratusan scholar Inggris pulang kampung. Oxford menampung mereka.</p>
+
+<p>Tahun 1209 — sebuah insiden. Dua mahasiswa Oxford dituduh membunuh seorang perempuan kota. Penduduk kota menggantung mereka tanpa pengadilan. Para scholar marah, hengkang, dan mendirikan universitas baru. Namanya Cambridge. Inilah Oxford abad ke-13: tawuran, pengadilan seadanya, mahasiswa kabur mendirikan kampus tandingan.</p>
+
+<p>Kurikulumnya? <strong>Trivium</strong> (grammar, rhetoric, logic) dan <strong>quadrivium</strong> (arithmetic, geometry, astronomy, music). Tujuh seni liberal warisan Romawi, disampaikan dalam bahasa Latin. Teksnya Aristoteles — yang baru tersedia dalam terjemahan Latin sejak akhir abad ke-12... <strong>dari bahasa Arab.</strong></p>
+
+<p>Para penerjemah seperti Gerard dari Cremona dan Michael Scot bekerja di Toledo, Spanyol — menerjemahkan Aristoteles, Ibn Sina, Ibn Rushd, al-Khwarizmi dari bahasa Arab ke Latin.[^4] Tanpa jalur Toledo ini, Oxford tidak punya buku teks.</p>
+
+<p>Jadi ironinya utuh: Oxford mengajarkan logika dari Aristoteles yang diterjemahkan dari manuskrip Arab yang disalin dari terjemahan Yunani yang disimpan oleh ulama Muslim di Baghdad, Kairo, dan Cordoba. Rantai transmisi sepanjang 1.500 tahun — dari Yunani klasik ke Baghdad Abbasiyah ke Toledo abad pertengahan ke ruang kuliah Oxford yang masih bau bir encer. Mahasiswa yang memegang buku itu tidak perlu tahu rantainya. Tapi rantai itu tetap ada.</p>
+
+<p>Oxford yang bermula dari aula sewaan dan tawuran kota-kampus itu kelak melahirkan <strong>John Locke</strong>, yang fondasi filsafat politiknya memengaruhi konstitusi dari Amerika hingga Indonesia. <strong>J.R.R. Tolkien</strong> — profesor bahasa Anglo-Saxon — menciptakan Middle-earth. <strong>Stephen Hawking</strong> memperluas imajinasi manusia tentang kosmos — ironisnya dari Cambridge, universitas yang lahir dari tawuran Oxford tahun 1209. Puluhan perdana menteri, puluhan peraih Nobel. Tapi sebelum semua itu, Oxford adalah remaja yang belajar berjalan — dan buku teksnya datang dari bahasa yang tidak ia mengerti asal-usulnya.</p>
+
+<hr>
+
+<h2>Siapa Mewarisi Siapa?</h2>
+
+<p>Pada 1981, George Makdisi — profesor Islamic Studies di University of Pennsylvania — menerbitkan <em>The Rise of Colleges: Institutions of Learning in Islam and the West</em>, sebuah buku yang memantik perdebatan dalam sejarah pendidikan.</p>
+
+<p>Argumennya: struktur universitas abad pertengahan Eropa — <strong>kolegium, profesor dengan <em>chair</em>, wakaf sebagai pendanaan, ijazah sebagai lisensi mengajar</strong> — bukanlah invensi Eropa murni. Banyak di antaranya memiliki preseden di madrasah Islam abad 11–13.[^5]</p>
+
+<p>Nizam al-Mulk, wazir Seljuk, mendirikan jaringan madrasah Nizamiyyah pada abad ke-11 dengan struktur yang sangat spesifik: seorang profesor diangkat seumur hidup dengan gaji dari hasil wakaf, mengajar di gedung yang juga dibiayai wakaf. <em>"Chair"</em> profesor di Oxford — konon dari <em>kursi</em> (كرسي), istilah Arab untuk posisi mengajar berwakaf. Bahkan topi toga? Konon dari <em>qalansuwa</em> — penutup kepala ulama.</p>
+
+<p>Apakah ini berarti Oxford "meniru" Al-Azhar? Tidak sesederhana itu. Makdisi sendiri menekankan bahwa keduanya adalah tradisi paralel dengan akar berbeda. Tesis Makdisi tidak lepas dari kritik — sebagian sejarawan menganggapnya terlalu jauh. Tapi pengaruh strukturalnya sulit sepenuhnya diabaikan.</p>
+
+<p>Ini bukan cerita tentang siapa yang lebih hebat. Ini cerita tentang bagaimana institusi memilih jalannya — dan bagaimana pilihan itu, berabad-abad kemudian, menentukan siapa yang diingat dan siapa yang dilupakan.</p>
+
+<hr>
+
+<h2>Penutup: Jam Air yang Berhenti</h2>
+
+<p>Jam air Al-Qarawiyyin berhenti berfungsi. Mungkin abad ke-17. Mungkin lebih awal. Tidak ada yang tahu persis kapan.</p>
+
+<p>Replikanya kini dipajang di museum di Istanbul — bukan di Fez, bukan di Maroko. Turis melihatnya sambil lalu, membaca keterangan singkat, lalu beranjak ke etalase berikutnya.</p>
+
+<p>Saya mencoba membayangkan seorang mahasiswa di Fez, tahun 1320, berdiri di Dar al-Muwaqqit, memperhatikan air menetes dari satu bejana ke bejana lain, menggerakkan roda gigi, memutar jarum. Gurunya menjelaskan: <em>"Ilmu ini datang dari Yunani, diterjemahkan di Baghdad, dikoreksi di Kairo, dan sekarang kita sempurnakan di sini."</em></p>
+
+<p>Jam air itu berhenti berabad-abad lalu. Tetapi rantai pengetahuan yang pernah menggerakkannya ternyata tidak pernah benar-benar berhenti. Ia hanya berpindah tangan, berpindah bahasa, dan kadang berpindah peradaban — sering kali tanpa disadari oleh mereka yang mewarisinya.</p>
+
+<p>Dan mungkin begitulah sejarah bekerja. Bukan dengan terompet kemenangan. Melainkan dengan manuskrip yang terus disalin, guru yang terus mengajar, dan seorang janda yang, sebelas abad lalu, memilih membangun sebuah masjid.</p>
+
+<p class="signature">— ALIM</p>
+
+</article>
+
+<div class="closing-ornament">❦</div>
+
+<div class="footnotes">
+  <p>[^1]: World History Encyclopedia, "Fatima Al-Fihri and Al-Qarawiyyin University" (2025).</p>
+  <p>[^2]: Hisour, "Dar al-Muwaqqit" — ditambahkan oleh Marinid tahun 1286 M. Replika jam air di Museum Sejarah Sains dan Teknologi Islam, Istanbul.</p>
+  <p>[^3]: Umar, <em>Al-Azhar: Nash'atuhu wa Tatawwuruhu</em>. Reformasi kurikulum melalui UU No. 103 Tahun 1961.</p>
+  <p>[^4]: Wikipedia, "Latin translations of the 12th century" — Gerard dari Cremona, Michael Scot, dan penerjemah Toledo.</p>
+  <p>[^5]: George Makdisi, <em>The Rise of Colleges</em> (Edinburgh University Press, 1981).</p>
+</div>
+
+<nav class="nav-series">
+  <a href="index.html">⌂ Indeks</a>
+</nav>
+
+</body>
+</html>
