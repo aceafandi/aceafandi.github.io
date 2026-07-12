@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mimbar yang Dijual — Kolom Ace Afandi</title>
+  <meta name="description" content="Mimbar diisi oleh yang menghibur, bukan yang berilmu. Sebuah esai tentang mualaf, viralitas, dan pertanyaan siapa yang berhak bicara atas nama agama.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafaf8;
+      --text: #1f1a0e;
+      --accent: #6b4c12;
+      --muted: #6b6048;
+      --rule: #d4c8a8;
+      --quote-bg: #f5f0e5;
+      --dropcap: #6b4c12;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Crimson Text', Georgia, serif;
+      font-size: 1.25rem;
+      line-height: 1.85;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+    header { text-align: center; margin-bottom: 2rem; }
+    .series-badge {
+      display: inline-block;
+      font-family: system-ui, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      border: 1px solid var(--rule);
+      padding: 0.3em 1em;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-family: 'Amiri', serif;
+      font-size: 2.2rem;
+      line-height: 1.35;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      font-style: italic;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+    .hero-image { margin: 2rem 0; text-align: center; }
+    .hero-image img { max-width: 100%; height: auto; border-radius: 4px; }
+    .img-label { font-size: 0.85rem; color: var(--muted); font-style: italic; margin-top: 0.5rem; }
+    .reading-time {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: system-ui, sans-serif;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+    .content { margin-top: 2rem; }
+    .content p { margin-bottom: 1.4rem; }
+    .dropcap::first-letter {
+      float: left;
+      font-family: 'Amiri', serif;
+      font-size: 4.2rem;
+      line-height: 0.85;
+      padding-right: 0.45rem;
+      padding-top: 0.05rem;
+      color: var(--dropcap);
+      font-weight: 700;
+    }
+    h2 {
+      font-family: 'Amiri', serif;
+      font-size: 1.6rem;
+      margin: 2.5rem 0 1rem;
+      color: var(--accent);
+    }
+    strong { color: #1a150a; }
+    em { color: #4a3a22; }
+    hr { border: none; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+    .section-ornament {
+      text-align: center;
+      color: var(--rule);
+      font-size: 1.2rem;
+      letter-spacing: 0.6em;
+      margin: 2.5rem 0;
+    }
+    .section-image { text-align: center; margin: 2rem 0; }
+    .section-image img { max-width: 100%; height: auto; border-radius: 4px; opacity: 0.9; }
+    .closing-ornament { text-align: center; color: var(--rule); margin: 3rem 0 1rem; }
+    .nav-series {
+      display: flex;
+      justify-content: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.95rem;
+    }
+    .nav-series a { color: var(--accent); text-decoration: none; font-style: italic; }
+    .nav-series a:hover { text-decoration: underline; }
+    .signature { text-align: right; font-style: italic; color: var(--muted); margin-top: 2rem; }
+    .footnotes {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    @media (max-width: 600px) {
+      body { font-size: 1.1rem; padding: 1.2rem 1rem 3rem; }
+      h1 { font-size: 1.7rem; }
+      .dropcap::first-letter { font-size: 3.4rem; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/blog-common.css">
+</head>
+<body>
+<div class="reading-progress" id="readingProgress"></div>
+
+<header>
+  <div class="series-badge">Esai · Sosial</div>
+  <h1>Mimbar yang Dijual</h1>
+  <p class="subtitle">Mimbar diisi oleh yang menghibur, bukan yang berilmu. Tentang mualaf, viralitas, dan pertanyaan siapa yang berhak bicara atas nama agama.</p>
+  <span class="reading-time" id="readingTime"></span>
+</header>
+
+<figure class="hero-image">
+  <img src="images/hero-mimbar-yang-dijual.webp" alt="Mimbar kayu berukir di masjid tua, diterpa cahaya pagi — kosong, menunggu" loading="lazy" width="1400" height="780">
+  <figcaption class="img-label">Mimbar itu kosong. Siapa yang pantas menaikinya?</figcaption>
+</figure>
+
+<article class="content">
+
+<p class="dropcap">Subuh itu masjid penuh. Mobil membludak di parkiran, anak-anak muda duduk di teras, sebagian berdiri di pinggir karena saf sudah tak muat. Teman saya berbisik: "Siapa penceramahnya?"</p>
+
+<p>"Mantan pendeta."</p>
+
+<p>"Oh, pantas."</p>
+
+<p>Dua kata. "Oh, pantas." Saya tidak tahu apakah teman saya sadar bahwa jawabannya adalah diagnosis paling ringkas dari sesuatu yang sedang terjadi di masjid-masjid kita.</p>
+
+<p>Ini bukan tentang satu aktris Australia. Ini tentang pola yang terjadi di masjid-masjid kita — dan apa yang pola itu katakan tentang kita sebagai komunitas.</p>
+
+</article>
+
+<!-- 🏺 SECTION IMAGE — Kiai dan Kitab -->
+<figure class="section-image">
+  <img src="images/section-mimbar-kiai.webp" alt="Seorang kiai tua membaca kitab kuning dalam cahaya lampu minyak — kontras dengan masjid ramai di kejauhan" loading="lazy" width="1400" height="780">
+  <figcaption class="img-label">Empat puluh tahun mengkaji kitab. Tiga puluh jemaah. Sementara mantan pendeta dua tahun? Parkiran penuh.</figcaption>
+</figure>
+
+<article class="content">
+
+<p>Beberapa hari setelah subuh itu, saya membayangkan seorang kiai di pelosok Jawa Timur. Ia menghabiskan empat puluh tahun mengkaji <em>I'anatuth Thalibin</em> dan <em>Bughyatul Mustarsyidin</em> — dua kitab fatwa Syafi'iyyah yang menjadi pegangan pesantren Indonesia. Ia membaca teks Arab setiap pagi. Ia menghafal isnad. Tapi jika ia diundang ceramah, jemaah yang datang mungkin tiga puluh orang. Sementara mantan pendeta yang masuk Islam dua tahun lalu? Parkiran penuh. Amplop-amplop menebal di tangan panitia.</p>
+
+<p>Ini bukan tentang mualafnya. Semangat seorang mualaf itu wajar — ia baru menemukan sesuatu, ia antusias, ia ingin berbagi. Yang perlu dilihat adalah polanya: <strong>mimbar diisi oleh yang menghibur, bukan yang berilmu.</strong></p>
+
+<p>Pola yang sama — dan lebih berbahaya — kini merebak di ranah global.</p>
+
+<hr>
+
+<p>Pekan ini pola itu menemukan wajahnya yang paling ekstrem. Lily Jay — aktris Australia, mualaf 2025, tiga juta pengikut — tersandung skandal besar. ABC News Verify menemukan bahwa yayasan amalnya menggunakan video AI-generated untuk mengklaim kerja kemanusiaan. Anak-anak yatim yang ia pamerkan adalah hasil prompt. Wanita yang mengumumkan panti asuhan tidak ada.</p>
+
+<p>Ia menerima donasi. Ia menerima penghargaan kemanusiaan. Ia berdakwah. Dan jutaan Muslim memuja kontennya.</p>
+
+<p>Skandal Lily Jay terjadi di Australia. Tapi pola yang sama bisa ditemukan di poster-poster kajian masjid di Indonesia: <em>"Mantan Pendeta Masuk Islam," "Dulu Saya Saksi Yehuwa," "Mantan Pastor Menemukan Kebenaran."</em> Judul yang berbeda, logika yang sama: menjual keislaman seseorang lewat pembongkaran agamanya yang dulu. Lily Jay adalah ujung spektrum — yang menggunakan AI untuk memalsukan kerja kemanusiaan. Tapi dorongan yang mengisi ruangan-ruangan kajian di Jakarta dan Surabaya berasal dari sumber yang sama.</p>
+
+<p>Kenapa pola ini berulang? Saya menduga jawabannya ada di psikologi yang belum selesai. Mualaf Barat yang menyerang agama lamanya memberi kita sesuatu yang sulit didapat dari kiai kita sendiri: validasi dari "luar." Mungkin karena empat abad penjajahan meninggalkan luka yang belum sembuh — pengakuan dari mereka yang pernah menjajah terasa lebih sah daripada pengakuan dari sesama. Bukti bahwa bahkan orang kulit putih mengakui kebenaran Islam. Ada kompleks inferioritas di sana yang jarang diakui.</p>
+
+<p>Tapi di balik Lily Jay — di balik semua mualaf viral yang kontennya adalah serangan — ada pertanyaan yang lebih besar. Pertanyaan yang relevan tidak hanya untuk Muslim Indonesia, tapi untuk siapa pun yang peduli pada bagaimana otoritas keagamaan dibangun: <strong>siapa yang berhak bicara atas nama agama?</strong></p>
+
+<hr>
+
+<p>Poster-poster itu selalu penuh. Dan isinya selalu sama.</p>
+
+<p>Bukan tafsir. Bukan akhlak. Bukan tasawuf. Bukan fikih muamalah. Yang dijual adalah pembongkaran. Enam puluh menit tentang kontradiksi Alkitab, kesesatan Trinitas, bisnis gereja. Jemaah mendengar dengan mata berbinar. Tepuk tangan. Lalu pulang. Apa yang mereka pelajari tentang Islam hampir tidak ada.</p>
+
+<p>Dan mari kita akui: ada mualaf yang sungguh-sungguh belajar. Yang duduk di majelis ilmu bertahun-tahun sebelum bicara. Yang menyadari bahwa Islam tidak cukup dipahami dalam enam bulan. Mereka ada. Mereka hanya tidak viral — karena mereka tidak menjual serangan. Mereka menjual ilmu. Dan ilmu, sayangnya, tidak selaris kontroversi.</p>
+
+<hr>
+
+<p>Bayangkan Imam Syafi'i di mimbar. Ia tidak menyerang Yahudi dan Nasrani — ia membangun ushul fikih. Al-Ghazali tidak menulis bab "Kontradiksi Alkitab" dalam <em>Ihya' Ulumuddin</em> — ia menulis tentang hati, tentang ikhlas, tentang muhasabah. Gus Dur justru naik mimbar membela hak beribadah umat Kristen. Bahkan Nabi Muhammad — ketika delegasi Kristen Najran datang ke Madinah — mempersilakan mereka shalat di Masjid Nabawi. Bukan diusir. Bukan diserang.</p>
+
+<p>Mereka tidak butuh meruntuhkan agama lain untuk mendirikan Islam. Itulah garis yang membedakan mereka dari penceramah viral hari ini.</p>
+
+<p>Ada kaidah dalam tradisi keilmuan Islam: <em>al-adab qabla al-'ilm</em> — adab sebelum ilmu. Sebelum seseorang naik mimbar, ia belajar bahwa mimbar adalah amanah, bukan panggung. Dan di sinilah tanggung jawab segmen jemaah urban kita sering kali luput dari sorotan — bukan pada mualaf yang baru belajar, tapi pada kita yang menaikkannya sebelum waktunya, yang mengeksploitasi traumanya, yang memilih tontonan di atas tuntunan.</p>
+
+<p>Setiap kali kita mengundang seseorang ke mimbar hanya karena ia "mantan," kita mengirim pesan diam-diam: bahwa kebenaran Islam diukur dari siapa yang meninggalkan agama lain — bukan dari siapa yang paling dalam memahaminya. Pesan itu punya konsekuensi. Jemaah jadi pendek ilmunya. Hubungan antarumat merenggang. Dan mualaf itu sendiri — yang seharusnya dibimbing dan dilindungi — justru dijadikan komoditas.</p>
+
+<hr>
+
+<p>Saya tidak mengatakan mualaf tidak boleh ceramah.</p>
+
+<p>Saya mengatakan: sebelum naik ke sana, duduklah dulu di majelis ilmu. Bacalah kitab. Temuilah guru. Rendahkan hati. Islam yang kau peluk ini berumur empat belas abad — ia tidak akan kau pahami dalam satu musim.</p>
+
+<p>Dan kepada para takmir masjid: jika setelah ini jemaah Anda berkurang dan amplop lebih tipis — mungkin itu bukan kemunduran. Mungkin itu pertanda bahwa jemaah yang tersisa adalah mereka yang benar-benar ingin belajar.</p>
+
+<p>Karena pertanyaannya bukan pada mualafnya. Pertanyaannya pada kita: <strong>apakah Islam kita cukup kuat tanpa harus meruntuhkan yang lain?</strong></p>
+
+<p class="signature">— ALIM</p>
+
+</article>
+
+<div class="closing-ornament">❦</div>
+
+<div class="footnotes">
+<p><em>Sumber: ABC News Verify, "Australian influencer Lily Jay's tangled web of AI manipulation," 5 Juli 2026. Delegasi Kristen Najran: Ibn Ishaq, Sīrat Rasūl Allāh, dan Ibn Sa'd, al-Ṭabaqāt al-Kubrā. Kitab fatwa Syafi'iyyah: Sayyid Abu Bakr Syatha al-Dimyati (w. 1310 H), I'ānat al-Ṭālibīn; Sayyid Abdurrahman Ba'alawi (w. 1320 H), Bughyat al-Mustarsyidīn.</em></p>
+</div>
+
+<nav class="nav-series">
+  <a href="index.html">⌂ Indeks</a>
+</nav>
+
+<script src="assets/blog-common.js"></script>
+<button class="dark-toggle" id="darkToggle" aria-label="Dark mode">🌙</button>
+</body>
+</html>
