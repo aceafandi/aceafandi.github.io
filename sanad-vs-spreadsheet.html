@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanad vs Spreadsheet — Kolom Ace Afandi</title>
+  <meta name="description" content="al-Suyuti menghitung dengan sanad. Sinai menghitung dengan algoritma. Mereka sampai pada kesimpulan yang sama.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafaf8;
+      --text: #1f1a0e;
+      --accent: #6b4c12;
+      --muted: #6b6048;
+      --rule: #d4c8a8;
+      --quote-bg: #f5f0e5;
+      --dropcap: #6b4c12;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Crimson Text', Georgia, serif;
+      font-size: 1.25rem;
+      line-height: 1.85;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+    header { text-align: center; margin-bottom: 2rem; }
+    .series-badge {
+      display: inline-block;
+      font-family: system-ui, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      border: 1px solid var(--rule);
+      padding: 0.3em 1em;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-family: 'Amiri', serif;
+      font-size: 2.2rem;
+      line-height: 1.35;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      font-style: italic;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+    .hero-image { margin: 2rem 0; text-align: center; }
+    .hero-image img { max-width: 100%; height: auto; border-radius: 4px; }
+    .img-label { font-size: 0.85rem; color: var(--muted); font-style: italic; margin-top: 0.5rem; }
+    .reading-time {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: system-ui, sans-serif;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+    .content { margin-top: 2rem; }
+    .content p { margin-bottom: 1.4rem; }
+    .dropcap::first-letter {
+      float: left;
+      font-family: 'Amiri', serif;
+      font-size: 4.2rem;
+      line-height: 0.85;
+      padding-right: 0.45rem;
+      padding-top: 0.05rem;
+      color: var(--dropcap);
+      font-weight: 700;
+    }
+    h2 {
+      font-family: 'Amiri', serif;
+      font-size: 1.6rem;
+      margin: 2.5rem 0 1rem;
+      color: var(--accent);
+    }
+    strong { color: #1a150a; }
+    em { color: #4a3a22; }
+    hr { border: none; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+    .section-ornament {
+      text-align: center;
+      color: var(--rule);
+      font-size: 1.2rem;
+      letter-spacing: 0.6em;
+      margin: 2.5rem 0;
+    }
+    .section-image { text-align: center; margin: 2rem 0; }
+    .section-image img { max-width: 100%; height: auto; border-radius: 4px; opacity: 0.9; }
+    .signature { text-align: right; font-style: italic; color: var(--muted); margin-top: 2rem; }
+    .footnotes {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .closing-ornament { text-align: center; color: var(--rule); margin: 3rem 0 1rem; }
+    .nav-series {
+      display: flex;
+      justify-content: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.95rem;
+    }
+    .nav-series a { color: var(--accent); text-decoration: none; font-style: italic; }
+    .nav-series a:hover { text-decoration: underline; }
+    @media (max-width: 600px) {
+      body { font-size: 1.1rem; padding: 1.2rem 1rem 3rem; }
+      h1 { font-size: 1.7rem; }
+      .dropcap::first-letter { font-size: 3.4rem; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/blog-common.css">
+</head>
+<body>
+<div class="reading-progress" id="readingProgress"></div>
+
+<header>
+  <div class="series-badge">Esai · Studi Al-Qur'an</div>
+  <h1>Sanad vs Spreadsheet</h1>
+  <p class="subtitle">al-Suyuti menghitung dengan sanad. Sinai menghitung dengan algoritma. Mereka sampai pada kesimpulan yang sama.</p>
+  <span class="reading-time" id="readingTime"></span>
+</header>
+
+<figure class="hero-image">
+  <img src="images/hero-sanad-vs-spreadsheet.webp" alt="Seorang sarjana menulis manuskrip di bawah cahaya lilin — warisan sanad yang bertemu spreadsheet" loading="lazy" width="1400" height="788">
+  <figcaption class="img-label">Kairo, akhir abad ke-15 — dan pertanyaan yang sama masih bergema</figcaption>
+</figure>
+
+<article class="content">
+
+<p class="dropcap">Suatu hari di Kairo, akhir abad ke-15, Jalal al-Din al-Suyuti membuka <em>al-Itqān fī 'Ulūm al-Qur'ān</em> dan mulai mencatat. Tangannya bergerak pelan, mendata satu per satu: surah al-An'am — Makkiyyah. Tapi ayat 151 sampai 153? Madaniyyah. Surah al-Muzzammil — Makkiyyah. Tapi ayat terakhirnya? Turun di Madinah.</p>
+
+<p>Ia menyebutnya <em>istithnā'</em> — pengecualian. Dan ia bukan yang pertama. Al-Zarkashi, dua abad sebelumnya, sudah menulis hal yang sama dalam <em>al-Burhān</em>. Bahkan Abu al-Hasan al-Hassar di abad ke-6 menyusun nazham tentang surah-surah yang diperselisihkan — puisi yang dihafal para murid untuk mengingat bahwa batas antara Makki dan Madani tidak pernah setegar yang dibayangkan.</p>
+
+<p>Lima ratus tahun kemudian, di Oxford, Nicolai Sinai duduk di depan komputernya. Ia tidak membuka <em>al-Itqān</em>. Ia membuka spreadsheet.</p>
+
+<p>Di layarnya: 114 surah, masing-masing dengan angka <em>mean verse length</em> dalam huruf transkripsi Latin, <em>standard deviation</em>, dan <em>coefficient of variation</em>. Q 103: 14 huruf. Q 2: 137 huruf. Q 60: 179 huruf. Rentang dua belas kali lipat. Ia menemukan bahwa semakin panjang ayat, semakin besar kemungkinan surah itu turun belakangan. Dan semakin tinggi coefficient of variation-nya, semakin besar kemungkinan surah itu mengandung interpolasi.</p>
+
+<p>Al-Suyuti menghitung dengan sanad. Sinai menghitung dengan algoritma. Mereka sampai pada kesimpulan yang sama: surah tidak turun sekaligus.</p>
+
+<p>Dan di sinilah paradoks pertama: <strong>Sinai lebih dekat ke al-Suyuti daripada ke gurunya sendiri, Nöldeke.</strong></p>
+
+<p>Nöldeke, dalam <em>Geschichte des Qorāns</em> (1860), memperlakukan surah sebagai unit — satu blok yang turun dalam satu periode. Ia tahu ada pengecualian, tapi ia tidak mengembangkan metodologi untuk mengidentifikasinya secara sistematis. Sinai-lah yang membongkar kerangka itu. Dengan menghitung coefficient of variation, ia bisa mendeteksi surah mana yang "terlalu tidak rata" untuk menjadi satu unit. Dan temuannya persis seperti yang sudah dicatat al-Suyuti lima abad sebelumnya: surah tidak selalu turun sekaligus. Ada ayat yang ditambahkan kemudian.</p>
+
+<p>Hanya saja al-Suyuti menyebutnya <em>istithnā'</em> dan mendasarkannya pada riwayat sahabat. Sinai menyebutnya <em>editorial expansion</em> dan mendasarkannya pada mean verse length.</p>
+
+<hr>
+
+<h2>Yang Disepakati Semua Orang</h2>
+
+<p>Ini fakta yang jarang diungkapkan: <strong>semua pihak — dari ulama klasik sampai orientalis — setuju bahwa surah mengandung lapisan dari periode yang berbeda.</strong></p>
+
+<p>Al-Suyuti mendata 82 surah Makkiyyah, 20 Madaniyyah, dan 12 yang diperselisihkan. Nöldeke mendata 48 Early Meccan, 21 Middle Meccan, 21 Late Meccan, dan 24 Medinan — total hampir identik. Sinai mengonfirmasi bahwa spektrum verse length membentuk kurva kontinu: tidak ada lompatan diskrit antara "early" dan "middle" atau "middle" dan "late." Batas-batas Nöldeke adalah konstruksi yang berguna — bukan realitas teks.</p>
+
+<p>Sinai sendiri mengakui ini dengan jujur. Kalimat pembuka artikelnya tahun 2017 berbunyi: <em>"That various qur'anic surahs contain secondary insertions and expansions is a thoroughly traditional notion."</em> Gagasan bahwa surah mengandung interpolasi — katanya — adalah gagasan Islam klasik. Dia tidak menemukannya. Dia hanya mengganti penjelasannya.</p>
+
+<hr>
+
+<h2>Perbedaan Itu Bukan pada APA, Tapi pada SIAPA</h2>
+
+<p>Bagi al-Suyuti dan para mufassir klasik, penjelasannya sederhana: <strong>Jibril datang dengan wahyu baru, dan Nabi memerintahkan agar ayat itu ditempatkan di surah yang sudah ada.</strong> Proses ini disebut <em>tawqīfī</em> — berdasarkan perintah wahyu. Bukan hasil rapat redaksi. Bukan hasil diskresi juru tulis.</p>
+
+<p>Bagi Sinai, penjelasannya berbeda: <strong>"scribal circles" menyisipkan material baru ke dalam surah yang sudah ada.</strong> Bisa jadi ini terjadi saat Nabi masih hidup. Tapi bisa jadi — dan Sinai tidak menutup kemungkinan ini — terjadi setelahnya.</p>
+
+<p>Di sinilah tensi sebenarnya. Bukan pada <em>apakah</em> surah mengandung lapisan kronologis. Melainkan pada <em>siapa</em> yang menyisipkan, <em>kapan</em>, dan <em>atas otoritas apa</em>.</p>
+
+<p>Ambil satu contoh: Q 5:3. Sinai menunjukkan bahwa ayat ini — bagian dari surah al-Ma'idah — bisa diurai: bagian awal dan akhirnya berbicara tentang hukum makanan (bangkai, darah, babi — lalu pengecualian darurat). Tapi di tengah-tengah, tiba-tiba muncul deklarasi teologis yang termasyhur: <em>"Pada hari ini telah Kusempurnakan agamamu..."</em> Dan di sekitar deklarasi itu, ada rincian tambahan tentang hewan yang dicekik, dipukul, disembelih di altar berhala. Bagi Sinai, perubahan tema yang mendadak dan melompatnya panjang ayat mengindikasikan adanya pertumbuhan tekstual — material baru yang digrafting ke struktur yang sudah ada.</p>
+
+<p>Bagi al-Suyuti, ini bukan masalah. Ini <em>istithnā'</em> — wahyu baru ditempatkan di surah yang sudah ada, atas perintah Nabi. Bagi Sinai, ini <em>editorial expansion</em>. Keduanya melihat fenomena yang sama: ada sesuatu yang disisipkan. Yang berbeda adalah penjelasan tentang siapa yang menyisipkan dan kenapa.</p>
+
+<hr>
+
+<h2>Paradoks Kedua</h2>
+
+<p>Metode Sinai yang paling modern justru mengonfirmasi temuan paling klasik dalam tradisi Islam. Tapi karena penjelasannya berbeda — "scribal editing," bukan "wahyu tambahan" — percakapan ini tetap dianggap sebagai benturan.</p>
+
+<p>Padahal tidak harus begitu.</p>
+
+<p>Seluruh bangunan argumentasi Sinai berdiri di atas <strong>inferensi literer.</strong> Ia menghitung verse length. Ia membandingkan diksi. Ia mendeteksi koefisien variasi. Tapi sampai hari ini, belum ada manuskrip abad pertama Hijriah yang secara eksplisit memperlihatkan lapisan penyisipan sebagaimana direkonstruksi oleh model statistiknya. Manuskrip Sana'a — yang sering dikutip dalam debat ini — tidak menunjukkan "grafting." Paling banter, ia menunjukkan varian bacaan — yang sudah diakui dalam tradisi <em>qirā'āt.</em> Hipotesis Sinai tetaplah hipotesis: menarik, canggih, tetapi belum terkonfirmasi oleh bukti material.</p>
+
+<p>Sinai sendiri mengakui ini. Di halaman 83 artikelnya, ia menulis bahwa argumennya bersifat "cumulative and probabilistic." Tidak ada satu pun yang "unassailably sufficient by itself." Kerendahan hati metodologis ini justru membuat argumennya lebih sulit dibantah, bukan lebih mudah — karena ia tidak mengklaim lebih dari yang bisa dibuktikan.</p>
+
+<hr>
+
+<h2>Suara dari Dalam</h2>
+
+<p>Tidak semua sarjana Muslim kontemporer merespons dengan cara yang sama.</p>
+
+<p>Mustafa al-A'zami (w. 2017), ulama hadis Deoband lulusan al-Azhar, menulis <em>The History of the Qur'anic Text</em> sebagai bantahan sistematis. Argumennya bertumpu pada satu kata: <strong>tawātur.</strong> Transmisi massal — ribuan penghafal di setiap generasi — menjamin bahwa mushaf Uthmani tidak mungkin mengalami "editing" substansial. Kalaupun ada interpolasi, itu terjadi di masa Nabi, atas perintah Nabi, dan terekam dalam tradisi lisan.</p>
+
+<p>Kelemahan argumen ini: tawātur menjamin transmisi mushaf — tapi tidak otomatis membuktikan bahwa mushaf itu sendiri tidak mengandung lapisan editorial dari masa Nabi. Al-A'zami tidak membedakan secara analitis antara "editing oleh Nabi" (yang mungkin ia terima) dan "editing pasca-Nabi" (yang ia tolak). Sinai bermain di celah ini.</p>
+
+<p>Abu Abdullah al-Zanjani dan Muhammad Baqir Ramyar — keduanya sarjana Iran abad ke-20 — mengambil pendekatan yang berbeda. Mereka menulis <em>Tārīkh al-Qur'ān</em> dengan standar akademik modern, sadar akan keberadaan kesarjanaan Barat, tapi memilih untuk tidak berdebat. Mereka mendokumentasikan data klasik: daftar surah, variasi riwayat, parameter klasifikasi. Nöldeke disebut — tapi tidak dibantah. Posisi mereka: Barat punya pendekatannya, kami punya pendekatan kami.</p>
+
+<p>Ini bukan sikap apologetik, bukan pula revisionis. Ini sikap ilmuwan yang menulis untuk komunitasnya sendiri. Dan justru karena tidak polemis, karya mereka jarang dikutip dalam perdebatan — tapi juga jarang diserang.</p>
+
+<hr>
+
+</article>
+
+<!-- 🏺 SECTION IMAGE — Perpustakaan -->
+<figure class="section-image">
+  <img src="images/section-sanad-library.webp" alt="Dua sarjana dalam perpustakaan — al-Suyuti dengan manuskrip, Sinai dengan laptop" loading="lazy" width="1400" height="788">
+  <figcaption class="img-label">Percakapan yang tidak pernah terjadi — tapi terus bergema</figcaption>
+</figure>
+
+<article class="content">
+
+<p>Suatu malam, setelah berjam-jam membaca kitab dan spreadsheet, saya mencoba membayangkan sebuah percakapan yang tidak pernah terjadi.</p>
+
+<p>Al-Suyuti dan Sinai duduk di perpustakaan yang sama. Al-Suyuti membuka daftar isnad-nya. Sinai membuka laptopnya.</p>
+
+<p>"Lihat," kata al-Suyuti, "ayat ini Madaniyyah, tapi surahnya Makkiyyah. Aku dapat riwayat ini dari Ibn Abbas."</p>
+
+<p>"Saya juga menemukan hal yang sama," kata Sinai. "Tapi saya menemukannya dari mean verse length."</p>
+
+<p>Mereka berdua diam sejenak. Lalu al-Suyuti bertanya: "Tapi <em>siapa</em> yang meletakkan ayat itu di sana?"</p>
+
+<p>Sinai mengangkat bahu. "Saya tidak tahu. Bisa Nabi. Bisa juru tulisnya."</p>
+
+<p>Di situlah percakapan mereka berakhir. Bukan karena salah satu kalah. Tapi karena pertanyaan "siapa" dan "atas otoritas apa" bukanlah pertanyaan yang bisa dijawab oleh analisis stilistika. Atau oleh sanad. Itu adalah pertanyaan yang jawabannya tidak ditemukan di kitab atau spreadsheet — melainkan di tempat yang tidak bisa dijangkau oleh keduanya.</p>
+
+<p class="signature">— ALIM</p>
+
+</article>
+
+<div class="closing-ornament">❦</div>
+
+<div class="footnotes">
+<p><em>Sumber: al-Suyuti, al-Itqān fī 'Ulūm al-Qur'ān (Kairo, 1974). Sinai, "Processes of Literary Growth and Editorial Expansion in Two Medinan Surahs" (Oxford, 2017). Sinai, The Qur'an: A Historical-Critical Introduction (Edinburgh, 2017). Nöldeke et al., Geschichte des Qorāns (Leipzig, 1909–1938). al-A'zami, The History of the Qur'anic Text (Riyadh, 2008). Zulfikri et al., "Reassessing Qurʾānic Codification," QURANICA 17, no. 2 (2025).</em></p>
+</div>
+
+<nav class="nav-series">
+  <a href="index.html">⌂ Indeks</a>
+</nav>
+
+<script src="assets/blog-common.js"></script>
+<button class="dark-toggle" id="darkToggle" aria-label="Dark mode">🌙</button>
+</body>
+</html>
