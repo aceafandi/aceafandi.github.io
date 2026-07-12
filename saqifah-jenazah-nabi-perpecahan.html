@@ -116,8 +116,11 @@
   @media (max-width: 640px) { .hero h1 { font-size: 1.7rem; } .hero .subtitle { font-size: 0.9rem; } .arabic-block { padding: 22px 18px; } .arabic-block .arabic-text { font-size: 1.2rem; } .info-card { padding: 20px 18px; } .info-card .card-num { font-size: 1.8rem; } .container { padding: 0 16px; } .content { font-size: 0.95rem; } }
   @media print { body { background: white; } .top-line, .progress-bar, .back-link { display: none; } .arabic-block, .highlight-bar, .info-card { break-inside: avoid; } }
 </style>
+
+<link rel="stylesheet" href="assets/blog-common.css">
 </head>
 <body>
+<div class="reading-progress" id="readingProgress"></div>
 
 <div class="top-line"></div>
 <div class="progress-bar" id="progress"></div>
@@ -130,6 +133,7 @@
   <div class="hero-badge">Sejarah</div>
   <h1>Saat Jenazah Nabi Belum Dikubur, Perpecahan Sudah Dimulai</h1>
   <p class="subtitle">Versi panjang: Saqifah, Khamenei, dan Ironi Sejarah yang Berulang</p>
+<span class="reading-time" id="readingTime"></span>
   <div class="divider-ornament">
     <span class="line"></span>
     <span class="diamond"></span>
@@ -238,6 +242,16 @@
 
   <p>Dan 1.400 tahun belum cukup untuk menjawabnya.</p>
 </article>
+<div class="related-posts">
+  <h3>Baca juga</h3>
+  <div class="related-grid">
+      <a href="ismailiyah-01-perpecahan-pertama.html" class="related-card">
+        <div class="rc-tag">Bagian 1</div>
+        <div class="rc-title">Satu Kematian yang Memecah Syiah Selamanya</div>
+      </a>
+  </div>
+</div>
+
 
 <footer class="article-footer">
   <p class="signature">— ALIM</p>
@@ -263,5 +277,7 @@
   });
 })();
 </script>
+<button class="dark-toggle" id="darkToggle" aria-label="Dark mode">🌙</button>
+<script src="assets/blog-common.js"></script>
 </body>
 </html>

@@ -170,13 +170,17 @@
       .dropcap::first-letter { font-size: 3.4rem; }
     }
   </style>
+
+<link rel="stylesheet" href="assets/blog-common.css">
 </head>
 <body>
+<div class="reading-progress" id="readingProgress"></div>
 
 <header>
   <div class="series-badge">Seri Ismailiyah · Bagian 10 · Penutup</div>
   <h1>Setelah 1.200 Tahun,<br>Saya Berhenti di Sini</h1>
   <p class="subtitle">Lima pelajaran dari sejarah yang tidak pernah selesai</p>
+<span class="reading-time" id="readingTime"></span>
 </header>
 
 <!-- 🖼️ HERO — Kontemplasi Malam -->
@@ -276,10 +280,27 @@
   <p><em>Serial Ismailiyah — sepuluh episode, Juli 2026. Sebuah upaya memahami 1.200 tahun sejarah melalui kitab-kitab yang sunyi dan pertanyaan-pertanyaan yang tidak pernah selesai.</em></p>
 </div>
 
+
+<div class="related-posts">
+  <h3>Baca juga</h3>
+  <div class="related-grid">
+      <a href="ismailiyah-07-alamut-aiglemont.html" class="related-card">
+        <div class="rc-tag">Bagian 9</div>
+        <div class="rc-title">Dari Alamut ke Aiglemont, Dari Pedang ke Cek</div>
+      </a>
+      <a href="ismailiyah-06-al-ghazali.html" class="related-card">
+        <div class="rc-tag">Bagian 8</div>
+        <div class="rc-title">Al-Ghazālī Menghunus Pedang</div>
+      </a>
+  </div>
+</div>
+
 <nav class="nav-series">
   <a href="ismailiyah-09-alamut-aiglemont.html">← Bagian 9: Dari Alamut ke Aiglemont</a>
   <a href="index.html">⌂ Indeks</a>
 </nav>
 
+<button class="dark-toggle" id="darkToggle" aria-label="Dark mode">🌙</button>
+<script src="assets/blog-common.js"></script>
 </body>
 </html>

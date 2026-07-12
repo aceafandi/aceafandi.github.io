@@ -53,8 +53,11 @@
   img[loading="lazy"] { transition: opacity 0.4s ease; }
   @media (max-width: 640px) { .hero h1 { font-size: 1.5rem; } .container { padding: 0 16px; } .content { font-size: 0.95rem; } }
 </style>
+
+<link rel="stylesheet" href="assets/blog-common.css">
 </head>
 <body>
+<div class="reading-progress" id="readingProgress"></div>
 
 <div class="top-line"></div>
 <div class="progress-bar" id="progress"></div>
@@ -66,6 +69,7 @@
   <div class="hero-badge">Sejarah</div>
   <h1>Dari Alamut ke Aiglemont, Dari Pedang ke Cek</h1>
   <p class="subtitle">Transformasi Ismailiyah: dari benteng para Assassin ke jaringan filantropi global — sebuah paradoks yang belum selesai</p>
+<span class="reading-time" id="readingTime"></span>
   <div class="divider-ornament">
     <span class="line"></span><span class="diamond"></span><span class="line"></span>
   </div>
@@ -243,5 +247,7 @@
   });
 })();
 </script>
+<button class="dark-toggle" id="darkToggle" aria-label="Dark mode">🌙</button>
+<script src="assets/blog-common.js"></script>
 </body>
 </html>

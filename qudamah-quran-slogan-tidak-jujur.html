@@ -243,8 +243,11 @@
     .back-link { display: none; }
   }
 </style>
+
+<link rel="stylesheet" href="assets/blog-common.css">
 </head>
 <body>
+<div class="reading-progress" id="readingProgress"></div>
 
 <div class="top-line"></div>
 <div class="progress-bar" id="progress"></div>
@@ -257,6 +260,7 @@
   <div class="hero-badge">Teologi</div>
   <h1>Qudamah, Qur'an, dan Slogan yang Tidak Jujur</h1>
   <p class="subtitle">Kenapa "Kembali ke Qur'an dan Hadis" seringkali hanya taklid dengan kemasan berbeda</p>
+<span class="reading-time" id="readingTime"></span>
   <div class="divider-ornament">
     <span class="line"></span>
     <span class="diamond"></span>
@@ -377,5 +381,7 @@
 })();
 </script>
 
+<button class="dark-toggle" id="darkToggle" aria-label="Dark mode">🌙</button>
+<script src="assets/blog-common.js"></script>
 </body>
 </html>

@@ -82,8 +82,11 @@
   @media (max-width: 640px) { .hero h1 { font-size: 1.7rem; } .hero .subtitle { font-size: 0.9rem; } .arabic-block { padding: 22px 18px; } .arabic-block .arabic-text { font-size: 1.2rem; } .info-card { padding: 20px 18px; } .info-card .card-num { font-size: 1.8rem; } .container { padding: 0 16px; } .content { font-size: 0.95rem; } }
   @media print { body { background: white; } .top-line, .progress-bar, .back-link { display: none; } .arabic-block, .highlight-bar, .info-card { break-inside: avoid; } }
 </style>
+
+<link rel="stylesheet" href="assets/blog-common.css">
 </head>
 <body>
+<div class="reading-progress" id="readingProgress"></div>
 
 <div class="top-line"></div>
 <div class="progress-bar" id="progress"></div>
@@ -96,6 +99,7 @@
   <div class="hero-badge">Sejarah</div>
   <h1>Sang Dai yang Disingkirkan oleh Imam yang Ia Bebaskan</h1>
   <p class="subtitle">Kebangkitan Fatimiyah di Afrika Utara dan paradoks kekuasaan</p>
+<span class="reading-time" id="readingTime"></span>
   <div class="divider-ornament">
     <span class="line"></span>
     <span class="diamond"></span>
@@ -252,5 +256,7 @@
   });
 })();
 </script>
+<button class="dark-toggle" id="darkToggle" aria-label="Dark mode">🌙</button>
+<script src="assets/blog-common.js"></script>
 </body>
 </html>

@@ -63,8 +63,11 @@
   @media (max-width: 640px) { .hero h1 { font-size: 1.7rem; } .hero .subtitle { font-size: 0.9rem; } .container { padding: 0 16px; } .content { font-size: 0.95rem; } }
   @media print { body { background: white; } .top-line, .progress-bar, .back-link { display: none; } }
 </style>
+
+<link rel="stylesheet" href="assets/blog-common.css">
 </head>
 <body>
+<div class="reading-progress" id="readingProgress"></div>
 
 <div class="top-line"></div>
 <div class="progress-bar" id="progress"></div>
@@ -77,6 +80,7 @@
   <div class="hero-badge">Sejarah</div>
   <h1>Orang Tua dari Gunung yang Tak Pernah Turun</h1>
   <p class="subtitle">Hasan-i Sabbah — pendiri negara Alamut, pencipta pasukan fidā'iyyūn, sang pertapa yang membuat para khalifah dan sultan tidur dengan baju besi.</p>
+<span class="reading-time" id="readingTime"></span>
   <div class="divider-ornament">
     <span class="line"></span>
     <span class="diamond"></span>
@@ -227,5 +231,7 @@
   });
 })();
 </script>
+<button class="dark-toggle" id="darkToggle" aria-label="Dark mode">🌙</button>
+<script src="assets/blog-common.js"></script>
 </body>
 </html>

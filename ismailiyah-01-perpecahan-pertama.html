@@ -82,8 +82,11 @@
   @media (max-width: 640px) { .hero h1 { font-size: 1.7rem; } .hero .subtitle { font-size: 0.9rem; } .arabic-block { padding: 22px 18px; } .arabic-block .arabic-text { font-size: 1.2rem; } .info-card { padding: 20px 18px; } .info-card .card-num { font-size: 1.8rem; } .container { padding: 0 16px; } .content { font-size: 0.95rem; } }
   @media print { body { background: white; } .top-line, .progress-bar, .back-link { display: none; } .arabic-block, .highlight-bar, .info-card { break-inside: avoid; } }
 </style>
+
+<link rel="stylesheet" href="assets/blog-common.css">
 </head>
 <body>
+<div class="reading-progress" id="readingProgress"></div>
 
 <div class="top-line"></div>
 <div class="progress-bar" id="progress"></div>
@@ -96,6 +99,7 @@
   <div class="hero-badge">Sejarah</div>
   <h1>Satu Kematian yang Memecah Syiah Selamanya</h1>
   <p class="subtitle">Ismailiyah versus Itsna Asy'ariyah</p>
+<span class="reading-time" id="readingTime"></span>
   <div class="divider-ornament">
     <span class="line"></span>
     <span class="diamond"></span>
@@ -185,6 +189,20 @@
 
   <p>Tapi sejarah tidak berjalan dengan "seandainya." Sejarah berjalan dengan kematian — dan bagaimana manusia menafsirkan kehendak Tuhan setelahnya.</p>
 </article>
+<div class="related-posts">
+  <h3>Baca juga</h3>
+  <div class="related-grid">
+      <a href="ismailiyah-02-fatimiyah.html" class="related-card">
+        <div class="rc-tag">Bagian 2</div>
+        <div class="rc-title">Sang Dai yang Disingkirkan oleh Imam yang Ia Bebaskan</div>
+      </a>
+      <a href="saqifah-jenazah-nabi-perpecahan.html" class="related-card">
+        <div class="rc-tag">Saqifah</div>
+        <div class="rc-title">Saqifah: Jenazah Nabi dan Perpecahan</div>
+      </a>
+  </div>
+</div>
+
 
 <footer class="article-footer">
   <p class="signature">— ALIM</p>
@@ -209,5 +227,7 @@
   });
 })();
 </script>
+<button class="dark-toggle" id="darkToggle" aria-label="Dark mode">🌙</button>
+<script src="assets/blog-common.js"></script>
 </body>
 </html>

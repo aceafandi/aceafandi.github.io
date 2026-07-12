@@ -123,13 +123,17 @@
       .dropcap::first-letter { font-size: 3.4rem; }
     }
   </style>
+
+<link rel="stylesheet" href="assets/blog-common.css">
 </head>
 <body>
+<div class="reading-progress" id="readingProgress"></div>
 
 <header>
   <div class="series-badge">Esai · Sejarah Pendidikan</div>
   <h1>Tiga Universitas, Tiga Dunia</h1>
   <p class="subtitle">Ketika masjid janda mengajarkan astronomi dan Oxford belajar dari terjemahan Arab</p>
+<span class="reading-time" id="readingTime"></span>
 </header>
 
 <!-- 🖼️ HERO — Jam Air Al-Qarawiyyin -->
@@ -252,9 +256,26 @@
   <p>[^5]: George Makdisi, <em>The Rise of Colleges</em> (Edinburgh University Press, 1981).</p>
 </div>
 
+
+<div class="related-posts">
+  <h3>Baca juga</h3>
+  <div class="related-grid">
+      <a href="saqifah-jenazah-nabi-perpecahan.html" class="related-card">
+        <div class="rc-tag">Saqifah</div>
+        <div class="rc-title">Saqifah: Jenazah Nabi dan Perpecahan yang Tak Pernah Selesai</div>
+      </a>
+      <a href="ismailiyah-03-hasan-sabbah.html" class="related-card">
+        <div class="rc-tag">Seri Ismailiyah</div>
+        <div class="rc-title">Orang Tua dari Gunung yang Tak Pernah Turun</div>
+      </a>
+  </div>
+</div>
+
 <nav class="nav-series">
   <a href="index.html">⌂ Indeks</a>
 </nav>
 
+<button class="dark-toggle" id="darkToggle" aria-label="Dark mode">🌙</button>
+<script src="assets/blog-common.js"></script>
 </body>
 </html>
