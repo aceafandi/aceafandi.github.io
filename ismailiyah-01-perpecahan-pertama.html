@@ -35,6 +35,11 @@
   .content em { font-style: italic; color: #4a3f30; }
   .content strong { font-weight: 600; color: var(--text); }
   .content p.dropcap::first-letter { float: left; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 4.2em; line-height: 0.7; padding-right: 12px; padding-top: 4px; font-weight: 600; color: var(--accent); }
+  
+  .hero-image { margin: 0 0 20px 0; text-align: center; }
+  .hero-image img { width: 100%; max-width: 700px; height: auto; border-radius: 8px; box-shadow: 0 4px 24px rgba(44,36,22,0.12); }
+  .hero-image .img-caption { font-family: 'Inter', sans-serif; font-size: 0.72rem; color: var(--light-muted); margin-top: 8px; font-style: italic; }
+
   .arabic-block { background: var(--card); border: 1px solid var(--border); border-right: 4px solid var(--accent); border-radius: 12px; padding: 32px 36px; margin: 36px 0; box-shadow: 0 1px 3px rgba(44,36,22,0.05); }
   .arabic-block .arabic-text { font-family: 'Scheherazade New', 'Amiri', serif; font-size: 1.5rem; line-height: 2.3; text-align: right; direction: rtl; color: var(--text); margin-bottom: 20px; }
   .arabic-block .translation { font-size: 0.95rem; line-height: 1.9; padding-left: 20px; border-left: 2px solid var(--border); color: var(--muted); font-style: italic; }
@@ -79,7 +84,12 @@
   .punchline .retort { font-weight: 700; color: var(--accent); }
   .small-divider { width: 60px; height: 2px; background: var(--border); margin: 14px auto; }
   .section-label { font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
-  @media (max-width: 640px) { .hero h1 { font-size: 1.7rem; } .hero .subtitle { font-size: 0.9rem; } .arabic-block { padding: 22px 18px; } .arabic-block .arabic-text { font-size: 1.2rem; } .info-card { padding: 20px 18px; } .info-card .card-num { font-size: 1.8rem; } .container { padding: 0 16px; } .content { font-size: 0.95rem; } }
+  @media (max-width: 640px) { .hero h1 { font-size: 1.7rem; } .hero .subtitle { font-size: 0.9rem; } 
+  .hero-image { margin: 0 0 20px 0; text-align: center; }
+  .hero-image img { width: 100%; max-width: 700px; height: auto; border-radius: 8px; box-shadow: 0 4px 24px rgba(44,36,22,0.12); }
+  .hero-image .img-caption { font-family: 'Inter', sans-serif; font-size: 0.72rem; color: var(--light-muted); margin-top: 8px; font-style: italic; }
+
+  .arabic-block { padding: 22px 18px; } .arabic-block .arabic-text { font-size: 1.2rem; } .info-card { padding: 20px 18px; } .info-card .card-num { font-size: 1.8rem; } .container { padding: 0 16px; } .content { font-size: 0.95rem; } }
   @media print { body { background: white; } .top-line, .progress-bar, .back-link { display: none; } .arabic-block, .highlight-bar, .info-card { break-inside: avoid; } }
 </style>
 
