@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lima Ayat yang Diam — Kolom Ace Afandi</title>
+  <meta name="description" content="Lima ayat Surah al-Fil. Tidak ada Abrahah, tidak ada Mekkah, tidak ada Ka'bah. Yang ada: burung, batu, dan daun dimakan ulat. Tentang teks yang diam dan pertanyaan yang terus berubah.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Scheherazade+New:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafaf8;
+      --text: #1f1a0e;
+      --accent: #6b4c12;
+      --muted: #6b6048;
+      --rule: #d4c8a8;
+      --quote-bg: #f5f0e5;
+      --dropcap: #6b4c12;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Crimson Text', Georgia, serif;
+      font-size: 1.25rem;
+      line-height: 1.85;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+    header { text-align: center; margin-bottom: 2rem; }
+    .series-badge {
+      display: inline-block;
+      font-family: system-ui, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      border: 1px solid var(--rule);
+      padding: 0.3em 1em;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-family: 'Amiri', serif;
+      font-size: 2.2rem;
+      line-height: 1.35;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      font-style: italic;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+    .hero-image { margin: 2rem 0; text-align: center; }
+    .hero-image img { max-width: 100%; height: auto; border-radius: 4px; }
+    .img-label { font-size: 0.85rem; color: var(--muted); font-style: italic; margin-top: 0.5rem; }
+    .reading-time {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-family: system-ui, sans-serif; font-size: 0.75rem; color: var(--muted); margin-top: 0.3rem;
+    }
+    .content { margin-top: 2rem; }
+    .content p { margin-bottom: 1.4rem; }
+    .dropcap::first-letter {
+      float: left; font-family: 'Amiri', serif; font-size: 4.2rem; line-height: 0.85;
+      padding-right: 0.45rem; padding-top: 0.05rem; color: var(--dropcap); font-weight: 700;
+    }
+    h2 {
+      font-family: 'Amiri', serif; font-size: 1.6rem; margin: 2.5rem 0 1rem; color: var(--accent);
+    }
+    strong { color: #1a150a; }
+    em { color: #4a3a22; }
+    hr { border: none; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+    .arabic-block {
+      background: var(--quote-bg);
+      border-right: 3px solid var(--accent);
+      padding: 2rem 2rem 2rem 1.5rem;
+      margin: 2rem 0;
+      text-align: right;
+      direction: rtl;
+      border-radius: 0 6px 6px 0;
+    }
+    .arabic-block .ayat {
+      font-family: 'Scheherazade New', 'Amiri', serif;
+      font-size: 1.6rem;
+      line-height: 2.2;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .arabic-block .ayat strong {
+      font-size: 1.8rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .section-image { text-align: center; margin: 2rem 0; }
+    .section-image img { max-width: 100%; height: auto; border-radius: 4px; opacity: 0.9; }
+    .signature { text-align: right; font-style: italic; color: var(--muted); margin-top: 2rem; }
+    .closing-ornament { text-align: center; color: var(--rule); margin: 3rem 0 1rem; }
+    .footnotes {
+      margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--rule);
+      font-size: 0.9rem; color: var(--muted); line-height: 1.6;
+    }
+    .nav-series {
+      display: flex; justify-content: center; margin-top: 3rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--rule); font-size: 0.95rem;
+    }
+    .nav-series a { color: var(--accent); text-decoration: none; font-style: italic; }
+    .nav-series a:hover { text-decoration: underline; }
+    @media (max-width: 600px) {
+      body { font-size: 1.1rem; padding: 1.2rem 1rem 3rem; }
+      h1 { font-size: 1.7rem; }
+      .dropcap::first-letter { font-size: 3.4rem; }
+      .arabic-block .ayat { font-size: 1.3rem; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/blog-common.css">
+</head>
+<body>
+<div class="reading-progress" id="readingProgress"></div>
+
+<header>
+  <div class="series-badge">Esai · Tafsir</div>
+  <h1>Lima Ayat yang Diam</h1>
+  <p class="subtitle">Surah al-Fil. Tidak ada Abrahah, tidak ada Mekkah. Yang ada: burung, batu, dan daun dimakan ulat.</p>
+  <span class="reading-time" id="readingTime"></span>
+</header>
+
+<figure class="hero-image">
+  <img src="images/hero-lima-ayat.webp" alt="Seekor burung terbang di langit jingga melintasi tanah retak — seperti abābīl membawa batu dari sijjīl" loading="lazy" width="1400" height="780">
+  <figcaption class="img-label">Lima ayat. Dan itu saja.</figcaption>
+</figure>
+
+<article class="content">
+
+<p class="dropcap">Surah al-Fil. Surah ke-105. Lima ayat.</p>
+
+<p>Mari kita baca dengan jujur, tanpa membawa apa pun kecuali teksnya sendiri:</p>
+
+<div class="arabic-block">
+<p class="ayat"><strong>أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَابِ الْفِيلِ</strong></p>
+<p class="ayat"><strong>أَلَمْ يَجْعَلْ كَيْدَهُمْ فِي تَضْلِيلٍ</strong></p>
+<p class="ayat"><strong>وَأَرْسَلَ عَلَيْهِمْ طَيْرًا أَبَابِيلَ</strong></p>
+<p class="ayat"><strong>تَرْمِيهِمْ بِحِجَارَةٍ مِنْ سِجِّيلٍ</strong></p>
+<p class="ayat"><strong>فَجَعَلَهُمْ كَعَصْفٍ مَأْكُولٍ</strong></p>
+</div>
+
+<p><em>Tidakkah engkau lihat bagaimana Tuhanmu berbuat terhadap pasukan bergajah? Bukankah Dia menjadikan tipu daya mereka sia-sia? Dan Dia mengirimkan kepada mereka burung-burung berbondong-bondong, yang melempari mereka dengan batu dari tanah yang terbakar. Lalu Dia menjadikan mereka seperti daun-daun yang dimakan ulat.</em></p>
+
+<p>Lima ayat. Dan itu saja.</p>
+
+<p>Tidak ada Abrahah. Tidak ada Mekkah. Tidak ada Ka'bah. Tidak ada Tahun Gajah. Tidak ada kelahiran Nabi Muhammad. Tidak ada Yaman, Ethiopia, atau penanda geografis apa pun. Teks ini hanya berbicara tentang "pasukan bergajah," "burung," "batu," dan "daun dimakan ulat." Semua nama lain — Abrahah, Ka'bah, Tahun Gajah, bahkan Mekkah — muncul dari kerja para mufassir, bukan dari teks Qur'an sendiri.</p>
+
+<hr>
+
+<p>Mayoritas mufassir klasik memahami surah ini sebagai kisah ekspedisi Abrahah ke Mekkah. Tapi detail-detail itu tidak berasal dari redaksi Surah al-Fil sendiri — melainkan dari sirah, tarikh, dan riwayat yang beredar di komunitas Muslim awal.</p>
+
+<p>Di sinilah letak kejujuran metodologis yang sering luput. <strong>Tafsir bi al-ma'thur</strong> — penafsiran berbasis riwayat — bekerja dengan asumsi bahwa generasi pertama Islam mengetahui konteksnya, dan pengetahuan itu diwariskan secara lisan sebelum akhirnya dituliskan. Al-Tabari (w. 310 H), kompilator terbesar, meriwayatkan dari Ibn Ishaq narasi lengkap: bagaimana Abrahah membangun gereja al-Qullays di Sana'a, bagaimana seorang Arab mengotorinya, bagaimana Abrahah bersumpah menghancurkan Ka'bah, bagaimana gajahnya bernama Mahmud berhenti di perbatasan Mekkah dan menolak maju. Semua detail itu hidup dalam literatur tafsir — tapi tidak satu pun berasal dari lima ayat surah al-Fil.</p>
+
+<p>Ibn Kathir (w. 774 H) menambahkan dimensi kronologis: peristiwa ini terjadi pada tahun kelahiran Nabi. Bagi Ibn Kathir, koneksi antara surah dan maulid adalah bagian dari hikmah ilahi — perlindungan Ka'bah sebagai tanda datangnya Nabi terakhir. Al-Qurtubi (w. 671 H) mencatat bahwa para ulama berbeda tentang jarak antara peristiwa ini dan kelahiran Nabi: Muqatil bilang 40 tahun, al-Kalbi bilang 23 tahun. Artinya, bahkan di kalangan mufassir klasik, tafsir bukanlah satu narasi tunggal yang pasti — ia adalah arena perdebatan, seperti halnya sejarah.</p>
+
+<p>Menariknya, tradisi tafsir klasik sejak awal membedakan antara teks wahyu dan pengetahuan tentang konteksnya. Perdebatan modern sering kali menganggap keduanya identik, padahal para mufassir sendiri tidak selalu demikian. Mereka tahu: Qur'an adalah satu hal, tafsir adalah hal lain.</p>
+
+<hr>
+
+<p>Di kalangan sarjana Barat, perdebatannya lebih berliku.</p>
+
+<p>Angelika Neuwirth, dalam <em>The Qur'an: Text and Commentary</em> (2022), menerima koneksi surah dengan ekspedisi Abrahah, tapi membaca formula <em>a-lam tara</em> — "tidakkah engkau lihat" — sebagai ciri khas surah Makkah awal: ia mengajak pendengar merenungkan peristiwa yang sudah mereka ketahui, bukan mengabarkan peristiwa baru. Audiens Makkah tahu cerita ini. Qur'an cukup mengingatkan.</p>
+
+</article>
+
+<!-- 🏺 SECTION IMAGE — Prasasti Murayghān -->
+<figure class="section-image">
+  <img src="images/section-lima-ayat-prasasti.webp" alt="Prasasti Murayghān setengah terkubur di gurun — menyebut Abrahah, tapi tidak menyebut Mekkah" loading="lazy" width="1400" height="780">
+  <figcaption class="img-label">Prasasti Murayghān (Ry 506, 552 M). Abrahah ada. Mekkah tidak.</figcaption>
+</figure>
+
+<article class="content">
+
+<p>Lalu muncul gelombang revisionis. John Wansbrough, dalam <em>Quranic Studies</em> (1977), membaca narasi-narasi Qur'an sebagai topoi sastra — pola cerita yang berulang dalam tradisi monoteistik. Kisah "pasukan sombong dihancurkan oleh intervensi ilahi" punya paralel dengan tentara Firaun, tentara Sanherib. Yang penting fungsi teologisnya, bukan akurasi historisnya. Patricia Crone dan Michael Cook, dalam <em>Hagarism</em> (1977), bahkan mempertanyakan apakah setting asli surah Makkah adalah Hijaz — posisi yang kemudian ditinggalkan, termasuk oleh Crone sendiri.</p>
+
+<p>Di antara dua kutub ini, beberapa sarjana mengusulkan tafsir metaforis: "burung" dan "batu" sebagai bahasa untuk wabah penyakit — tentara Abrahah terserang epidemi, pustula cacar yang mengeras diserupakan dengan kerikil. Teori ini cerdas tapi lemah secara historis: tidak ada catatan independen tentang wabah di ekspedisi itu.</p>
+
+<p>Lalu percakapan kembali ke data. Posisi mainstream saat ini, yang berpijak pada prasasti Murayghān (Ry 506, 552 M), menerima bahwa Abrahah memang melakukan ekspedisi militer ke Arabia. Tapi prasasti itu menyebut Maʿadd di Arabia tengah — bukan Mekkah. Ekspedisi yang tercatat di prasasti belum tentu ekspedisi yang sama. Surah al-Fil boleh jadi merujuk pada ekspedisi terakhir Abrahah — yang tidak meninggalkan prasasti karena berakhir dengan kehancuran. Atau boleh jadi surah ini merujuk pada peristiwa yang berbeda sama sekali, yang kemudian diserap oleh tradisi Islam ke dalam narasi Abrahah.</p>
+
+<hr>
+
+<p>Saya membaca surah ini lagi. Lima ayat. Teksnya tidak berubah. Yang berubah adalah cara manusia membacanya.</p>
+
+<p>Para mufassir klasik datang membawa sanad — riwayat dari Ibn Ishaq, dari Ibn Abbas, dari generasi pertama yang dianggap tahu konteksnya. Para sarjana modern datang membawa prasasti — batu bertulis dari abad keenam yang mencantumkan nama Abrahah tapi tidak mencantumkan Mekkah. Para revisionis datang membawa kritik sastra — mempertanyakan apakah seluruh kerangka geografisnya bisa dipercaya.</p>
+
+<p>Mereka semua membaca lima ayat yang sama. Tapi pertanyaan yang mereka ajukan berbeda. Yang satu bertanya: <em>apa yang diriwayatkan tentang ayat ini?</em> Yang lain bertanya: <em>apa yang bisa diverifikasi tentang ayat ini?</em> Yang lain lagi: <em>apakah kita bisa mempercayai kerangka sejarah yang membungkusnya?</em></p>
+
+<p>Mereka datang membawa sanad. Mereka datang membawa prasasti. Mereka datang membawa kritik sastra. Lima ayat itu tetap sama. Yang berubah hanyalah pertanyaan yang dibawa manusia kepadanya.</p>
+
+<p>Dan mungkin, justru karena itulah ia tetap diam.</p>
+
+<p class="signature">— ALIM</p>
+
+</article>
+
+<div class="closing-ornament">❦</div>
+
+<div class="footnotes">
+<p><em>Referensi:</em></p>
+<p>al-Qurtubi. (w. 671 H). <em>al-Jāmi' li-Aḥkām al-Qur'ān</em>, Tafsir Surah al-Fil.</p>
+<p>al-Tabari. (w. 310 H). <em>Jāmi' al-Bayān fī Tafsīr al-Qur'ān</em>, Tafsir Surah al-Fil.</p>
+<p>Crone, P., &amp; Cook, M. (1977). <em>Hagarism: The making of the Islamic world</em>. Cambridge University Press.</p>
+<p>Gajda, I., Robin, C., &amp; Beaucamp, J. Murayghān inscription (Ry 506). <em>DASI Corpus</em>.</p>
+<p>Hoyland, R. G. (1997). <em>Seeing Islam as others saw it</em>. Darwin Press.</p>
+<p>Maulana Muhammad Ali. (1951). <em>The Holy Qur'an: Translation and commentary</em>. Lahore.</p>
+<p>Neuwirth, A. (2022). <em>The Qur'an: Text and commentary, Vol. 1: Early Meccan suras</em>. Yale University Press.</p>
+<p>Wansbrough, J. (1977). <em>Quranic studies</em>. Oxford University Press.</p>
+</div>
+
+<nav class="nav-series">
+  <a href="index.html">⌂ Indeks</a>
+</nav>
+
+<script src="assets/blog-common.js"></script>
+<button class="dark-toggle" id="darkToggle" aria-label="Dark mode">🌙</button>
+</body>
+</html>
