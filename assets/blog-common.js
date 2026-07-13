@@ -14,9 +14,15 @@
   }
 
   if (toggle) {
+    // Toggle icon between moon and sun
+    function updateIcon() {
+      toggle.textContent = body.classList.contains('dark') ? '\u2600\uFE0F' : '\uD83C\uDF19';
+    }
+    updateIcon();
     toggle.addEventListener('click', function() {
       body.classList.toggle('dark');
       localStorage.setItem(DARK_KEY, body.classList.contains('dark'));
+      updateIcon();
     });
   }
 
