@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nama yang Ditulis Musuh — Kolom Ace Afandi</title>
+  <meta name="description" content="Tahun 640 M, seorang biarawan di Mesopotamia menulis dua kata: Tayyaye d-Mhmt. Nama Muhammad pertama kali ditulis bukan oleh sahabatnya — tapi oleh musuhnya. Menelusuri enam sumber non-Muslim paling awal.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafaf8; --text: #1f1a0e; --accent: #6b4c12;
+      --muted: #6b6048; --rule: #d4c8a8; --quote-bg: #f5f0e5; --dropcap: #6b4c12;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: 'Crimson Text', Georgia, serif; font-size: 1.25rem; line-height: 1.85;
+      max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem 4rem;
+    }
+    header { text-align: center; margin-bottom: 2rem; }
+    .series-badge {
+      display: inline-block; font-family: system-ui, sans-serif; font-size: 0.7rem;
+      font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--accent); border: 1px solid var(--rule); padding: 0.3em 1em;
+      border-radius: 2px; margin-bottom: 1.5rem;
+    }
+    h1 { font-family: 'Amiri', serif; font-size: 2.2rem; line-height: 1.35; font-weight: 700; margin-bottom: 0.5rem; }
+    .subtitle { font-style: italic; color: var(--muted); font-size: 1.1rem; }
+    .hero-image { margin: 2rem 0; text-align: center; }
+    .hero-image img { max-width: 100%; height: auto; border-radius: 4px; }
+    .img-label { font-size: 0.85rem; color: var(--muted); font-style: italic; margin-top: 0.5rem; }
+    .reading-time { display: inline-flex; align-items: center; gap: 4px; font-family: system-ui, sans-serif; font-size: 0.75rem; color: var(--muted); margin-top: 0.3rem; }
+    .content { margin-top: 2rem; }
+    .content p { margin-bottom: 1.4rem; }
+    .dropcap::first-letter { float: left; font-family: 'Amiri', serif; font-size: 4.2rem; line-height: 0.85; padding-right: 0.45rem; padding-top: 0.05rem; color: var(--dropcap); font-weight: 700; }
+    h2 { font-family: 'Amiri', serif; font-size: 1.6rem; margin: 2.5rem 0 1rem; color: var(--accent); }
+    strong { color: #1a150a; }
+    em { color: #4a3a22; }
+    hr { border: none; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+    blockquote {
+      background: var(--quote-bg); border-left: 3px solid var(--accent);
+      padding: 1.5rem 2rem; margin: 2rem 0; font-style: italic;
+      border-radius: 0 6px 6px 0;
+    }
+    blockquote p { margin-bottom: 0; }
+    .section-image { text-align: center; margin: 2rem 0; }
+    .section-image img { max-width: 100%; height: auto; border-radius: 4px; opacity: 0.9; }
+    .signature { text-align: right; font-style: italic; color: var(--muted); margin-top: 2rem; }
+    .closing-ornament { text-align: center; color: var(--rule); margin: 3rem 0 1rem; }
+    .footnotes { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+    .nav-series { display: flex; justify-content: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); font-size: 0.95rem; }
+    .nav-series a { color: var(--accent); text-decoration: none; font-style: italic; }
+    .nav-series a:hover { text-decoration: underline; }
+    @media (max-width: 600px) {
+      body { font-size: 1.1rem; padding: 1.2rem 1rem 3rem; }
+      h1 { font-size: 1.7rem; }
+      .dropcap::first-letter { font-size: 3.4rem; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/blog-common.css">
+</head>
+<body>
+<div class="reading-progress" id="readingProgress"></div>
+
+<header>
+  <div class="series-badge">Esai · Sejarah Islam</div>
+  <h1>Nama yang Ditulis Musuh</h1>
+  <p class="subtitle">Tahun 640 M, seorang biarawan di Mesopotamia menulis dua kata: <em>Tayyaye d-Mhmt</em>. Nama Muhammad pertama kali dicatat bukan oleh sahabatnya — tapi oleh musuhnya.</p>
+  <span class="reading-time" id="readingTime"></span>
+</header>
+
+<figure class="hero-image">
+  <img src="images/hero-nama-yang-ditulis.webp" alt="Seorang biarawan di skriptorium menulis kronik — momen pertama nama Muhammad tercatat dalam sejarah" loading="lazy" width="1400" height="780">
+  <figcaption class="img-label">Thomas the Presbyter, Mesopotamia, 640 M. Dua kata yang akan diperdebatkan lima belas abad kemudian.</figcaption>
+</figure>
+
+<article class="content">
+
+<p class="dropcap">Tahun 640 M. Seorang biarawan Kristen di Mesopotamia duduk di skriptorium biaranya, mencatat peristiwa-peristiwa penting tahun itu ke dalam sebuah kronik berbahasa Syriac. Tanggalnya: Jumat, 4 Februari. Lokasinya: dua belas mil di timur Gaza. Dan kalimat yang ia tulis adalah kalimat pertama dalam sejarah yang menyebut nama itu:</p>
+
+<blockquote>
+<p>"Terjadi pertempuran antara orang-orang Romawi dan orang-orang Arab Muhammad."</p>
+</blockquote>
+
+<p><em>Tayyaye d-Mhmt.</em> Orang-orang Arab Muhammad. Delapan tahun setelah pria bernama Muhammad itu wafat menurut versi tradisional, seorang biarawan yang tidak pernah bertemu dengannya, yang tinggal ribuan kilometer dari Madinah, menuliskan namanya. Bukan sebagai nabi. Bukan sebagai pedagang. Tapi sebagai <strong>pemimpin pasukan.</strong></p>
+
+<p>Pertanyaan tentang historisitas Muhammad bukan sekadar urusan akademik. Di era ketika klaim revisionis menyebar lewat satu utas media sosial, dan konten "Muhammad tidak pernah ada" ditonton jutaan kali, memahami bukti-bukti ini adalah bagian dari literasi kritis yang semakin mendesak. Bukan untuk membela iman — iman tidak memerlukan kronik Syriac sebagai syarat. Tapi untuk tahu: di luar tradisi Islam sendiri, apa yang sebenarnya bisa kita ketahui?</p>
+
+<hr>
+
+<p>Mari kita telusuri enam sumber paling awal. Bukan sebagai daftar bukti, tapi sebagai jendela ke apa yang diketahui dunia luar — dan apa yang tidak.</p>
+
+<p><strong>Doctrina Jacobi (~634 M).</strong> Teks polemik Kristen berbahasa Yunani, ditulis di Kartago — Afrika Utara, bukan Arab. Seorang Yahudi yang baru masuk Kristen, bernama Yakub, ditanya oleh seseorang bernama Justus: <em>"Apa yang kaukatakan tentang nabi yang telah muncul di antara orang-orang Saracen?"</em> Yakub menjawab: <em>"Ia palsu. Para nabi tidak datang dengan pedang."</em></p>
+
+<p>Saksi non-Muslim paling awal — hanya dua tahun setelah wafatnya Muhammad versi tradisional. Tapi Yakub tidak menyebut nama "Muhammad." Ia hanya menyebut "nabi di antara orang Saracen." Apakah ini Muhammad? Mungkin. Tapi sejarah Islam awal mencatat beberapa nabi palsu — Musaylima, Sajah, Tulayha. Bisa jadi "nabi" yang dimaksud Yakub adalah salah satu dari mereka. Genre polemik tidak memberi kita cukup untuk memastikan.</p>
+
+<p><strong>Sophronius, Patriark Yerusalem (~636 M).</strong> Dalam khotbah Natal, ia meratap: <em>"Orang-orang Saracen telah bangkit melawan kami... Mereka menjarah kota-kota, membakar desa-desa, menghancurkan gereja-gereja."</em> Sophronius adalah saksi mata penaklukan — ia yang akan menyerahkan kunci Yerusalem kepada Khalifah Umar. Tapi ia tidak menyebut Muhammad. Baginya, penaklukan Arab adalah hukuman Tuhan — bukan gerakan kenabian yang perlu dinamai.</p>
+
+<p>Sumber dari Afrika Utara itu pendek dan samar. Sumber dari Yerusalem ini detail tentang dampak, tapi sunyi tentang tokoh. Dari Mesopotamia, kita mendapat sesuatu yang berbeda.</p>
+
+<hr>
+
+<p><strong>Thomas the Presbyter (~640 M).</strong> Inilah yang kita tunggu. <em>"Orang-orang Arab Muhammad."</em> Satu kalimat, satu pertempuran. Thomas tidak menjelaskan siapa Muhammad — ia hanya mencatat bahwa pasukan Arab yang bertempur di Gaza disebut dengan nama itu. Apakah Thomas tahu Muhammad sudah wafat? Apakah ia mengira Muhammad masih hidup dan memimpin pasukan? Kroniknya terlalu singkat untuk menjawab. Yang kita tahu: pada 640 M, nama "Muhammad" sudah dikenal di Mesopotamia — bukan sebagai nabi, sebagai pemimpin perang.</p>
+
+</article>
+
+<!-- 🏺 SECTION IMAGE — Naskah Syriac -->
+<figure class="section-image">
+  <img src="images/section-nama-syriac.webp" alt="Naskah kuno Syriac — dua kata Tayyaye d-Mhmt di antara teks, diterangi cahaya lilin" loading="lazy" width="1400" height="780">
+  <figcaption class="img-label"><em>Tayyaye d-Mhmt</em> — orang-orang Arab Muhammad. Dua kata. Satu nama. Lima belas abad.</figcaption>
+</figure>
+
+<article class="content">
+
+<p>Tapi Thomas hanya menulis satu kalimat. Untuk detail tentang ajaran Muhammad, kita harus menunggu dua dekade lagi.</p>
+
+<p><strong>Sebeos, Uskup Armenia (~660 M).</strong> Inilah yang paling lengkap. Tiga puluh tahun setelah wafat Nabi — satu generasi — Sebeos menulis: <em>"Ada seorang pria dari antara anak-anak Ismael bernama Muhammad, seorang pedagang. Ia menyampaikan kepada mereka pengetahuan tentang Tuhan Abraham... Ia memerintahkan mereka untuk tidak makan bangkai, tidak minum anggur, tidak berdusta, dan tidak berzina."</em></p>
+
+<p>Dari mana Sebeos dapat informasinya? Ia menulis dari Armenia — jauh dari Hijaz. Fred Donner, dalam <em>Muhammad and the Believers</em> (2010), mencatat bahwa sumber-sumber non-Muslim awal jarang memiliki akses langsung ke inti gerakan Muhammad — mereka umumnya mencatat dampak, bukan doktrin. Kemungkinan besar Sebeos mendengar dari pengungsi Kristen yang melarikan diri dari penaklukan. Atau — dan ini lebih ironis — dari Muslim sendiri yang sudah menyebarkan narasi tentang nabi mereka. Jika yang kedua, Sebeos bukan konfirmasi independen; ia adalah <strong>sirkulasi narasi yang sama,</strong> ditulis dalam bahasa Armenia, bukan Arab.</p>
+
+<p>Yang pasti: pada 660 M — tiga puluh tahun setelah wafat Nabi — informasi tentang Muhammad dan ajarannya telah menyebar sejauh Armenia. Itu sendiri adalah bukti seberapa cepat gerakan ini dikenal.</p>
+
+<p>Ironisnya, semakin dekat kita ke abad ke-7, semakin sedikit yang benar-benar kita ketahui tentang kehidupan Muhammad. Yang kita miliki justru nama, gerakan, dan dampaknya. Biografi datang kemudian. Sejarah sering kali lebih mudah membuktikan bahwa seseorang pernah ada daripada menjelaskan siapa sebenarnya orang itu.</p>
+
+<p>Inilah titik baliknya. Setelah membaca enam sumber ini — dari Kartago, Yerusalem, Mesopotamia, Armenia — konvergensi buktinya membuat satu kesimpulan menjadi sangat sulit ditolak. Yang tidak mereka ceritakan justru jauh lebih banyak daripada yang mereka ceritakan: tidak ada tanggal lahir, tidak ada masa kecil, tidak ada wahyu pertama, tidak ada nama istri atau sahabat.</p>
+
+<p>Lalu bagaimana kita tahu sisanya?</p>
+
+<hr>
+
+<p>Di sinilah Harald Motzki masuk — bukan sebagai tambahan, tapi sebagai jembatan.</p>
+
+<p>Metode <strong>isnad-cum-matn</strong> yang ia kembangkan tidak memeriksa rantai perawi saja (isnad), tapi juga isi teksnya (matn). Prinsipnya: kalau sepuluh riwayat dari sepuluh jalur berbeda menceritakan peristiwa yang sama dengan variasi kecil, maka kemungkinan besar ada <strong>sumber bersama</strong> di belakangnya — dan sumber itu bisa dilacak ke abad pertama Hijriah, jauh sebelum kitab-kitab hadis ditulis. Michael Cook, dalam <em>Early Muslim Dogma</em> (1981), menunjukkan bahwa pendekatan ini bisa memverifikasi beberapa bahan sejarah yang sebelumnya dianggap sebagai fabrikasi belakangan.</p>
+
+<p>Motzki dan Cook mewakili pilar kedua studi Islam awal: <strong>analisis transmisi internal.</strong> Pilar pertama adalah sumber-sumber non-Muslim — dekat ke peristiwa, independen, tapi sedikit dan pendek. Pilar ketiga adalah <strong>arkeologi dan epigrafi</strong> — bukti fisik seperti prasasti Murayghān (552 M) yang membuktikan ekspedisi Abrahah, atau koin-koin Arab-Sasanian dari abad pertama Hijriah yang menyebut nama Muhammad. Tapi penggalian di Hijaz sendiri praktis diblokir oleh otoritas Saudi — sehingga bukti material dari Mekkah dan Madinah tetap sangat langka.</p>
+
+<p>Tiga pilar. Tidak satu pun cukup sendiri. Sumber non-Muslim dekat tapi bias. ISNA mendorong riwayat mundur tapi tetap probabilistik. Prasasti membuktikan ekspedisi tapi tidak menyebut Mekkah. Masing-masing menutupi kelemahan yang lain — dan bersama-sama, mereka membentuk fondasi yang lebih kokoh daripada satu jenis bukti mana pun.</p>
+
+<hr>
+
+<p>Kembali ke biarawan di Mesopotamia. Tahun 640 M.</p>
+
+<p>Ia menulis dua kata. <em>Tayyaye d-Mhmt.</em> Ia tidak tahu bahwa lima belas abad kemudian, dua kata itu akan diperdebatkan di ruang-ruang kuliah dari Oxford sampai Jakarta. Ia hanya mencatat apa yang ia dengar — satu pertempuran, satu nama, satu hari di bulan Februari. Lalu ia melanjutkan ke peristiwa tahun berikutnya.</p>
+
+<p>Selebihnya adalah pekerjaan sejarah.</p>
+
+<p>Dan sejarah, pada akhirnya, bukan seni mengumpulkan jawaban. Melainkan seni mengetahui sejauh mana kita berhak berkata: <em>saya tahu.</em></p>
+
+<p class="signature">— ALIM</p>
+
+</article>
+
+<div class="closing-ornament">❦</div>
+
+<div class="footnotes">
+<p><em>Referensi:</em></p>
+<p>Cook, M. (1981). <em>Early Muslim dogma: A source-critical study</em>. Cambridge University Press.</p>
+<p>Doctrina Jacobi. (ca. 634). Dalam R. G. Hoyland (1997), <em>Seeing Islam as others saw it</em> (hlm. 55–61). Darwin Press.</p>
+<p>Donner, F. M. (2010). <em>Muhammad and the believers: At the origins of Islam</em>. Harvard University Press.</p>
+<p>Hoyland, R. G. (1997). <em>Seeing Islam as others saw it: A survey and evaluation of Christian, Jewish and Zoroastrian writings on early Islam</em>. Darwin Press.</p>
+<p>Motzki, H. (2000). The murder of Ibn Abi l-Huqayq. Dalam H. Motzki (Ed.), <em>The biography of Muhammad: The issue of the sources</em> (hlm. 170–239). Brill.</p>
+<p>Sebeos. (1999). <em>Armenian history</em> (R. W. Thomson, Trans.). Liverpool University Press. (Bab 30)</p>
+<p>Thomas the Presbyter. (ca. 640). <em>Chronicle</em>, BL Add. 14,643.</p>
+</div>
+
+<nav class="nav-series">
+  <a href="index.html">⌂ Indeks</a>
+</nav>
+
+<div class="related-posts">
+  <h3>Baca juga</h3>
+  <div class="related-grid">
+      <a href="lima-ayat-yang-diam.html" class="related-card">
+        <div class="rc-tag">Esai</div>
+        <div class="rc-title">Lima Ayat yang Diam</div>
+      </a>
+      <a href="sanad-vs-spreadsheet.html" class="related-card">
+        <div class="rc-tag">Esai</div>
+        <div class="rc-title">Sanad vs Spreadsheet</div>
+      </a>
+  </div>
+</div>
+
+<script src="assets/blog-common.js"></script>
+<button class="dark-toggle" id="darkToggle" aria-label="Dark mode">🌙</button>
+</body>
+</html>
