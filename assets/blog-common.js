@@ -5,26 +5,28 @@
 (function() {
   // ── Dark Mode Toggle ──
   var DARK_KEY = 'aceafandi-dark-mode';
-  var toggle = document.getElementById('darkToggle');
   var body = document.body;
 
-  // Load saved preference
+  // Load saved preference immediately (before DOMContentLoaded)
   if (localStorage.getItem(DARK_KEY) === 'true') {
     body.classList.add('dark');
   }
 
-  if (toggle) {
-    // Toggle icon between moon and sun
-    function updateIcon() {
-      toggle.textContent = body.classList.contains('dark') ? '\u2600\uFE0F' : '\uD83C\uDF19';
-    }
-    updateIcon();
-    toggle.addEventListener('click', function() {
-      body.classList.toggle('dark');
-      localStorage.setItem(DARK_KEY, body.classList.contains('dark'));
+  // Wait for full DOM before binding toggle
+  document.addEventListener('DOMContentLoaded', function() {
+    var toggle = document.getElementById('darkToggle');
+    if (toggle) {
+      function updateIcon() {
+        toggle.textContent = body.classList.contains('dark') ? '\u2600\uFE0F' : '\uD83C\uDF19';
+      }
       updateIcon();
-    });
-  }
+      toggle.addEventListener('click', function() {
+        body.classList.toggle('dark');
+        localStorage.setItem(DARK_KEY, body.classList.contains('dark'));
+        updateIcon();
+      });
+    }
+  });
 
   // ── Reading Progress Bar ──
   var bar = document.getElementById('readingProgress');
