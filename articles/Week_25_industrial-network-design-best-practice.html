@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untitled — Scodeno Indonesia</title>
+<meta name="description" content="Untitled">
+<link rel="canonical" href="https://scodenoindonesia.com/articles/Week_25_industrial-network-design-best-practice.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Untitled">
+<meta property="og:description" content="Untitled">
+<meta property="og:url" content="https://scodenoindonesia.com/articles/Week_25_industrial-network-design-best-practice.html">
+<meta property="og:image" content="https://scodenoindonesia.com/articles/og/Week_25_industrial-network-design-best-practice.png">
+<meta property="og:site_name" content="Scodeno Indonesia">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Untitled">
+<meta name="twitter:description" content="Untitled">
+<meta name="twitter:image" content="https://scodenoindonesia.com/articles/og/Week_25_industrial-network-design-best-practice.png">
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Untitled",
+  "description": "Untitled",
+  "author": {
+    "@type": "Organization",
+    "name": "Scodeno Indonesia"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Scodeno Indonesia",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://scodenoindonesia.com/articles/../logo.png"
+    }
+  },
+  "datePublished": "2026-07-18",
+  "mainEntityOfPage": "https://scodenoindonesia.com/articles/Week_25_industrial-network-design-best-practice.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+      --blue: #0068B4; --blue-light: #0095E0; --blue-dark: #004A82; --blue-bg: #E7F3FB;
+      --blue-glow: rgba(0,104,180,0.20);
+      --black: #0A0E14; --near-black: #141A22; --dark-card: #1A202A;
+      --white: #FFFFFF; --off-white: #F5F7FA; --gray-50: #F9FAFB; --gray-100: #E8ECF0;
+      --gray-200: #C8CDD4; --gray-300: #9BA2AB; --gray-400: #6B7280; --gray-500: #4B5563;
+      --text-dark: #1A1A1A; --text-light: #E2E8F0; --text-muted: #9BA2AB;
+      --content-max: 780px; --radius-sm: 2px; --radius-md: 4px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--text-dark); background: var(--white);
+      line-height: 1.7; -webkit-font-smoothing: antialiased;
+    }
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,14,20,0.94); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; height: 64px;
+    }
+    .nav-left { display: flex; align-items: center; gap: 32px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-img { height: 28px; width: auto; }
+    .nav-logo-text { font-weight: 800; font-size: 1.0625rem; color: var(--white); letter-spacing: -0.01em; white-space: nowrap; }
+    .nav-logo-indonesia { color: var(--blue-light); margin-left: 2px; }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a { color: var(--gray-300); text-decoration: none; font-size: 0.8125rem; font-weight: 500; padding: 8px 12px; border-radius: 4px; transition: all 0.15s; white-space: nowrap; }
+    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+    .nav-cta {
+      background: var(--blue); color: var(--white) !important;
+      padding: 8px 18px !important; border-radius: 4px !important;
+      font-weight: 600 !important; font-size: 0.8125rem !important;
+    }
+    .nav-cta:hover { background: var(--blue-light) !important; }
+    .article-header {
+      background: var(--black); color: var(--white);
+      padding: calc(64px + 64px) 24px 64px;
+      position: relative; overflow: hidden;
+    }
+    .article-header::before {
+      content: ''; position: absolute; top: -30%; right: -20%;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, var(--blue-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .article-header-inner { max-width: var(--content-max); margin: 0 auto; position: relative; z-index: 1; }
+    .article-tag {
+      display: inline-block; background: rgba(0,149,224,0.15); color: var(--blue-light);
+      font-size: 0.75rem; font-weight: 600; padding: 4px 12px;
+      border-radius: 2px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .article-header h1 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800;
+      line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px;
+    }.lang-toggle{display:inline-flex;align-items:center;gap:6px;margin-top:12px}
+.lang-toggle a{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,0.08);color:var(--gray-300);text-decoration:none;font-size:0.75rem;font-weight:500;padding:4px 10px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);transition:all 0.15s}
+.lang-toggle a:hover{background:rgba(255,255,255,0.14);color:var(--white);border-color:rgba(255,255,255,0.2)}
+.lang-toggle .active-lang{background:var(--blue);color:var(--white);border-color:var(--blue)}
+    .article-header .article-meta { color: var(--text-muted); font-size: 0.875rem; display: flex; gap: 20px; }
+    .article-body {
+      max-width: var(--content-max); margin: 0 auto;
+      padding: 64px 24px;
+    }
+    .article-body h2 {
+      font-size: 1.5rem; font-weight: 700; color: var(--near-black);
+      margin: 48px 0 16px; letter-spacing: -0.01em;
+    }
+    .article-body h3 {
+      font-size: 1.25rem; font-weight: 600; color: var(--near-black);
+      margin: 32px 0 12px;
+    }
+    .article-body h4 {
+      font-size: 1.0625rem; font-weight: 600; color: var(--gray-500);
+      margin: 24px 0 8px;
+    }
+    .article-body p {
+      color: var(--gray-500); font-size: 1.0625rem;
+      margin-bottom: 20px; line-height: 1.8;
+    }
+    .article-body ul, .article-body ol {
+      color: var(--gray-500); font-size: 1.0625rem;
+      margin-bottom: 20px; padding-left: 24px;
+    }
+    .article-body li { margin-bottom: 8px; line-height: 1.7; }
+    .article-body strong { color: var(--text-dark); font-weight: 600; }
+    .article-body a { color: var(--blue); text-decoration: underline; }
+    .article-body a:hover { color: var(--blue-light); }
+    .article-body hr { border: none; border-top: 1px solid var(--gray-100); margin: 48px 0; }
+    .article-body blockquote {
+      border-left: 3px solid var(--blue); padding-left: 20px;
+      margin: 24px 0; color: var(--gray-500); font-style: italic;
+    }
+    .table-wrap {
+      overflow-x: auto; margin: 28px 0; border-radius: 6px;
+      border: 1px solid var(--gray-100);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .article-body table {
+      width: 100%; border-collapse: collapse;
+      font-size: 0.875rem; line-height: 1.5;
+      min-width: 600px;
+    }
+    .article-body thead th {
+      background: linear-gradient(180deg, #E8F0F8 0%, #D4E4F2 100%);
+      color: var(--blue-dark); font-weight: 600; font-size: 0.8125rem;
+      text-transform: uppercase; letter-spacing: 0.03em;
+      padding: 12px 14px; text-align: left;
+      border-bottom: 2px solid #B8D0E8;
+      border-right: 1px solid #C8D8E8;
+      white-space: nowrap; position: sticky; top: 0;
+    }
+    .article-body thead th:last-child { border-right: none; }
+    .article-body tbody td {
+      padding: 10px 14px; border-bottom: 1px solid var(--gray-100);
+      border-right: 1px solid var(--gray-100); color: var(--gray-500);
+      vertical-align: top;
+    }
+    .article-body tbody td:last-child { border-right: none; }
+    .article-body tbody tr:nth-child(even) td { background: var(--gray-50); }
+    .article-body tbody tr:hover td { background: var(--blue-bg); }
+    .article-body tbody td:first-child { font-weight: 500; color: var(--text-dark); }
+    .article-body code {
+      background: var(--gray-50); border: 1px solid var(--gray-100);
+      padding: 2px 6px; border-radius: 3px; font-size: 0.9375rem;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+
+    /* TOC */
+    .toc {
+      background: var(--gray-50); border: 1px solid var(--gray-100);
+      border-radius: 6px; padding: 24px 28px; margin-bottom: 48px;
+    }
+    .toc h4 {
+      font-size: 0.8125rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.06em; color: var(--gray-400); margin-bottom: 12px;
+    }
+    .toc ul { list-style: none; padding: 0; margin: 0; }
+    .toc li { margin-bottom: 6px; }
+    .toc li a {
+      color: var(--gray-500); text-decoration: none; font-size: 0.9375rem;
+      line-height: 1.5; transition: color 0.15s;
+    }
+    .toc li a:hover { color: var(--blue); }
+    .toc .toc-h3 { padding-left: 20px; }
+    .toc .toc-h3 a { font-size: 0.875rem; color: var(--gray-400); }
+
+    /* Related */
+    .related-section { background: var(--off-white); padding: 64px 24px; }
+    .related-inner { max-width: var(--content-max); margin: 0 auto; }
+    .related-inner h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.01em; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .related-card {
+      background: var(--white); border: 1px solid var(--gray-100);
+      border-radius: var(--radius-md); padding: 20px; text-decoration: none;
+      transition: box-shadow 0.2s;
+    }
+    .related-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+    .related-card h3 { font-size: 0.9375rem; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
+    .related-card .tag { font-size: 0.6875rem; color: var(--blue); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+
+    /* Article Nav */
+    .article-nav { max-width: var(--content-max); margin: 0 auto; padding: 0 24px; }
+    .article-nav-inner {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding: 32px 0; border-top: 1px solid var(--gray-100);
+    }
+    .article-nav-inner a {
+      display: flex; align-items: center; gap: 8px;
+      color: var(--gray-500); text-decoration: none;
+      font-size: 0.875rem; max-width: 45%;
+    }
+    .article-nav-inner a:hover { color: var(--blue); }
+    .article-nav-inner .next { text-align: right; margin-left: auto; }
+    .article-nav-inner .nav-label {
+      color: var(--gray-400); font-size: 0.6875rem; display: block;
+      text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px;
+    }
+    .article-nav-inner .nav-title { color: var(--text-dark); font-weight: 600; line-height: 1.3; }
+    .article-nav-back { text-align: center; padding-bottom: 40px; }
+    .article-nav-back a { color: var(--blue); text-decoration: none; font-weight: 600; font-size: 0.875rem; }
+    .article-nav-back a:hover { color: var(--blue-light); }
+
+    /* Footer */
+    .footer {
+      background: var(--near-black); color: var(--text-muted);
+      padding: 48px 24px 32px; border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.8125rem;
+    }
+    .footer-inner a { color: var(--blue-light); text-decoration: none; }
+    .footer-inner a:hover { color: var(--white); }
+
+    @media (max-width: 768px) {
+      .article-header { padding: calc(64px + 40px) 16px 40px; }
+      .article-body { padding: 40px 16px; }
+      .nav-links { display: none; }
+      .table-wrap { margin: 20px -16px; border-radius: 0; border-left: none; border-right: none; }
+    }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+<div class="nav-inner">
+<div class="nav-left">
+<a href="../" class="nav-logo">
+<span class="nav-logo-text">Scodeno<span class="nav-logo-indonesia">Indonesia</span></span>
+</a>
+<ul class="nav-links">
+<li><a href="../">Products</a></li>
+<li><a href="../">Articles</a></li>
+<li><a href="../">About</a></li>
+</ul>
+</div>
+<a href="../#quote" class="nav-cta">Request Quote</a>
+</div>
+</nav>
+
+<!-- Article Header -->
+<header class="article-header">
+<div class="article-header-inner">
+<span class="article-tag">Network Design</span>
+<h1>Untitled</h1>
+<div class="article-meta">
+<span>12 min read</span>
+</div>
+</div><div class="lang-toggle"><a href="https://scodenoindonesia.com/articles/Week_25_industrial-network-design-best-practice.html" class="active-lang">🇮🇩 ID</a><a href="https://en.scodenoindonesia.com/articles/Week_25_industrial-network-design-best-practice.html">🇬🇧 EN</a></div>
+</header>
+
+<!-- Article Body -->
+<div class="article-body">
+<nav class="toc">
+<h4>Daftar Isi</h4>
+<ul>
+<li class="toc-h2"><a href="#prinsip-1-desain-hierarkis-jangan-flat">Prinsip 1: Desain Hierarkis — Jangan Flat</a></li><li class="toc-h2"><a href="#prinsip-2-redundancy-yang-tepat-bukan-lebih-baik-double">Prinsip 2: Redundancy yang Tepat — Bukan "Lebih Baik Double"</a></li><li class="toc-h2"><a href="#prinsip-3-segmentasi-pisahkan-untuk-lindungi">Prinsip 3: Segmentasi — Pisahkan untuk Lindungi</a></li><li class="toc-h2"><a href="#prinsip-4-latency-dan-determinism-bukan-speed-tapi-predictab">Prinsip 4: Latency dan Determinism — Bukan Speed, Tapi Predictability</a></li><li class="toc-h2"><a href="#prinsip-5-skalabilitas-desain-untuk-5-tahun-ke-depan">Prinsip 5: Skalabilitas — Desain untuk 5 Tahun ke Depan</a></li><li class="toc-h2"><a href="#prinsip-6-asset-management-dan-dokumentasi-yang-tidak-terlih">Prinsip 6: Asset Management dan Dokumentasi — Yang Tidak Terlihat, Tidak Terkelola</a></li><li class="toc-h2"><a href="#prinsip-7-environmental-hardening-pabrik-bukan-data-center">Prinsip 7: Environmental Hardening — Pabrik Bukan Data Center</a></li><li class="toc-h2"><a href="#prinsip-8-security-by-design-bukan-tambahan">Prinsip 8: Security by Design — Bukan Tambahan</a></li><li class="toc-h2"><a href="#implementasi-praktis-checklist-desain">Implementasi Praktis: Checklist Desain</a></li><li class="toc-h2"><a href="#kesimpulan-desain-adalah-keputusan">Kesimpulan: Desain Adalah Keputusan</a></li>
+</ul>
+</nav>
+<hr>
+<p>title_tag: "Industrial Network Design — 8 Prinsip Best Practice OT"</p>
+<p>h1: "Industrial Network Design Best Practice: Panduan Engineer Membangun OT Network dari Nol"</p>
+<p>meta_description: "Delapan prinsip industrial network design: hierarki, redundancy, segmentasi, latency, skalabilitas, asset management, environmental hardening, security by design."</p>
+<p>primary_keyword: "industrial network design"</p>
+<p>secondary_keywords: ["OT network design", "industrial network best practice", "desain jaringan industri", "CPwE", "IEC 62443"]</p>
+<p>search_intent: "Informational"</p>
+<p>cluster: "architecture"</p>
+<p>internal_link_target: "/blog/week-21-scalability"</p>
+<p>internal_link_anchor: "skalabilitas jaringan industri"</p>
+<hr>
+<p>Jaringan industri bukan jaringan kantor yang diperkuat.</p>
+<p>Di kantor, paket yang hilang artinya email telat 2 detik. Di pabrik, paket yang hilang artinya robot menabrak dinding atau katup gas gagal menutup. Jaringan industri dan jaringan kantor memang sama-sama pakai kabel Ethernet — tapi di situ saja persamaannya berhenti. <em>Industrial network design</em> main di liga yang berbeda.</p>
+<p>Artikel ini merangkum prinsip-prinsip desain yang sudah dibahas di seri artikel sebelumnya — dari diagnosa, redundancy, topologi, latency, hingga ERPS — jadi satu panduan yang bisa langsung dipakai. Kalau Anda sedang merancang OT network dari nol atau overhaul infrastruktur lama, ini peta jalannya.</p>
+<h2 id="prinsip-1-desain-hierarkis-jangan-flat">Prinsip 1: Desain Hierarkis — Jangan Flat</h2>
+<p>Kesalahan paling umum di jaringan industri pemula: semua switch terhubung secara flat. Satu VLAN besar. Satu broadcast domain. Semua perangkat saling menjangkau.</p>
+<p>Ini bekerja — sampai jaringan tumbuh. Broadcast storm di satu segmen melumpuhkan seluruh pabrik. Masalah di sel produksi A menghambat komunikasi antara controller B dan HMI di ruang kontrol. Tanpa segmentasi, satu anomali bisa menjadi <em>total site outage</em>.</p>
+<p><strong>Prinsip hierarki</strong> adalah fondasi <em>industrial network design</em>. Cisco Press dalam framework Converged Plantwide Ethernet (CPwE) mendefinisikan lima level:</p>
+<ul>
+<li><strong>Level 0 — Physical Process</strong>: Sensor, actuator, motor. Kabel langsung atau fieldbus.</li>
+<li><strong>Level 1 — Basic Control</strong>: PLC, PAC, DCS controller. Switch industrial unmanaged atau managed entry-level.</li>
+<li><strong>Level 2 — Area Supervisory</strong>: HMI, SCADA server lokal, engineering workstation. Managed switch dengan VLAN.</li>
+<li><strong>Level 3 — Site Operations</strong>: Historian, MES, data center lokal. Managed L3 switch atau router.</li>
+<li><strong>Level 4–5 — Enterprise/Cloud</strong>: ERP, analytics, cloud integration. Router/firewall ke IT network.</li>
+</ul>
+<p>Setiap level memiliki karakteristik trafik yang berbeda. Level 0–1 adalah deterministic, small-packet, high-frequency. Level 2–3 adalah bulk data, event-driven. Level 4–5 adalah standard IT traffic. Mencampur semuanya dalam satu broadcast domain tanpa segmentasi sama dengan mengundang <em>total site outage</em> — satu anomali, seluruh pabrik berhenti.</p>
+<p>Untuk pembahasan mendalam tentang arsitektur per-level, lihat <a href="/industrial-network-architecture">arsitektur jaringan industri</a>.</p>
+<h2 id="prinsip-2-redundancy-yang-tepat-bukan-lebih-baik-double">Prinsip 2: Redundancy yang Tepat — Bukan "Lebih Baik Double"</h2>
+<p>Redundansi bukan sekadar menambahkan kabel kedua. Redundansi yang salah bisa lebih berbahaya dari tidak ada redundansi sama lain — dua kabel yang membentuk loop tanpa spanning tree adalah broadcast storm yang menunggu terjadi.</p>
+<p><strong>Pertanyaan pertama selalu</strong>: berapa recovery time yang dibutuhkan aplikasi?</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Aplikasi</th><th>Toleransi Downtime</th><th>Protokol yang Sesuai</th></tr></thead>
+<tbody>
+<tr><td>PLC motion control</td><td>< 50 ms</td><td>ERPS G.8032 (ring), Profinet IRT</td></tr>
+<tr><td>SCADA telemetry</td><td>< 2 detik</td><td>RSTP, Flex Links</td></tr>
+<tr><td>Historian data logging</td><td>< 10 detik</td><td>RSTP, atau bahkan tanpa redundancy</td></tr>
+<tr><td>Video surveillance</td><td>< 5 detik</td><td>LACP (link aggregation)</td></tr>
+<tr><td>Safety system (SIL)</td><td>< 10 ms</td><td>Hardware bypass, dual-channel</td></tr>
+</tbody>
+</table>
+</div>
+<p>Dari sini, pilihan topologi mengikuti requirement:</p>
+<p><strong>Ring</strong> untuk recovery tercepat (< 50 ms). Cocok untuk conveyor line, cell production, atau loop proteksi substation. Setiap switch terhubung ke dua tetangga. RSTP menangani ring dengan recovery 1–6 detik, atau ERPS untuk sub-50 ms. Untuk perbandingan detail, lihat <a href="/blog/week-19-ring-redundancy-vs-star-redundancy">artikel ring redundancy</a>.</p>
+<p><strong>Star (dual homing)</strong> untuk fleksibilitas dan isolasi. Setiap access switch punya dua uplink ke core yang berbeda. LACP memberi zero-downtime failover. RSTP memberi 1–2 detik recovery. Ideal untuk layout pabrik yang tidak beraturan.</p>
+<p><strong>Hybrid</strong> untuk instalasi besar. Ring di setiap area/cell zone. Star redundant di distribution layer. Ini adalah desain CPwE yang sudah teruji — ring memberikan determinism di level process, star memberikan scalability di level supervisory.</p>
+<p>Dan jangan lupakan <strong>power redundancy</strong>. Dual power supply, redundant UPS, dan N+1 power distribution adalah bagian dari strategi redundansi yang sering dilupakan. Switch dengan dual input power memastikan bahwa kegagalan satu sumber daya tidak menghentikan komunikasi. Lihat <a href="/blog/week-18-failover-mechanism">artikel failover mechanism</a> untuk pendekatan holistik terhadap redundansi.</p>
+<p>Prinsip kunci: <strong>redundansi harus match dengan aplikasi</strong>. Over-provisioning adalah pemborosan. Under-provisioning adalah risiko.</p>
+<h2 id="prinsip-3-segmentasi-pisahkan-untuk-lindungi">Prinsip 3: Segmentasi — Pisahkan untuk Lindungi</h2>
+<p>Jaringan flat menciptakan dua masalah sekaligus: keamanan yang rentan dan performa yang sulit diprediksi. Segmentasi memecah jaringan menjadi zona-zona terisolasi yang berkomunikasi melalui titik yang dikontrol.</p>
+<p><strong>VLAN Segmentation</strong> adalah lapisan pertama. Pisahkan trafik berdasarkan fungsi:</p>
+<ul>
+<li>VLAN 10: Process control (PLC ↔ I/O)</li>
+<li>VLAN 20: SCADA telemetry</li>
+<li>VLAN 30: Engineering workstation</li>
+<li>VLAN 40: Video surveillance</li>
+<li>VLAN 50: Office/IT integration</li>
+</ul>
+<p>Setiap VLAN memiliki broadcast domain terpisah. Broadcast storm di VLAN 40 tidak mempengaruhi VLAN 10. Traffic engineering tidak bercampur dengan process data.</p>
+<p><strong>Physical segregation</strong> di titik kritis. DMZ (Demilitarized Zone) antara OT dan IT. Firewall industrial antara cell zone dan plant level. IEC 62443 secara eksplisit mensyaratkan model <em>zones and conduits</em> untuk keamanan OT — jadi ini bukan soal paranoid atau tidak, ini compliance.</p>
+<p><strong>Conduit control</strong> mengatur bagaimana antar-zone berkomunikasi. Satu port firewall. Satu routing rule. Satu access list. Setiap komunikasi antar-zone harus melalui conduit yang terdokumentasi dan ter-monitor.</p>
+<p>Segmentasi juga membantu <strong>troubleshooting</strong>. Ketika masalah terjadi, Anda tahu lingkupnya: satu VLAN, satu zone. Bukan "mungkin di mana saja di seluruh pabrik." Untuk strategi pemeliharaan dan diagnosa yang sistematis, baca <a href="/blog/week-15-diagnostics">artikel industrial network diagnostics</a> dan <a href="/blog/week-17-maintenance">maintenance strategy</a>.</p>
+<h2 id="prinsip-4-latency-dan-determinism-bukan-speed-tapi-predictab">Prinsip 4: Latency dan Determinism — Bukan Speed, Tapi Predictability</h2>
+<p>Di jaringan IT, latency 100 ms tidak masalah. Di jaringan OT, latency 100 ms bisa fatal.</p>
+<p>Tapi bukan <em>average latency</em> yang penting — melainkan <strong>worst-case latency</strong> alias <strong>jitter</strong>. PLC yang mengharapkan data setiap 4 ms tidak peduli jika rata-rata latency Anda 1 ms. Ia peduli jika sekali saja data terlambat 5 ms. Itulah mengapa determinism lebih penting dari throughput.</p>
+<p>Faktor yang mempengaruhi latency di <em>industrial network design</em>:</p>
+<p><strong>Hop count</strong>. Setiap switch yang dilewati menambah processing delay. Switch store-and-forward menambah 5–20 μs per hop. Cut-through switch menambah < 1 μs. Desain yang baik meminimalkan hop antara controller dan field device.</p>
+<p><strong>Queuing</strong>. Saat beberapa trafik bersaing di satu port, yang datang duluan dilayani duluan — kecuali ada QoS. Implementasi QoS (Quality of Service) memastikan process control traffic mendapat prioritas tertinggi. Tandai DSCP/CoS untuk setiap kelas trafik.</p>
+<p><strong>Full duplex vs shared media</strong>. Hub (shared media) adalah bottleneck deterministic. Pastikan semua koneksi full duplex — tidak ada collision domain.</p>
+<p><strong>Ring size</strong>. Di topologi ring dengan RSTP, ring dengan 20+ hop bisa menambah konvergensi time signifikan. ERPS tidak memiliki masalah ini — recovery time konstan berapapun jumlah node. Untuk detail, lihat <a href="/blog/week-22-latency">artikel latency industrial network</a>.</p>
+<p><strong>Oversubscription</strong>. Uplink 1 Gbps yang melayani 24 port 100 Mbps berarti oversubscription 2.4:1. Bisa diterima untuk bulk data. Tidak untuk process control real-time. Rasio oversubscription harus disesuaikan dengan kelas trafik per-segmen.</p>
+<h2 id="prinsip-5-skalabilitas-desain-untuk-5-tahun-ke-depan">Prinsip 5: Skalabilitas — Desain untuk 5 Tahun ke Depan</h2>
+<p>Pabrik tumbuh. Zona produksi baru ditambahkan. Sensor IoT dipasang di mesin yang dulunya standalone. Network harus bisa menyerap pertumbuhan ini tanpa <em>redesign</em> total.</p>
+<p><strong>Port reservation</strong>. Sisakan 20–30% port kosong di setiap switch. Bukan pemborosan — ini runway untuk ekspansi. Switch yang sudah 100% terpakai memaksa Anda membeli switch baru — dan menambah hop, menambah kompleksitas, menambah titik kegagalan.</p>
+<p><strong>Modular architecture</strong>. Desain yang memungkinkan penambahan ring baru atau area baru tanpa mempengaruhi existing ring. ERPS v2 dengan multi-ring interconnection adalah contoh arsitektur modular — sub-ring baru bisa ditambahkan tanpa mengganggu major ring.</p>
+<p><strong>Managed vs unmanaged</strong>. Unmanaged switch murah dan sederhana. Tapi mereka tidak mendukung VLAN, QoS, SNMP, atau redundancy protocol. Setiap kali Anda menggunakan unmanaged switch, Anda mengorbankan kemampuan manajerial di masa depan. Untuk area kritis, selalu gunakan managed switch. Untuk area non-kritis dengan budget terbatas, unmanaged bisa diterima — tapi tandai bahwa area ini akan butuh upgrade jika kebutuhan berkembang.</p>
+<p><strong>Fiber backbone, copper edge</strong>. Backbone antar-gedung atau antar-segmen utama selalu fiber — immune terhadap EMI, bandwidth tinggi, jarak jauh. Copper (Cat6/Cat6a) untuk koneksi terakhir ke device. Strategi ini juga memberi headroom bandwidth: Anda bisa upgrade backbone ke 10G atau 40G tanpa mengganti seluruh infrastruktur edge.</p>
+<p>Untuk pembahasan lengkap tentang perencanaan kapasitas dan ekspansi, lihat <a href="/blog/week-21-scalability">artikel scalability industrial network</a>.</p>
+<h2 id="prinsip-6-asset-management-dan-dokumentasi-yang-tidak-terlih">Prinsip 6: Asset Management dan Dokumentasi — Yang Tidak Terlihat, Tidak Terkelola</h2>
+<p>Jaringan terbaik di dunia tidak berguna jika tidak ada yang tahu topologinya.</p>
+<p><strong>Network diagram yang up-to-date</strong> adalah kebutuhan absolut — bukan dokumen yang dibuat sekali saat komisioning lalu dilupakan. Setiap perubahan — kabel baru, switch baru, VLAN baru — harus terdokumentasi.</p>
+<p><strong>Asset inventory</strong> mencakup: model, serial number, firmware version, IP address, lokasi fisik, tanggal instalasi, dan warranty status. Switch dengan firmware 5 tahun lalu yang tidak pernah di-update adalah vulnerability yang menunggu dieksploitasi.</p>
+<p><strong>SNMP monitoring</strong> memberikan visibilitas real-time. CPU utilization, port status, error counter, temperature. Managed switch mengirim trap saat sesuatu yang tidak normal terjadi — dan Anda tahu sebelum user melapor.</p>
+<p><strong>Configuration backup</strong>. Setiap kali konfigurasi berubah, backup baru dibuat. Saat switch gagal dan perlu diganti, konfigurasi bisa di-restore dalam hitungan menit — bukan hari.</p>
+<p>Untuk framework asset management yang komprehensif, baca <a href="/blog/week-16-asset-management">artikel industrial network asset management</a>.</p>
+<h2 id="prinsip-7-environmental-hardening-pabrik-bukan-data-center">Prinsip 7: Environmental Hardening — Pabrik Bukan Data Center</h2>
+<p>Switch yang sempurna di rack data center ber-AC bisa mati dalam 2 jam di lantai produksi yang bersuhu 55°C dengan debu konduktif.</p>
+<p><em>Industrial network design</em> harus mempertimbangkan:</p>
+<p><strong>Temperature rating</strong>. Industrial switch rated -40°C hingga +75°C. Comercial switch: 0–40°C. Perbedaan ini bukan opsional — ini perbedaan antara hidup dan mati di lingkungan ekstrem.</p>
+<p><strong>Ingress protection</strong>. IP rating minimum IP40 untuk lingkungan berdebu. IP67 untuk area basah atau outdoor. Konektor M12 (bukan RJ45 terbuka) di area dengan getaran tinggi atau paparan air.</p>
+<p><strong>Vibration dan shock</strong>. IEC 60068-2-6 (vibration) dan IEC 60068-2-27 (shock) adalah standar minimum untuk switch yang dipasang di mesin bergetar atau kendaraan.</p>
+<p><strong>EMI immunity</strong>. Di area dengan motor besar, VFD, atau welding equipment, medan elektromagnetik bisa mengganggu sinyal Ethernet. Gunakan shielded cable (STP/SFTP), metal conduit, dan — di area worst-case — fiber optic yang sepenuhnya immune terhadap EMI.</p>
+<p><strong>DIN rail vs rack mount</strong>. Switch kecil di DIN rail dalam panel kontrol. Switch besar di rack 19" di ruang kontrol. Memilih form factor yang tepat mempengaruhi kemudahan akses, pendinginan, dan manajemen kabel.</p>
+<h2 id="prinsip-8-security-by-design-bukan-tambahan">Prinsip 8: Security by Design — Bukan Tambahan</h2>
+<p>Keamanan jaringan industri bukan fitur yang ditambahkan setelah sistem jalan. Ia adalah constraint yang harus dipertimbangkan sejak fase desain.</p>
+<p><strong>Minimize attack surface</strong>. Matikan semua port yang tidak terpakai. Nonaktifkan protokol yang tidak dibutuhkan (Telnet, HTTP, SNMP v1/v2). Gunakan SSH dan HTTPS. Ubah default password — ini terdengar sepele, tapi masih menjadi penyebab nomor satu insiden keamanan OT.</p>
+<p><strong>Network access control</strong>. Port security berdasarkan MAC address. 802.1X authentication untuk device yang mendukung. ACL (Access Control List) per-port atau per-VLAN.</p>
+<p><strong>Firmware management</strong>. Patch firmware secara berkala. Tapi hati-hati — di lingkungan OT, patch harus melalui testing di lab sebelum deploy ke produksi. Downtime untuk patching harus dijadwalkan, bukan dilakukan ad-hoc.</p>
+<p><strong>Physical security</strong>. Ruang kontrol terkunci. Panel kontrol dengan kunci. Switch di area terbuka menggunakan enclosure yang bisa dikunci. Keamanan fisik adalah lapisan pertama dari defense-in-depth.</p>
+<p>IEC 62443 memberikan framework komprehensif untuk keamanan OT — dari assessment hingga implementasi. Setiap prinsip di atas sejalan dengan persyaratan IEC 62443-3-3 tentang system security requirements.</p>
+<h2 id="implementasi-praktis-checklist-desain">Implementasi Praktis: Checklist Desain</h2>
+<p>Sebelum deployment, pastikan checklist ini ter-centang semua:</p>
+<ul>
+<li>[ ] Hierarki level 0–5 terdefinisi dan terdokumentasi</li>
+<li>[ ] Topologi fisik (ring/star/hybrid) sesuai requirement recovery time</li>
+<li>[ ] VLAN segmentation per fungsi (process, SCADA, engineering, office)</li>
+<li>[ ] Redundancy protocol (ERPS/RSTP/LACP) dikonfigurasi dan teruji</li>
+<li>[ ] QoS dan traffic prioritization untuk process control</li>
+<li>[ ] Latency worst-case sudah dihitung dan dalam toleransi aplikasi</li>
+<li>[ ] Port reservation 20–30% untuk ekspansi</li>
+<li>[ ] Environmental rating sesuai kondisi lapangan</li>
+<li>[ ] SNMP monitoring dan alerting aktif</li>
+<li>[ ] Konfigurasi di-backup dan terdokumentasi</li>
+<li>[ ] Security hardening sesuai IEC 62443</li>
+<li>[ ] Network diagram up-to-date</li>
+</ul>
+<p>Checklist ini bukan dokumen seremonial. Satu item terlewat bisa jadi root cause outage 6 bulan kemudian — dan waktu itu Anda tidak akan ingat checklist mana yang di-skip.</p>
+<h2 id="kesimpulan-desain-adalah-keputusan">Kesimpulan: Desain Adalah Keputusan</h2>
+<p><em>Industrial network design</em> bukan tentang memilih produk termahal atau teknologi terbaru. Ini tentang membuat keputusan yang tepat dengan constraint yang ada.</p>
+<p>Hierarki yang jelas memberi struktur. Redundancy yang match dengan aplikasi memberi ketahanan. Segmentasi memberi isolasi dan keamanan. Latency planning memberi determinism. Scalability memberi masa depan. Asset management memberi visibilitas. Environmental hardening memberi durability. Security by design memberi perlindungan.</p>
+<p>Delapan prinsip ini bukan rules yang kaku — mereka adalah lensa untuk mengevaluasi setiap keputusan desain Anda. Apakah pilihan topologi ini match dengan recovery time requirement? Apakah VLAN ini sudah cukup segmentasinya? Apakah ada 20% port kosong untuk ekspansi?</p>
+<p>Otomasi industri bergerak cepat. IIoT, digital twin, predictive maintenance — semuanya butuh fondasi jaringan yang solid. Tanpa OT network design yang matang, inisiatif digitalisasi bakal tersandung di layer paling dasar: konektivitas.</p>
+<p>Untuk pembahasan per-prinsip yang lebih detail, artikel-artikel sebelumnya bisa jadi referensi: <a href="/blog/week-15-diagnostics">diagnostics</a>, <a href="/blog/week-16-asset-management">asset management</a>, <a href="/blog/week-17-maintenance">maintenance</a>, <a href="/blog/week-18-failover-mechanism">failover</a>, <a href="/blog/week-19-ring-vs-star">topologi redundancy</a>, <a href="/blog/week-21-scalability">scalability</a>, <a href="/blog/week-22-latency">latency</a>, <a href="/blog/week-23-rstp">RSTP</a>, sampai <a href="/blog/week-24-erps-g8032">ERPS G.8032</a>.</p>
+<hr>
+<p><strong>Sumber:</strong></p>
+<ol>
+<li>Hanes, David; Salgueiro, Gonzalo; Grossetete, Patrick; Barton, Robert; Henry, Jerome. <em>IoT Fundamentals: Networking Technologies, Protocols, and Use Cases for the Internet of Things</em>. Cisco Press, 2017.</li>
+<li>IEC. <em>IEC 62443: Security for Industrial Automation and Control Systems</em>. International Electrotechnical Commission.</li>
+<li>Rockwell Automation & Cisco. <em>Converged Plantwide Ethernet (CPwE) Design and Implementation Guide</em>. 2020.</li>
+<li>ITU-T. <em>G.8032/Y.1344: Ethernet Ring Protection Switching</em>. International Telecommunication Union, March 2020.</li>
+<li>Stenerson, Jon. <em>Programmable Logic Controllers: A Practical Approach to IEC 61131-3 Programming Using CODESYS</em>. Wiley, 2014.</li>
+<li>Kurose, James F. & Ross, Keith W. <em>Computer Networking: A Top-Down Approach</em>, 8th Edition. Pearson, 2020.</li>
+</ol>
+</div>
+
+<!-- Related Articles -->
+<section class="related-section">
+<div class="related-inner">
+<h2>Artikel Terkait</h2>
+<div class="related-grid">
+<a href="Week_22_industrial-network-latency.html" class="related-card"><span class="tag">Network Design</span><h3>Industrial Network Latency dan Deterministic Communication: Mengapa Setiap Milidetik Berpengaruh</h3></a><a href="Week_23_rstp-industrial-network.html" class="related-card"><span class="tag">Network Design</span><h3>Rapid Spanning Tree Protocol (RSTP) dalam Industrial Network: Mekanisme, Konvergensi, dan Penerapan</h3></a><a href="Week_24_ERPS-G8032-ring-redundancy.html" class="related-card"><span class="tag">Network Design</span><h3>ERPS (G.8032) Ring Redundancy Explained: Recovery Sub-50 Milidetik untuk Jaringan Industri</h3></a>
+</div>
+</div>
+</section>
+
+<!-- Article Navigation -->
+<nav class="article-nav">
+<div class="article-nav-inner">
+<a href="Week_24_ERPS-G8032-ring-redundancy.html" class="prev"><span class="nav-arrow">←</span><span><span class="nav-label">Previous</span><span class="nav-title">ERPS (G.8032) Ring Redundancy Explained: Recovery Sub-50 Milidetik untuk Jaringan Industri</span></span></a>
+<span></span>
+</div>
+<div class="article-nav-back">
+<a href="../">← Kembali ke Beranda</a>
+</div>
+</nav>
+
+<!-- Footer -->
+<footer class="footer">
+<div class="footer-inner">
+<span>© 2026 Scodeno Indonesia</span>
+<span>Didistribusikan oleh <a href="../">PT Konexindo Unitama</a></span>
+</div>
+</footer>
+
+<script>(function(){var h=window.location.hostname;var links=document.querySelectorAll('.lang-toggle a');links.forEach(function(a){a.classList.remove('active-lang');if(h.includes('en.')&&a.href.includes('en.scodeno'))a.classList.add('active-lang');if(!h.includes('en.')&&a.href.includes('scodenoindonesia.com')&&!a.href.includes('en.scodeno'))a.classList.add('active-lang')})})()</script>
+</body>
+</html>

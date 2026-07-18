@@ -3,14 +3,14 @@
      <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Industrial Switch vs Commercial Switch: Apa Perbedaannya? — Scodeno Indonesia</title>
-     <meta name="description" content="Industrial switch vs commercial switch: perbandingan suhu, daya, redundansi, mounting, dan lifetime. Kenapa switch kantor tidak bisa dipakai di pabrik.">
+     <title>Industrial Network Monitoring System: Memantau Jaringan OT Tanpa Henti — Scodeno Indonesia</title>
+     <meta name="description" content="Industrial network monitoring untuk jaringan OT: SNMP, RMON, syslog, port mirroring, alarm relay. Strategi monitoring jaringan industri yang efektif mencegah downtime.">
      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
      <style>
    :root{--blue:#0068B4;--blue-light:#0095E0;--blue-dark:#004A82;--blue-bg:#E7F3FB;--blue-glow:rgba(0,104,180,0.20);--black:#0A0E14;--near-black:#141A22;--dark-card:#1A202A;--white:#FFFFFF;--off-white:#F5F7FA;--gray-50:#F9FAFB;--gray-100:#E8ECF0;--gray-200:#C8CDD4;--gray-300:#9BA2AB;--gray-400:#6B7280;--gray-500:#4B5563;--text-dark:#1A1A1A;--text-muted:#9BA2AB;--content-max:780px}
    *{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--text-dark);background:var(--white);line-height:1.7}
    .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,20,0.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.06)}
-   .nav-inner{max-width:1200px;margin:0 auto;di <a href="Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html">kenapa industrial switch pakai desain fanless</a> splay:flex;align-items:center;justify-content:space-between;padding:0 24px;height:64px}
+   .nav-inner{max-width:1200px;margin:0 auto;display:flex;align <a href="Week_08_fitur-penting-industrial-ethernet-switch-yang-harus-anda-ketahui.html">fitur penting industrial switch</a> -items:center;justify-content:space-between;padding:0 24px;height:64px}
    .nav-left{display:flex;align-items:center;gap:32px}.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
    .nav-logo-img{height:28px;width:auto}.nav-logo-text{font-weight:800;font-size:1.0625rem;color:var(--white)}
    .nav-logo-indonesia{color:var(--blue-light);margin-left:2px}.nav-links{display:flex;align-items:center;gap:4px;list-style:none}
@@ -85,54 +85,80 @@
    <a href="../#products">IoT Smart Box</a>
    </div></li><li class="nav-dropdown"><a href="../#articles">Articles</a><div class="nav-dropdown-menu"><a href="../#articles">Fundamental</a><a href="../#articles">Selection Guide</a><a href="../#articles">Technology</a><a href="../#articles">Deployment</a><a href="../#articles">Network Design</a></div></li><li><a href="../#about">About</a></li><li class="nav-search"><button class="search-toggle" onclick="toggleSearch()" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="17" y1="17" x2="22" y2="22"/></svg></button><div class="search-panel" id="searchPanel"><div class="search-input-wrap"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="17" y1="17" x2="22" y2="22"/></svg><input type="text" class="search-input" id="searchInput" placeholder="Cari artikel atau produk..." oninput="doSearch()" onkeydown="if(event.key==='Escape')closeSearch()"></div><div class="search-results" id="searchResults"></div></div><div class="search-overlay" id="searchOverlay" onclick="closeSearch()"></div></li></ul></div>
       <a href="../#contact" class="nav-cta">Request Quote</a></div></nav>
-   <header class="article-header"><div class="article-header-inner"><span class="article-tag">Fundamental</span><h1>Industrial Switch vs Commercial Switch: Apa Perbedaannya?</h1><div class="article-meta"><span>7 min read</span></div></div><div class="lang-toggle"><a href="https://scodenoindonesia.com/articles/Week_09_industrial-switch-vs-commercial-switch-apa-perbedaannya.html" class="active-lang">🇮🇩 ID</a><a href="https://en.scodenoindonesia.com/articles/Week_09_industrial-switch-vs-commercial-switch-apa-perbedaannya.html">🇬🇧 EN</a></div></header>
+   <header class="article-header"><div class="article-header-inner"><span class="article-tag">Network Design</span><h1>Industrial Network Monitoring System: Memantau Jaringan OT Tanpa Henti</h1><div class="article-meta"><span>9 min read</span></div></div><div class="lang-toggle"><a href="https://scodenoindonesia.com/articles/Week_14_industrial-network-monitoring-system-memantau-jaringan-ot-tanpa-henti.html" class="active-lang">🇮🇩 ID</a><a href="https://en.scodenoindonesia.com/articles/Week_14_industrial-network-monitoring-system-memantau-jaringan-ot-tanpa-henti.html">🇬🇧 EN</a></div></header>
    <article class="article-body">
-   <p>Harganya bisa 5 kali lipat. Jumlah portnya sama. Kecepatannya sama.</p>
-   <p>Lalu kenapa tidak pakai switch komersial murah saja di pabrik?</p>
-   <p>Pertanyaan ini muncul di setiap proyek otomasi. Plant manager melihat harga. Integrator melihat spesifikasi. Dan di antara keduanya ada jurang pemahaman yang seringkali baru ketahuan setelah switch mati — biasanya pukul 2 pagi, di tengah produksi yang tidak boleh berhenti.</p>
-   <p>Artikel ini membandingkan <strong>industrial vs commercial switch</strong> dari enam dimensi kritis: hardware, suhu, daya, mounting, software, dan total biaya. Bukan teori. Realitas lapangan.</p>
+   <p>Satu menit downtime. Jutaan rupiah hilang.</p>
+   <p>Di pembangkit listrik, angkanya lebih besar. Di kilang minyak? Bisa bencana. Tapi ironisnya, sebagian besar jaringan OT masih dimonitor secara reaktif. Tim teknisi baru tahu ada masalah setelah operator telepon. Atau setelah alarm SCADA berbunyi — tapi penyebabnya tetap misterius.</p>
+   <p>Mengapa? Karena tidak ada yang mencatat apa yang terjadi di lapisan jaringan. Di sanalah peran <strong>industrial network monitoring</strong>: menutup celah antara apa yang terlihat di SCADA dan apa yang sebenarnya terjadi di kabel, switch, dan jalur komunikasi.</p>
    <hr>
-   <h2>1. Hardware: Aluminium vs Plastik</h2>
-   <p>Buka casing switch industrial dan switch komersial. Perbedaan pertama langsung terlihat.</p>
-   <p>Switch komersial menggunakan casing plastik atau sheet metal tipis. Dirancang untuk ruangan ber-AC, jauh dari getaran, jauh dari debu. Ringan. Murah. Cukup untuk rak IT.</p>
-   <p>Switch industrial menggunakan enclosure aluminium die-cast. Kenapa aluminium? Karena aluminium adalah heat sink pasif. Panas dari chipset dialirkan langsung ke casing dan dilepaskan ke udara — tanpa kipas. Desain bergelombang di sisi casing bukan estetika; itu sirip pendingin.</p>
-   <p>Switch industrial sejati 100% fanless. Tidak ada part bergerak. Tidak ada yang bisa aus, menyumbat, atau terbakar.</p>
-   <p>Perlindungan tidak berhenti di casing. PCB switch industrial sering dilapisi <em>conformal coating</em> — lapisan tipis yang melindungi sirkuit dari kelembaban, gas korosif (H2S, SO2), dan debu konduktif. Switch komersial tidak punya ini.</p>
-   <h2>2. Suhu: -40°C vs 0°C</h2>
-   <p>Ini ujian paling kejam.</p>
-   <p>Switch komersial dirancang untuk 0°C sampai 40°C. Itu suhu ruang server. Begitu dipasang di enclosure outdoor yang terpapar matahari — suhu internal bisa menembus 60°C. Switch komersial akan thermal throttle, hang, atau mati. Tanpa peringatan.</p>
-   <p>Spurgeon dan Zimmerman dalam <em>Ethernet Switches</em> (O'Reilly, 2013) menekankan bahwa "terserah Anda untuk memastikan switch yang dibeli punya cukup performa untuk melakukan tugasnya". Di lingkungan industri, "cukup performa" termasuk bertahan di suhu yang akan membunuh switch biasa.</p>
-   <p>Switch industrial beroperasi di -40°C hingga 75°C. Komponen yang digunakan berbeda: wide-temperature IC, solid capacitor yang tidak membeku atau menguap, dan desain termal yang mengandalkan konduksi — bukan konveksi paksa lewat kipas.</p>
-   <h2>3. Catu Daya: Dual DC vs Single AC Adaptor</h2>
-   <p>Switch komersial: satu adaptor AC. Colok ke stop kontak. Kalau listrik mati, switch mati.</p>
-   <p>Switch industrial: dual DC input — 12-58 VDC. Kalau satu sumber gagal, switch pindah ke sumber cadangan dalam hitungan mikrodetik. Tidak ada reboot. Tidak ada downtime.</p>
-   <p>Mengapa DC? Karena panel kontrol industri beroperasi pada tegangan DC — 24V atau 48V. Switch industrial mengambil daya langsung dari panel yang sama dengan PLC. Tidak perlu stop kontak tambahan. Fitur reverse polarity protection memastikan switch tidak rusak meskipun kabel daya terbalik.</p>
-   <h2>4. Mounting: DIN-Rail vs Rak 19-Inch</h2>
-   <p>Switch komersial untuk meja atau rak 19-inch. Switch industrial untuk rel DIN (EN 50022) — standar mounting panel kontrol. Tinggal diklip, tanpa baut.</p>
-   <p>Konektor daya: switch komersial pakai DC jack — longgar, mudah lepas karena getaran. Switch industrial pakai terminal block screw — kabel dijepit sekrup. Tidak akan lepas.</p>
-   <h2>5. Software: Ring Redundancy vs RSTP Biasa</h2>
-   <p>Switch komersial: RSTP failover 2-30 detik. Di pabrik, 30 detik berarti mesin berhenti.</p>
-   <p>Switch industrial: ring redundancy ERPS atau Turbo Ring. Recovery di bawah 20 milidetik. Failover zero-loss. Kamera tidak blank. SCADA tidak putus.</p>
-   <p>Fitur lain yang hanya ada di <strong>industrial vs commercial switch</strong> kelas atas: IGMP snooping, QoS prioritas kontrol, VLAN, port mirroring, SNMP traps.</p>
-   <h2>6. Total Cost: CAPEX vs OPEX</h2>
-   <p>Sekilas, switch komersial menang — seperlima harga. Tapi satu jam downtime lini produksi bisa merugikan puluhan hingga ratusan juta. Belum teknisi darurat, spare part kilat, reputasi.</p>
-   <p>Switch industrial: siklus hidup 10+ tahun dengan form-fit-function lock. Model sama tersedia untuk pemeliharaan bertahun-tahun. Switch komersial ganti model setiap 12-18 bulan. Begitu rusak, Anda mungkin tidak bisa beli pengganti yang sama.</p>
-   <p>Total cost of ownership dihitung dalam tahun, bukan harga pembelian.</p>
-   <h2>Kapan Commercial Switch Boleh Dipakai?</h2>
-   <p><strong>Commercial ethernet switch</strong> masih punya tempat:</p>
-   <ul><li>Ruang server pabrik ber-AC 24/7, kedap debu</li><li>Jaringan kantor administrasi terpisah dari lantai produksi</li><li>Test bench dan lab — setup sementara</li><li>Segmen non-kritis: printer, digital signage, Wi-Fi tamu</li></ul>
-   <p>Tapi begitu kabel UTP ditarik ke area produksi — melewati cable tray yang sama dengan kabel daya motor — aturan main berubah total.</p>
-   <h2>Kesimpulan</h2>
-   <p><strong>Industrial vs commercial switch</strong> bukan perbandingan apel-ke-apel. Ini perbandingan dua filosofi: dioptimalkan untuk biaya rendah vs dibangun untuk bertahan.</p>
-   <p>Menggunakan switch komersial di pabrik bukan penghematan. Ini pertaruhan. Dan dalam pertaruhan, yang kalah selalu sama: produksi.</p>
-   <p>Investasi di <a href="../"><strong>industrial ethernet switch</strong> Scodeno</a> yang tepat adalah investasi di ketenangan — jaringan tetap berjalan, 24/7, 365 hari, tanpa kejutan.</p>
-   <hr>
-   <p><strong>Sumber:</strong></p>
-   <ol><li>Spurgeon, Charles E. &amp; Zimmerman, Joann. <em>Ethernet Switches</em>. O'Reilly Media, 2013.</li><li>Scodeno. XPTN-9000 Series Industrial Ethernet Switches.</li></ol>
+   <h2>Mengapa Monitoring Jaringan OT Berbeda dari IT</h2>
+   <p>Prioritas. Di dunia IT, tiga pilarnya adalah <em>confidentiality</em>, <em>integrity</em>, dan <em>availability</em> — sering disingkat CIA. Kerahasiaan data di urutan pertama. Di OT, urutannya dibalik.</p>
+   <p><em>Availability</em> menjadi utama. Baru <em>integrity</em>. Terakhir <em>confidentiality</em>.</p>
+   <p>Implikasinya besar. Switch industri yang gagal di lantai produksi tidak bisa ditangani seperti server di data center. Tidak ada "coba restart dulu." Proses produksi berhenti. Sensor berhenti mengirim data. Aktuator kehilangan perintah.</p>
+   <p>Karena itu, pendekatan <strong>network monitoring OT</strong> tidak bisa sekadar mengandalkan ping atau SNMP <em>polling</em> sederhana. Diperlukan instrumen yang mendeteksi anomali sebelum menjadi kegagalan. Dan memberi informasi cukup untuk <em>root cause analysis</em> dalam hitungan menit, bukan jam.</p>
+   <p>Lalu ada perbedaan protokol. Jaringan OT menggunakan protokol industri spesifik — Modbus TCP, EtherNet/IP, PROFINET, BACnet. Kebanyakan tools monitoring IT tidak mengenalinya. Switch industrial harus mampu melaporkan metrik yang relevan, bukan sekadar <code>ifInOctets</code> dan <code>ifOutOctets</code> dari MIB standar.</p>
+   <p>Dan jangan lupakan lingkungan fisik. Switch IT berdiam di ruang server berpendingin. Switch industrial menghadapi suhu -40°C sampai 75°C, getaran, debu, dan kelembaban. Setiap komponen adalah titik potensi kegagalan. Monitoring harus mencakup semuanya — dari suhu internal hingga status <em>power supply</em>.</p>
+   <h2>Protokol dan Mekanisme Monitoring di Switch Industrial</h2>
+   <p>Tiga pilar membentuk fondasi monitoring: SNMP, RMON, dan Syslog. Masing-masing punya peran yang tidak bisa saling menggantikan.</p>
+   <h3>SNMP: Bahasa Universal Manajemen Jaringan</h3>
+   <p>SNMP adalah protokol paling luas diadopsi untuk monitoring. Spurgeon dan Zimmerman (2013) menjelaskan: "Banyak sistem manajemen switch menggunakan SNMP untuk menyediakan cara <em>vendor-neutral</em> mengekstrak informasi operasional."</p>
+   <p>Cara kerjanya sederhana. SNMP <em>manager</em> — software NMS — mengirim permintaan ke SNMP <em>agent</em> di switch. Agent merespons dengan data dari Management Information Base (MIB). Isinya: <em>counter</em> trafik per-port, status <em>link</em>, suhu perangkat, voltase <em>power supply</em>.</p>
+   <p>Kurose dan Ross menguraikan tujuh tipe PDU dalam SNMPv3. Dari GetRequest untuk <em>polling</em> hingga SetRequest untuk konfigurasi jarak jauh. Namun yang paling kritis untuk monitoring industri adalah <strong>Trap</strong>.</p>
+   <p>Trap adalah pesan tidak diminta. Switch mengirimkannya sendiri saat terjadi kejadian luar biasa. Link down. Suhu melampaui ambang. Tanpa trap, NMS hanya bisa <em>polling</em> berkala. Di antara dua <em>polling</em>, kegagalan bisa lolos tanpa terdeteksi.</p>
+   <p>Dengan trap? Switch melapor seketika.</p>
+   <h3>RMON: Monitoring yang Lebih Cerdas</h3>
+   <p>RMON memperluas SNMP. Data lebih granular. Mekanisme alarm berbasis ambang batas. Bukan sekadar menghitung paket — RMON memonitor pola trafik, mengelompokkan statistik per host, membangkitkan alarm saat parameter terlampaui.</p>
+   <p>Donahue, dalam <em>Network Warrior</em>, merujuk pada RMON <em>probe</em> yang "memungkinkan Anda memonitor port, VLAN, atau kombinasi keduanya." Untuk jaringan industri, empat RMON Groups paling relevan: Group 1 (statistik), 2 (history), 3 (alarm), dan 9 (event).</p>
+   <p>Group 3 khususnya penting. Operator menetapkan ambang batas pada <em>error rate</em> atau <em>broadcast traffic</em>. Switch membangkitkan event saat ambang terlampaui — sebelum kondisi memburuk menjadi kegagalan total.</p>
+   <h3>Syslog: Jejak Digital untuk Troubleshooting</h3>
+   <p>Syslog melengkapi SNMP dan RMON dengan pencatatan berbasis teks. Setiap perubahan dicatat: <em>link up/down</em>, kegagalan autentikasi, perubahan konfigurasi. Lengkap dengan <em>timestamp</em> dan tingkat keparahan.</p>
+   <p>Data syslog dikirim ke server terpusat. Bisa dikorelasikan. Bisa dianalisis forensik.</p>
+   <p>Keunggulan syslog? Konteks. SNMP trap hanya memberi tahu "port 5 down." Syslog bisa mencatat penyebabnya: kabel putus, negosiasi gagal, atau <em>loop detection</em> mematikan port. Bagi teknisi yang mendiagnosis masalah di tengah malam, informasi ini bisa menghemat berjam-jam.</p>
+   <h2>Port Mirroring dan Traffic Flow Analysis</h2>
+   <p>SNMP dan RMON memberi tahu <em>apa</em> yang terjadi. Tapi teknisi sering perlu tahu <em>mengapa</em>. Di situlah analisis trafik masuk.</p>
+   <h3>Port Mirroring: Jendela ke Dalam Trafik</h3>
+   <p>Spurgeon dan Zimmerman (2013) menjelaskan port mirroring: switch menyalin trafik dari port tertentu ke <em>mirror port</em> khusus. Laptop dengan <em>network analyzer</em> dihubungkan ke sana. Semua trafik terlihat — dari PLC ke SCADA, dari sensor ke gateway.</p>
+   <p>Sangat berguna untuk <em>troubleshooting</em>. Memverifikasi apakah PLC benar-benar mengirim data. Menganalisis <em>latency</em> antar node.</p>
+   <p>Tapi port mirroring bukan fitur standar. Switch tanpa <em>management interface</em> biasanya tidak menyediakannya. Untuk monitoring serius, managed switch adalah prasyarat.</p>
+   <h3>sFlow dan NetFlow/IPFIX: Memahami Pola Trafik</h3>
+   <p>Untuk monitoring skala besar, sFlow dan NetFlow/IPFIX menawarkan pendekatan berbeda. Alih-alih menyalin seluruh paket, protokol <em>flow-based</em> mengambil sampel. Mengekspor metadata: siapa berbicara dengan siapa, protokol apa, berapa banyak data.</p>
+   <p>Hanes dan kolega, dalam <em>IoT Fundamentals</em>, menekankan: "Dengan jumlah besar <em>smart objects</em> di jaringan IoT yang berkomunikasi dan mengalirkan data, menjadi tantangan untuk memastikan bahwa aliran data ini dikelola, dimonitor, dan diamankan secara efektif."</p>
+   <p>Di lingkungan industri, analisis <em>flow</em> mendeteksi anomali yang lolos dari <em>threshold</em>-based monitoring. Lonjakan trafik tidak biasa antara dua perangkat yang biasanya tidak berkomunikasi? Bisa jadi kesalahan konfigurasi. Atau intrusi.</p>
+   <h2>Alarm Relay dan Trap: Deteksi Dini Sebelum Kegagalan</h2>
+   <p>Satu keunggulan switch industrial dibanding switch komersial: <strong>alarm relay</strong>. Kontak kering fisik. Bisa dihubungkan ke PLC, DCS, atau panel alarm. Tidak bergantung pada jaringan Ethernet.</p>
+   <p>Mekanismenya sederhana tapi andal. Switch mendeteksi <em>fault</em> — <em>power supply</em> primer gagal, <em>link</em> putus, suhu melampaui batas. Relay berubah status. SCADA membaca perubahan ini secara fisik.</p>
+   <p>Inilah <em>failsafe</em> sejati. SNMP trap membutuhkan jaringan yang berfungsi untuk dikirim. Alarm relay bekerja justru ketika jaringan bermasalah.</p>
+   <p>Gabungkan dengan dual power input — dua fitur standar di switch industrial — dan Anda mendapatkan lapisan keandalan yang tidak dimiliki switch enterprise. Monitoring dari level fisik hingga aplikasi. Proteksi yang terus bekerja bahkan ketika Ethernet mati.</p>
+   <h2>Strategi Industrial Network Monitoring yang Efektif untuk Jaringan OT</h2>
+   <p>Membangun sistem <strong>industrial network monitoring</strong> bukan sekadar memasang tools. Butuh strategi yang selaras dengan karakteristik OT.</p>
+   <h3>1. Tentukan Apa yang Dimonitor — dan Prioritasnya</h3>
+   <p>Untuk network monitoring OT, prioritas bisa dikelompokkan menjadi tiga lapis:</p>
+   <ul>
+   <li><strong>Ketersediaan</strong> — status link, status power supply, suhu perangkat, uptime. Layer kritis. Harus dimonitor <em>real-time</em> dengan trap dan alarm relay.</li>
+   <li><strong>Performa</strong> — <em>bandwidth utilization</em>, <em>error rate</em>, <em>packet loss</em>, <em>latency</em>. Bisa dimonitor dengan interval <em>polling</em> lebih panjang.</li>
+   <li><strong>Keamanan</strong> — perubahan <em>MAC address table</em>, akses tidak sah, perubahan konfigurasi. Syslog sangat berguna di sini.</li>
+   </ul>
+   <h3>2. Pilih Topologi yang Mendukung Monitoring</h3>
+   <p>Jaringan OT sering menggunakan topologi ring untuk redundansi. Protokol ERPS menyediakan failover di bawah 20ms — cukup cepat untuk sebagian besar aplikasi industri. Sistem monitoring harus mendeteksi <em>ring break</em> dan <em>recovery</em> melalui trap SNMP. Operator bisa membedakan <em>link failure</em> sementara dari kegagalan perangkat.</p>
+   <h3>3. Integrasikan dengan Sistem yang Sudah Ada</h3>
+   <p>Data monitoring tidak boleh berdiri sendiri. Integrasikan trap SNMP ke NMS yang sudah ada — Zabbix, Nagios, LibreNMS, atau solusi komersial. Untuk alarm fisik, relay output switch dihubungkan ke PLC yang sudah terintegrasi SCADA. Hasilnya? <em>Single pane of glass</em> untuk seluruh sistem kontrol dan monitoring.</p>
+   <h3>4. Jangan Lupakan Fisik</h3>
+   <p>Lingkungan industri keras. Suhu ekstrem mendegradasi komponen. Debu menyumbat ventilasi. Getaran melonggarkan konektor. Monitoring harus mencakup parameter lingkungan: suhu internal, status kipas, voltase input.</p>
+   <p>Di sinilah <a href="../">switch industrial fanless</a> dengan <em>heat sink</em> aluminium unggul. Tidak ada kipas yang gagal. Tidak ada <em>moving part</em> yang aus. Lebih sedikit variabel yang harus dimonitor — dan lebih sedikit titik kegagalan.</p>
+   <h2>Penutup</h2>
+   <p>Industrial network monitoring adalah pendekatan holistik. Bukan sekadar "pasang SNMP." Mencakup pemilihan perangkat yang tepat, protokol yang sesuai, dan integrasi dengan sistem kontrol yang sudah berjalan.</p>
+   <p>Dari deteksi <em>link down</em> via trap, analisis trafik via port mirroring, hingga alarm fisik via relay — setiap lapisan berkontribusi pada satu tujuan: mencegah downtime sebelum terjadi. Switch industrial modern menyediakan semua ini dalam satu perangkat.</p>
+   <p>Yang membedakan adalah seberapa andal perangkat itu sendiri bertahan di lingkungan keras. Karena sistem monitoring terbaik tidak berarti apa-apa jika perangkat yang dimonitor justru menjadi sumber kegagalan.</p>
+   <p>Baca lebih lanjut tentang strategi menjaga ketersediaan jaringan di artikel kami tentang <a href="/industrial-network-redundancy">monitoring jaringan industri</a> dan topologi redundant untuk OT.</p>
    </article>
-   <nav class="article-nav"><div class="article-nav-inner"><a href="Week_08_fitur-penting-industrial-ethernet-switch-yang-harus-anda-ketahui.html" class="prev"><span>←</span><span><span class="nav-label">Previous</span><span class="nav-title">11 Fitur Penting Industrial Switch</span></span></a><a href="Week_10_vlan-dalam-industrial-ethernet-network.html" class="next"><span><span class="nav-label">Next</span><span class="nav-title">VLAN dalam Industrial Ethernet Network</span></span><span>→</span></a></div><div class="article-nav-back"><a href="../#articles">← Kembali ke Semua Artikel</a></div></nav>
-   <section class="related-section"><div class="related-inner"><h2>Artikel Terkait</h2><div class="related-grid"><a href="Week_08_fitur-penting-industrial-ethernet-switch-yang-harus-anda-ketahui.html" class="related-card"><span class="tag">Fundamental</span><h3>11 Fitur Penting Industrial Switch</h3></a><a href="Week_06_managed-vs-unmanaged-industrial-switch-mana-yang-tepat.html" class="related-card"><span class="tag">Selection Guide</span><h3>Managed vs Unmanaged Switch</h3></a><a href="Week_04_industrial-gigabit-switch-vs-fast-ethernet-switch.html" class="related-card"><span class="tag">Selection Guide</span><h3>Gigabit vs Fast Ethernet</h3></a><a href="Week_07_industrial-switch-dengan-poe-kapan-dibutuhkan.html" class="related-card"><span class="tag">Technology</span><h3>Industrial Switch dengan PoE</h3></a></div></div></section>
-   <footer class="footer"><div class="footer-inner"><span>&copy; 2024 Scodeno Indonesia</span><span>Didistribusikan oleh <a href="../">PT Konexindo Unitama</a></span></div></footer>
+   <nav class="article-nav"><div class="article-nav-inner"><a href="Week_13_network-downtime-pabrik.html"><span><span class="nav-label">Previous</span><span class="nav-title">Cara Mencegah Network Downtime di Pabrik</span></span></a><a><span><span class="nav-label">Next</span><span class="nav-title">Coming Soon</span></span></a></div><div class="article-nav-back"><a href="../#articles">&larr; Back to Articles</a></div></nav>
+   <section class="related-section"><div class="related-inner"><h2 style="font-size:1.25rem;font-weight:700;margin-bottom:24px;color:var(--near-black)">Related Articles</h2><div class="related-grid">
+   <a href="Week_06_managed-vs-unmanaged-industrial-switch-mana-yang-tepat.html" class="related-card"><span class="tag">Selection Guide</span><h3>Managed vs Unmanaged Industrial Switch: Mana yang Tepat?</h3></a>
+   <a href="Week_11_qos-dalam-industrial-network.html" class="related-card"><span class="tag">Technology</span><h3>QoS dalam Industrial Network</h3></a>
+   <a href="Week_10_vlan-dalam-industrial-ethernet-network.html" class="related-card"><span class="tag">Technology</span><h3>VLAN dalam Industrial Ethernet Network</h3></a>
+   <a href="Week_12_network-segmentation-pada-jaringan-industri.html" class="related-card"><span class="tag">Network Design</span><h3>Network Segmentation pada Jaringan Industri</h3></a>
+   </div></div></section>
+   <footer class="footer"><div class="footer-inner"><span>&copy; 2026 Scodeno Indonesia. PT Konexindo Unitama — Authorized Distributor.</span><a href="../#contact">Contact</a></div></footer>
    <script>
    let searchIndex=[];
    searchIndex=[{"title": "Scodeno Switch: Panduan Lengkap Industrial Ethernet Switch untuk Jaringan Industri", "url": "articles/Week_00_scodeno-switch-panduan-lengkap.html", "snippet": "Satu switch. Ratusan perangkat. Ribuan jam operasi tanpa henti.", "category": "Artikel", "tag": "Selection Guide"}, {"title": "Kenapa Industrial Switch Menggunakan Desain Fanless", "url": "articles/Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html", "snippet": "Di balik keandalan jaringan otomasi pabrik, sistem transportasi cerdas, dan infrastruktur energi, terdapat satu komponen", "category": "Artikel", "tag": "Fundamental"}, {"title": "Apa Itu DIN-Rail Industrial Switch dan Mengapa Banyak Dipakai di Pabrik", "url": "articles/Week_02_apa-itu-din-rail-industrial-switch-dan-mengapa-banyak-dipakai-di-pabrik.html", "snippet": "Di era Industri 4.0, konektivitas yang andal di lantai produksi bukan lagi nilai tambah, melainkan kebutuhan mutlak. Set", "category": "Artikel", "tag": "Fundamental"}, {"title": "IP Rating pada Industrial Ethernet Switch — Apa Artinya?", "url": "articles/Week_03_ip-rating-pada-industrial-ethernet-switch-apa-artinya.html", "snippet": "Di lantai pabrik, segalanya berbeda. Udara tidak sejuk seperti di ruang server berpendingin. Di sana, debu beterbangan d", "category": "Artikel", "tag": "Fundamental"}, {"title": "Industrial Gigabit Switch vs Fast Ethernet Switch: Mana yang Dibutuhkan Jaringan Anda?", "url": "articles/Week_04_industrial-gigabit-switch-vs-fast-ethernet-switch.html", "snippet": "Sepuluh kali lebih cepat.", "category": "Artikel", "tag": "Selection Guide"}, {"title": "Industrial Switch dengan SFP Port: Fungsi dan Kegunaannya", "url": "articles/Week_05_industrial-switch-dengan-sfp-port-fungsi-dan-kegunaannya.html", "snippet": "Port SFP.", "category": "Artikel", "tag": "Technology"}, {"title": "Managed vs Unmanaged Industrial Switch: Mana yang Tepat?", "url": "articles/Week_06_managed-vs-unmanaged-industrial-switch-mana-yang-tepat.html", "snip... [truncated]
@@ -195,5 +221,6 @@
    document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSearch()});
    </script>
    <script>(function(){var h=window.location.hostname;var links=document.querySelectorAll('.lang-toggle a');links.forEach(function(a){a.classList.remove('active-lang');if(h.includes('en.')&&a.href.includes('en.scodeno'))a.classList.add('active-lang');if(!h.includes('en.')&&a.href.includes('scodenoindonesia.com')&&!a.href.includes('en.scodeno'))a.classList.add('active-lang')})})()</script>
-</body></html>
+</body>
+   </html>
    

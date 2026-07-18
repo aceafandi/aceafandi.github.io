@@ -1,464 +1,585 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apa Itu DIN-Rail Industrial Switch dan Mengapa Banyak Dipakai di Pabrik — Scodeno Indonesia</title>
-<meta name="description" content="Apa Itu DIN-Rail Industrial Switch dan Mengapa Banyak Dipakai di Pabrik">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root {
---blue: #0068B4; --blue-light: #0095E0; --blue-dark: #004A82; --blue-bg: #E7F3FB;
---blue-glow: rgba(0,104,180,0.20);
---black: #0A0E14; --near-black: #141A22; --dark-card: #1A202A;
---white: #FFFFFF; --off-white: #F5F7FA; --gray-50: #F9FAFB; --gray-100: #E8ECF0;
---gray-200: #C8CDD4; --gray-300: #9BA2AB; --gray-400: #6B7280; --gray-500: #4B5563;
---text-dark: #1A1A1A; --text-light: #E2E8F0; --text-muted: #9BA2AB;
---content-max: 780px; --radius-sm: 2px; --radius-md: 4px;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-font-family: 'Inter', system-ui, -apple-system, sans-serif;
-color: var(--text-dark); background: var(--white);
-line-height: 1.7; -webkit-font-smoothing: antialiased;
-}
+     <!DOCTYPE html>
+     <html lang="id">
+     <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Apa Itu DIN-Rail Industrial Switch dan Mengapa Banyak Dipakai di Pabrik — Scodeno Indonesia</title>
+     <meta name="description" content="Apa Itu DIN-Rail Industrial Switch dan Mengapa Banyak Dipakai di Pabrik">
+     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+     <style>
+   :root {
+   --blue: #0068B4; --blue-light: #0095E0; --blue-dark: #004A82; --blue-bg: #E7F3FB;
+   --blue-glow: rgba(0,104,180,0.20);
+   --black: #0A0E14; --near-black: #141A22; --dark-card: #1A202A;
+   --white: #FFFFFF; --off-white: #F5F7FA; --gray-50: #F9FAFB; --gray-100: #E8ECF0;
+   --gray-200: #C8CDD4; --gray-300: #9BA2AB; --gray-400: #6B7280; --gray-500: #4B5563;
+   --text-dark: #1A1A1A; --text-light: #E2E8F0; --text-muted: #9BA2AB;
+   --content-max: 780px; --radius-sm: 2px; --radius-md: 4px;
+   }
+   * { box-sizing: border-box; margin: 0; padding: 0; }
+   body {
+   font-family: 'Inter', system-ui, -apple-system, sans-serif;
+   color: var(--text-dark); background: var(--white);
+   line-height: 1.7; -webkit-font-smoothing: antialiased;
+   }
     /* ===== NAVIGATION ===== */
-.nav {
-position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-background: rgba(10,14,20,0.94); backdrop-filter: blur(12px);
-border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-.nav-inner {
-max-width: 1200px; margin: 0 auto;
-display: flex; align-items: center; justify-content: space-between;
-padding: 0 24px; height: 64px;
-}
-.nav-left { display: flex; align-items: center; gap: 32px; }
-.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.nav-logo-img { height: 28px; width: auto; }
-.nav-logo-text { font-weight: 800; font-size: 1.0625rem; color: var(--white); letter-spacing: -0.01em; white-space: nowrap; }
-.nav-logo-indonesia { color: var(--blue-light); margin-left: 2px; }
-.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
-.nav-links a { color: var(--gray-300); text-decoration: none; font-size: 0.8125rem; font-weight: 500; padding: 8px 12px; border-radius: 4px; transition: all 0.15s; white-space: nowrap; }
-.nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+   .nav {
+   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+   background: rgba(10,14,20,0.94); backdrop-filter: blur(12px);
+   border-bottom: 1px solid rgba(255,255,255,0.06);
+   }
+   .nav-inner {
+   max-width: 1200px; margin: 0 auto;
+   display: flex; align-items: center; justify-content: space-between;
+   padding: 0 24px; height: 64px;
+   }
+   .nav-left { display: flex; align-items: center; gap: 32px; }
+   .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+   .nav-logo-img { height: 28px; width: auto; }
+   .nav-logo-text { font-weight: 800; font-size: 1.0625rem; color: var(--white); letter-spacing: -0.01em; white-space: nowrap; }
+   .nav-logo-indonesia { color: var(--blue-light); margin-left: 2px; }
+   .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+   .nav-links a { color: var(--gray-300); text-decoration: none; font-size: 0.8125rem; font-weight: 500; padding: 8px 12px; border-radius: 4px; transition: all 0.15s; white-space: nowrap; }
+   .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
     /* Dropdown */
-.nav-dropdown { position: relative; }
-.nav-dropdown > a { display: flex; align-items: center; gap: 4px; }
-.nav-dropdown > a::after { content: '▾'; font-size: 0.625rem; margin-left: 2px; }
-.nav-dropdown-menu {
-position: absolute; top: 100%; left: 0; min-width: 200px;
-background: var(--dark-card); border: 1px solid rgba(255,255,255,0.08);
-border-radius: 6px; padding: 6px 0; opacity: 0; visibility: hidden;
-transform: translateY(4px); transition: all 0.18s ease;
-box-shadow: 0 12px 32px rgba(0,0,0,0.35);
-}
-.nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-.nav-dropdown-menu a {
-display: block; padding: 8px 16px !important; font-size: 0.8125rem !important;
-color: var(--gray-300) !important; border-radius: 0 !important;
-}
-.nav-dropdown-menu a:hover { background: rgba(255,255,255,0.06) !important; color: var(--white) !important; }
-.nav-dropdown-menu .dropdown-label {
-font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.06em;
-color: var(--gray-400); padding: 6px 16px 2px; font-weight: 600;
-}
+   .nav-dropdown { position: relative; }
+   .nav-dropdown > a { display: flex; align-items: center; gap: 4px; }
+   .nav-dropdown > a::after { content: '▾'; font-size: 0.625rem; margin-left: 2px; }
+   .nav-dropdown-menu {
+   position: absolute; top: 100%; left: 0; min-width: 200px;
+   background: var(--dark-card); border: 1px solid rgba(255,255,255,0.08);
+   border-radius: 6px; padding: 6px 0; opacity: 0; visibility: hidden;
+   transform: translateY(4px); transition: all 0.18s ease;
+   box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+   }
+   .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+   .nav-dropdown-menu a {
+   display: block; padding: 8px 16px !important; font-size: 0.8125rem !important;
+   color: var(--gray-300) !important; border-radius: 0 !important;
+   }
+   .nav-dropdown-menu a:hover { background: rgba(255,255,255,0.06) !important; color: var(--white) !important; }
+   .nav-dropdown-menu .dropdown-label {
+   font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.06em;
+   color: var(--gray-400); padding: 6px 16px 2px; font-weight: 600;
+   }
     .nav-cta {
-background: var(--blue); color: var(--white) !important;
-padding: 8px 18px !important; border-radius: 4px !important;
-font-weight: 600 !important; font-size: 0.8125rem !important;
-}
-.nav-cta:hover { background: var(--blue-light) !important; }
+   background: var(--blue); color: var(--white) !important;
+   padding: 8px 18px !important; border-radius: 4px !important;
+   font-weight: 600 !important; font-size: 0.8125rem !important;
+   }
+   .nav-cta:hover { background: var(--blue-light) !important; }
     /* ===== ARTICLE HEADER ===== */
-.article-header {
-background: var(--black); color: var(--white);
-padding: calc(64px + 64px) 24px 64px;
-position: relative; overflow: hidden;
-}
-.article-header::before {
-content: ''; position: absolute; top: -30%; right: -20%;
-width: 500px; height: 500px;
-background: radial-gradient(circle, var(--blue-glow) 0%, transparent 70%);
-pointer-events: none;
-}
-.article-header-inner { max-width: var(--content-max); margin: 0 auto; position: relative; z-index: 1; }
-.article-tag {
-display: inline-block; background: rgba(0,149,224,0.15); color: var(--blue-light);
-font-size: 0.75rem; font-weight: 600; padding: 4px 12px;
-border-radius: 2px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.06em;
-}
-.article-header h1 {
-font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800;
-line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px;
-}
-.article-header .article-meta { color: var(--text-muted); font-size: 0.875rem; display: flex; gap: 20px; }
-    /* ===== ARTICLE BODY ===== */
-.article-body {
-max-width: var(--content-max); margin: 0 auto;
-padding: 64px 24px;
-}
-.article-body h2 {
-font-size: 1.5rem; font-weight: 700; color: var(--near-black);
-margin: 48px 0 16px; letter-spacing: -0.01em;
-}
-.article-body h3 {
-font-size: 1.25rem; font-weight: 600; color: var(--near-black);
-margin: 32px 0 12px;
-}
-.article-body h4 {
-font-size: 1.0625rem; font-weight: 600; color: var(--gray-500);
-margin: 24px 0 8px;
-}
-.article-body p {
-color: var(--gray-500); font-size: 1.0625rem;
-margin-bottom: 20px; line-height: 1.8;
-}
-.article-body ul, .article-body ol {
-color: var(--gray-500); font-size: 1.0625rem;
-margin-bottom: 20px; padding-left: 24px;
-}
-.article-body li { margin-bottom: 8px; line-height: 1.7; }
-.article-body strong { color: var(--text-dark); font-weight: 600; }
-.article-body a { color: var(--blue); text-decoration: underline; }
-.article-body a:hover { color: var(--blue-light); }
-.article-body hr { border: none; border-top: 1px solid var(--gray-100); margin: 48px 0; }
-.article-body blockquote {
-border-left: 3px solid var(--blue); padding-left: 20px;
-margin: 24px 0; color: var(--gray-500); font-style: italic;
-}
-    /* ===== EXCEL-STYLE TABLE ===== */
-.table-wrap {
-overflow-x: auto; margin: 28px 0; border-radius: 6px;
-border: 1px solid var(--gray-100);
-box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.article-body table {
-width: 100%; border-collapse: collapse;
-font-size: 0.875rem; line-height: 1.5;
-min-width: 600px;
-}
-.article-body thead th {
-background: linear-gradient(180deg, #E8F0F8 0%, #D4E4F2 100%);
-color: var(--blue-dark); font-weight: 600; font-size: 0.8125rem;
-text-transform: uppercase; letter-spacing: 0.03em;
-padding: 12px 14px; text-align: left;
-border-bottom: 2px solid #B8D0E8;
-border-right: 1px solid #C8D8E8;
-white-space: nowrap; position: sticky; top: 0;
-}
-.article-body thead th:last-child { border-right: none; }
-.article-body tbody td {
-padding: 10px 14px; border-bottom: 1px solid var(--gray-100);
-border-right: 1px solid var(--gray-100); color: var(--gray-500);
-vertical-align: top;
-}
-.article-body tbody td:last-child { border-right: none; }
-.article-body tbody tr:nth-child(even) td {
-background: var(--gray-50);
-}
-.article-body tbody tr:hover td {
-background: var(--blue-bg);
-}
-.article-body tbody td:first-child {
-font-weight: 500; color: var(--text-dark);
-}
-    /* ===== RELATED ARTICLES ===== */
-.related-section {
-background: var(--off-white); padding: 64px 24px;
-}
-.related-inner { max-width: var(--content-max); margin: 0 auto; }
-.related-inner h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.01em; }
-.related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-.related-card {
-background: var(--white); border: 1px solid var(--gray-100);
-border-radius: var(--radius-md); padding: 20px; text-decoration: none;
-transition: box-shadow 0.2s;
-}
-.related-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
-.related-card h3 { font-size: 0.9375rem; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
-.related-card .tag { font-size: 0.6875rem; color: var(--blue); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
-    /* ===== FOOTER ===== */
-.footer {
-background: var(--near-black); color: var(--text-muted);
-padding: 48px 24px 32px; border-top: 1px solid rgba(255,255,255,0.06);
-}
-.footer-inner {
-max-width: 1200px; margin: 0 auto;
-display: flex; justify-content: space-between; align-items: center;
-font-size: 0.8125rem;
-}
-.footer-inner a { color: var(--blue-light); text-decoration: none; }
-.footer-inner a:hover { color: var(--white); }
-    @media (max-width: 768px) {
-.article-header { padding: calc(64px + 40px) 16px 40px; }
-.article-body { padding: 40px 16px; }
-.nav-links { display: none; }
-}
-</style>
-</head>
-<body>
-<nav class="nav">
-<div class="nav-inner">
-<div class="nav-left">
-<a href="../index.html" class="nav-logo">
-<img src="../logo.png" alt="Scodeno" class="nav-logo-img">
-<span class="nav-logo-text">Scodeno<span class="nav-logo-indonesia">Indonesia</span></span>
-</a>
-<ul class="nav-links">
-<li class="nav-dropdown">
-<a href="../index.html#products">Products</a>
-<div class="nav-dropdown-menu">
-<a href="../index.html#products">Unmanaged Switches</a>
-<a href="../index.html#products">Managed Switches</a>
-<a href="../index.html#products">PoE Switches</a>
-<a href="../index.html#products">Data Center</a>
-<a href="../index.html#products">xPON / Fiber</a>
-<a href="../index.html#products">Smart Box &amp; IoT</a>
-</div>
-</li>
-<li class="nav-dropdown">
-<a href="../index.html#articles">Articles</a>
-<div class="nav-dropdown-menu">
-<a href="../index.html#articles">Fundamental</a>
-<a href="../index.html#articles">Selection Guide</a>
-<a href="../index.html#articles">Technology</a>
-<a href="../index.html#articles">Deployment</a>
-<a href="../index.html#articles">Network Design</a>
-</div>
-</li>
-<li><a href="../index.html#about">About</a></li>
-</ul>
-</div>
-<a href="../index.html#contact" class="nav-cta">Request Quote</a>
-</div>
-</nav>
-<header class="article-header">
-<div class="article-header-inner">
-<span class="article-tag">Fundamental</span>
-<h1>Apa Itu DIN-Rail Industrial Switch dan Mengapa Banyak Dipakai di Pabrik</h1>
-<div class="article-meta">
-<span>12 min read</span>
-</div>
-</div>
-</header>
-<article class="article-body">
-<h2>Pengertian Dasar: Apa Itu DIN-Rail Industrial Switch?</h2>
-<p>Secara sederhana, <strong>DIN rail industrial switch</strong> adalah switch jaringan yang dirancang khusus untuk dipasang pada rel standar DIN (<em>Deutsches Institut für Normung</em>) di dalam kabinet kontrol. Rel DIN, yang distandarisasi dalam EN 60715 (umumnya tipe TS-35), adalah profil logam berbentuk “topi” atau “C” yang menjadi sistem mounting universal untuk komponen kelistrikan dan elektronika industri.</p>
-<p>Berbeda dengan switch komersial yang biasa diletakkan di meja atau dipasang di rak 19 inci, model ini membawa filosofi otomasi pabrik: <strong>hemat tempat, modular, dan tahan banting</strong>. Switch ini tidak hanya melanjutkan fungsi dasar switching dan forwarding paket data, tetapi juga menyediakan fitur-fitur canggih seperti redundansi ring network, Power over Ethernet (PoE) industri, hingga manajemen suhu ekstrem.</p>
-<p>Sebelum melangkah lebih jauh, penting untuk memahami fondasinya. Kami telah mengulas secara rinci tentang perangkat inti jaringan industri dalam artikel “<a href="Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html">switch jaringan industri</a>”. Di sana dijelaskan bagaimana industrial switch berbeda dari switch enterprise biasa, termasuk ketahanan terhadap getaran, suhu, dan interferensi elektromagnetik. Artikel kali ini akan berfokus pada satu faktor pembeda yang paling kentara: format fisik <em>DIN rail mount</em>‑nya.</p>
-<hr>
-<h2>Mengapa Format DIN-Rail Begitu Dominan di Lingkungan Pabrik?</h2>
-<p>Jika Anda berkunjung ke fasilitas manufaktur modern, Anda akan melihat panel kontrol yang penuh dengan PLC, relay, pemutus sirkuit, terminal blok, power supply, dan tentu saja switch — semuanya berbaris rapi di atas rel DIN. Bukan kebetulan sistem mounting ini mendominasi. Ada lima alasan utama yang menjawab pertanyaan “mengapa banyak dipakai di pabrik”.</p>
-<h3>1. Optimasi Ruang Panel yang Mahal</h3>
-<p>Setiap sentimeter persegi di dalam panel kontrol pabrik sangat berharga. Semakin kecil footprint suatu perangkat, semakin banyak komponen yang bisa dipasang, yang berarti kontroler mampu menangani mesin yang lebih kompleks tanpa memperbesar kabinet. DIN rail switch memiliki lebar yang terstandar dalam kelipatan 22,5 mm, 45 mm, atau 70 mm, dengan kedalaman tidak lebih dari 120–140 mm. Desain ultra-kompak ini memungkinkan penempatan berdampingan tanpa menyisakan ruang kosong, sesuatu yang hampir mustahil dilakukan dengan switch rack‑mount berukuran 19 inci.</p>
-<h3>2. Standardisasi Global yang Memudahkan Integrasi</h3>
-<p>Standar DIN EN 60715 memastikan bahwa rel TS-35 diproduksi dengan dimensi yang identik di seluruh dunia. Produsen switch tinggal merancang klip atau mekanisme pengait yang sesuai, dan teknisi di lapangan dapat memasang perangkat dari merek apa pun pada rel yang sama. Tidak ada lagi bingkai khusus atau baut dengan posisi berbeda antar vendor. Dampaknya, waktu instalasi berkurang drastis dan risiko kesalahan mekanis turun.</p>
-<h3>3. Pemasangan dan Penggantian Kilat (Hot‑Swap Praktis)</h3>
-<p>Salah satu skenario paling menyebalkan di pabrik adalah downtime akibat kerusakan switch yang memerlukan penggantian. Dengan sistem DIN rail, teknisi cukup membuka konektor daya dan kabel Ethernet, lalu mencabut switch dengan menarik tuas pegas (spring‑loaded clip) tanpa alat bantu. Perangkat baru tinggal dikaitkan. Proses ini dapat selesai dalam hitungan menit, meminimalkan Mean Time To Repair (MTTR).</p>
-<h3>4. Modularitas yang Mengikuti Pertumbuhan Pabrik</h3>
-<p>Lantai produksi terus berkembang. Awalnya mungkin hanya butuh 5 port, lalu bertambah menjadi 16 port dengan kebutuhan PoE. DIN rail switch hadir dalam varian unmanaged simpel hingga managed gigabit penuh fitur, dengan ukuran fisik yang konsisten. Teknisi bisa menambah atau mengganti switch tanpa harus merombak tata letak panel, asalkan ruang kosong di rel tersedia.</p>
-<h3>5. Ketahanan yang Terintegrasi dengan Lingkungan Keras</h3>
-<p>Pabrik penuh debu, minyak, getaran, dan lonjakan suhu. Desain mekanis DIN rail switch secara default sudah menggunakan enclosure logam atau polikarbonat tebal, tanpa komponen rapuh seperti baki atau bracket baja tipis ala switch rack‑mount. Semua port umumnya menghadap ke depan sehingga kabel tidak menghalangi sirkulasi udara. Lebih dari itu, housing yang solid turut membantu pembuangan panas secara konduksi ke rel DIN yang berfungsi layaknya heatsink raksasa.</p>
-<p>Singkatnya, format DIN‑rail bukan sekadar pilihan mounting, melainkan fondasi yang memungkinkan jaringan pabrik bersifat <em>agile</em>, <em>scalable</em>, dan <em>resilient</em>.</p>
-<hr>
-<h2>Anatomi dan Karakteristik Fisik DIN-Rail Industrial Switch</h2>
-<p>Memahami bagian‑bagian fisik perangkat akan membantu teknisi melakukan pemasangan, troubleshooting, dan pemeliharaan dengan percaya diri. Berikut anatomi khas sebuah <strong>DIN rail industrial switch</strong>:</p>
-<ul>
-<li><strong>Housing (Enclosure):</strong> Material yang umum adalah aluminium cor atau baja galvanis untuk konduksi panas dan ketahanan korosi. Beberapa model kelas ringan menggunakan polikarbonat yang memenuhi standar UL 94 V‑0 (tahan api). Housing didesain tanpa kipas (<em>fanless</em>) agar tidak ada partikel yang masuk dan tidak ada komponen bergerak yang bisa aus.</li>
-</ul>
-<ul>
-<li><strong>DIN‑Rail Clip:</strong> Panel belakang dilengkapi klip pegas baja, kadang dilengkapi tuas pembuka yang dapat dioperasikan dengan satu tangan. Klip ini harus mampu menahan berat perangkat beserta kabel tanpa terlepas saat terjadi getaran, sesuai standar IEC 60068‑2‑6.</li>
-</ul>
-<ul>
-<li><strong>Port Ethernet:</strong> Hampir semua model menyediakan port RJ‑45 tembaga untuk twisted pair. Switch industri modern mulai menambahkan port SFP untuk fiber optik, memungkinkan koneksi jarak jauh atau backbone ring network. Port selalu menghadap ke depan, memudahkan akses saat panel sudah penuh kabel.</li>
-</ul>
-<ul>
-<li><strong>Terminal Blok Daya:</strong> Bukan konektor DC barrel seperti di switch rumah, melainkan terminal blok 3‑pin atau 4‑pin yang bisa dikencangkan dengan obeng. Fitur redundansi daya sangat lazim: dua input DC 12–48 V yang terisolasi memungkinkan pasokan dari dua power supply sekaligus. Jika satu catu daya mati, yang lain mengambil alih secara otomatis.</li>
-</ul>
-<ul>
-<li><strong>LED Indikator:</strong> Barisan LED pada panel depan memberikan informasi instan tentang status daya, link, aktivitas port, dan alarm. Pada switch managed, sering terdapat LED “R.M.” (Ring Master) atau “Ring” untuk menunjukkan peran dalam jaringan redundan.</li>
-</ul>
-<ul>
-<li><strong>Grounding Point:</strong> Titik pentanahan berupa sekrup atau lug yang wajib dihubungkan ke sistem grounding panel. Fungsinya tidak hanya untuk keselamatan, tetapi juga untuk mengalirkan noise elektromagnetik ke tanah, menjaga integritas sinyal.</li>
-</ul>
-<p>Susunan ini menghasilkan perangkat yang bisa dipasang berdampingan dengan relai dan kontaktor tanpa isolasi termal tambahan, selama suhu operasi global perangkat masih dalam batas yang ditentukan (biasanya -40 °C hingga +75 °C).</p>
-<hr>
-<h2>Keunggulan DIN-Rail Industrial Switch Dibandingkan Solusi Mounting Lain</h2>
-<p>Ketika seorang insinyur perancang panel menimbang pilihan mounting, perbandingannya biasanya meliputi:</p>
-<div class="table-wrap"><table>
-<thead>
-<tr><th>Aspek</th><th>DIN-Rail Mount</th><th>19‑Inci Rack‑Mount</th><th>Desktop/Chassis Mount</th></tr>
-</thead>
-<tbody>
-<tr><td><strong>Footprint</strong></td><td>Sangat kecil; ideal untuk panel terbatas</td><td>Lebar 19 inci, tinggi U; memakan ruang vertikal signifikan</td><td>Tidak terstruktur; sulit ditata rapi</td></tr>
-<tr><td><strong>Instalasi</strong></td><td>Klik pas dengan klip, tanpa alat</td><td>Baut dan bracket sliding rail; alat wajib</td><td>Taruh bebas atau velcro; tidak aman untuk getaran</td></tr>
-<tr><td><strong>Kepadatan Port</strong></td><td>Maksimum biasanya 20–24 port dalam satu unit</td><td>Bisa modular blade hingga 48 port per U</td><td>Terbatas pada desain kotak</td></tr>
-<tr><td><strong>Ketahanan Getaran</strong></td><td>Sangat baik, karena klip rigid menempel ke rel</td><td>Bracket dapat longgar, memerlukan penguncian tambahan</td><td>Sama sekali tidak dirancang untuk getaran</td></tr>
-<tr><td><strong>Pendinginan</strong></td><td>Alami via konduksi ke rel DIN</td><td>Kipas internal; harus ada jalur udara di depan dan belakang</td><td>Tergantung desain; umumnya kipas</td></tr>
-<tr><td><strong>Biaya Panel</strong></td><td>Rendah; hanya butuh rel DIN standar</td><td>Mahal; perlu kabinet 19 inci, baki, pengelola kabel vertikal</td><td>Tidak terstandar; biaya variatif</td></tr>
-</tbody>
-</table></div>
-<p>Dari tabel di atas, terlihat bahwa <strong>industrial DIN rail mount switch</strong> menawarkan keseimbangan optimal antara kepadatan, ketahanan, dan kemudahan perawatan yang sangat dihargai di lingkungan pabrik. Format rack‑mount mungkin unggul dalam hal kepadatan port maksimal, tetapi untuk mayoritas aplikasi edge dan sel, DIN‑rail tidak tertandingi.</p>
-<hr>
-<h2>Spesifikasi Teknis yang Harus Diperhatikan Sebelum Memilih</h2>
-<p>Memilih DIN rail switch tidak bisa sembarangan. Diperlukan pendekatan berbasis kebutuhan operasional dan lingkungan. Berikut checklist spesifikasi yang harus dievaluasi secara mendalam:</p>
-<h3>📌 Managed vs Unmanaged</h3>
-<ul>
-<li><strong>Unmanaged switch:</strong> Plug and play, tanpa konfigurasi. Cocok untuk jaringan kecil yang tidak memerlukan segmentasi atau monitoring. Tetapi tidak mendukung protokol redundan sehingga jika ada loop (kesalahan koneksi) bisa menimbulkan badai broadcast.</li>
-<li><strong>Managed switch:</strong> Mendukung VLAN, QoS, SNMP, dan protokol ring seperti ERPS atau MRP (Media Redundancy Protocol). Diperlukan di jaringan skala pabrik yang memerlukan keandalan tinggi dan diagnosa jarak jauh. Sebagian besar proyek otomasi modern mengarah ke managed switch.</li>
-</ul>
-<h3>📌 Jumlah Port dan Tipe Koneksi</h3>
-<ul>
-<li><strong>Port Tembaga (RJ‑45):</strong> Standar 10/100 Mbps atau Gigabit. Port jumlah 5, 8, 16, hingga 24.</li>
-<li><strong>Port Serat Optik (SFP):</strong> Untuk backbone fiber atau interkoneksi antar gedung pabrik. SFP memungkinkan pemilihan modul sesuai jarak dan tipe kabel (multimode atau single‑mode).</li>
-</ul>
-<h3>📌 Power over Ethernet (PoE)</h3>
-<p>Jika switch akan menyuplai daya ke kamera pengawas, sensor nirkabel, atau akses poin, pastikan mendukung PoE/PoE+ (IEEE 802.3af/at). Untuk perangkat dengan konsumsi lebih tinggi, seperti controller vision, carilah yang mendukung PoE++ (802.3bt) hingga 60W atau 90W per port. Manajemen anggaran daya total juga krusial.</p>
-<h3>📌 Suhu Operasi</h3>
-<ul>
-<li><strong>Kelas komersial:</strong> 0–40 °C. Tidak disarankan untuk panel di dekat mesin furnance atau outdoor non-AC.</li>
-<li><strong>Kelas industri dasar:</strong> -10 °C hingga +60 °C. Cukup untuk panel dalam ruangan pabrik.</li>
-<li><strong>Kelas industri penuh (extended):</strong> -40 °C hingga +75 °C. Wajib untuk aplikasi outdoor, panel di area tropis tanpa pendingin, atau dekat proses termal tinggi. Cek juga suhu penyimpanan.</li>
-</ul>
-<h3>📌 Catu Daya dan Redundansi</h3>
-<p>Pastikan mendukung rentang tegangan lebar (biasanya 12–48 VDC) agar kompatibel dengan catu daya DC yang lazim di panel kontrol. Fitur <strong>dual power input</strong> sering disertai alarm relay yang akan memicu jika salah satu input gagal, sehingga teknisi bisa segera bertindak.</p>
-<h3>📌 Protokol Redundansi Jaringan</h3>
-<p>Agar jaringan dapat menyembuhkan diri (<em>self‑healing</em>) dalam waktu kurang dari 50 ms jika salah satu kabel putus, switch perlu mendukung protokol ring. Beberapa standar yang dipakai:</p>
-<ul>
-<li><strong>ERPS (ITU‑T G.8032):</strong> Standar terbuka.</li>
-<li><strong>MRP (Media Redundancy Protocol):</strong> Umum di PROFINET.</li>
-<li><strong>RSTP/MSTP:</strong> Protokol pohon, lebih lambat recovery dibanding ring.</li>
-<li><strong>Chain/redundant coupling</strong> untuk topologi selain ring.</li>
-</ul>
-<h3>📌 Sertifikasi dan Compliance</h3>
-<p>Sertifikasi menegaskan bahwa perangkat benar-benar layak untuk lingkungan berat:</p>
-<ul>
-<li><strong>IEC 61000‑4‑x:</strong> Imunitas EMC (electromagnetic compatibility).</li>
-<li><strong>IEC 60068‑2‑6/2‑27:</strong> Ketahanan getaran dan guncangan.</li>
-<li><strong>IEC 61850‑3 / IEEE 1613:</strong> Untuk aplikasi gardu listrik.</li>
-<li><strong>EN 50155:</strong> Untuk aplikasi perkeretaapian.</li>
-<li><strong>ATEX / IECEx:</strong> Untuk area berpotensi ledakan (opsional).</li>
-</ul>
-<p>Semakin rinci spesifikasi yang dipenuhi, semakin kecil kemungkinan kegagalan prematur akibat kondisi lapangan yang tidak terduga.</p>
-<hr>
-<h2>Aplikasi Khas di Pabrik dan Otomasi Industri</h2>
-<p>Di mana saja Anda bisa menemukan <strong>DIN rail industrial switch</strong> beraksi? Berikut sejumlah skenario paling umum:</p>
-<ol>
-<li><strong>Panel Kontrol Mesin (Machine Control Cell)</strong></li>
-</ol>
-<p>Switch 5‑port unmanaged terpasang langsung di panel mesin stamping, CNC, atau injection molding. Menghubungkan PLC, HMI lokal, dan VSD (variable speed drive). Karena mesin menghasilkan getaran, housing kompak tanpa kipas menjadi pilihan wajib.</p>
-<ol>
-<li><strong>Jaringan Backbone SCADA</strong></li>
-</ol>
-<p>Beberapa switch managed 8‑port atau lebih dengan uplink SFP dipasang di kabinet utama dan sub‑kabinet area. Protokol ring membentuk jalur redundant dari ruang kontrol ke seluruh plant, memastikan data suhu, tekanan, dan aliran terus termonitor meski kabel fiber putus di satu titik.</p>
-<ol>
-<li><strong>Sistem Machine Vision dan Inspeksi Otomatis</strong></li>
-</ol>
-<p>Kamera industri berkecepatan tinggi menghasilkan data video besar. Switch Gigabit dengan jumbo frame support dan QoS ketat menjaga bandwidth prioritas agar gambar tidak pecah atau terlambat. Jika kamera ber-PoE, switch PoE DIN rail mount menyederhanakan kabel, hanya satu kabel UTP untuk data dan daya.</p>
-<ol>
-<li><strong>Automated Guided Vehicle (AGV) dan Robotika</strong></li>
-</ol>
-<p>AGV dan stasiun robot kerap terhubung melalui wireless client yang disambungkan ke switch di dalam panel kendali kendaraan. Switch harus tahan terhadap guncangan mendadak, akselerasi, dan debu karbon dari proses manufaktur. Format DIN rail memungkinkan pemasangan di dalam enclosure AGV yang sempit.</p>
-<ol>
-<li><strong>Jaringan Deteksi Kebakaran dan Keamanan</strong></li>
-</ol>
-<p>Panel alarm kebakaran di pabrik sering dilengkapi switch untuk menghubungkan kontroler ke sistem manajemen gedung. Switch ini mendukung SNMP trap sehingga status port dapat dimonitor oleh NMS (Network Management System) pusat, sekaligus mengirim alarm jika terjadi putus koneksi.</p>
-<ol>
-<li><strong>Gardu Listrik dan Distribusi Daya</strong></li>
-</ol>
-<p>Di gardu, switch harus memenuhi IEC 61850‑3 untuk ketahanan terhadap EMI berat, dan sering dilengkapi dengan port serat untuk isolasi potensial. Semua dipasang di rel DIN dalam cabinet relay protection.</p>
-<p>Setiap segmen ini menuntut spesifikasi berbeda, tetapi benang merahnya adalah keandalan tinggi dan format mounting yang seragam.</p>
-<hr>
-<h2>Standar dan Kepatuhan di Dunia Industrial Networking</h2>
-<p>Mengusung E‑E‑A‑T (Experience, Expertise, Authoritativeness, Trustworthiness), penting untuk mengaitkan perangkat dengan standar internasional yang diakui. Bagi pengambil keputusan, kepatuhan terhadap standar berikut adalah bukti bahwa perangkat telah melalui uji tuntas:</p>
-<ul>
-<li><strong>EN 60715 (Dimensi Rel DIN):</strong> Menentukan toleransi lebar dan tinggi rel TS‑35. Semua produsen DIN rail switch merancang klip sesuai standar ini.</li>
-<li><strong>IEC 61850‑3 / IEEE 1613:</strong> Khusus untuk perangkat jaringan di gardu listrik, mencakup imunitas elektrostatik, surge, fast transient, dan medan magnet.</li>
-<li><strong>IEC 61000‑6‑2 (Imunitas untuk lingkungan industri) dan IEC 61000‑6‑4 (Emisi):</strong> Memberikan batasan minimal untuk EMC.</li>
-<li><strong>NEMA TS‑2:</strong> Untuk peralatan sistem transportasi cerdas.</li>
-<li><strong>IEC 62443 (Cybersecurity Industri):</strong> Mulai dari desain perangkat hingga proses patch keamanan, standar ini menjadi semakin krusial karena switch adalah titik akses jaringan.</li>
-</ul>
-<p>Dengan memilih switch yang sudah bersertifikasi, Anda tidak hanya mendapatkan produk, tetapi juga jaminan bahwa perangkat akan tetap bekerja ketika level gangguan elektromagnetik di sekitar panel meningkat—misalnya saat motor besar start atau pengelasan berlangsung. Scodeno memastikan setiap seri <strong>industrial DIN rail mount switch</strong> yang kami pasok telah melalui pengujian di laboratorium independen dan dilengkapi dokumentasi sertifikasi yang dapat dipertanggungjawabkan.</p>
-<hr>
-<h2>Tips Instalasi dan Pemeliharaan DIN-Rail Switch</h2>
-<p>Pemasangan yang benar adalah setengah dari keandalan. Berikut praktik terbaik dari tim teknisi Scodeno yang telah menangani ratusan proyek pabrik:</p>
-<h3>Instalasi Awal</h3>
-<ul>
-<li><strong>Grounding seketika:</strong> Sambungkan terminal ground switch ke busbar pentanahan panel sebelum kabel daya dipasang. Ini mencegah tegangan sentuh berbahaya dan membantu menekan noise mode umum.</li>
-<li><strong>Cek polaritas daya dengan multimeter:</strong> Meskipun mayoritas switch industri memiliki proteksi polaritas terbalik, biasakan untuk memastikan tegangan dan polaritas benar sebelum menyalakan.</li>
-<li><strong>Jarak untuk sirkulasi udara:</strong> Saat memasang di rel DIN, beri jarak minimal 3-5 mm antar switch jika suhu panel tinggi. Meskipun fanless, komponen tetap butuh sedikit sirkulasi konveksi. Gunakan penutup ujung rel untuk mencegah pergeseran.</li>
-<li><strong>Gunakan ferrules pada kabel daya:</strong> Kabel tembaga serabut tanpa ferrule bisa terurai dan menyebabkan hubungan singkat. Selalu gunakan ferrule yang dikerutkan rapat.</li>
-</ul>
-<h3>Manajemen Kabel Ethernet</h3>
-<ul>
-<li>Pisahkan kabel Ethernet dari kabel daya motor atau VFD. Jika terpaksa bersilangan, lakukan secara tegak lurus.</li>
-<li>Gunakan kabel shielded (STP) dengan konektor metalik yang terhubung ke housing switch. Ini membentuk jalur low‑impedance bagi noise menuju ground.</li>
-<li>Beri label pada kedua ujung kabel, termasuk informasi port switch, perangkat tujuan, dan VLAN jika ada. Di panel yang penuh, label akan menyelamatkan waktu troubleshooting.</li>
-</ul>
-<h3>Pemeliharaan Berkala</h3>
-<ul>
-<li>Periksa torsi sekrup terminal daya setiap 6–12 bulan. Getaran mesin bisa melonggarkan sambungan.</li>
-<li>Bersihkan debu pada port yang tidak terpakai dengan penutup debu (dust cap). Debu karbon konduktif dari proses produksi dapat menimbulkan masalah konektivitas.</li>
-<li>Monitor log SNMP jika tersedia. Peningkatan CRC error dalam kurun waktu tertentu bisa menjadi indikasi kabel mulai rusak atau konektor longgar, memungkinkan tindakan preventif sebelum putus total.</li>
-<li>Simpan switch cadangan dengan konfigurasi yang sudah di‑backup. Skenario pemulihan bencana yang matang akan menurunkan MTTR hingga hitungan menit.</li>
-</ul>
-<hr>
-<h2>Memilih Mitra Terpercaya: Scodeno untuk Konektivitas Pabrik Anda</h2>
-<p>Mengimplementasikan <strong>DIN rail industrial switch</strong> yang tepat adalah langkah strategis, dan pemilihan vendor sama pentingnya dengan pemilihan produk. Scodeno telah menjadi <em>trusted partner</em> bagi berbagai perusahaan manufaktur, sistem integrator, dan EPC di Indonesia. Kami tidak sekadar menjual perangkat; kami memberikan solusi menyeluruh yang didukung oleh pengalaman panjang dalam <em>industrial networking</em>.</p>
-<h3>Mengapa Scodeno?</h3>
-<ul>
-<li><strong>Portofolio Lengkap:</strong> Mulai dari unmanaged switch 5‑port terjangkau hingga managed layer‑3 gigabit dengan fitur cybersecurity tingkat lanjut. Semua tersedia dalam format DIN rail mount.</li>
-<li><strong>Dukungan Teknis Lokal:</strong> Tim teknisi kami memahami seluk‑beluk panel kontrol dan standar kelistrikan Indonesia. Konsultasi pra‑proyek, survei lokasi, hingga komisioning dapat kami dampingi.</li>
-<li><strong>Ketersediaan Stok dan Garansi Resmi:</strong> Tidak ada kekhawatiran lead time panjang. Produk Scodeno tersedia dengan garansi resmi dan dukungan purnajual yang responsif.</li>
-<li><strong>E‑E‑A‑T dalam Praktik:</strong> Kami secara berkala menerbitkan artikel teknis, panduan, dan studi kasus—seperti artikel “<a href="Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html">switch jaringan industri</a>” yang mendasari diskusi ini—sebagai bukti komitmen kami untuk berbagi pengetahuan dan membangun otoritas di bidang ini.</li>
-</ul>
-<hr>
-<h2>Pertanyaan Umum (FAQ)</h2>
-<p><strong>1. Apakah semua DIN rail switch bersifat managed?</strong> Tidak. Banyak model unmanaged yang sangat cocok untuk aplikasi skala kecil atau mesin tunggal yang tidak memerlukan konfigurasi jaringan. Managed switch disarankan untuk jaringan yang membutuhkan segmen VLAN, redundansi ring, atau monitoring.</p>
-<p><strong>2. Bisakah saya menggunakan switch komersial biasa dan memasangnya di rel DIN dengan bracket tambahan?</strong> Secara fisik mungkin bisa, tetapi sangat tidak disarankan. Switch komersial tidak dirancang untuk rentang suhu, EMC, dan getaran industri. Kegagalan di tengah produksi dapat mengakibatkan kerugian jauh melampaui selisih harga perangkat.</p>
-<p><strong>3. Berapa typical life‑span DIN rail industrial switch?</strong> Dengan komponen solid‑state dan desain fanless, rata‑rata MTBF (Mean Time Between Failure) bisa di atas 25 tahun pada suhu operasi standar. Faktor lingkungan dan kualitas catu daya sangat memengaruhi angka aktual.</p>
-<p><strong>4. Apakah Scodeno menyediakan switch dengan sertifikasi ATEX untuk area berbahaya?</strong> Ya, kami memiliki varian bersertifikasi ATEX/IECEx untuk Zone 2 area gas dan debu. Silakan hubungi tim kami untuk diskusi lebih lanjut sesuai klasifikasi zona Anda.</p>
-<hr>
-<h2>Kesimpulan</h2>
-<p><strong>DIN rail industrial switch</strong> adalah tulang punggung konektivitas yang tak terlihat namun vital di setiap pabrik modern. Format mounting seragam, ketahanan terhadap lingkungan keras, serta fleksibilitas ekspansi menjadikannya pilihan tanpa tanding untuk panel kontrol otomasi. Memahami anatomi, spesifikasi, standar, dan praktik pemasangannya adalah kompetensi kunci bagi setiap insinyur dan teknisi yang ingin membangun jaringan pabrik andal.</p>
-<p>Baik Anda sedang merancang sistem baru atau meningkatkan jaringan yang sudah ada, pilihlah switch yang benar‑benar sesuai dengan tuntutan operasional lapangan, bukan sekadar melihat harga perolehan. Keandalan jangka panjang, kemudahan perawatan, dan dukungan vendor akan langsung berdampak pada OEE (Overall Equipment Effectiveness) pabrik Anda.</p>
-<hr>
-<h3>Dapatkan Solusi Tepat untuk Jaringan Industri Anda</h3>
-<p>Jangan biarkan jaringan pabrik menjadi titik lemah produktivitas. Konsultasikan kebutuhan <strong>industrial DIN rail mount switch</strong> Anda dengan spesialis Scodeno. Tim kami siap membantu mulai dari pemilihan model, desain topologi, hingga dukungan teknis berkelanjutan.</p>
-<p>📧 <strong>Hubungi kami hari ini:</strong> <a href="../index.html#contact">Klik di sini untuk konsultasi gratis</a> atau kunjungi situs kami di <a href="../index.html">www.scodeno.com</a> untuk menjelajahi katalog lengkap dan studi kasus. Pastikan jaringan industri Anda selalu <em>up and running</em>, 24/7, dengan produk dan dukungan yang terbukti di lapangan.</p>
-</article>
-
-  <!-- Article Navigation -->
-  <nav class="article-nav" style="max-width: var(--content-max); margin: 48px auto 0; padding: 0 24px; border-top: 1px solid var(--gray-100);">
-    <div style="display: flex; justify-content: space-between; align-items: center; padding: 24px 0;">
-      <a href="Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html" style="display: flex; align-items: center; gap: 8px; color: var(--gray-500); text-decoration: none; font-size: 0.875rem; max-width: 40%;">
-        <span style="font-size:1.25rem;">←</span>
-        <span><small style="color:var(--gray-400);">Previous</small><br><strong style="color:var(--text-dark);">Kenapa Industrial Switch Menggunakan Desain Fanles...</strong></span>
-      </a>
-      <a href="Week_03_ip-rating-pada-industrial-ethernet-switch-apa-artinya.html" style="display: flex; align-items: center; gap: 8px; color: var(--gray-500); text-decoration: none; font-size: 0.875rem; text-align: right; max-width: 40%;">
-        <span><small style="color:var(--gray-400);">Next</small><br><strong style="color:var(--text-dark);">IP Rating pada Industrial Ethernet Switch: Apa Art...</strong></span>
-        <span style="font-size:1.25rem;">→</span>
-      </a>
-    </div>
-    <div style="text-align: center; padding-bottom: 24px;">
-      <a href="../index.html#articles" style="color: var(--blue); text-decoration: none; font-weight: 600; font-size: 0.875rem;">← Kembali ke Semua Artikel</a>
-    </div>
-  </nav>
-<section class="related-section">
-<div class="related-inner">
-<h2>Artikel Terkait</h2>
-<div class="related-grid">
-<a href="Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html" class="related-card"><span class="tag">Fundamental</span><h3>Kenapa Industrial Switch Menggunakan Desain Fanless</h3></a>
-<a href="Week_03_ip-rating-pada-industrial-ethernet-switch-apa-artinya.html" class="related-card"><span class="tag">Fundamental</span><h3>IP Rating pada Industrial Ethernet Switch: Apa Artinya?</h3></a>
-<a href="Week_04_industrial-gigabit-switch-vs-fast-ethernet-switch.html" class="related-card"><span class="tag">Selection Guide</span><h3>Industrial Gigabit Switch vs Fast Ethernet Switch</h3></a>
-<a href="Week_05_industrial-switch-dengan-sfp-port-fungsi-dan-kegunaannya.html" class="related-card"><span class="tag">Technology</span><h3>Industrial Switch dengan SFP Port: Fungsi dan Kegunaannya</h3></a>
-</div>
-</div>
-</section>
-<footer class="footer">
-<div class="footer-inner">
-<span>&copy; 2024 Scodeno Indonesia</span>
-<span>Didistribusikan oleh <a href="../index.html">PT Konexindo Unitama</a></span>
-</div>
-</footer>
+    .nav-search{position:relative;display:flex;align-items:center}
+   .search-toggle{background:none;border:none;cursor:pointer;padding:8px;display:flex;align-items:center;justify-content:center;border-radius:4px;transition:background 0.15s}
+   .search-toggle:hover{background:rgba(255,255,255,0.06)}
+   .search-toggle svg{width:18px;height:18px;stroke:var(--gray-300);stroke-width:2;fill:none;transition:stroke 0.15s}
+   .search-toggle:hover svg{stroke:var(--white)}
+   .search-panel{position:absolute;top:100%;right:0;width:420px;max-width:90vw;background:var(--dark-card);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:0;display:none;box-shadow:0 16px 48px rgba(0,0,0,0.45);z-index:200}
+   .search-panel.active{display:block}
+   .search-input-wrap{display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.06)}
+   .search-input-wrap svg{width:16px;height:16px;stroke:var(--gray-400);stroke-width:2;fill:none;flex-shrink:0;margin-right:10px}
+   .search-input{flex:1;background:none;border:none;color:var(--white);font-size:0.9375rem;font-family:inherit;outline:none}
+   .search-input::placeholder{color:var(--gray-400)}
+   .search-results{max-height:420px;overflow-y:auto;padding:8px 0}
+   .search-result{display:block;padding:10px 16px;text-decoration:none;transition:background 0.1s;border-bottom:1px solid rgba(255,255,255,0.03)}
+   .search-result:last-child{border-bottom:none}
+   .search-result:hover{background:rgba(255,255,255,0.04)}
+   .search-result-title{font-size:0.875rem;font-weight:600;color:var(--white);margin-bottom:3px;line-height:1.3}
+   .search-result-title mark{background:rgba(0,149,224,0.25);color:var(--blue-light);border-radius:2px;padding:0 1px}
+   .search-result-snippet{font-size:0.75rem;color:var(--gray-400);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+   .search-result-meta{display:flex;align-items:center;gap:8px;margin-top:4px}
+   .search-result-cat{font-size:0.625rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;padding:2px 6px;border-radius:2px}
+   .search-empty{padding:24px 16px;text-align:center;color:var(--gray-400);font-size:0.875rem}
+   .search-overlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:150;display:none}
+   .search-overlay.active{display:block}
+   @media(max-width:768px){.search-panel{position:fixed;top:64px;left:0;right:0;max-width:100vw;border-radius:0;border-left:none;border-right:none}}
+   .article-header {
+   background: var(--black); color: var(--white);
+   padding: calc(64px + 64px) 24px 64px;
+   position: relative; overflow: hidden;
+   }
+   .article-header::before {
+   content: ''; position: absolute; top: -30%; right: -20%;
+   width: 500px; height: 500px;
+   background: radial-gradient(circle, var(--blue-glow) 0%, transparent 70%);
+   pointer-events: none;
+   }
+   .article-header-inner { max-width: var(--content-max); margin: 0 auto; position: relative; z-index: 1; }
+   .article-tag {
+   display: inline-block; background: rgba(0,149,224,0.15); color: var(--blue-light);
+   font-size: 0.75rem; font-weight: 600; padding: 4px 12px;
+   border-radius: 2px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.06em;
+   }
+   .article-header h1 {
+   font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800;
+   line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px;
+   }.lang-toggle{display:inline-flex;align-items:center;gap:6px;margin-top:12px}
+.lang-toggle a{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,0.08);color:var(--gray-300);text-decoration:none;font-size:0.75rem;font-weight:500;padding:4px 10px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);transition:all 0.15s}
+.lang-toggle a:hover{background:rgba(255,255,255,0.14);color:var(--white);border-color:rgba(255,255,255,0.2)}
+.lang-toggle .active-lang{background:var(--blue);color:var(--white);border-color:var(--blue)}
+   .article-header .article-meta { color: var(--text-muted); font-size: 0.875rem; display: flex; gap: 20px; }
+   /* ===== ARTICLE BODY ===== */
+   .article-body {
+   max-width: var(--content-max); margin: 0 auto;
+   padding: 64px 24px;
+   }
+   .article-body h2 {
+   font-size: 1.5rem; font-weight: 700; color: var(--near-black);
+   margin: 48px 0 16px; letter-spacing: -0.01em;
+   }
+   .article-body h3 {
+   font-size: 1.25rem; font-weight: 600; color: var(--near-black);
+   margin: 32px 0 12px;
+   }
+   .article-body h4 {
+   font-size: 1.0625rem; font-weight: 600; color: var(--gray-500);
+   margin: 24px 0 8px;
+   }
+   .article-body p {
+   color: var(--gray-500); font-size: 1.0625rem;
+   margin-bottom: 20px; line-height: 1.8;
+   }
+   .article-body ul, .article-body ol {
+   color: var(--gray-500); font-size: 1.0625rem;
+   margin-bottom: 20px; padding-left: 24px;
+   }
+   .article-body li { margin-bottom: 8px; line-height: 1.7; }
+   .article-body strong { color: var(--text-dark); font-weight: 600; }
+   .article-body a { color: var(--blue); text-decoration: underline; }
+   .article-body a:hover { color: var(--blue-light); }
+   .article-body hr { border: none; border-top: 1px solid var(--gray-100); margin: 48px 0; }
+   .article-body blockquote {
+   border-left: 3px solid var(--blue); padding-left: 20px;
+   margin: 24px 0; color: var(--gray-500); font-style: italic;
+   }
+   /* ===== EXCEL-STYLE TABLE ===== */
+   .table-wrap {
+   overflow-x: auto; margin: 28px 0; border-radius: 6px;
+   border: 1px solid var(--gray-100);
+   box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+   }
+   .article-body table {
+   width: 100%; border-collapse: collapse;
+   font-size: 0.875rem; line-height: 1.5;
+   min-width: 600px;
+   }
+   .article-body thead th {
+   background: linear-gradient(180deg, #E8F0F8 0%, #D4E4F2 100%);
+   color: var(--blue-dark); font-weight: 600; font-size: 0.8125rem;
+   text-transform: uppercase; letter-spacing: 0.03em;
+   padding: 12px 14px; text-align: left;
+   border-bottom: 2px solid #B8D0E8;
+   border-right: 1px solid #C8D8E8;
+   white-space: nowrap; position: sticky; top: 0;
+   }
+   .article-body thead th:last-child { border-right: none; }
+   .article-body tbody td {
+   padding: 10px 14px; border-bottom: 1px solid var(--gray-100);
+   border-right: 1px solid var(--gray-100); color: var(--gray-500);
+   vertical-align: top;
+   }
+   .article-body tbody td:last-child { border-right: none; }
+   .article-body tbody tr:nth-child(even) td {
+   background: var(--gray-50);
+   }
+   .article-body tbody tr:hover td {
+   background: var(--blue-bg);
+   }
+   .article-body tbody td:first-child {
+   font-weight: 500; color: var(--text-dark);
+   }
+   /* ===== RELATED ARTICLES ===== */
+   .related-section {
+   background: var(--off-white); padding: 64px 24px;
+   }
+   .related-inner { max-width: var(--content-max); margin: 0 auto; }
+   .related-inner h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.01em; }
+   .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+   .related-card {
+   background: var(--white); border: 1px solid var(--gray-100);
+   border-radius: var(--radius-md); padding: 20px; text-decoration: none;
+   transition: box-shadow 0.2s;
+   }
+   .related-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+   .related-card h3 { font-size: 0.9375rem; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
+   .related-card .tag { font-size: 0.6875rem; color: var(--blue); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+   /* ===== ARTICLE NAVIGATION ===== */
+   .article-nav {
+   max-width: var(--content-max); margin: 0 auto; padding: 0 24px;
+   }
+   .article-nav-inner {
+   display: flex; justify-content: space-between; align-items: flex-start;
+   padding: 32px 0; border-top: 1px solid var(--gray-100);
+   }
+   .article-nav-inner a {
+   display: flex; align-items: center; gap: 8px;
+   color: var(--gray-500); text-decoration: none;
+   font-size: 0.875rem; max-width: 45%;
+   }
+   .article-nav-inner a:hover { color: var(--blue); }
+   .article-nav-inner .prev { text-align: left; }
+   .article-nav-inner .next { text-align: right; }
+   .article-nav-inner .nav-label {
+   color: var(--gray-400); font-size: 0.6875rem; display: block;
+   text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px;
+   }
+   .article-nav-inner .nav-title {
+   color: var(--text-dark); font-weight: 600; line-height: 1.3;
+   }
+   .article-nav-back {
+   text-align: center; padding-bottom: 40px;
+   }
+   .article-nav-back a {
+   color: var(--blue); text-decoration: none; font-weight: 600; font-size: 0.875rem;
+   }
+   .article-nav-back a:hover { color: var(--blue-light); }
+   /* ===== FOOTER ===== */
+   .footer {
+   background: var(--near-black); color: var(--text-muted);
+   padding: 48px 24px 32px; border-top: 1px solid rgba(255,255,255,0.06);
+   }
+   .footer-inner {
+   max-width: 1200px; margin: 0 auto;
+   display: flex; justify-content: space-between; align-items: center;
+   font-size: 0.8125rem;
+   }
+   .footer-inner a { color: var(--blue-light); text-decoration: none; }
+   .footer-inner a:hover { color: var(--white); }
+   @media (max-width: 768px) {
+   .article-header { padding: calc(64px + 40px) 16px 40px; }
+   .article-body { padding: 40px 16px; }
+   .nav-links { display: none; }
+   }
+   </style>
+   </head>
+   <body>
+   <nav class="nav">
+   <div class="nav-inner">
+   <div class="nav-left">
+   <a href="../" class="nav-logo">
+   <img src="../logo.png" alt="Scodeno" class="nav-logo-img">
+   <span class="nav-logo-text">Scodeno<span class="nav-logo-indonesia">Indonesia</span></span>
+   </a>
+   <ul class="nav-links">
+   <li class="nav-dropdown">
+   <a href="../#products">Products</a>
+            <div class="nav-dropdown-menu">
+              <span class="sub-label">Industrial Switch</span>
+              <a href="../#products">PoE</a>
+              <a href="../#products">Non-PoE</a>
+              <span class="sub-label">Commercial Switch</span>
+              <a href="../#products">PoE</a>
+              <a href="../#products">Non-PoE</a>
+              <a href="../#products">Data Center Switch</a>
+              <span class="sub-label">SFP Modules</span>
+              <a href="../#products">Industrial</a>
+              <a href="../#products">Commercial</a>
+              <a href="../#products">IoT Smart Box</a>
+            </div>
+   </li>
+   <li class="nav-dropdown">
+   <a href="../#articles">Articles</a>
+   <div class="nav-dropdown-menu">
+   <a href="../#articles">Fundamental</a>
+   <a href="../#articles">Selection Guide</a>
+   <a href="../#articles">Technology</a>
+   <a href="../#articles">Deployment</a>
+   <a href="../#articles">Network Design</a>
+   </div>
+   </li>
+   <li><a href="../#about">About</a></li>
+   <li class="nav-search"><button class="search-toggle" onclick="toggleSearch()" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="17" y1="17" x2="22" y2="22"/></svg></button><div class="search-panel" id="searchPanel"><div class="search-input-wrap"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="17" y1="17" x2="22" y2="22"/></svg><input type="text" class="search-input" id="searchInput" placeholder="Cari artikel atau produk..." oninput="doSearch()" onkeydown="if(event.key==='Escape')closeSearch()"></div><div class="search-results" id="searchResults"></div></div><div class="search-overlay" id="searchOverlay" onclick="closeSearch()"></div></li>
+   </ul>
+   </div>
+   <a href="../#contact" class="nav-cta">Request Quote</a>
+   </div>
+   </nav>
+   <header class="article-header">
+   <div class="article-header-inner">
+   <span class="article-tag">Fundamental</span>
+   <h1>Apa Itu DIN-Rail Industrial Switch dan Mengapa Banyak Dipakai di Pabrik</h1>
+   <div class="article-meta">
+   <span>12 min read</span>
+   </div>
+   </div><div class="lang-toggle"><a href="https://scodenoindonesia.com/articles/Week_02_apa-itu-din-rail-industrial-switch-dan-mengapa-banyak-dipakai-di-pabrik.html" class="active-lang">🇮🇩 ID</a><a href="https://en.scodenoindonesia.com/articles/Week_02_apa-itu-din-rail-industrial-switch-dan-mengapa-banyak-dipakai-di-pabrik.html">🇬🇧 EN</a></div>
+   </header>
+   <article class="article-body">
+   <p>Di era Industri 4.0, konektivitas yang andal di lantai produksi bukan lagi nilai tambah, melainkan kebutuhan mutlak. Setiap milidetik data dari sensor, programmable logic controller (PLC), human-machine interface (HMI), hingga sistem supervisory control and data acquisition (SCADA) harus mengalir tanpa gangguan. Di tengah tuntutan tersebut, satu format perangkat terus mendominasi panel kontrol di seluruh dunia: <strong>DIN rail industrial switch</strong>. Bentuknya ringkas, tangguh, dan secara fundamental mengubah cara teknisi membangun infrastruktur jaringan di pabrik.</p>
+   <p>Jika Anda pernah membuka panel kontrol mesin otomatis, Anda hampir pasti melihat deretan perangkat abu-abu yang terpasang rapi pada rel logam standar. Itulah wujud nyata dari <em>industrial DIN rail mount switch</em>. Artikel ini akan mengupas tuntas mulai dari definisi, alasan popularitas, karakteristik teknis, hingga tips memilih dan merawat perangkat krusial ini. Seluruh penjelasan disusun dengan pendekatan praktis khas pelaku industri, sehingga Anda bisa langsung menerapkannya pada proyek berikutnya.</p>
+   <hr>
+   <h2>Pengertian Dasar: Apa Itu DIN-Rail Industrial Switch?</h2>
+   <p>Secara sederhana, <strong>DIN rail industrial switch</strong> adalah switch jaringan yang dirancang khusus untuk dipasang pada rel standar DIN (<em>Deutsches Institut für Normung</em>) di dalam kabinet kontrol. Rel DIN, yang distandarisasi dalam EN 60715 (umumnya tipe TS-35), adalah profil logam berbentuk “topi” atau “C” yang menjadi sistem mounting universal untuk komponen kelistrikan dan elektronika industri.</p>
+   <p>Berbeda dengan switch komersial yang biasa diletakkan di meja atau dipasang di rak 19 inci, model ini membawa filosofi otomasi pabrik: <strong>hemat tempat, modular, dan tahan banting</strong>. Switch ini tidak hanya melanjutkan fungsi dasar switching dan forwarding paket data, tetapi juga menyediakan fitur-fitur canggih seperti redundansi ring network, Power over Ethernet (PoE) industri, hingga manajemen suhu ekstrem.</p>
+   <p>Sebelum melangkah lebih jauh, penting untuk memahami fondasinya. Kami telah mengulas secara rinci tentang perangkat inti jaringan industri dalam artikel “<a href="https://scodeno.com/apa-itu-industrial-ethernet-switch">switch jaringan industri</a>”. Di sana dijelaskan bagaimana industrial switch berbeda dari switch enterprise biasa, termasuk ketahanan terhadap getaran, suhu, dan interferensi elektromagnetik. Artikel kali ini akan berfokus pada satu faktor pembeda yang paling kentara: format fisik <em>DIN rail mount</em>‑nya.</p>
+   <hr>
+   <h2>Mengapa Format DIN-Rail Begitu Dominan di Lingkungan Pabrik?</h2>
+   <p>Jika Anda berkunjung ke fasilitas manufaktur modern, Anda akan melihat panel kontrol yang penuh dengan PLC, relay, pemutus sirkuit, terminal blok, power supply, dan tentu saja switch — semuanya berbaris rapi di atas rel DIN. Bukan kebetulan sistem mounting ini mendominasi. Ada lima alasan utama yang menjawab pertanyaan “mengapa banyak dipakai di pabrik”.</p>
+   <h3>1. Optimasi Ruang Panel yang Mahal</h3>
+   <p>Setiap sentimeter persegi di dalam panel kontrol pabrik sangat berharga. Semakin kecil footprint suatu perangkat, semakin banyak komponen yang bisa dipasang, yang berarti kontroler mampu menangani mesin yang lebih kompleks tanpa memperbesar kabinet. DIN rail switch memiliki lebar yang terstandar dalam kelipatan 22,5 mm, 45 mm, atau 70 mm, dengan kedalaman tidak lebih dari 120–140 mm. Desain ultra-kompak ini memungkinkan penempatan berdampingan tanpa menyisakan ruang kosong, sesuatu yang hampir mustahil dilakukan dengan switch rack‑mount berukuran 19 inci.</p>
+   <h3>2. Standardisasi Global yang Memudahkan Integrasi</h3>
+   <p>Standar DIN EN 60715 memastikan bahwa rel TS-35 diproduksi dengan dimensi yang identik di seluruh dunia. Produsen switch tinggal merancang klip atau mekanisme pengait yang sesuai, dan teknisi di lapangan dapat memasang perangkat dari merek apa pun pada rel yang sama. Tidak ada lagi bingkai khusus atau baut dengan posisi berbeda antar vendor. Dampaknya, waktu instalasi berkurang drastis dan risiko kesalahan mekanis turun.</p>
+   <h3>3. Pemasangan dan Penggantian Kilat (Hot‑Swap Praktis)</h3>
+   <p>Salah satu skenario paling menyebalkan di pabrik adalah downtime akibat kerusakan switch yang memerlukan penggantian. Dengan sistem DIN rail, teknisi cukup membuka konektor daya dan kabel Ethernet, lalu mencabut switch dengan menarik tuas pegas (spring‑loaded clip) tanpa alat bantu. Perangkat baru tinggal dikaitkan. Proses ini dapat selesai dalam hitungan menit, meminimalkan Mean Time To Repair (MTTR).</p>
+   <h3>4. Modularitas yang Mengikuti Pertumbuhan Pabrik</h3>
+   <p>Lantai produksi terus berkembang. Awalnya mungkin hanya butuh 5 port, lalu bertambah menjadi 16 port dengan kebutuhan PoE. DIN rail switch hadir dalam varian unmanaged simpel hingga managed gigabit penuh fitur, dengan ukuran fisik yang konsisten. Teknisi bisa menambah atau mengganti switch tanpa harus merombak tata letak panel, asalkan ruang kosong di rel tersedia.</p>
+   <h3>5. Ketahanan yang Terintegrasi dengan Lingkungan Keras</h3>
+   <p>Pabrik penuh debu, minyak, getaran, dan lonjakan suhu. Desain mekanis DIN rail switch secara default sudah menggunakan enclosure lo <a href="Week_08_fitur-penting-industrial-ethernet-switch-yang-harus-anda-ketahui.html">fitur penting industrial switch</a> gam atau polikarbonat tebal, tanpa komponen rapuh seperti baki atau bracket baja tipis ala switch rack‑mount. Semua port umumnya menghadap ke depan sehingga kabel tidak menghalangi sirkulasi udara. Lebih dari itu, housing yang solid turut membantu pembuangan panas secara konduksi ke rel DIN yang berfungsi layaknya heatsink raksasa.</p>
+   <p>Singkatnya, format DIN‑rail bukan sekadar pilihan mounting, melainkan fondasi yang memungkinkan jaringan pabrik bersifat <em>agile</em>, <em>scalable</em>, dan <em>resilient</em>.</p>
+   <hr>
+   <h2>Anatomi dan Karakteristik Fisik DIN-Rail Industrial Switch</h2>
+   <p>Memahami bagian‑bagian fisik perangkat akan membantu teknisi melakukan pemasangan, troubleshooting, dan pemeliharaan dengan percaya diri. Berikut anatomi khas sebuah <strong>DIN rail industrial switch</strong>:</p>
+   <ul>
+   <li><strong>Housing (Enclosure):</strong> Material yang umum adalah aluminium cor atau baja galvanis untuk konduksi panas dan ketahanan korosi. Beberapa model kelas ringan menggunakan polikarbonat yang memenuhi standar UL 94 V‑0 (tahan api). Housing didesain tanpa kipas (<em>fanless</em>) agar tidak ada partikel yang masuk dan tidak ada komponen bergerak yang bisa aus.</li>
+   </ul>
+   <ul>
+   <li><strong>DIN‑Rail Clip:</strong> Panel belakang dilengkapi klip pegas baja, kadang dilengkapi tuas pembuka yang dapat dioperasikan dengan satu tangan. Klip ini harus mampu menahan berat perangkat beserta kabel tanpa terlepas saat terjadi getaran, sesuai standar IEC 60068‑2‑6.</li>
+   </ul>
+   <ul>
+   <li><strong>Port Ethernet:</strong> Hampir semua model menyediakan port RJ‑45 tembaga untuk twisted pair. Switch industri modern mulai menambahkan port SFP untuk fiber optik, memungkinkan koneksi jarak jauh atau backbone ring network. Port selalu menghadap ke depan, memudahkan akses saat panel sudah penuh kabel.</li>
+   </ul>
+   <ul>
+   <li><strong>Terminal Blok Daya:</strong> Bukan konektor DC barrel seperti di switch rumah, melainkan terminal blok 3‑pin atau 4‑pin yang bisa dikencangkan dengan obeng. Fitur redundansi daya sangat lazim: dua input DC 12–48 V yang terisolasi memungkinkan pasokan dari dua power supply sekaligus. Jika satu catu daya mati, yang lain mengambil alih secara otomatis.</li>
+   </ul>
+   <ul>
+   <li><strong>LED Indikator:</strong> Barisan LED pada panel depan memberikan informasi instan tentang status daya, link, aktivitas port, dan alarm. Pada switch managed, sering terdapat LED “R.M.” (Ring Master) atau “Ring” untuk menunjukkan peran dalam jaringan redundan.</li>
+   </ul>
+   <ul>
+   <li><strong>Grounding Point:</strong> Titik pentanahan berupa sekrup atau lug yang wajib dihubungkan ke sistem grounding panel. Fungsinya tidak hanya untuk keselamatan, tetapi juga untuk mengalirkan noise elektromagnetik ke tanah, menjaga integritas sinyal.</li>
+   </ul>
+   <p>Susunan ini menghasilkan perangkat yang bisa dipasang berdampingan dengan relai dan kontaktor tanpa isolasi termal tambahan, selama suhu operasi global perangkat masih dalam batas yang ditentukan (biasanya -40 °C hingga +75 °C).</p>
+   <hr>
+   <h2>Keunggulan DIN-Rail Industrial Switch Dibandingkan Solusi Mounting Lain</h2>
+   <p>Ketika seorang insinyur perancang panel menimbang pilihan mounting, perbandingannya biasanya meliputi:</p>
+   <div class="table-wrap"><table>
+   <thead>
+   <tr><th>Aspek</th><th>DIN-Rail Mount</th><th>19‑Inci Rack‑Mount</th><th>Desktop/Chassis Mount</th></tr>
+   </thead>
+   <tbody>
+   <tr><td><strong>Footprint</strong></td><td>Sangat kecil; ideal untuk panel terbatas</td><td>Lebar 19 inci, tinggi U; memakan ruang vertikal signifikan</td><td>Tidak terstruktur; sulit ditata rapi</td></tr>
+   <tr><td><strong>Instalasi</strong></td><td>Klik pas dengan klip, tanpa alat</td><td>Baut dan bracket sliding rail; alat wajib</td><td>Taruh bebas atau velcro; tidak aman untuk getaran</td></tr>
+   <tr><td><strong>Kepadatan Port</strong></td><td>Maksimum biasanya 20–24 port dalam satu unit</td><td>Bisa modular blade hingga 48 port per U</td><td>Terbatas pada desain kotak</td></tr>
+   <tr><td><strong>Ketahanan Getaran</strong></td><td>Sangat baik, karena klip rigid menempel ke rel</td><td>Bracket dapat longgar, memerlukan penguncian tambahan</td><td>Sama sekali tidak dirancang untuk getaran</td></tr>
+   <tr><td><strong>Pendinginan</strong></td><td>Alami via konduksi ke rel DIN</td><td>Kipas internal; harus ada jalur udara di depan dan belakang</td><td>Tergantung desain; umumnya kipas</td></tr>
+   <tr><td><strong>Biaya Panel</strong></td><td>Rendah; hanya butuh rel DIN standar</td><td>Mahal; perlu kabinet 19 inci, baki, pengelola kabel vertikal</td><td>Tidak terstandar; biaya variatif</td></tr>
+   </tbody>
+   </table></div>
+   <p>Dari tabel di atas, terlihat bahwa <strong>industrial DIN rail mount switch</strong> menawarkan keseimbangan optimal antara kepadatan, ketahanan, dan kemudahan perawatan yang sangat dihargai di lingkungan pabrik. Format rack‑mount mungkin unggul dalam hal kepadatan port maksimal, tetapi untuk mayoritas aplikasi edge dan sel, DIN‑rail tidak tertandingi.</p>
+   <hr>
+   <h2>Spesifikasi Teknis yang Harus Diperhatikan Sebelum Memilih</h2>
+   <p>Memilih DIN rail switch tidak bisa sembarangan. Diperlukan pendekatan berbasis kebutuhan operasional dan lingkungan. Berikut checklist spesifikasi yang harus dievaluasi secara mendalam:</p>
+   <h3>📌 Managed vs Unmanaged</h3>
+   <ul>
+   <li><strong>Unmanaged switch:</strong> Plug and play, tanpa konfigurasi. Cocok untuk jaringan kecil yang tidak memerlukan segmentasi atau monitoring. Tetapi tidak mendukung protokol redundan sehingga jika ada loop (kesalahan koneksi) bisa menimbulkan badai broadcast.</li>
+   <li><strong>Managed switch:</strong> Mendukung VLAN, QoS, SNMP, dan protokol ring seperti ERPS atau MRP (Media Redundancy Protocol). Diperlukan di jaringan skala pabrik yang memerlukan keandalan tinggi dan diagnosa jarak jauh. Sebagian besar proyek otomasi modern mengarah ke managed switch.</li>
+   </ul>
+   <h3>📌 Jumlah Port dan Tipe Koneksi</h3>
+   <ul>
+   <li><strong>Port Tembaga (RJ‑45):</strong> Standar 10/100 Mbps atau Gigabit. Port jumlah 5, 8, 16, hingga 24.</li>
+   <li><strong>Port Serat Optik (SFP):</strong> Untuk backbone fiber atau interkoneksi antar gedung pabrik. SFP memungkinkan pemilihan modul sesuai jarak dan tipe kabel (multimode atau single‑mode).</li>
+   </ul>
+   <h3>📌 Power over Ethernet (PoE)</h3>
+   <p>Jika switch akan menyuplai daya ke kamera pengawas, sensor nirkabel, atau akses poin, pastikan mendukung PoE/PoE+ (IEEE 802.3af/at). Untuk perangkat dengan konsumsi lebih tinggi, seperti controller vision, carilah yang mendukung PoE++ (802.3bt) hingga 60W atau 90W per port. Manajemen anggaran daya total juga krusial.</p>
+   <h3>📌 Suhu Operasi</h3>
+   <ul>
+   <li><strong>Kelas komersial:</strong> 0–40 °C. Tidak disarankan untuk panel di dekat mesin furnance atau outdoor non-AC.</li>
+   <li><strong>Kelas industri dasar:</strong> -10 °C hingga +60 °C. Cukup untuk panel dalam ruangan pabrik.</li>
+   <li><strong>Kelas industri penuh (extended):</strong> -40 °C hingga +75 °C. Wajib untuk aplikasi outdoor, panel di area tropis tanpa pendingin, atau dekat proses termal tinggi. Cek juga suhu penyimpanan.</li>
+   </ul>
+   <h3>📌 Catu Daya dan Redundansi</h3>
+   <p>Pastikan mendukung rentang tegangan lebar (biasanya 12–48 VDC) agar kompatibel dengan catu daya DC yang lazim di panel kontrol. Fitur <strong>dual power input</strong> sering disertai alarm relay yang akan memicu jika salah satu input gagal, sehingga teknisi bisa segera bertindak.</p>
+   <h3>📌 Protokol Redundansi Jaringan</h3>
+   <p>Agar jaringan dapat menyembuhkan diri (<em>self‑healing</em>) dalam waktu kurang dari 50 ms jika salah satu kabel putus, switch perlu mendukung protokol ring. Beberapa standar yang dipakai:</p>
+   <ul>
+   <li><strong>ERPS (ITU‑T G.8032):</strong> Standar terbuka.</li>
+   <li><strong>MRP (Media Redundancy Protocol):</strong> Umum di PROFINET.</li>
+   <li><strong>RSTP/MSTP:</strong> Protokol pohon, lebih lambat recovery dibanding ring.</li>
+   <li><strong>Chain/redundant coupling</strong> untuk topologi selain ring.</li>
+   </ul>
+   <h3>📌 Sertifikasi dan Compliance</h3>
+   <p>Sertifikasi menegaskan bahwa perangkat benar-benar layak untuk lingkungan berat:</p>
+   <ul>
+   <li><strong>IEC 61000‑4‑x:</strong> Imunitas EMC (electromagnetic compatibility).</li>
+   <li><strong>IEC 60068‑2‑6/2‑27:</strong> Ketahanan getaran dan guncangan.</li>
+   <li><strong>IEC 61850‑3 / IEEE 1613:</strong> Untuk aplikasi gardu listrik.</li>
+   <li><strong>EN 50155:</strong> Untuk aplikasi perkeretaapian.</li>
+   <li><strong>ATEX / IECEx:</strong> Untuk area berpotensi ledakan (opsional).</li>
+   </ul>
+   <p>Semakin rinci spesifikasi yang dipenuhi, semakin kecil kemungkinan kegagalan prematur akibat kondisi lapangan yang tidak terduga.</p>
+   <hr>
+   <h2>Aplikasi Khas di Pabrik dan Otomasi Industri</h2>
+   <p>Di mana saja Anda bisa menemukan <strong>DIN rail industrial switch</strong> beraksi? Berikut sejumlah skenario paling umum:</p>
+   <ol>
+   <li><strong>Panel Kontrol Mesin (Machine Control Cell)</strong></li>
+   </ol>
+   <p>Switch 5‑port unmanaged terpasang langsung di panel mesin stamping, CNC, atau injection molding. Menghubungkan PLC, HMI lokal, dan VSD (variable speed drive). Karena mesin menghasilkan getaran, housing kompak tanpa kipas menjadi pilihan wajib.</p>
+   <ol>
+   <li><strong>Jaringan Backbone SCADA</strong></li>
+   </ol>
+   <p>Beberapa switch managed 8‑port atau lebih dengan uplink SFP dipasang di kabinet utama dan sub‑kabinet area. Protokol ring membentuk jalur redundant dari ruang kontrol ke seluruh plant, memastikan data suhu, tekanan, dan aliran terus termonitor meski kabel fiber putus di satu titik.</p>
+   <ol>
+   <li><strong>Sistem Machine Vision dan Inspeksi Otomatis</strong></li>
+   </ol>
+   <p>Kamera industri berkecepatan tinggi menghasilkan data video besar. Switch Gigabit dengan jumbo frame support dan QoS ketat menjaga bandwidth prioritas agar gambar tidak pecah atau terlambat. Jika kamera ber-PoE, switch PoE DIN rail mount menyederhanakan kabel, hanya satu kabel UTP untuk data dan daya.</p>
+   <ol>
+   <li><strong>Automated Guided Vehicle (AGV) dan Robotika</strong></li>
+   </ol>
+   <p>AGV dan stasiun robot kerap terhubung melalui wireless client yang disambungkan ke switch di dalam panel kendali kendaraan. Switch harus tahan terhadap guncangan mendadak, akselerasi, dan debu karbon dari proses manufaktur. Format DIN rail memungkinkan pemasangan di dalam enclosure AGV yang sempit.</p>
+   <ol>
+   <li><strong>Jaringan Deteksi Kebakaran dan Keamanan</strong></li>
+   </ol>
+   <p>Panel alarm kebakaran di pabrik sering dilengkapi switch untuk menghubungkan kontroler ke sistem manajemen gedung. Switch ini mendukung SNMP trap sehingga status port dapat dimonitor oleh NMS (Network Management System) pusat, sekaligus mengirim alarm jika terjadi putus koneksi.</p>
+   <ol>
+   <li><strong>Gardu Listrik dan Distribusi Daya</strong></li>
+   </ol>
+   <p>Di gardu, switch harus memenuhi IEC 61850‑3 untuk ketahanan terhadap EMI berat, dan sering dilengkapi dengan port serat untuk isolasi potensial. Semua dipasang di rel DIN dalam cabinet relay protection.</p>
+   <p>Setiap segmen ini menuntut spesifikasi berbeda, tetapi benang merahnya adalah keandalan tinggi dan format mounting yang seragam.</p>
+   <hr>
+   <h2>Standar dan Kepatuhan di Dunia Industrial Networking</h2>
+   <p>Mengusung E‑E‑A‑T (Experience, Expertise, Authoritativeness, Trustworthiness), penting untuk mengaitkan perangkat dengan standar internasional yang diakui. Bagi pengambil keputusan, kepatuhan terhadap standar berikut adalah bukti bahwa perangkat telah melalui uji tuntas:</p>
+   <ul>
+   <li><strong>EN 60715 (Dimensi Rel DIN):</strong> Menentukan toleransi lebar dan tinggi rel TS‑35. Semua produsen DIN rail switch merancang klip sesuai standar ini.</li>
+   <li><strong>IEC 61850‑3 / IEEE 1613:</strong> Khusus untuk perangkat jaringan di gardu listrik, mencakup imunitas elektrostatik, surge, fast transient, dan medan magnet.</li>
+   <li><strong>IEC 61000‑6‑2 (Imunitas untuk lingkungan industri) dan IEC 61000‑6‑4 (Emisi):</strong> Memberikan batasan minimal untuk EMC.</li>
+   <li><strong>NEMA TS‑2:</strong> Untuk peralatan sistem transportasi cerdas.</li>
+   <li><strong>IEC 62443 (Cybersecurity Industri):</strong> Mulai dari desain perangkat hingga proses patch keamanan, standar ini menjadi semakin krusial karena switch adalah titik akses jaringan.</li>
+   </ul>
+   <p>Dengan memilih switch yang sudah bersertifikasi, Anda tidak hanya mendapatkan produk, tetapi juga jaminan bahwa perangkat akan tetap bekerja ketika level gangguan elektromagnetik di sekitar panel meningkat—misalnya saat motor besar start atau pengelasan berlangsung. Scodeno memastikan setiap seri <strong>industrial DIN rail mount switch</strong> yang kami pasok telah melalui pengujian di laboratorium independen dan dilengkapi dokumentasi sertifikasi yang dapat dipertanggungjawabkan.</p>
+   <hr>
+   <h2>Tips Instalasi dan Pemeliharaan DIN-Rail Switch</h2>
+   <p>Pemasangan yang benar adalah setengah dari keandalan. Berikut praktik terbaik dari tim teknisi Scodeno yang telah menangani ratusan proyek pabrik:</p>
+   <h3>Instalasi Awal</h3>
+   <ul>
+   <li><strong>Grounding seketika:</strong> Sambungkan terminal ground switch ke busbar pentanahan panel sebelum kabel daya dipasang. Ini mencegah tegangan sentuh berbahaya dan membantu menekan noise mode umum.</li>
+   <li><strong>Cek polaritas daya dengan multimeter:</strong> Meskipun mayoritas switch industri memiliki proteksi polaritas terbalik, biasakan untuk memastikan tegangan dan polaritas benar sebelum menyalakan.</li>
+   <li><strong>Jarak untuk sirkulasi udara:</strong> Saat memasang di rel DIN, beri jarak minimal 3-5 mm antar switch jika suhu panel tinggi. Meskipun fanless, komponen tetap butuh sedikit sirkulasi konveksi. Gunakan penutup ujung rel untuk mencegah pergeseran.</li>
+   <li><strong>Gunakan ferrules pada kabel daya:</strong> Kabel tembaga serabut tanpa ferrule bisa terurai dan menyebabkan hubungan singkat. Selalu gunakan ferrule yang dikerutkan rapat.</li>
+   </ul>
+   <h3>Manajemen Kabel Ethernet</h3>
+   <ul>
+   <li>Pisahkan kabel Ethernet dari kabel daya motor atau VFD. Jika terpaksa bersilangan, lakukan secara tegak lurus.</li>
+   <li>Gunakan kabel shielded (STP) dengan konektor metalik yang terhubung ke housing switch. Ini membentuk jalur low‑impedance bagi noise menuju ground.</li>
+   <li>Beri label pada kedua ujung kabel, termasuk informasi port switch, perangkat tujuan, dan VLAN jika ada. Di panel yang penuh, label akan menyelamatkan waktu troubleshooting.</li>
+   </ul>
+   <h3>Pemeliharaan Berkala</h3>
+   <ul>
+   <li>Periksa torsi sekrup terminal daya setiap 6–12 bulan. Getaran mesin bisa melonggarkan sambungan.</li>
+   <li>Bersihkan debu pada port yang tidak terpakai dengan penutup debu (dust cap). Debu karbon konduktif dari proses produksi dapat menimbulkan masalah konektivitas.</li>
+   <li>Monitor log SNMP jika tersedia. Peningkatan CRC error dalam kurun waktu tertentu bisa menjadi indikasi kabel mulai rusak atau konektor longgar, memungkinkan tindakan preventif sebelum putus total.</li>
+   <li>Simpan switch cadangan dengan konfigurasi yang sudah di‑backup. Skenario pemulihan bencana yang matang akan menurunkan MTTR hingga hitungan menit.</li>
+   </ul>
+   <hr>
+   <h2>Memilih Mitra Terpercaya: Scodeno untuk Konektivitas Pabrik Anda</h2>
+   <p>Mengimplementasikan <strong>DIN rail industrial switch</strong> yang tepat adalah langkah strategis, dan pemilihan vendor sama pentingnya dengan pemilihan produk. Scodeno telah menjadi <em>trusted partner</em> bagi berbagai perusahaan manufaktur, sistem integrator, dan EPC di Indonesia. Kami tidak sekadar menjual perangkat; kami memberikan solusi menyeluruh yang didukung oleh pengalaman panjang dalam <em>industrial networking</em>.</p>
+   <h3>Mengapa Scodeno?</h3>
+   <ul>
+   <li><strong>Portofolio Lengkap:</strong> Mulai dari unmanaged switch 5‑port terjangkau hingga managed layer‑3 gigabit dengan fitur cybersecurity tingkat lanjut. Semua tersedia dalam format DIN rail mount.</li>
+   <li><strong>Dukungan Teknis Lokal:</strong> Tim teknisi kami memahami seluk‑beluk panel kontrol dan standar kelistrikan Indonesia. Konsultasi pra‑proyek, survei lokasi, hingga komisioning dapat kami dampingi.</li>
+   <li><strong>Ketersediaan Stok dan Garansi Resmi:</strong> Tidak ada kekhawatiran lead time panjang. Produk Scodeno tersedia dengan garansi resmi dan dukungan purnajual yang responsif.</li>
+   <li><strong>E‑E‑A‑T dalam Praktik:</strong> Kami secara berkala menerbitkan artikel teknis, panduan, dan studi kasus—seperti artikel “<a href="https://scodeno.com/apa-itu-industrial-ethernet-switch">switch jaringan industri</a>” yang mendasari diskusi ini—sebagai bukti komitmen kami untuk berbagi pengetahuan dan membangun otoritas di bidang ini.</li>
+   </ul>
+   <hr>
+   <h2>Pertanyaan Umum (FAQ)</h2>
+   <p><strong>1. Apakah semua DIN rail switch bersifat managed?</strong> Tidak. Banyak model unmanaged yang sangat cocok untuk aplikasi skala kecil atau mesin tunggal yang tidak memerlukan konfigurasi jaringan. Managed switch disarankan untuk jaringan yang membutuhkan segmen VLAN, redundansi ring, atau monitoring.</p>
+   <p><strong>2. Bisakah saya menggunakan switch komersial biasa dan memasangnya di rel DIN dengan bracket tambahan?</strong> Secara fisik mungkin bisa, tetapi sangat tidak disarankan. Switch komersial tidak dirancang untuk rentang suhu, EMC, dan getaran industri. Kegagalan di tengah produksi dapat mengakibatkan kerugian jauh melampaui selisih harga perangkat.</p>
+   <p><strong>3. Berapa typical life‑span DIN rail industrial switch?</strong> Dengan komponen solid‑state dan desain fanless, rata‑rata MTBF (Mean Time Between Failure) bisa di atas 25 tahun pada suhu operasi standar. Faktor lingkungan dan kualitas catu daya sangat memengaruhi angka aktual.</p>
+   <p><strong>4. Apakah Scodeno menyediakan switch dengan sertifikasi ATEX untuk area berbahaya?</strong> Ya, kami memiliki varian bersertifikasi ATEX/IECEx untuk Zone 2 area gas dan debu. Silakan hubungi tim kami untuk diskusi lebih lanjut sesuai klasifikasi zona Anda.</p>
+   <hr>
+   <h2>Kesimpulan</h2>
+   <p><strong>DIN rail industrial switch</strong> adalah tulang punggung konektivitas yang tak terlihat namun vital di setiap pabrik modern. Format mounting seragam, ketahanan terhadap lingkungan keras, serta fleksibilitas ekspansi menjadikannya pilihan tanpa tanding untuk panel kontrol otomasi. Memahami anatomi, spesifikasi, standar, dan praktik pemasangannya adalah kompetensi kunci bagi setiap insinyur dan teknisi yang ingin membangun jaringan pabrik andal.</p>
+   <p>Baik Anda sedang merancang sistem baru atau meningkatkan jaringan yang sudah ada, pilihlah switch yang benar‑benar sesuai dengan tuntutan operasional lapangan, bukan sekadar melihat harga perolehan. Keandalan jangka panjang, kemudahan perawatan, dan dukungan vendor akan langsung berdampak pada OEE (Overall Equipment Effectiveness) pabrik Anda.</p>
+   <hr>
+   <h3>Dapatkan Solusi Tepat untuk Jaringan Industri Anda</h3>
+   <p>Jangan biarkan jaringan pabrik menjadi titik lemah produktivitas. Konsultasikan kebutuhan <strong>industrial DIN rail mount switch</strong> Anda dengan spesialis <a href="../">Scodeno</a>. Tim kami siap membantu mulai dari pemilihan model, desain topologi, hingga dukungan teknis berkelanjutan.</p>
+   <p>📧 <strong>Hubungi kami hari ini:</strong> <a href="https://scodeno.com/kontak">Klik di sini untuk konsultasi gratis</a> atau kunjungi situs kami di <a href="https://scodeno.com">www.scodeno.com</a> untuk menjelajahi katalog lengkap dan studi kasus. Pastikan jaringan industri Anda selalu <em>up and running</em>, 24/7, dengan produk dan dukungan yang terbukti di lapangan.</p>
+   </article>
+   <!-- Article Navigation -->
+   <nav class="article-nav">
+   <div class="article-nav-inner">
+   <a href="Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html" class="prev"><span class="nav-arrow">←</span><span><span class="nav-label">Previous</span><span class="nav-title">Kenapa Industrial Switch Menggunakan Desain F...</span></span></a>
+   <a href="Week_03_ip-rating-pada-industrial-ethernet-switch-apa-artinya.html" class="next"><span><span class="nav-label">Next</span><span class="nav-title">IP Rating pada Industrial Ethernet Switch — A...</span></span><span class="nav-arrow">→</span></a>
+   </div>
+   <div class="article-nav-back">
+   <a href="../#articles">← Kembali ke Semua Artikel</a>
+   </div>
+   </nav>
+   <section class="related-section">
+   <div class="related-inner">
+   <h2>Artikel Terkait</h2>
+   <div class="related-grid">
+   <a href="Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html" class="related-card"><span class="tag">Fundamental</span><h3>Kenapa Industrial Switch Menggunakan Desain Fanless</h3></a>
+   <a href="Week_03_ip-rating-pada-industrial-ethernet-switch-apa-artinya.html" class="related-card"><span class="tag">Fundamental</span><h3>IP Rating pada Industrial Ethernet Switch — Apa Artinya?</h3></a>
+   <a href="Week_04_industrial-gigabit-switch-vs-fast-ethernet-switch.html" class="related-card"><span class="tag">Selection Guide</span><h3>Industrial Gigabit Switch vs Fast Ethernet Switch</h3></a>
+   <a href="Week_05_industrial-switch-dengan-sfp-port-fungsi-dan-kegunaannya.html" class="related-card"><span class="tag">Technology</span><h3>Industrial Switch dengan SFP Port — Fungsi dan Kegunaannya</h3></a>
+   </div>
+   </div>
+   </section>
+   <footer class="footer">
+   <div class="footer-inner">
+   <span>&copy; 2024 Scodeno Indonesia</span>
+   <span>Didistribusikan oleh <a href="../">PT Konexindo Unitama</a></span>
+   </div>
+   </footer>
+   <script>
+   let searchIndex=[];
+   searchIndex=[{"title": "Scodeno Switch: Panduan Lengkap Industrial Ethernet Switch untuk Jaringan Industri", "url": "articles/Week_00_scodeno-switch-panduan-lengkap.html", "snippet": "Satu switch. Ratusan perangkat. Ribuan jam operasi tanpa henti.", "category": "Artikel", "tag": "Selection Guide"}, {"title": "Kenapa Industrial Switch Menggunakan Desain Fanless", "url": "articles/Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html", "snippet": "Di balik keandalan jaringan otomasi pabrik, sistem transportasi cerdas, dan infrastruktur energi, terdapat satu komponen", "category": "Artikel", "tag": "Fundamental"}, {"title": "Apa Itu DIN-Rail Industrial Switch dan Mengapa Banyak Dipakai di Pabrik", "url": "articles/Week_02_apa-itu-din-rail-industrial-switch-dan-mengapa-banyak-dipakai-di-pabrik.html", "snippet": "Di era Industri 4.0, konektivitas yang andal di lantai produksi bukan lagi nilai tambah, melainkan kebutuhan mutlak. Set", "category": "Artikel", "tag": "Fundamental"}, {"title": "IP Rating pada Industrial Ethernet Switch — Apa Artinya?", "url": "articles/Week_03_ip-rating-pada-industrial-ethernet-switch-apa-artinya.html", "snippet": "Di lantai pabrik, segalanya berbeda. Udara tidak sejuk seperti di ruang server berpendingin. Di sana, debu beterbangan d", "category": "Artikel", "tag": "Fundamental"}, {"title": "Industrial Gigabit Switch vs Fast Ethernet Switch: Mana yang Dibutuhkan Jaringan Anda?", "url": "articles/Week_04_industrial-gigabit-switch-vs-fast-ethernet-switch.html", "snippet": "Sepuluh kali lebih cepat.", "category": "Artikel", "tag": "Selection Guide"}, {"title": "Industrial Switch dengan SFP Port: Fungsi dan Kegunaannya", "url": "articles/Week_05_industrial-switch-dengan-sfp-port-fungsi-dan-kegunaannya.html", "snippet": "Port SFP.", "category": "Artikel", "tag": "Technology"}, {"title": "Managed vs Unmanaged Industrial Switch: Mana yang Tepat?", "url": "articles/Week_06_managed-vs-unmanaged-industrial-switch-mana-yang-tepat.html", "snip... [truncated]
+   function toggleSearch(){
+    const panel=document.getElementById('searchPanel');
+    const overlay=document.getElementById('searchOverlay');
+    const input=document.getElementById('searchInput');
+    const active=panel.classList.contains('active');
+    if(active){closeSearch()}else{
+      panel.classList.add('active');
+      overlay.classList.add('active');
+      setTimeout(()=>input.focus(),100);
+      doSearch();
+    }
+   }
+   function closeSearch(){
+    document.getElementById('searchPanel').classList.remove('active');
+    document.getElementById('searchOverlay').classList.remove('active');
+    document.getElementById('searchInput').value='';
+    document.getElementById('searchResults').innerHTML='';
+   }
+   function doSearch(){
+    const q=document.getElementById('searchInput').value.toLowerCase().trim();
+    const container=document.getElementById('searchResults');
+    if(!q){showDefaultResults(container);return}
+    const results=searchIndex.filter(item=>{
+      const haystack=(item.title+' '+item.snippet+' '+item.tag+' '+item.category).toLowerCase();
+      return haystack.includes(q);
+    }).slice(0,12);
+    if(results.length===0){
+      container.innerHTML='<div class="search-empty">Tidak ditemukan. Coba kata kunci lain.</div>';
+      return
+    }
+    container.innerHTML=results.map(r=>{
+      const title=highlight(r.title,q);
+      const snip=r.snippet.substring(0,100);
+      const catClass=r.category==='Artikel'?'cat-artikel':'cat-produk';
+      return `<a href="${r.url}" class="search-result">
+        <div class="search-result-title">${title}</div>
+        <div class="search-result-snippet">${snip}</div>
+        <div class="search-result-meta"><span class="search-result-cat ${catClass}">${r.category}</span><span style="font-size:0.625rem;color:var(--gray-500)">${r.tag}</span></div>
+      </a>`;
+    }).join('');
+   }
+   function showDefaultResults(container){
+    const shuffled=searchIndex.sort(()=>Math.random()-0.5).slice(0,6);
+    container.innerHTML=shuffled.map(r=>{
+      const catClass=r.category==='Artikel'?'cat-artikel':'cat-produk';
+      return `<a href="${r.url}" class="search-result">
+        <div class="search-result-title">${r.title}</div>
+        <div class="search-result-snippet">${r.snippet.substring(0,100)}</div>
+        <div class="search-result-meta"><span class="search-result-cat ${catClass}">${r.category}</span><span style="font-size:0.625rem;color:var(--gray-500)">${r.tag}</span></div>
+      </a>`;
+    }).join('');
+   }
+   function highlight(text,q){
+    const regex=new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`,'gi');
+    return text.replace(regex,'<mark>$1</mark>');
+   }
+   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSearch()});
+   </script>
+   <script>(function(){var h=window.location.hostname;var links=document.querySelectorAll('.lang-toggle a');links.forEach(function(a){a.classList.remove('active-lang');if(h.includes('en.')&&a.href.includes('en.scodeno'))a.classList.add('active-lang');if(!h.includes('en.')&&a.href.includes('scodenoindonesia.com')&&!a.href.includes('en.scodeno'))a.classList.add('active-lang')})})()</script>
 </body>
-</html>
+   </html>

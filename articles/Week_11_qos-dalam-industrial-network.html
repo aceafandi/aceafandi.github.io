@@ -1,281 +1,199 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QoS dalam Industrial Network — Scodeno Indonesia</title>
-<meta name="description" content="QoS dalam Industrial Network">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root {
---blue: #0068B4; --blue-light: #0095E0; --blue-dark: #004A82; --blue-bg: #E7F3FB;
---blue-glow: rgba(0,104,180,0.20);
---black: #0A0E14; --near-black: #141A22; --dark-card: #1A202A;
---white: #FFFFFF; --off-white: #F5F7FA; --gray-50: #F9FAFB; --gray-100: #E8ECF0;
---gray-200: #C8CDD4; --gray-300: #9BA2AB; --gray-400: #6B7280; --gray-500: #4B5563;
---text-dark: #1A1A1A; --text-light: #E2E8F0; --text-muted: #9BA2AB;
---content-max: 780px; --radius-sm: 2px; --radius-md: 4px;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-font-family: 'Inter', system-ui, -apple-system, sans-serif;
-color: var(--text-dark); background: var(--white);
-line-height: 1.7; -webkit-font-smoothing: antialiased;
-}
-    /* ===== NAVIGATION ===== */
-.nav {
-position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-background: rgba(10,14,20,0.94); backdrop-filter: blur(12px);
-border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-.nav-inner {
-max-width: 1200px; margin: 0 auto;
-display: flex; align-items: center; justify-content: space-between;
-padding: 0 24px; height: 64px;
-}
-.nav-left { display: flex; align-items: center; gap: 32px; }
-.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.nav-logo-img { height: 28px; width: auto; }
-.nav-logo-text { font-weight: 800; font-size: 1.0625rem; color: var(--white); letter-spacing: -0.01em; white-space: nowrap; }
-.nav-logo-indonesia { color: var(--blue-light); margin-left: 2px; }
-.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
-.nav-links a { color: var(--gray-300); text-decoration: none; font-size: 0.8125rem; font-weight: 500; padding: 8px 12px; border-radius: 4px; transition: all 0.15s; white-space: nowrap; }
-.nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
-    /* Dropdown */
-.nav-dropdown { position: relative; }
-.nav-dropdown > a { display: flex; align-items: center; gap: 4px; }
-.nav-dropdown > a::after { content: '▾'; font-size: 0.625rem; margin-left: 2px; }
-.nav-dropdown-menu {
-position: absolute; top: 100%; left: 0; min-width: 200px;
-background: var(--dark-card); border: 1px solid rgba(255,255,255,0.08);
-border-radius: 6px; padding: 6px 0; opacity: 0; visibility: hidden;
-transform: translateY(4px); transition: all 0.18s ease;
-box-shadow: 0 12px 32px rgba(0,0,0,0.35);
-}
-.nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-.nav-dropdown-menu a {
-display: block; padding: 8px 16px !important; font-size: 0.8125rem !important;
-color: var(--gray-300) !important; border-radius: 0 !important;
-}
-.nav-dropdown-menu a:hover { background: rgba(255,255,255,0.06) !important; color: var(--white) !important; }
-.nav-dropdown-menu .dropdown-label {
-font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.06em;
-color: var(--gray-400); padding: 6px 16px 2px; font-weight: 600;
-}
-    .nav-cta {
-background: var(--blue); color: var(--white) !important;
-padding: 8px 18px !important; border-radius: 4px !important;
-font-weight: 600 !important; font-size: 0.8125rem !important;
-}
-.nav-cta:hover { background: var(--blue-light) !important; }
-    /* ===== ARTICLE HEADER ===== */
-.article-header {
-background: var(--black); color: var(--white);
-padding: calc(64px + 64px) 24px 64px;
-position: relative; overflow: hidden;
-}
-.article-header::before {
-content: ''; position: absolute; top: -30%; right: -20%;
-width: 500px; height: 500px;
-background: radial-gradient(circle, var(--blue-glow) 0%, transparent 70%);
-pointer-events: none;
-}
-.article-header-inner { max-width: var(--content-max); margin: 0 auto; position: relative; z-index: 1; }
-.article-tag {
-display: inline-block; background: rgba(0,149,224,0.15); color: var(--blue-light);
-font-size: 0.75rem; font-weight: 600; padding: 4px 12px;
-border-radius: 2px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.06em;
-}
-.article-header h1 {
-font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800;
-line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px;
-}
-.article-header .article-meta { color: var(--text-muted); font-size: 0.875rem; display: flex; gap: 20px; }
-    /* ===== ARTICLE BODY ===== */
-.article-body {
-max-width: var(--content-max); margin: 0 auto;
-padding: 64px 24px;
-}
-.article-body h2 {
-font-size: 1.5rem; font-weight: 700; color: var(--near-black);
-margin: 48px 0 16px; letter-spacing: -0.01em;
-}
-.article-body h3 {
-font-size: 1.25rem; font-weight: 600; color: var(--near-black);
-margin: 32px 0 12px;
-}
-.article-body h4 {
-font-size: 1.0625rem; font-weight: 600; color: var(--gray-500);
-margin: 24px 0 8px;
-}
-.article-body p {
-color: var(--gray-500); font-size: 1.0625rem;
-margin-bottom: 20px; line-height: 1.8;
-}
-.article-body ul, .article-body ol {
-color: var(--gray-500); font-size: 1.0625rem;
-margin-bottom: 20px; padding-left: 24px;
-}
-.article-body li { margin-bottom: 8px; line-height: 1.7; }
-.article-body strong { color: var(--text-dark); font-weight: 600; }
-.article-body a { color: var(--blue); text-decoration: underline; }
-.article-body a:hover { color: var(--blue-light); }
-.article-body hr { border: none; border-top: 1px solid var(--gray-100); margin: 48px 0; }
-.article-body blockquote {
-border-left: 3px solid var(--blue); padding-left: 20px;
-margin: 24px 0; color: var(--gray-500); font-style: italic;
-}
-    /* ===== EXCEL-STYLE TABLE ===== */
-.table-wrap {
-overflow-x: auto; margin: 28px 0; border-radius: 6px;
-border: 1px solid var(--gray-100);
-box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.article-body table {
-width: 100%; border-collapse: collapse;
-font-size: 0.875rem; line-height: 1.5;
-min-width: 600px;
-}
-.article-body thead th {
-background: linear-gradient(180deg, #E8F0F8 0%, #D4E4F2 100%);
-color: var(--blue-dark); font-weight: 600; font-size: 0.8125rem;
-text-transform: uppercase; letter-spacing: 0.03em;
-padding: 12px 14px; text-align: left;
-border-bottom: 2px solid #B8D0E8;
-border-right: 1px solid #C8D8E8;
-white-space: nowrap; position: sticky; top: 0;
-}
-.article-body thead th:last-child { border-right: none; }
-.article-body tbody td {
-padding: 10px 14px; border-bottom: 1px solid var(--gray-100);
-border-right: 1px solid var(--gray-100); color: var(--gray-500);
-vertical-align: top;
-}
-.article-body tbody td:last-child { border-right: none; }
-.article-body tbody tr:nth-child(even) td {
-background: var(--gray-50);
-}
-.article-body tbody tr:hover td {
-background: var(--blue-bg);
-}
-.article-body tbody td:first-child {
-font-weight: 500; color: var(--text-dark);
-}
-    /* ===== RELATED ARTICLES ===== */
-.related-section {
-background: var(--off-white); padding: 64px 24px;
-}
-.related-inner { max-width: var(--content-max); margin: 0 auto; }
-.related-inner h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.01em; }
-.related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-.related-card {
-background: var(--white); border: 1px solid var(--gray-100);
-border-radius: var(--radius-md); padding: 20px; text-decoration: none;
-transition: box-shadow 0.2s;
-}
-.related-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
-.related-card h3 { font-size: 0.9375rem; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
-.related-card .tag { font-size: 0.6875rem; color: var(--blue); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
-    /* ===== FOOTER ===== */
-.footer {
-background: var(--near-black); color: var(--text-muted);
-padding: 48px 24px 32px; border-top: 1px solid rgba(255,255,255,0.06);
-}
-.footer-inner {
-max-width: 1200px; margin: 0 auto;
-display: flex; justify-content: space-between; align-items: center;
-font-size: 0.8125rem;
-}
-.footer-inner a { color: var(--blue-light); text-decoration: none; }
-.footer-inner a:hover { color: var(--white); }
-    @media (max-width: 768px) {
-.article-header { padding: calc(64px + 40px) 16px 40px; }
-.article-body { padding: 40px 16px; }
-.nav-links { display: none; }
-}
-</style>
-</head>
-<body>
-<nav class="nav">
-<div class="nav-inner">
-<div class="nav-left">
-<a href="../index.html" class="nav-logo">
-<img src="../logo.png" alt="Scodeno" class="nav-logo-img">
-<span class="nav-logo-text">Scodeno<span class="nav-logo-indonesia">Indonesia</span></span>
-</a>
-<ul class="nav-links">
-<li class="nav-dropdown">
-<a href="../index.html#products">Products</a>
-<div class="nav-dropdown-menu">
-<a href="../index.html#products">Unmanaged Switches</a>
-<a href="../index.html#products">Managed Switches</a>
-<a href="../index.html#products">PoE Switches</a>
-<a href="../index.html#products">Data Center</a>
-<a href="../index.html#products">xPON / Fiber</a>
-<a href="../index.html#products">Smart Box &amp; IoT</a>
-</div>
-</li>
-<li class="nav-dropdown">
-<a href="../index.html#articles">Articles</a>
-<div class="nav-dropdown-menu">
-<a href="../index.html#articles">Fundamental</a>
-<a href="../index.html#articles">Selection Guide</a>
-<a href="../index.html#articles">Technology</a>
-<a href="../index.html#articles">Deployment</a>
-<a href="../index.html#articles">Network Design</a>
-</div>
-</li>
-<li><a href="../index.html#about">About</a></li>
-</ul>
-</div>
-<a href="../index.html#contact" class="nav-cta">Request Quote</a>
-</div>
-</nav>
-<header class="article-header">
-<div class="article-header-inner">
-<span class="article-tag">Network Design</span>
-<h1>QoS dalam Industrial Network</h1>
-<div class="article-meta">
-<span>8 min read</span>
-</div>
-</div>
-</header>
-<article class="article-body">
-<p>Setiap jaringan industri yang baru dibangun atau dikembangkan ulang harus menganggap QoS sebagai pertimbangan arsitektur utama, bukan afterthought. Latensi yang tidak bisa diprediksi bukanlah ketidakmampuan kabel atau infrastruktur; ia adalah kegagalan prioritas, dan itu bisa diselesaikan dengan kebijakan yang tepat pada perangkat yang tepat. Jangan biarkan traffic tidak penting mencuri habis ruang gerak proses vital Anda. Konsultasikan kebutuhan QoS industrial network Anda dengan tim engineer Scodeno hari ini dan dapatkan rancangan jaringan yang benar-benar melayani proses, bukan sekadar menghubungkan perangkat.</p>
-</article>
-
-  <!-- Article Navigation -->
-  <nav class="article-nav" style="max-width: var(--content-max); margin: 48px auto 0; padding: 0 24px; border-top: 1px solid var(--gray-100);">
-    <div style="display: flex; justify-content: space-between; align-items: center; padding: 24px 0;">
-      <a href="Week_10_vlan-dalam-industrial-ethernet-network.html" style="display: flex; align-items: center; gap: 8px; color: var(--gray-500); text-decoration: none; font-size: 0.875rem; max-width: 40%;">
-        <span style="font-size:1.25rem;">←</span>
-        <span><small style="color:var(--gray-400);">Previous</small><br><strong style="color:var(--text-dark);">VLAN dalam Industrial Ethernet Network...</strong></span>
-      </a>
-      <a href="Week_12_network-segmentation-pada-jaringan-industri.html" style="display: flex; align-items: center; gap: 8px; color: var(--gray-500); text-decoration: none; font-size: 0.875rem; text-align: right; max-width: 40%;">
-        <span><small style="color:var(--gray-400);">Next</small><br><strong style="color:var(--text-dark);">Network Segmentation pada Jaringan Industri...</strong></span>
-        <span style="font-size:1.25rem;">→</span>
-      </a>
-    </div>
-    <div style="text-align: center; padding-bottom: 24px;">
-      <a href="../index.html#articles" style="color: var(--blue); text-decoration: none; font-weight: 600; font-size: 0.875rem;">← Kembali ke Semua Artikel</a>
-    </div>
-  </nav>
-<section class="related-section">
-<div class="related-inner">
-<h2>Artikel Terkait</h2>
-<div class="related-grid">
-<a href="Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html" class="related-card"><span class="tag">Fundamental</span><h3>Kenapa Industrial Switch Menggunakan Desain Fanless</h3></a>
-<a href="Week_02_apa-itu-din-rail-industrial-switch-dan-mengapa-banyak-dipakai-di-pabrik.html" class="related-card"><span class="tag">Fundamental</span><h3>Apa Itu DIN-Rail Industrial Switch dan Mengapa Banyak Dipakai di Pabrik</h3></a>
-<a href="Week_03_ip-rating-pada-industrial-ethernet-switch-apa-artinya.html" class="related-card"><span class="tag">Fundamental</span><h3>IP Rating pada Industrial Ethernet Switch: Apa Artinya?</h3></a>
-<a href="Week_04_industrial-gigabit-switch-vs-fast-ethernet-switch.html" class="related-card"><span class="tag">Selection Guide</span><h3>Industrial Gigabit Switch vs Fast Ethernet Switch</h3></a>
-</div>
-</div>
-</section>
-<footer class="footer">
-<div class="footer-inner">
-<span>&copy; 2024 Scodeno Indonesia</span>
-<span>Didistribusikan oleh <a href="../index.html">PT Konexindo Unitama</a></span>
-</div>
-</footer>
-</body>
-</html>
+     <!DOCTYPE html>
+     <html lang="id">
+     <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>QoS dalam Industrial Network — Scodeno Indonesia</title>
+     <meta name="description" content="QoS industrial network: cara prioritas trafik PLC, video, dan safety di jaringan pabrik.">
+     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+     <style>:root{--blue:#0068B4;--blue-light:#0095E0;--blue-dark:#004A82;--blue-bg:#E7F3FB;--blue-glow:rgba(0,104,180,0.20);--black:#0A0E14;--near-black:#141A22;--dark-card:#1A202A;--white:#FFFFFF;--off-white:#F5F7FA;--gray-100:#E8ECF0;--gray-300:#9BA2AB;--gray-500:#4B5563;--text-dark:#1A1A1A;--text-muted:#9BA2AB;--content-max:780px}
+   *{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',system-ui,sans-serif;color:var(--text-dark);background:var(--white);line-height:1.7}
+   .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,20,0.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.06)}
+   .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:64px}
+   .nav-left{display:flex;align-items:center;gap:32px}.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+   .nav-logo-img{height:28px}.nav-logo-text{font-weight:800;font-size:1.0625rem;color:var(--white)}
+   .nav-logo-indonesia{color:var(--blue-light)}.nav-links{display:flex;gap:4px;list-style:none}
+   .nav-links a{color:var(--gray-300);text-decoration:none;font-size:0.8125rem;font-weight:500;padding:8px 12px;border-radius:4px}
+   .nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.06)}.nav-dropdown{position:relative}
+   .nav-dropdown>a::after{content:'▾';font-size:0.625rem;margin-left:2px}
+   .nav-dropdown-menu{position:absolute;top:100%;left:0;min-width:200px;background:var(--dark-card);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:6px 0;opacity:0;visibility:hidden;transform:translateY(4px);transition:all 0.18s ease}
+   .nav-dropdown:hover .nav-dropdown-menu{opacity:1;visibility:visible;transform:translateY(0)}
+   .nav-dropdown-menu a{display:block;padding:8px 16px!important;color:var(--gray-300)!important;border-radius:0!important}
+   .nav-cta{background:var(--blue);color:var(--white)!important;padding:8px 18px!important;border-radius:4px!important;font-weight:600!important}
+    .nav-search{position:relative;display:flex;align-items:center}
+   .search-toggle{background:none;border:none;cursor:pointer;padding:8px;display:flex;align-items:center;justify-content:center;border-radius:4px;transition:background 0.15s}
+   .search-toggle:hover{background:rgba(255,255,255,0.06)}
+   .search-toggle svg{width:18px;height:18px;stroke:var(--gray-300);stroke-width:2;fill:none;transition:stroke 0.15s}
+   .search-toggle:hover svg{stroke:var(--white)}
+   .search-panel{position:absolute;top:100%;right:0;width:420px;max-width:90vw;background:var(--dark-card);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:0;display:none;box-shadow:0 16px 48px rgba(0,0,0,0.45);z-index:200}
+   .search-panel.active{display:block}
+   .search-input-wrap{display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.06)}
+   .search-input-wrap svg{width:16px;height:16px;stroke:var(--gray-400);stroke-width:2;fill:none;flex-shrink:0;margin-right:10px}
+   .search-input{flex:1;background:none;border:none;color:var(--white);font-size:0.9375rem;font-family:inherit;outline:none}
+   .search-input::placeholder{color:var(--gray-400)}
+   .search-results{max-height:420px;overflow-y:auto;padding:8px 0}
+   .search-result{display:block;padding:10px 16px;text-decoration:none;transition:background 0.1s;border-bottom:1px solid rgba(255,255,255,0.03)}
+   .search-result:last-child{border-bottom:none}
+   .search-result:hover{background:rgba(255,255,255,0.04)}
+   .search-result-title{font-size:0.875rem;font-weight:600;color:var(--white);margin-bottom:3px;line-height:1.3}
+   .search-result-title mark{background:rgba(0,149,224,0.25);color:var(--blue-light);border-radius:2px;padding:0 1px}
+   .search-result-snippet{font-size:0.75rem;color:var(--gray-400);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+   .search-result-meta{display:flex;align-items:center;gap:8px;margin-top:4px}
+   .search-result-cat{font-size:0.625rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;padding:2px 6px;border-radius:2px}
+   .search-empty{padding:24px 16px;text-align:center;color:var(--gray-400);font-size:0.875rem}
+   .search-overlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:150;display:none}
+   .search-overlay.active{display:block}
+   @media(max-width:768px){.search-panel{position:fixed;top:64px;left:0;right:0;max-width:100vw;border-radius:0;border-left:none;border-right:none}}
+    .article-header{background:var(--black);color:var(--white);padding:calc(64px + 64px) 24px 64px;position:relative;overflow:hidden}
+   .article-header::before{content:'';position:absolute;top:-30%;right:-20%;width:500px;height:500px;background:radial-gradient(circle,var(--blue-glow) 0%,transparent 70%)}
+   .article-header-inner{max-width:var(--content-max);margin:0 auto;position:relative;z-index:1}
+   .article-tag{display:inline-block;background:rgba(0,149,224,0.15);color:var(--blue-light);font-size:0.75rem;font-weight:600;padding:4px 12px;border-radius:2px;margin-bottom:16px;text-transform:uppercase}
+   .article-header h1{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:800;line-height:1.15;margin-bottom:16px}.lang-toggle{display:inline-flex;align-items:center;gap:6px;margin-top:12px}
+.lang-toggle a{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,0.08);color:var(--gray-300);text-decoration:none;font-size:0.75rem;font-weight:500;padding:4px 10px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);transition:all 0.15s}
+.lang-toggle a:hover{background:rgba(255,255,255,0.14);color:var(--white);border-color:rgba(255,255,255,0.2)}
+.lang-toggle .active-lang{background:var(--blue);color:var(--white);border-color:var(--blue)}
+   .article-meta{color:var(--text-muted);font-size:0.875rem}
+   .article-body{max-width:var(--content-max);margin:0 auto;padding:64px 24px}
+   .article-body h2{font-size:1.5rem;font-weight:700;color:var(--near-black);margin:48px 0 16px}
+   .article-body h3{font-size:1.25rem;font-weight:600;color:var(--near-black);margin:32px 0 12px}
+   .article-body p{color:var(--gray-500);font-size:1.0625rem;margin-bottom:20px;line-height:1.8}
+   .article-body ul,.article-body ol{color:var(--gray-500);font-size:1.0625rem;margin-bottom:20px;padding-left:24px}
+   .article-body li{margin-bottom:8px}.article-body strong{color:var(--text-dark);font-weight:600}
+   .article-body a{color:var(--blue);text-decoration:underline}.article-body hr{border:none;border-top:1px solid var(--gray-100);margin:48px 0}
+   .table-wrap{overflow-x:auto;margin:28px 0;border-radius:6px;border:1px solid var(--gray-100)}
+   .article-body table{width:100%;border-collapse:collapse;font-size:0.875rem;min-width:500px}
+   .article-body thead th{background:linear-gradient(180deg,#E8F0F8 0%,#D4E4F2 100%);color:var(--blue-dark);font-weight:600;font-size:0.8125rem;text-transform:uppercase;padding:12px 14px;text-align:left;border-bottom:2px solid #B8D0E8}
+   .article-body tbody td{padding:10px 14px;border-bottom:1px solid var(--gray-100);color:var(--gray-500)}
+   .article-body tbody tr:nth-child(even) td{background:#F9FAFB}.article-body tbody td:first-child{font-weight:500;color:var(--text-dark)}
+   .related-section{background:var(--off-white);padding:64px 24px}.related-inner{max-width:var(--content-max);margin:0 auto}
+   .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+   .related-card{background:var(--white);border:1px solid var(--gray-100);border-radius:4px;padding:20px;text-decoration:none}
+   .related-card h3{font-size:0.9375rem;font-weight:600;color:var(--text-dark)}.related-card .tag{font-size:0.6875rem;color:var(--blue);font-weight:600;text-transform:uppercase}
+   .article-nav{max-width:var(--content-max);margin:0 auto;padding:0 24px}.article-nav-inner{display:flex;justify-content:space-between;padding:32px 0;border-top:1px solid var(--gray-100)}
+   .article-nav-inner a{color:var(--gray-500);text-decoration:none;font-size:0.875rem;max-width:45%}.article-nav-inner a:hover{color:var(--blue)}
+   .nav-label{color:var(--gray-400);font-size:0.6875rem;display:block;text-transform:uppercase}.nav-title{color:var(--text-dark);font-weight:600}
+   .article-nav-back{text-align:center;padding-bottom:40px}.article-nav-back a{color:var(--blue);text-decoration:none;font-weight:600}
+   .footer{background:var(--near-black);color:var(--text-muted);padding:48px 24px 32px}.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;font-size:0.8125rem}
+   .footer-inner a{color:var(--blue-light);text-decoration:none}@media(max-width:768px){.nav-links{display:none}}</style>
+   </head>
+   <body>
+   <nav class="nav"><div class="nav-inner"><div class="nav-left"><a href="../" class="nav-logo"><img src="../logo.png" alt="Scodeno" class="nav-logo-img"><span class="nav-logo-text">Scodeno<span class="nav-logo-indonesia">Indonesia</span></span></a><ul class="nav-links"><li class="nav-dropdown"><a href="../#products">Products</a><div class="nav-dropdown-menu">
+   <span class="sub-label">Industrial Switch</span><a href="../#products">PoE</a><a href="../#products">Non-PoE</a>
+   <span class="sub-label">Commercial Switch</span><a href="../#products">PoE</a><a href="../#products">Non-PoE</a>
+   <a href="../#products">Data Center Switch</a>
+   <span class="sub-label">SFP Modules</span><a href="../#products">Industrial</a><a href="../#products">Commercial</a>
+   <a href="../#products">IoT Smart Box</a>
+   </div></li><li class="nav-dropdown"><a href="../#articles">Articles</a><div class="nav-dropdown-menu"><a href="../#articles">Fundamental</a><a href="../#articles">Selection Guide</a><a href="../#articles">Technology</a></div></li><li><a href="../#about">About</a></li><li class="nav-search"><button class="search-toggle" onclick="toggleSearch()" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="17" y1="17" x2="22" y2="22"/></svg></button><div class="search-panel" id="searchPanel"><div class="search-input-wrap"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="17" y1="17" x2="22" y2="22"/></svg><input type="text" class="search-input" id="searchInput" placeholder="Cari artikel atau produk..." oninput="doSearch()" onkeydown="if(event.key==='Escape')closeSearch()"></div><div class="search-results" id="searchResults"></div></div><div class="search-overlay" id="searchOverlay" onclick="closeSearch()"></div></li></ul></div>
+      <a href="../#contact" class="nav-cta">Request Quote</a></div></nav>
+   <header class="article-header"><div class="article-header-inner"><span class="article-tag">Technology</span><h1>QoS dalam Industrial Network: Mengatur Prioritas Trafik di Pabrik</h1><div class="article-meta">6 min read</div><div class="lang-toggle"><a href="https://scodenoindonesia.com/articles/Week_11_qos-dalam-industrial-network.html" class="active-lang">🇮🇩 ID</a><a href="https://en.scodenoindonesia.com/articles/Week_11_qos-dalam-industrial-network.html">🇬🇧 EN</a></div></div></header>
+   <article class="article-body">
+   <p>Semua paket data terlihat sama. Tapi tidak semua sama pentingnya.</p>
+   <p>Paket dari PLC yang mengendalikan robot las: hidup-mati. Paket dari kamera CCTV yang merekam area parkir: bisa ditunda. Paket dari sensor suhu yang polling setiap 30 detik: hampir tidak peduli.</p>
+   <p>Tanpa QoS, switch memperlakukan semua paket ini secara identik. First in, first out. Antrean panjang? Semua ikut mengantre — termasuk paket kontrol yang seharusnya tidak boleh ditunda barang semili detik pun.</p>
+   <p><strong>QoS industrial network</strong> adalah mekanisme yang memastikan paket penting didahulukan, dan paket kurang penting menunggu.</p>
+   <hr>
+   <h2>Kenapa QoS Kritis di Jaringan Industri?</h2>
+   <p>Jaringan kantor hanya membawa satu jenis trafik dominan: data. Kalau lambat, pengguna mengeluh. Produksi tetap jalan.</p>
+   <p>Jaringan pabrik membawa banyak jenis trafik sekaligus:</p>
+   <ul><li><strong>Kontrol real-time</strong> — PLC ke drive/robot. Latensi &lt;1 ms. Jitter harus nol.</li><li><strong>Safety</strong> — emergency stop, light curtain. Tidak boleh hilang. Tidak boleh ditunda.</li><li><strong>Video</strong> — CCTV, vision system. 15-25 Mbps per stream, toleran latensi ~100 ms.</li><li><strong>Data SCADA</strong> — polling HMI, alarm. Periodik, volume kecil, bisa ditunda.</li><li><strong>Voice</strong> — intercom, VoIP. Sensitif jitter, toleran packet loss.</li></ul>
+   <p>Campur semua tanpa prioritas: video raksasa membanjiri buffer, paket kontrol antre, PLC timeout, mesin berhenti.</p>
+   <h2>Tiga Tahap QoS: Klasifikasi, Marking, Queuing</h2>
+   <h3>1. Klasifikasi</h3>
+   <p>Switch membaca paket dan menentukan kategori: kontrol? video? best effort? Berdasarkan: port fisik, MAC address, VLAN ID, 802.1p CoS bits, atau DSCP.</p>
+   <h3>2. Marking</h3>
+   <p>Layer 2: 802.1p CoS bits di VLAN tag — 3 bit, 8 level prioritas (0-7). Layer 3: DSCP di IP header — 6 bit, 64 level.</p>
+   <h3>3. Queuing</h3>
+   <p><strong>Strict Priority (SP):</strong> antrean tertinggi dikirim dulu sampai habis. Risiko starvation antrean bawah. <strong>Weighted Round Robin (WRR):</strong> setiap antrean dapat jatah bandwidth. <strong>Hybrid (SP+WRR):</strong> tertinggi strict priority (kontrol/safety), sisanya WRR. Ideal untuk industri.</p>
+   <h2>802.1p CoS: Standar Prioritas Ethernet</h2>
+   <p>Spurgeon dan Zimmerman (2013) menjelaskan bahwa standar 802.1Q menyediakan ruang di VLAN tag untuk 802.1p CoS bits — 3 bit yang memungkinkan 8 level prioritas.</p>
+   <div class="table-wrap"><table>
+   <thead><tr><th>CoS</th><th>Prioritas</th><th>Contoh Trafik</th></tr></thead>
+   <tbody>
+   <tr><td>7</td><td>Tertinggi</td><td>Network control</td></tr>
+   <tr><td>6</td><td>Sangat tinggi</td><td>Voice, safety</td></tr>
+   <tr><td>5</td><td>Tinggi</td><td>Video, kontrol real-time</td></tr>
+   <tr><td>4-3</td><td>Menengah</td><td>SCADA, HMI</td></tr>
+   <tr><td>2-0</td><td>Rendah</td><td>Data logging, file transfer</td></tr>
+   </tbody>
+   </table></div>
+   <p>Mapping tipikal industri: CoS 6 untuk safety, CoS 5 untuk kontrol PLC, CoS 3 untuk SCADA, CoS 1 untuk video.</p>
+   <h2>QoS di Switch Scodeno</h2>
+   <p><strong>Traffic prioritization network</strong> di switch Scodeno bisa dikonfigurasi via dua jalur:</p>
+   <p><strong>Managed switch:</strong> QoS penuh via web GUI — klasifikasi 802.1p/DSCP/port/VLAN, antrean SP atau WRR. Untuk jaringan besar yang butuh kontrol granular.</p>
+   <p><strong>Unmanaged dengan DIP switch:</strong> QoS diaktifkan lewat sakelar fisik. Tanpa software. Tanpa IP address. Port tertentu otomatis diprioritaskan untuk kontrol. Ini unik — switch unmanaged pada umumnya tidak punya QoS sama sekali.</p>
+   <h2>Checklist Implementasi</h2>
+   <ul><li>[ ] Petakan semua jenis trafik — kontrol, video, data, voice</li><li>[ ] Tentukan prioritas berdasarkan dampak bisnis</li><li>[ ] Konfigurasi klasifikasi: port-based atau CoS/DSCP</li><li>[ ] Pilih queuing: SP untuk kontrol, WRR untuk lainnya</li><li>[ ] Uji beban penuh — pastikan kontrol tetap &lt;1 ms</li><li>[ ] Dokumentasikan konfigurasi</li></ul>
+   <h2>Kesimpulan</h2>
+   <p>QoS bukan fitur opsional di jaringan industri. Begitu satu kabel membawa kontrol dan video bersamaan, QoS berubah dari "nice to have" menjadi "harus ada."</p>
+   <p>Tanpa <strong>QoS industrial network</strong>, switch — termasuk yang disediakan <a href="../">Scodeno Indonesia</a> — tidak tahu mana paket yang mengendalikan robot dan mana yang merekam parkiran. Semua diantrekan sama rata. Yang kalah selalu yang paling penting.</p>
+   <p>Dengan QoS yang benar: kontrol didahulukan, video mengikuti, data menunggu. Tidak ada starvation. Tidak ada timeout. Tidak ada mesin berhenti karena jaringan sibuk.</p>
+   <hr>
+   <p><strong>Sumber:</strong> Spurgeon &amp; Zimmerman (2013) <em>Ethernet Switches</em>. Scodeno XPTN-9000 Series.</p>
+   </article>
+   <nav class="article-nav"><div class="article-nav-inner"><a href="Week_10_vlan-dalam-industrial-ethernet-network.html" class="prev"><span>←</span><span><span class="nav-label">Previous</span><span class="nav-title">VLAN dalam Industrial Network</span></span></a><a href="Week_12_network-segmentation-pada-jaringan-industri.html" class="next"><span><span class="nav-label">Next</span><span class="nav-title">Network Segmentation</span></span><span>→</span></a></div><div class="article-nav-back"><a href="../#articles">← Kembali ke Semua Artikel</a></div></nav>
+   <section class="related-section"><div class="related-inner"><h2>Artikel Terkait</h2><div class="related-grid"><a href="Week_10_vlan-dalam-industrial-ethernet-network.html" class="related-card"><span class="tag">Technology</span><h3>VLAN dalam Industrial Network</h3></a><a href="Week_12_network-segmentation-pada-jaringan-industri.html" class="related-card"><span class="tag">Network Design</span><h3>Network Segmentation</h3></a><a href="Week_06_managed-vs-unmanaged-industrial-switch-mana-yang-tepat.html" class="related-card"><span class="tag">Selection Guide</span><h3>Managed vs Unmanaged</h3></a><a href="Week_08_fitur-penting-industrial-ethernet-switch-yang-harus-anda-ketahui.html" class="related-card"><span class="tag">Fundamental</span><h3>11 Fitur Penting Industrial Switch</h3></a></div></div></section>
+   <footer class="footer"><div class="footer-inner"><span>&copy; 2024 Scodeno Indonesia</span><span>Didistribusikan oleh <a href="../">PT Konexindo Unitama</a></span></div></footer>
+   <script>
+   let searchIndex=[];
+   searchIndex=[{"title": "Scodeno Switch: Panduan Lengkap Industrial Ethernet Switch untuk Jaringan Industri", "url": "articles/Week_00_scodeno-switch-panduan-lengkap.html", "snippet": "Satu switch. Ratusan perangkat. Ribuan jam operasi tanpa henti.", "category": "Artikel", "tag": "Selection Guide"}, {"title": "Kenapa Industrial Switch Menggunakan Desain Fanless", "url": "articles/Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html", "snippet": "Di balik keandalan jaringan otomasi pabrik, sistem transportasi cerdas, dan infrastruktur energi, terdapat satu komponen", "category": "Artikel", "tag": "Fundamental"}, {"title": "Apa Itu DIN-Rail Industrial Switch dan Mengapa Banyak Dipakai di Pabrik", "url": "articles/Week_02_apa-itu-din-rail-industrial-switch-dan-mengapa-banyak-dipakai-di-pabrik.html", "snippet": "Di era Industri 4.0, konektivitas yang andal di lantai produksi bukan lagi nilai tambah, melainkan kebutuhan mutlak. Set", "category": "Artikel", "tag": "Fundamental"}, {"title": "IP Rating pada Industrial Ethernet Switch — Apa Artinya?", "url": "articles/Week_03_ip-rating-pada-industrial-ethernet-switch-apa-artinya.html", "snippet": "Di lantai pabrik, segalanya berbeda. Udara tidak sejuk seperti di ruang server berpendingin. Di sana, debu beterbangan d", "category": "Artikel", "tag": "Fundamental"}, {"title": "Industrial Gigabit Switch vs Fast Ethernet Switch: Mana yang Dibutuhkan Jaringan Anda?", "url": "articles/Week_04_industrial-gigabit-switch-vs-fast-ethernet-switch.html", "snippet": "Sepuluh kali lebih cepat.", "category": "Artikel", "tag": "Selection Guide"}, {"title": "Industrial Switch dengan SFP Port: Fungsi dan Kegunaannya", "url": "articles/Week_05_industrial-switch-dengan-sfp-port-fungsi-dan-kegunaannya.html", "snippet": "Port SFP.", "category": "Artikel", "tag": "Technology"}, {"title": "Managed vs Unmanaged Industrial Switch: Mana yang Tepat?", "url": "articles/Week_06_managed-vs-unmanaged-industrial-switch-mana-yang-tepat.html", "snip... [truncated]
+   function toggleSearch(){
+    const panel=document.getElementById('searchPanel');
+    const overlay=document.getElementById('searchOverlay');
+    const input=document.getElementById('searchInput');
+    const active=panel.classList.contains('active');
+    if(active){closeSearch()}else{
+      panel.classList.add('active');
+      overlay.classList.add('active');
+      setTimeout(()=>input.focus(),100);
+      doSearch();
+    }
+   }
+   function closeSearch(){
+    document.getElementById('searchPanel').classList.remove('active');
+    document.getElementById('searchOverlay').classList.remove('active');
+    document.getElementById('searchInput').value='';
+    document.getElementById('searchResults').innerHTML='';
+   }
+   function doSearch(){
+    const q=document.getElementById('searchInput').value.toLowerCase().trim();
+    const container=document.getElementById('searchResults');
+    if(!q){showDefaultResults(container);return}
+    const results=searchIndex.filter(item=>{
+      const haystack=(item.title+' '+item.snippet+' '+item.tag+' '+item.category).toLowerCase();
+      return haystack.includes(q);
+    }).slice(0,12);
+    if(results.length===0){
+      container.innerHTML='<div class="search-empty">Tidak ditemukan. Coba kata kunci lain.</div>';
+      return
+    }
+    container.innerHTML=results.map(r=>{
+      const title=highlight(r.title,q);
+      const snip=r.snippet.substring(0,100);
+      const catClass=r.category==='Artikel'?'cat-artikel':'cat-produk';
+      return `<a href="${r.url}" class="search-result">
+        <div class="search-result-title">${title}</div>
+        <div class="search-result-snippet">${snip}</div>
+        <div class="search-result-meta"><span class="search-result-cat ${catClass}">${r.category}</span><span style="font-size:0.625rem;color:var(--gray-500)">${r.tag}</span></div>
+      </a>`;
+    }).join('');
+   }
+   function showDefaultResults(container){
+    const shuffled=searchIndex.sort(()=>Math.random()-0.5).slice(0,6);
+    container.innerHTML=shuffled.map(r=>{
+      const catClass=r.category==='Artikel'?'cat-artikel':'cat-produk';
+      return `<a href="${r.url}" class="search-result">
+        <div class="search-result-title">${r.title}</div>
+        <div class="search-result-snippet">${r.snippet.substring(0,100)}</div>
+        <div class="search-result-meta"><span class="search-result-cat ${catClass}">${r.category}</span><span style="font-size:0.625rem;color:var(--gray-500)">${r.tag}</span></div>
+      </a>`;
+    }).join('');
+   }
+   function highlight(text,q){
+    const regex=new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`,'gi');
+    return text.replace(regex,'<mark>$1</mark>');
+   }
+   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSearch()});
+   </script>
+   <script>(function(){var h=window.location.hostname;var links=document.querySelectorAll('.lang-toggle a');links.forEach(function(a){a.classList.remove('active-lang');if(h.includes('en.')&&a.href.includes('en.scodeno'))a.classList.add('active-lang');if(!h.includes('en.')&&a.href.includes('scodenoindonesia.com')&&!a.href.includes('en.scodeno'))a.classList.add('active-lang')})})()</script>
+</body></html>
+   

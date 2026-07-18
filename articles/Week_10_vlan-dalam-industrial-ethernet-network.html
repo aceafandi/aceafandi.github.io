@@ -1,333 +1,137 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VLAN dalam Industrial Ethernet Network — Scodeno Indonesia</title>
-<meta name="description" content="VLAN dalam Industrial Ethernet Network">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root {
---blue: #0068B4; --blue-light: #0095E0; --blue-dark: #004A82; --blue-bg: #E7F3FB;
---blue-glow: rgba(0,104,180,0.20);
---black: #0A0E14; --near-black: #141A22; --dark-card: #1A202A;
---white: #FFFFFF; --off-white: #F5F7FA; --gray-50: #F9FAFB; --gray-100: #E8ECF0;
---gray-200: #C8CDD4; --gray-300: #9BA2AB; --gray-400: #6B7280; --gray-500: #4B5563;
---text-dark: #1A1A1A; --text-light: #E2E8F0; --text-muted: #9BA2AB;
---content-max: 780px; --radius-sm: 2px; --radius-md: 4px;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-font-family: 'Inter', system-ui, -apple-system, sans-serif;
-color: var(--text-dark); background: var(--white);
-line-height: 1.7; -webkit-font-smoothing: antialiased;
-}
-    /* ===== NAVIGATION ===== */
-.nav {
-position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-background: rgba(10,14,20,0.94); backdrop-filter: blur(12px);
-border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-.nav-inner {
-max-width: 1200px; margin: 0 auto;
-display: flex; align-items: center; justify-content: space-between;
-padding: 0 24px; height: 64px;
-}
-.nav-left { display: flex; align-items: center; gap: 32px; }
-.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.nav-logo-img { height: 28px; width: auto; }
-.nav-logo-text { font-weight: 800; font-size: 1.0625rem; color: var(--white); letter-spacing: -0.01em; white-space: nowrap; }
-.nav-logo-indonesia { color: var(--blue-light); margin-left: 2px; }
-.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
-.nav-links a { color: var(--gray-300); text-decoration: none; font-size: 0.8125rem; font-weight: 500; padding: 8px 12px; border-radius: 4px; transition: all 0.15s; white-space: nowrap; }
-.nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
-    /* Dropdown */
-.nav-dropdown { position: relative; }
-.nav-dropdown > a { display: flex; align-items: center; gap: 4px; }
-.nav-dropdown > a::after { content: '▾'; font-size: 0.625rem; margin-left: 2px; }
-.nav-dropdown-menu {
-position: absolute; top: 100%; left: 0; min-width: 200px;
-background: var(--dark-card); border: 1px solid rgba(255,255,255,0.08);
-border-radius: 6px; padding: 6px 0; opacity: 0; visibility: hidden;
-transform: translateY(4px); transition: all 0.18s ease;
-box-shadow: 0 12px 32px rgba(0,0,0,0.35);
-}
-.nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-.nav-dropdown-menu a {
-display: block; padding: 8px 16px !important; font-size: 0.8125rem !important;
-color: var(--gray-300) !important; border-radius: 0 !important;
-}
-.nav-dropdown-menu a:hover { background: rgba(255,255,255,0.06) !important; color: var(--white) !important; }
-.nav-dropdown-menu .dropdown-label {
-font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.06em;
-color: var(--gray-400); padding: 6px 16px 2px; font-weight: 600;
-}
-    .nav-cta {
-background: var(--blue); color: var(--white) !important;
-padding: 8px 18px !important; border-radius: 4px !important;
-font-weight: 600 !important; font-size: 0.8125rem !important;
-}
-.nav-cta:hover { background: var(--blue-light) !important; }
-    /* ===== ARTICLE HEADER ===== */
-.article-header {
-background: var(--black); color: var(--white);
-padding: calc(64px + 64px) 24px 64px;
-position: relative; overflow: hidden;
-}
-.article-header::before {
-content: ''; position: absolute; top: -30%; right: -20%;
-width: 500px; height: 500px;
-background: radial-gradient(circle, var(--blue-glow) 0%, transparent 70%);
-pointer-events: none;
-}
-.article-header-inner { max-width: var(--content-max); margin: 0 auto; position: relative; z-index: 1; }
-.article-tag {
-display: inline-block; background: rgba(0,149,224,0.15); color: var(--blue-light);
-font-size: 0.75rem; font-weight: 600; padding: 4px 12px;
-border-radius: 2px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.06em;
-}
-.article-header h1 {
-font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800;
-line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px;
-}
-.article-header .article-meta { color: var(--text-muted); font-size: 0.875rem; display: flex; gap: 20px; }
-    /* ===== ARTICLE BODY ===== */
-.article-body {
-max-width: var(--content-max); margin: 0 auto;
-padding: 64px 24px;
-}
-.article-body h2 {
-font-size: 1.5rem; font-weight: 700; color: var(--near-black);
-margin: 48px 0 16px; letter-spacing: -0.01em;
-}
-.article-body h3 {
-font-size: 1.25rem; font-weight: 600; color: var(--near-black);
-margin: 32px 0 12px;
-}
-.article-body h4 {
-font-size: 1.0625rem; font-weight: 600; color: var(--gray-500);
-margin: 24px 0 8px;
-}
-.article-body p {
-color: var(--gray-500); font-size: 1.0625rem;
-margin-bottom: 20px; line-height: 1.8;
-}
-.article-body ul, .article-body ol {
-color: var(--gray-500); font-size: 1.0625rem;
-margin-bottom: 20px; padding-left: 24px;
-}
-.article-body li { margin-bottom: 8px; line-height: 1.7; }
-.article-body strong { color: var(--text-dark); font-weight: 600; }
-.article-body a { color: var(--blue); text-decoration: underline; }
-.article-body a:hover { color: var(--blue-light); }
-.article-body hr { border: none; border-top: 1px solid var(--gray-100); margin: 48px 0; }
-.article-body blockquote {
-border-left: 3px solid var(--blue); padding-left: 20px;
-margin: 24px 0; color: var(--gray-500); font-style: italic;
-}
-    /* ===== EXCEL-STYLE TABLE ===== */
-.table-wrap {
-overflow-x: auto; margin: 28px 0; border-radius: 6px;
-border: 1px solid var(--gray-100);
-box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.article-body table {
-width: 100%; border-collapse: collapse;
-font-size: 0.875rem; line-height: 1.5;
-min-width: 600px;
-}
-.article-body thead th {
-background: linear-gradient(180deg, #E8F0F8 0%, #D4E4F2 100%);
-color: var(--blue-dark); font-weight: 600; font-size: 0.8125rem;
-text-transform: uppercase; letter-spacing: 0.03em;
-padding: 12px 14px; text-align: left;
-border-bottom: 2px solid #B8D0E8;
-border-right: 1px solid #C8D8E8;
-white-space: nowrap; position: sticky; top: 0;
-}
-.article-body thead th:last-child { border-right: none; }
-.article-body tbody td {
-padding: 10px 14px; border-bottom: 1px solid var(--gray-100);
-border-right: 1px solid var(--gray-100); color: var(--gray-500);
-vertical-align: top;
-}
-.article-body tbody td:last-child { border-right: none; }
-.article-body tbody tr:nth-child(even) td {
-background: var(--gray-50);
-}
-.article-body tbody tr:hover td {
-background: var(--blue-bg);
-}
-.article-body tbody td:first-child {
-font-weight: 500; color: var(--text-dark);
-}
-    /* ===== RELATED ARTICLES ===== */
-.related-section {
-background: var(--off-white); padding: 64px 24px;
-}
-.related-inner { max-width: var(--content-max); margin: 0 auto; }
-.related-inner h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.01em; }
-.related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-.related-card {
-background: var(--white); border: 1px solid var(--gray-100);
-border-radius: var(--radius-md); padding: 20px; text-decoration: none;
-transition: box-shadow 0.2s;
-}
-.related-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
-.related-card h3 { font-size: 0.9375rem; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
-.related-card .tag { font-size: 0.6875rem; color: var(--blue); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
-    /* ===== FOOTER ===== */
-.footer {
-background: var(--near-black); color: var(--text-muted);
-padding: 48px 24px 32px; border-top: 1px solid rgba(255,255,255,0.06);
-}
-.footer-inner {
-max-width: 1200px; margin: 0 auto;
-display: flex; justify-content: space-between; align-items: center;
-font-size: 0.8125rem;
-}
-.footer-inner a { color: var(--blue-light); text-decoration: none; }
-.footer-inner a:hover { color: var(--white); }
-    @media (max-width: 768px) {
-.article-header { padding: calc(64px + 40px) 16px 40px; }
-.article-body { padding: 40px 16px; }
-.nav-links { display: none; }
-}
-</style>
-</head>
-<body>
-<nav class="nav">
-<div class="nav-inner">
-<div class="nav-left">
-<a href="../index.html" class="nav-logo">
-<img src="../logo.png" alt="Scodeno" class="nav-logo-img">
-<span class="nav-logo-text">Scodeno<span class="nav-logo-indonesia">Indonesia</span></span>
-</a>
-<ul class="nav-links">
-<li class="nav-dropdown">
-<a href="../index.html#products">Products</a>
-<div class="nav-dropdown-menu">
-<a href="../index.html#products">Unmanaged Switches</a>
-<a href="../index.html#products">Managed Switches</a>
-<a href="../index.html#products">PoE Switches</a>
-<a href="../index.html#products">Data Center</a>
-<a href="../index.html#products">xPON / Fiber</a>
-<a href="../index.html#products">Smart Box &amp; IoT</a>
-</div>
-</li>
-<li class="nav-dropdown">
-<a href="../index.html#articles">Articles</a>
-<div class="nav-dropdown-menu">
-<a href="../index.html#articles">Fundamental</a>
-<a href="../index.html#articles">Selection Guide</a>
-<a href="../index.html#articles">Technology</a>
-<a href="../index.html#articles">Deployment</a>
-<a href="../index.html#articles">Network Design</a>
-</div>
-</li>
-<li><a href="../index.html#about">About</a></li>
-</ul>
-</div>
-<a href="../index.html#contact" class="nav-cta">Request Quote</a>
-</div>
-</nav>
-<header class="article-header">
-<div class="article-header-inner">
-<span class="article-tag">Network Design</span>
-<h1>VLAN dalam Industrial Ethernet Network</h1>
-<div class="article-meta">
-<span>9 min read</span>
-</div>
-</div>
-</header>
-<article class="article-body">
-<p>Lantai pabrik modern bukan lagi sekadar deretan mesin mekanik yang berdengung. Ia adalah ekosistem digital yang padat, di mana Programmable Logic Controller (PLC), Human-Machine Interface (HMI), sensor cerdas, dan kamera CCTV bertukar data dalam milidetik. Di tengah lalu lintas data yang kian masif, satu masalah klasik sering menenggelamkan keandalan: tabrakan paket siaran. Tanpa segmentasi yang tegas, jaringan industrial Ethernet bisa berubah dari aset produktif menjadi sumber bencana downtime. Di sinilah Virtual Local Area Network, atau VLAN, berperan sebagai arsitek senyap yang menertibkan kekacauan.</p>
-<p>Artikel ini mengupas tuntas peran VLAN dalam konteks industrial Ethernet, dengan fokus pada segmentasi, keamanan, dan determinisme—tiga pilar yang menyangga keandalan jaringan di pabrik, fasilitas energi, atau sistem transportasi. Kami akan memadukan prinsip fundamental dengan praktik lapangan, tanpa bertele-tele, langsung ke inti teknikal yang Anda perlukan.</p>
-<h2>Mengapa Segmentasi Jaringan Krusial di Lantai Pabrik?</h2>
-<p>Konektivitas flat—semua perangkat dalam satu subnet tanpa sekat—mungkin tampak sederhana. Di lingkungan industri, kesederhanaan itu adalah jebakan. Jaringan datar menciptakan dua ancaman laten: ketidakstabilan domain siaran dan benturan antara Operational Technology (OT) dengan Information Technology (IT). VLAN hadir untuk merobohkan paradigma flat ini secara virtual, tanpa menambah kabel fisik.</p>
-<h3>Ancaman Broadcast Storm dan Latency Tak Terduga</h3>
-<p>Setiap perangkat di jaringan mengirimkan paket broadcast, entah untuk Address Resolution Protocol (ARP) atau penemuan layanan. Di jaringan datar, switch akan meneruskan paket ini ke seluruh port. Bayangkan ratusan PLC, drive, dan sensor melakukan broadcast bersamaan. Hasilnya? Lonjakan traffic yang bisa menyumbat bandwidth, menciptakan broadcast storm, dan menyebabkan latency acak yang membunuh siklus mesin.</p>
-<p>VLAN membatasi domain broadcast. Paket siaran dari PLC di VLAN 10 tidak akan bocor ke kamera pengawas di VLAN 20, atau ke server SCADA di VLAN 30. Dengan segmentasi ini, Anda memulihkan determinisme—jantung dari kontrol real-time. Di jaringan industri, determinisme adalah segalanya; Anda tidak bisa membiarkan data kritis terhambat oleh traffic video surveillance.</p>
-<h3>Kebutuhan Keamanan antara OT dan IT</h3>
-<p>Konvergensi OT/IT membuka pintu efisiensi, tetapi juga risiko. Jaringan kantor yang terhubung ke lantai produksi bisa menjadi jalur masuk malware atau akses tak sah. PLC yang rentan bisa dimatikan hanya karena kecerobohan konfigurasi dari ruang server IT. Segmentasi industri berbasis VLAN menjadi pagar pembatas yang esensial. Dengan memisahkan traffic SCADA dari jaringan enterprise, Anda mempersempit permukaan serangan tanpa memutus konektivitas yang diperlukan.</p>
-<h2>Prinsip Dasar VLAN untuk Insinyur Otomasi</h2>
-<p>VLAN bukanlah konsep baru. Namun, penerapannya di harsh environment seperti pabrik kimia atau gardu induk listrik menuntut pemahaman yang lebih dalam. Anda tidak bisa hanya mengandalkan GUI wizard; Anda harus paham bagaimana frame 802.1Q bergerak melintasi trunk.</p>
-<h3>VLAN Tagging: 802.1Q dan Trunking</h3>
-<p>Standar IEEE 802.1Q adalah fondasi VLAN modern. Ia menyisipkan tag 4-byte ke dalam Ethernet frame, yang membawa VLAN ID (VID) 12-bit. Ini memungkinkan satu kabel fisik—trunk—membawa traffic dari banyak VLAN antara switch, router, atau perangkat Layer 3. Di jaringan industri, trunk sering digunakan untuk menghubungkan managed switch di kabinet kontrol ke switch distribusi di ruang kontrol pusat. Tanpa tag, Anda harus menarik kabel terpisah untuk setiap fungsi, yang boros port dan biaya.</p>
-<p>Perhatikan native VLAN di trunk. Frame tanpa tag yang masuk ke port trunk akan diasumsikan milik native VLAN. Pastikan native VLAN tidak digunakan untuk data sensitif, karena dapat menjadi celah VLAN hopping jika tidak dikonfigurasi dengan cermat.</p>
-<h3>Mode Port: Access, Trunk, dan Hybrid</h3>
-<p>Switch industri modern menawarkan tiga mode port:</p>
-<ul>
-<li><strong>Access Port:</strong> Membawa traffic untuk satu VLAN saja. Cocok untuk end device seperti PLC, HMI, atau sensor. Frame masuk tidak diberi tag, switch akan menandai secara internal.</li>
-<li><strong>Trunk Port:</strong> Membawa traffic beberapa VLAN dengan tag 802.1Q. Biasanya untuk interkoneksi switch atau uplink ke router.</li>
-<li><strong>Hybrid Port:</strong> Fleksibel, bisa menangani frame tagged dan untagged sekaligus. Berguna saat Anda perlu meneruskan traffic VLAN manajemen tanpa tag ke perangkat tertentu, sambil tetap membawa VLAN lain dengan tag.</li>
-</ul>
-<p>Memilih mode port yang tepat menghindarkan Anda dari misteri konektivitas yang sering memicu panggilan darurat ke tim support pukul dua pagi.</p>
-<h2>Arsitektur VLAN di Industrial Ethernet</h2>
-<p>Tidak ada cetak biru tunggal untuk segmentasi industri. Namun, praktik terbaik mengelompokkan perangkat berdasarkan fungsi, bukan sekadar lokasi geografis. Ini memudahkan manajemen kebijakan dan troubleshooting.</p>
-<h3>Memisahkan Jaringan PLC, SCADA, dan CCTV</h3>
-<p>Pendekatan pragmatis yang sering kami temui di proyek-proyek Scodeno:</p>
-<ul>
-<li><strong>VLAN 10 – Cell/Area Zone:</strong> PLC, remote I/O, dan drive yang melakukan kontrol real-time. Traffic di sini harus ultra-deterministik, sering menggunakan protokol Profinet atau EtherNet/IP.</li>
-<li><strong>VLAN 20 – SCADA/DMZ:</strong> Server SCADA, Historian, dan Engineering Workstation. Zona ini memerlukan akses ke VLAN 10 tetapi tidak boleh membuka seluruh jaringan.</li>
-<li><strong>VLAN 30 – CCTV/Surveillance:</strong> Kamera IP yang mengirimkan streaming video berbandwidth tinggi. Traffic ini harus terisolasi agar tidak mencuri bandwidth dari kontrol proses.</li>
-<li><strong>VLAN 40 – Access/Management:</strong> Port manajemen switch, telepon IP, dan perangkat pendukung lainnya.</li>
-</ul>
-<p>Segmentasi semacam ini memungkinkan Anda menerapkan Quality of Service (QoS) yang berbeda. Traffic kontrol (Profinet RT) bisa diberi prioritas ketat (strict priority), sementara video menggunakan best-effort. Tanpa VLAN, Anda akan kesulitan menerapkan QoS yang presisi karena semua traffic bercampur.</p>
-<h3>Segmentasi Berbasis Fungsi vs. Berbasis Zona</h3>
-<p>Segmentasi berbasis zona mengelompokkan perangkat berdasarkan area fisik, misalnya semua perangkat di Line 1 masuk satu VLAN. Pendekatan ini sederhana tetapi bisa menjadi masalah jika Line 1 memiliki PLC, HMI, dan kamera. Traffic kontrol masih berbagi domain broadcast dengan video. Segmentasi berbasis fungsi, seperti contoh di atas, lebih scalable dan aman. Untuk arsitektur yang lebih kompleks, Anda bisa memadukan keduanya dan menghubungkan antar VLAN melalui routing inter-VLAN di switch Layer 3. Baca lebih lanjut tentang merancang <a href="Week_10_vlan-dalam-industrial-ethernet-network.html">VLAN jaringan industri</a> di lanskap pabrik yang dinamis.</p>
-<h2>Managed Switch: Otak dari Implementasi VLAN Industri</h2>
-<p>VLAN hanya akan sekuat switch yang menjalankannya. Switch unmanaged tidak mendukung segmentasi. Anda memerlukan managed switch industrial yang tangguh, karena kondisi di lapangan tidak sebersih ruang server.</p>
-<h3>Fitur Hardened yang Wajib</h3>
-<p>Managed switch untuk industrial Ethernet harus memiliki sertifikasi Ingress Protection, minimal IP40, idealnya IP67 untuk dipasang dekat proses tanpa kabinet. Suhu operasi harus extended, antara -40°C hingga 75°C. Tanpa ini, switch bisa mati di pergantian shift malam yang dingin atau di dekat furnace. Konstruksi fanless dan metal housing juga krusial untuk membuang panas tanpa komponen bergerak yang rentan aus. Dukungan terhadap Small Form-factor Pluggable (SFP) untuk fiber optik juga perlu dipertimbangkan, menjaga integritas sinyal di area elektromagnetik tinggi.</p>
-<h3>Redundansi Ring dan Kaitannya dengan VLAN</h3>
-<p>Pabrik tidak mentolerir downtime. Karena itu, topologi ring dengan protokol seperti Media Redundancy Protocol (MRP) atau Rapid Spanning Tree Protocol (RSTP) menjadi standar. Ketika VLAN diterapkan pada ring, Anda harus memastikan bahwa semua switch di ring memiliki konfigurasi VLAN yang identik pada port-ring tersebut. Kegagalan menyamakan VID dan trunk setting akan menciptakan inkonsistensi topologi dan network loop yang mematikan.</p>
-<h2>Best Practice Konfigurasi VLAN untuk Keandalan Tinggi</h2>
-<p>Mengkonfigurasi VLAN hanyalah langkah awal. Mempertahankan keandalannya memerlukan disiplin. Berikut beberapa prinsip yang kami tekankan di setiap training dan proyek.</p>
-<h3>Hindari Oversubscription dan Jaga Throughput</h3>
-<p>Switch industrial biasanya memiliki switching capacity yang terbatas. Jangan menumpuk terlalu banyak trunk di satu switch edge, apalagi jika Anda mengalirkan video surveillance melalui trunk yang sama dengan kontrol. Hitung total throughput per VLAN. Jika Anda memiliki 10 kamera 4K di VLAN 30, pastikan uplink trunk memiliki bandwidth cukup. Oversubscription kronis akan menimbulkan packet loss, yang dalam protokol industrial bisa berarti false alarm atau safety stop.</p>
-<h3>Dokumentasi dan Manajemen IP yang Ketat</h3>
-<p>VLAN tanpa dokumentasi adalah kekacauan yang tertunda. Setiap VLAN harus memiliki tabel subnet yang jelas, daftar perangkat, dan diagram port switch. Di lingkungan industri, troubleshooting harus secepat kilat. Label pada kabel mungkin pudar, tetapi diagram jaringan yang akurat akan menyelamatkan jam-jam berharga saat produksi berhenti. Gunakan VLAN ID yang deskriptif dan konsisten di seluruh site agar engineer baru tidak tersesat.</p>
-<h3>Pengujian Determinisme</h3>
-<p>Sebelum commissioning penuh, lakukan stress test pada setiap VLAN. Kirim traffic broadcast buatan, pantau latency dengan alat analisis protokol, dan pastikan tidak ada frame dropped di VLAN kontrol. Determinisme bukan hanya konsep; ia harus terukur dalam mikrodetik.</p>
-<h2>Kesimpulan dan Langkah Selanjutnya</h2>
-<p>VLAN bukan sekadar fitur di managed switch; ia adalah strategi fondasi untuk jaringan industrial yang andal, aman, dan deterministik. Dengan segmentasi yang cermat, Anda memisahkan domain broadcast, mengamankan aset OT dari gangguan IT, dan menjamin bahwa paket data PLC selalu tiba tepat waktu. Di era Industrial Internet of Things (IIoT) yang kian terkoneksi, mengabaikan VLAN sama dengan mengabaikan kesehatan sistem kontrol Anda.</p>
-<p>Apakah jaringan Anda sudah tersegmentasi dengan benar, atau masih beroperasi secara flat dan rentan? Tim Scodeno telah membantu banyak fasilitas manufaktur dan energi merancang arsitektur VLAN yang tahan banting.</p>
-<p><strong>Kunjungi <a href="../index.html#products">scodeno.com/products</a> untuk menjelajahi managed switch industrial kami yang siap mendukung segmentasi kompleks dan kondisi ekstrem, atau hubungi technical consultant kami untuk audit jaringan gratis.</strong></p>
-</article>
-
-  <!-- Article Navigation -->
-  <nav class="article-nav" style="max-width: var(--content-max); margin: 48px auto 0; padding: 0 24px; border-top: 1px solid var(--gray-100);">
-    <div style="display: flex; justify-content: space-between; align-items: center; padding: 24px 0;">
-      <a href="Week_09_industrial-switch-vs-commercial-switch-apa-perbedaannya.html" style="display: flex; align-items: center; gap: 8px; color: var(--gray-500); text-decoration: none; font-size: 0.875rem; max-width: 40%;">
-        <span style="font-size:1.25rem;">←</span>
-        <span><small style="color:var(--gray-400);">Previous</small><br><strong style="color:var(--text-dark);">Industrial Switch vs Commercial Switch: Apa Perbed...</strong></span>
-      </a>
-      <a href="Week_11_qos-dalam-industrial-network.html" style="display: flex; align-items: center; gap: 8px; color: var(--gray-500); text-decoration: none; font-size: 0.875rem; text-align: right; max-width: 40%;">
-        <span><small style="color:var(--gray-400);">Next</small><br><strong style="color:var(--text-dark);">QoS dalam Industrial Network...</strong></span>
-        <span style="font-size:1.25rem;">→</span>
-      </a>
-    </div>
-    <div style="text-align: center; padding-bottom: 24px;">
-      <a href="../index.html#articles" style="color: var(--blue); text-decoration: none; font-weight: 600; font-size: 0.875rem;">← Kembali ke Semua Artikel</a>
-    </div>
-  </nav>
-<section class="related-section">
-<div class="related-inner">
-<h2>Artikel Terkait</h2>
-<div class="related-grid">
-<a href="Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html" class="related-card"><span class="tag">Fundamental</span><h3>Kenapa Industrial Switch Menggunakan Desain Fanless</h3></a>
-<a href="Week_02_apa-itu-din-rail-industrial-switch-dan-mengapa-banyak-dipakai-di-pabrik.html" class="related-card"><span class="tag">Fundamental</span><h3>Apa Itu DIN-Rail Industrial Switch dan Mengapa Banyak Dipakai di Pabrik</h3></a>
-<a href="Week_03_ip-rating-pada-industrial-ethernet-switch-apa-artinya.html" class="related-card"><span class="tag">Fundamental</span><h3>IP Rating pada Industrial Ethernet Switch: Apa Artinya?</h3></a>
-<a href="Week_04_industrial-gigabit-switch-vs-fast-ethernet-switch.html" class="related-card"><span class="tag">Selection Guide</span><h3>Industrial Gigabit Switch vs Fast Ethernet Switch</h3></a>
-</div>
-</div>
-</section>
-<footer class="footer">
-<div class="footer-inner">
-<span>&copy; 2024 Scodeno Indonesia</span>
-<span>Didistribusikan oleh <a href="../index.html">PT Konexindo Unitama</a></span>
-</div>
-</footer>
-</body>
-</html>
+     <!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>VLAN dalam Industrial Ethernet Network — Scodeno Indonesia</title><meta name="description" content="VLAN industrial network: segmentasi trafik kontrol, video, dan data di pabrik. 802.1Q, port-based, DIP switch VLAN Scodeno."><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"><style>:root{--blue:#0068B4;--blue-light:#0095E0;--blue-dark:#004A82;--blue-bg:#E7F3FB;--blue-glow:rgba(0,104,180,0.20);--black:#0A0E14;--near-black:#141A22;--dark-card:#1A202A;--white:#FFFFFF;--off-white:#F5F7FA;--gray-100:#E8ECF0;--gray-300:#9BA2AB;--gray-500:#4B5563;--text-dark:#1A1A1A;--text-muted:#9BA2AB;--content-max:780px}*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',system-ui,sans-serif;color:var(--text-dark);background:var(--white);line-height:1.7}.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,20,0.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.06)}.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:64px}.nav-left{display:flex;align-items:center;gap:32px}.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}.nav-logo-img{height:28px}.nav-logo-text{font-weight:800;font-size:1.0625rem;color:var(--white)}.nav-logo-indonesia{color:var(--blue-light)}.nav-l <a href="Week_06_managed-vs-unmanaged-industrial-switch-mana-yang-tepat.html">managed switch</a> inks{display:flex;gap:4px;list-style:none}.nav-links a{color:var(--gray-300);text-decoration:none;font-size:0.8125rem;font-weight:500;padding:8px 12px;border-radius:4px}.nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.06)}.nav-dropdown{position:relative}.nav-dropdown>a::after{content:'▾';font-size:0.625rem;margin-left:2px}.nav-dropdown-menu{position:absolute;to... [truncated]
+     .search-toggle{background:none;border:none;cursor:pointer;padding:8px;display:flex;align-items:center;justify-content:center;border-radius:4px;transition:background 0.15s}
+     .search-toggle:hover{background:rgba(255,255,255,0.06)}
+     .search-toggle svg{width:18px;height:18px;stroke:var(--gray-300);stroke-width:2;fill:none;transition:stroke 0.15s}
+     .search-toggle:hover svg{stroke:var(--white)}
+     .search-panel{position:absolute;top:100%;right:0;width:420px;max-width:90vw;background:var(--dark-card);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:0;display:none;box-shadow:0 16px 48px rgba(0,0,0,0.45);z-index:200}
+     .search-panel.active{display:block}
+     .search-input-wrap{display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.06)}
+     .search-input-wrap svg{width:16px;height:16px;stroke:var(--gray-400);stroke-width:2;fill:none;flex-shrink:0;margin-right:10px}
+   .search-input{flex:1;background:none;border:none;color:var(--white);font-size:0.9375rem;font-family:inherit;outline:none}
+   .search-input::placeholder{color:var(--gray-400)}
+   .search-results{max-height:420px;overflow-y:auto;padding:8px 0}
+   .search-result{display:block;padding:10px 16px;text-decoration:none;transition:background 0.1s;border-bottom:1px solid rgba(255,255,255,0.03)}
+   .search-result:last-child{border-bottom:none}
+   .search-result:hover{background:rgba(255,255,255,0.04)}
+   .search-result-title{font-size:0.875rem;font-weight:600;color:var(--white);margin-bottom:3px;line-height:1.3}
+   .search-result-title mark{background:rgba(0,149,224,0.25);color:var(--blue-light);border-radius:2px;padding:0 1px}
+   .search-result-snippet{font-size:0.75rem;color:var(--gray-400);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+   .search-result-meta{display:flex;align-items:center;gap:8px;margin-top:4px}
+   .search-result-cat{font-size:0.625rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;padding:2px 6px;border-radius:2px}
+   .search-empty{padding:24px 16px;text-align:center;color:var(--gray-400);font-size:0.875rem}
+   .search-overlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:150;display:none}
+   .search-overlay.active{display:block}
+   @media(max-width:768px){.search-panel{position:fixed;top:64px;left:0;right:0;max-width:100vw;border-radius:0;border-left:none;border-right:none}}
+    .article-header{background:var(--black);color:var(--white);padding:calc(64px + 64px) 24px 64px;position:relative;overflow:hidden}.article-header::before{content:'';position:absolute;top:-30%;right:-20%;width:500px;height:500px;background:radial-gradient(circle,var(--blue-glow) 0%,transparent 70%)}.article-header-inner{max-width:var(--content-max);margin:0 auto;position:relative;z-index:1}.article-tag{display:inline-block;background:rgba(0,149,224,0.15);color:var(--blue-light);font-size:0.75rem;font-weight:600;padding:4px 12px;border-radius:2px;margin-bottom:16px;text-transform:uppercase}.article-header h1{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:800;line-height:1.15;margin-bottom:16px}.lang-toggle{display:inline-flex;align-items:center;gap:6px;margin-top:12px}
+.lang-toggle a{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,0.08);color:var(--gray-300);text-decoration:none;font-size:0.75rem;font-weight:500;padding:4px 10px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);transition:all 0.15s}
+.lang-toggle a:hover{background:rgba(255,255,255,0.14);color:var(--white);border-color:rgba(255,255,255,0.2)}
+.lang-toggle .active-lang{background:var(--blue);color:var(--white);border-color:var(--blue)}.article-meta{color:var(--text-muted);font-size:0.875rem}.article-body{max-width:var(--content-max);margin:0 auto;padding:64px 24px}.article-body h2{font-size:1.5rem;font-weight:700;color:var(--near-black);margin:48px 0 16px}.article-body h3{font-size:1.25rem;font-weight:600;color:var(--near-black);margin:32px 0 12px}.article-body p{color:var(--gray-500);font-size:1.0625rem;margin-bottom:20px;line-height:1.8}.article-body ul,.article-body ol{color:var(--gray-500);font-size:1.0625rem;margin-bottom:20px;padding-left:24px}.article-body li{margin-bottom:8px}.article-body strong{color:var(--text-dark);font-weight:600}.article-body a{color:var(--blue);text-decoration:underline}.article-body hr{border:none;border-top:1px solid var(--gray-100);margin:48px 0}.table-wrap{overflow-x:auto;margin:28px 0;border-radius:6px;border:1px solid var(--gray-100)}.article-body table{width:100%;border-collapse:collapse;font-size:0.875rem}.article-body thead th{background:linear-gradient(180deg,#E8F0F8 0%,#D4E4F2 100%);color:var(--blue-dark);font-weight:600;font-size:0.8125rem;text-transform:uppercase;padding:12px 14px;text-align:left;border-bottom:2px solid #B8D0E8}.article-body tbody td{padding:10px 14px;border-bottom:1px solid var(--gray-100);color:var(--gray-500)}.article-body tbody tr:nth-child(eve... [truncated]
+   <nav class="nav"><div class="nav-inner"><div class="nav-left"><a href="../" class="nav-logo"><img src="../logo.png" alt="Scodeno" class="nav-logo-img"><span class="nav-logo-text">Scodeno<span class="nav-logo-indonesia">Indonesia</span></span></a><ul class="nav-links"><li class="nav-dropdown"><a href="../#products">Products</a><div class="nav-dropdown-menu">
+   <span class="sub-label">Industrial Switch</span><a href="../#products">PoE</a><a href="../#products">Non-PoE</a>
+   <span class="sub-label">Commercial Switch</span><a href="../#products">PoE</a><a href="../#products">Non-PoE</a>
+   <a href="../#products">Data Center Switch</a>
+   <span class="sub-label">SFP Modules</span><a href="../#products">Industrial</a><a href="../#products">Commercial</a>
+   <a href="../#products">IoT Smart Box</a>
+   </div></li><li class="nav-dropdown"><a href="../#articles">Articles</a><div class="nav-dropdown-menu"><a href="../#articles">Fundamental</a><a href="../#articles">Selection Guide</a><a href="../#articles">Technology</a></div></li><li><a href="../#about">About</a></li><li class="nav-search"><button class="search-toggle" onclick="toggleSearch()" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="17" y1="17" x2="22" y2="22"/></svg></button><div class="search-panel" id="searchPanel"><div class="search-input-wrap"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="17" y1="17" x2="22" y2="22"/></svg><input type="text" class="search-input" id="searchInput" placeholder="Cari artikel atau produk..." oninput="doSearch()" onkeydown="if(event.key==='Escape')closeSearch()"></div><div class="search-results" id="searchResults"></div></div><div class="search-overlay" id="searchOverlay" onclick="closeSearch()"></div></li></ul></div>
+      <a href="../#contact" class="nav-cta">Request Quote</a></div></nav>
+   <header class="article-header"><div class="article-header-inner"><span class="article-tag">Technology</span><h1>VLAN dalam Industrial Ethernet Network</h1><div class="article-meta">5 min read</div><div class="lang-toggle"><a href="https://scodenoindonesia.com/articles/Week_10_vlan-dalam-industrial-ethernet-network.html" class="active-lang">🇮🇩 ID</a><a href="https://en.scodenoindonesia.com/articles/Week_10_vlan-dalam-industrial-ethernet-network.html">🇬🇧 EN</a></div></div></header>
+   <article class="article-body">
+   <p>Satu switch. Dua jaringan. Tanpa kabel tambahan.</p>
+   <p>Itulah kekuatan VLAN. Anda bisa menjalankan jaringan kontrol PLC dan jaringan CCTV dalam satu switch fisik yang sama — tanpa keduanya saling melihat atau saling membebani.</p>
+   <p><strong>VLAN industrial network</strong> adalah teknik segmentasi yang membagi switch fisik menjadi beberapa switch virtual. Setiap VLAN beroperasi sebagai domain broadcast independen. Trafik di VLAN 10 tidak bocor ke VLAN 20.</p>
+   <hr>
+   <h2>Apa Itu VLAN?</h2>
+   <p>Spurgeon dan Zimmerman (2013) menjelaskan: jika Anda mengonfigurasi port 1-4 sebagai VLAN 100 dan port 5-8 sebagai VLAN 200, switch 8-port tersebut berfungsi seolah-olah dibagi menjadi dua switch 4-port independen. Broadcast dari VLAN 100 tidak dikirim ke port mana pun di VLAN 200.</p>
+   <p>Tanpa VLAN, switch memperlakukan semua port sebagai satu jaringan datar. Setiap broadcast dikirim ke semua port. Di jaringan dengan 50 perangkat campuran PLC, kamera, HMI, dan sensor, broadcast storm bisa melumpuhkan komunikasi kontrol.</p>
+   <h2>Kenapa VLAN Kritis di Pabrik?</h2>
+   <p>Pabrik modern menjalankan trafik beragam: kontrol PLC (latency-sensitive), video CCTV (bandwidth besar), SCADA/HMI (periodik), safety (kritikal), voice (sensitif jitter). Mencampur semua dalam satu broadcast domain adalah resep masalah. VLAN memisahkannya.</p>
+   <h2>Port-Based vs 802.1Q</h2>
+   <p><strong>Port-Based VLAN:</strong> port dikelompokkan langsung. Sederhana. Cocok untuk switch unmanaged dengan DIP switch. Tidak bisa lintas switch.</p>
+   <p><strong>802.1Q Tagged VLAN:</strong> frame diberi tag VLAN ID. Bisa melintasi banyak switch via trunk port. Satu kabel uplink membawa puluhan VLAN. Butuh switch managed.</p>
+   <h2>VLAN di Switch Scodeno</h2>
+   <p><strong>Unmanaged DIP switch:</strong> VLAN port-based via sakelar fisik. Tanpa software. Tanpa IP. Switch unmanaged Scodeno adalah satu dari sedikit yang punya fitur ini.</p>
+   <p><strong>Managed 802.1Q:</strong> web GUI, hingga 4094 VLAN, trunk port, VLAN-aware QoS, voice VLAN, management VLAN terpisah.</p>
+   <h2>Contoh Implementasi</h2>
+   <div class="table-wrap"><table>
+   <thead><tr><th>Port</th><th>VLAN</th><th>Fungsi</th></tr></thead>
+   <tbody>
+   <tr><td>1-4</td><td>VLAN 10</td><td>Kontrol (PLC, drive)</td></tr>
+   <tr><td>5-8</td><td>VLAN 20</td><td>Video (CCTV, NVR)</td></tr>
+   <tr><td>9-12</td><td>VLAN 30</td><td>SCADA (HMI, data logger)</td></tr>
+   <tr><td>13-16</td><td>Trunk</td><td>Uplink 802.1Q ke core</td></tr>
+   </tbody>
+   </table></div>
+   <p>Hasil: kamera tidak membanjiri PLC. SCADA tidak mengganggu kontrol. Semua VLAN naik ke core lewat satu kabel trunk.</p>
+   <h2>Kesimpulan</h2>
+   <p><strong>VLAN industrial network</strong> adalah cara paling efisien untuk <strong>industrial network segmentation</strong> tanpa menambah hardware. <a href="../">Scodeno Indonesia</a> menyediakan switch managed dengan dukungan 802.1Q penuh.</p>
+   <p>Untuk instalasi kecil: DIP switch VLAN Scodeno — isolasi cukup, tanpa kompleksitas. Untuk jaringan besar: 802.1Q managed — skalabilitas penuh.</p>
+   <p>Intinya: jangan biarkan trafik video membanjiri port kontrol. VLAN adalah dinding pemisahnya.</p>
+   <hr><p><strong>Sumber:</strong> Spurgeon &amp; Zimmerman (2013). Scodeno XPTN-9000 Series.</p>
+   </article>
+   <nav class="article-nav"><div class="article-nav-inner"><a href="Week_09_industrial-switch-vs-commercial-switch-apa-perbedaannya.html" class="prev"><span>←</span><span><span class="nav-label">Previous</span><span class="nav-title">Industrial vs Commercial Switch</span></span></a><a href="Week_11_qos-dalam-industrial-network.html" class="next"><span><span class="nav-label">Next</span><span class="nav-title">QoS dalam Industrial Network</span></span><span>→</span></a></div><div class="article-nav-back"><a href="../#articles">← Kembali ke Semua Artikel</a></div></nav>
+   <section class="related-section"><div class="related-inner"><h2>Artikel Terkait</h2><div class="related-grid"><a href="Week_11_qos-dalam-industrial-network.html" class="related-card"><span class="tag">Technology</span><h3>QoS dalam Industrial Network</h3></a><a href="Week_12_network-segmentation-pada-jaringan-industri.html" class="related-card"><span class="tag">Network Design</span><h3>Network Segmentation</h3></a><a href="Week_06_managed-vs-unmanaged-industrial-switch-mana-yang-tepat.html" class="related-card"><span class="tag">Selection Guide</span><h3>Managed vs Unmanaged</h3></a><a href="Week_08_fitur-penting-industrial-ethernet-switch-yang-harus-anda-ketahui.html" class="related-card"><span class="tag">Fundamental</span><h3>11 Fitur Penting</h3></a></div></div></section>
+   <footer class="footer"><div class="footer-inner"><span>&copy; 2024 Scodeno Indonesia</span><span>Didistribusikan oleh <a href="../">PT Konexindo Unitama</a></span></div></footer>
+    <script>
+   let searchIndex=[];
+   searchIndex=[{"title": "Scodeno Switch: Panduan Lengkap Industrial Ethernet Switch untuk Jaringan Industri", "url": "articles/Week_00_scodeno-switch-panduan-lengkap.html", "snippet": "Satu switch. Ratusan perangkat. Ribuan jam operasi tanpa henti.", "category": "Artikel", "tag": "Selection Guide"}, {"title": "Kenapa Industrial Switch Menggunakan Desain Fanless", "url": "articles/Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html", "snippet": "Di balik keandalan jaringan otomasi pabrik, sistem transportasi cerdas, dan infrastruktur energi, terdapat satu komponen", "category": "Artikel", "tag": "Fundamental"}, {"title": "Apa Itu DIN-Rail Industrial Switch dan Mengapa Banyak Dipakai di Pabrik", "url": "articles/Week_02_apa-itu-din-rail-industrial-switch-dan-mengapa-banyak-dipakai-di-pabrik.html", "snippet": "Di era Industri 4.0, konektivitas yang andal di lantai produksi bukan lagi nilai tambah, melainkan kebutuhan mutlak. Set", "category": "Artikel", "tag": "Fundamental"}, {"title": "IP Rating pada Industrial Ethernet Switch — Apa Artinya?", "url": "articles/Week_03_ip-rating-pada-industrial-ethernet-switch-apa-artinya.html", "snippet": "Di lantai pabrik, segalanya berbeda. Udara tidak sejuk seperti di ruang server berpendingin. Di sana, debu beterbangan d", "category": "Artikel", "tag": "Fundamental"}, {"title": "Industrial Gigabit Switch vs Fast Ethernet Switch: Mana yang Dibutuhkan Jaringan Anda?", "url": "articles/Week_04_industrial-gigabit-switch-vs-fast-ethernet-switch.html", "snippet": "Sepuluh kali lebih cepat.", "category": "Artikel", "tag": "Selection Guide"}, {"title": "Industrial Switch dengan SFP Port: Fungsi dan Kegunaannya", "url": "articles/Week_05_industrial-switch-dengan-sfp-port-fungsi-dan-kegunaannya.html", "snippet": "Port SFP.", "category": "Artikel", "tag": "Technology"}, {"title": "Managed vs Unmanaged Industrial Switch: Mana yang Tepat?", "url": "articles/Week_06_managed-vs-unmanaged-industrial-switch-mana-yang-tepat.html", "snip... [truncated]
+    function toggleSearch(){
+    const panel=document.getElementById('searchPanel');
+    const overlay=document.getElementById('searchOverlay');
+    const input=document.getElementById('searchInput');
+    const active=panel.classList.contains('active');
+    if(active){closeSearch()}else{
+      panel.classList.add('active');
+      overlay.classList.add('active');
+      setTimeout(()=>input.focus(),100);
+      doSearch();
+    }
+   }
+    function closeSearch(){
+    document.getElementById('searchPanel').classList.remove('active');
+    document.getElementById('searchOverlay').classList.remove('active');
+    document.getElementById('searchInput').value='';
+    document.getElementById('searchResults').innerHTML='';
+   }
+    function doSearch(){
+    const q=document.getElementById('searchInput').value.toLowerCase().trim();
+    const container=document.getElementById('searchResults');
+    if(!q){showDefaultResults(container);return}
+    const results=searchIndex.filter(item=>{
+      const haystack=(item.title+' '+item.snippet+' '+item.tag+' '+item.category).toLowerCase();
+      return haystack.includes(q);
+    }).slice(0,12);
+    if(results.length===0){
+      container.innerHTML='<div class="search-empty">Tidak ditemukan. Coba kata kunci lain.</div>';
+      return
+    }
+    container.innerHTML=results.map(r=>{
+      const title=highlight(r.title,q);
+      const snip=r.snippet.substring(0,100);
+      const catClass=r.category==='Artikel'?'cat-artikel':'cat-produk';
+      return `<a href="${r.url}" class="search-result">
+        <div class="search-result-title">${title}</div>
+        <div class="search-result-snippet">${snip}</div>
+        <div class="search-result-meta"><span class="search-result-cat ${catClass}">${r.category}</span><span style="font-size:0.625rem;color:var(--gray-500)">${r.tag}</span></div>
+      </a>`;
+    }).join('');
+   }
+   function showDefaultResults(container){
+    const shuffled=searchIndex.sort(()=>Math.random()-0.5).slice(0,6);
+    container.innerHTML=shuffled.map(r=>{
+      const catClass=r.category==='Artikel'?'cat-artikel':'cat-produk';
+      return `<a href="${r.url}" class="search-result">
+        <div class="search-result-title">${r.title}</div>
+        <div class="search-result-snippet">${r.snippet.substring(0,100)}</div>
+        <div class="search-result-meta"><span class="search-result-cat ${catClass}">${r.category}</span><span style="font-size:0.625rem;color:var(--gray-500)">${r.tag}</span></div>
+      </a>`;
+    }).join('');
+   }
+   function highlight(text,q){
+    const regex=new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`,'gi');
+    return text.replace(regex,'<mark>$1</mark>');
+   }
+   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSearch()});
+   </script>
+   <script>(function(){var h=window.location.hostname;var links=document.querySelectorAll('.lang-toggle a');links.forEach(function(a){a.classList.remove('active-lang');if(h.includes('en.')&&a.href.includes('en.scodeno'))a.classList.add('active-lang');if(!h.includes('en.')&&a.href.includes('scodenoindonesia.com')&&!a.href.includes('en.scodeno'))a.classList.add('active-lang')})})()</script>
+</body></html>
+   

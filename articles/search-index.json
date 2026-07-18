@@ -1,0 +1,191 @@
+[
+  {
+    "title": "Scodeno Switch: Panduan Lengkap Industrial Ethernet Switch untuk Jaringan Industri",
+    "url": "articles/Week_00_scodeno-switch-panduan-lengkap.html",
+    "snippet": "Satu switch. Ratusan perangkat. Ribuan jam operasi tanpa henti.",
+    "category": "Artikel",
+    "tag": "Selection Guide"
+  },
+  {
+    "title": "Kenapa Industrial Switch Menggunakan Desain Fanless",
+    "url": "articles/Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html",
+    "snippet": "Di balik keandalan jaringan otomasi pabrik, sistem transportasi cerdas, dan infrastruktur energi, terdapat satu komponen",
+    "category": "Artikel",
+    "tag": "Fundamental"
+  },
+  {
+    "title": "Apa Itu DIN-Rail Industrial Switch dan Mengapa Banyak Dipakai di Pabrik",
+    "url": "articles/Week_02_apa-itu-din-rail-industrial-switch-dan-mengapa-banyak-dipakai-di-pabrik.html",
+    "snippet": "Di era Industri 4.0, konektivitas yang andal di lantai produksi bukan lagi nilai tambah, melainkan kebutuhan mutlak. Set",
+    "category": "Artikel",
+    "tag": "Fundamental"
+  },
+  {
+    "title": "IP Rating pada Industrial Ethernet Switch — Apa Artinya?",
+    "url": "articles/Week_03_ip-rating-pada-industrial-ethernet-switch-apa-artinya.html",
+    "snippet": "Di lantai pabrik, segalanya berbeda. Udara tidak sejuk seperti di ruang server berpendingin. Di sana, debu beterbangan d",
+    "category": "Artikel",
+    "tag": "Fundamental"
+  },
+  {
+    "title": "Industrial Gigabit Switch vs Fast Ethernet Switch: Mana yang Dibutuhkan Jaringan Anda?",
+    "url": "articles/Week_04_industrial-gigabit-switch-vs-fast-ethernet-switch.html",
+    "snippet": "Sepuluh kali lebih cepat.",
+    "category": "Artikel",
+    "tag": "Selection Guide"
+  },
+  {
+    "title": "Industrial Switch dengan SFP Port: Fungsi dan Kegunaannya",
+    "url": "articles/Week_05_industrial-switch-dengan-sfp-port-fungsi-dan-kegunaannya.html",
+    "snippet": "Port SFP.",
+    "category": "Artikel",
+    "tag": "Technology"
+  },
+  {
+    "title": "Managed vs Unmanaged Industrial Switch: Mana yang Tepat?",
+    "url": "articles/Week_06_managed-vs-unmanaged-industrial-switch-mana-yang-tepat.html",
+    "snippet": "Colok. Hidup. Jalan.",
+    "category": "Artikel",
+    "tag": "Selection Guide"
+  },
+  {
+    "title": "Industrial Switch dengan PoE: Kapan Dibutuhkan?",
+    "url": "articles/Week_07_industrial-switch-dengan-poe-kapan-dibutuhkan.html",
+    "snippet": "Satu kabel. Dua fungsi.",
+    "category": "Artikel",
+    "tag": "Technology"
+  },
+  {
+    "title": "11 Fitur Penting Industrial Ethernet Switch",
+    "url": "articles/Week_08_fitur-penting-industrial-ethernet-switch-yang-harus-anda-ketahui.html",
+    "snippet": "Beli switch industrial tidak bisa seperti beli switch kantor.",
+    "category": "Artikel",
+    "tag": "Fundamental"
+  },
+  {
+    "title": "Industrial Switch vs Commercial Switch: Apa Perbedaannya?",
+    "url": "articles/Week_09_industrial-switch-vs-commercial-switch-apa-perbedaannya.html",
+    "snippet": "Harganya bisa 5 kali lipat. Jumlah portnya sama. Kecepatannya sama.",
+    "category": "Artikel",
+    "tag": "Fundamental"
+  },
+  {
+    "title": "VLAN dalam Industrial Ethernet Network",
+    "url": "articles/Week_10_vlan-dalam-industrial-ethernet-network.html",
+    "snippet": "Satu switch. Dua jaringan. Tanpa kabel tambahan.",
+    "category": "Artikel",
+    "tag": "Technology"
+  },
+  {
+    "title": "QoS dalam Industrial Network",
+    "url": "articles/Week_11_qos-dalam-industrial-network.html",
+    "snippet": "Semua paket data terlihat sama. Tapi tidak semua sama pentingnya.",
+    "category": "Artikel",
+    "tag": "Technology"
+  },
+  {
+    "title": "Network Segmentation pada Jaringan Industri",
+    "url": "articles/Week_12_network-segmentation-pada-jaringan-industri.html",
+    "snippet": "Satu jaringan datar. Semua perangkat terhubung. Semua trafik bercampur.",
+    "category": "Artikel",
+    "tag": "Network Design"
+  },
+  {
+    "title": "Cara Mencegah Network Downtime di Pabrik",
+    "url": "articles/Week_13_network-downtime-pabrik.html",
+    "snippet": "Robot berhenti.",
+    "category": "Artikel",
+    "tag": "Network Design"
+  },
+  {
+    "title": "Industrial Network Monitoring System: Memantau Jaringan OT Tanpa Henti",
+    "url": "articles/Week_14_industrial-network-monitoring-system-memantau-jaringan-ot-tanpa-henti.html",
+    "snippet": "Satu menit downtime. Jutaan rupiah hilang.",
+    "category": "Artikel",
+    "tag": "Network Design"
+  },
+  {
+    "title": "S200 Series Unmanaged Switch — Non-PoE",
+    "url": "#products",
+    "snippet": "Industrial unmanaged switch, plug-and-play, DIN-rail, fanless design.",
+    "category": "Produk",
+    "tag": "Unmanaged"
+  },
+  {
+    "title": "S200 Series Unmanaged Switch — PoE",
+    "url": "#products",
+    "snippet": "Unmanaged PoE industrial switch dengan PoE Watchdog dan DIP switch.",
+    "category": "Produk",
+    "tag": "Unmanaged"
+  },
+  {
+    "title": "XPTN-9000-45 Series Unmanaged",
+    "url": "#products",
+    "snippet": "Industrial Ethernet switch 4-port 100Mbps, DIN-rail, IP40, fanless.",
+    "category": "Produk",
+    "tag": "Unmanaged"
+  },
+  {
+    "title": "XPTN-9000-65 Series Unmanaged",
+    "url": "#products",
+    "snippet": "6 Series industrial switch dengan DIP switch: VLAN, QoS, Port Isolation.",
+    "category": "Produk",
+    "tag": "Unmanaged"
+  },
+  {
+    "title": "S200 Series Layer 2+ Managed Switch",
+    "url": "#products",
+    "snippet": "Managed industrial switch dengan VLAN 802.1Q, QoS, SNMP, ring redundancy.",
+    "category": "Produk",
+    "tag": "Managed"
+  },
+  {
+    "title": "XPTN-9000-77 Series Layer 2+ Managed",
+    "url": "#products",
+    "snippet": "Layer 2+ managed switch industrial, ERPS ring, dual power, wide temp.",
+    "category": "Produk",
+    "tag": "Managed"
+  },
+  {
+    "title": "XPTN-9000-85 Series Layer 2 Managed — Rack Mount",
+    "url": "#products",
+    "snippet": "Rack-mount managed industrial switch 24-port, 10G uplink, redundancy.",
+    "category": "Produk",
+    "tag": "Managed"
+  },
+  {
+    "title": "S200 Series 2.5G Unmanaged Switch",
+    "url": "#products",
+    "snippet": "Industrial 2.5 Gigabit switch, multi-gig, fanless, DIN-rail.",
+    "category": "Produk",
+    "tag": "Unmanaged"
+  },
+  {
+    "title": "S200 Series 2.5G Layer 3 Switch",
+    "url": "#products",
+    "snippet": "Layer 3 managed industrial switch 2.5G, 10G uplink.",
+    "category": "Produk",
+    "tag": "Managed"
+  },
+  {
+    "title": "Industrial PoE Switch — XPTN-9000 Series",
+    "url": "#products",
+    "snippet": "PoE industrial switch, 802.3af/at, PoE Watchdog, VIP Power Port.",
+    "category": "Produk",
+    "tag": "PoE"
+  },
+  {
+    "title": "Industrial Switch dengan SFP Port",
+    "url": "#products",
+    "snippet": "Fiber-ready industrial switch, multimode/single-mode SFP modules.",
+    "category": "Produk",
+    "tag": "Fiber"
+  },
+  {
+    "title": "Data Center Switch — Scodeno",
+    "url": "#products",
+    "snippet": "Data center and cloud computing switch, high-density 10G/25G/100G.",
+    "category": "Produk",
+    "tag": "Data Center"
+  }
+]

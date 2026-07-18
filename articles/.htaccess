@@ -1,0 +1,7 @@
+# Disable LiteSpeed cache for all files in /articles/
+<IfModule LiteSpeed>
+CacheDisable public /articles/
+</IfModule>
+
+# Prevent directory listing
+Options -Indexes

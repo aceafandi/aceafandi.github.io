@@ -1,358 +1,267 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Managed vs Unmanaged Industrial Switch: Mana yang Tepat? — Scodeno Indonesia</title>
-  <meta name="description" content="Managed vs Unmanaged Industrial Switch: Mana yang Tepat?">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --blue: #0068B4; --blue-light: #0095E0; --blue-dark: #004A82; --blue-bg: #E7F3FB;
-      --blue-glow: rgba(0,104,180,0.20);
-      --black: #0A0E14; --near-black: #141A22; --dark-card: #1A202A;
-      --white: #FFFFFF; --off-white: #F5F7FA; --gray-50: #F9FAFB; --gray-100: #E8ECF0;
-      --gray-200: #C8CDD4; --gray-300: #9BA2AB; --gray-400: #6B7280; --gray-500: #4B5563;
-      --text-dark: #1A1A1A; --text-light: #E2E8F0; --text-muted: #9BA2AB;
-      --content-max: 780px; --radius-sm: 2px; --radius-md: 4px;
+     <!DOCTYPE html>
+     <html lang="id">
+     <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Managed vs Unmanaged Industrial Switch: Mana yang Tepat? — Scodeno Indonesia</title>
+     <meta name="description" content="Managed vs unmanaged industrial switch: perbandingan fitur, keamanan, redundansi. Termasuk keunggulan unmanaged DIP switch dengan VLAN/QoS dari Scodeno.">
+     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+     <style>
+   :root{--blue:#0068B4;--blue-light:#0095E0;--blue-dark:#004A82;--blue-bg:#E7F3FB;--blue-glow:rgba(0,104,180,0.20);--black:#0A0E14;--near-black:#141A22;--dark-card:#1A202A;--white:#FFFFFF;--off-white:#F5F7FA;--gray-50:#F9FAFB;--gray-100:#E8ECF0;--gray-200:#C8CDD4;--gray-300:#9BA2AB;--gray-400:#6B7280;--gray-500:#4B5563;--text-dark:#1A1A1A;--text-light:#E2E8F0;--text-muted:#9BA2AB;--content-max:780px;--radius-sm:2px;--radius-md:4px}
+   *{box-sizing:border-box;margin:0;padding:0}
+   body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--text-dark);background:var(--white);line-height:1.7;-webkit-font-smoothing:antialiased}
+   .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,20,0.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.06)}
+   .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:64px}
+   .nav-left{display:flex;align-items:center;gap:32px}
+   .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+   .nav-logo-img{height:28px;width:auto}
+   .nav-logo-text{font-weight:800;font-size:1.0625rem;color:var(--white);letter-spacing:-0.01em;white-space:nowrap}
+   .nav-logo-indonesia{color:var(--blue-light);margin-left:2px}
+   .nav-links{display:flex;align-items:center;gap:4px;list-style:none}
+   .nav-links a{color:var(--gray-300);text-decoration:none;font-size:0.8125rem;font-weight:500;padding:8px 12px;border-radius:4px;transition:all 0.15s;white-space:nowrap}
+   .nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.06)}
+   .nav-dropdown{position:relative}
+   .nav-dropdown>a{display:flex;align-items:center;gap:4px}
+   .nav-dropdown>a::after{content:'▾';font-size:0.625rem;margin-left:2px}
+   .nav-dropdown-menu{position:absolute;top:100%;left:0;min-width:200px;background:var(--dark-card);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:6px 0;opacity:0;visibility:hidden;transform:translateY(4px);transition:all 0.18s ease;box-shadow:0 12px 32px rgba(0,0,0,0.35)}
+   .nav-dropdown:hover .nav-dropdown-menu{opacity:1;visibility:visible;transform:translateY(0)}
+   .nav-dropdown-menu a{display:block;padding:8px 16px!important;font-size:0.8125rem!important;color:var(--gray-300)!important;border-radius:0!important}
+   .nav-dropdown-menu a:hover{background:rgba(255,255,255,0.06)!important;color:var(--white)!important}
+   .nav-cta{background:var(--blue);color:var(--white)!important;padding:8px 18px!important;border-radius:4px!important;font-weight:600!important;font-size:0.8125rem!important}
+   .nav-cta:hover{background:var(--blue-light)!important}
+    .nav-search{position:relative;display:flex;align-items:center}
+   .search-toggle{background:none;border:none;cursor:pointer;padding:8px;display:flex;align-items:center;justify-content:center;border-radius:4px;transition:background 0.15s}
+   .search-toggle:hover{background:rgba(255,255,255,0.06)}
+   .search-toggle svg{width:18px;height:18px;stroke:var(--gray-300);stroke-width:2;fill:none;transition:stroke 0.15s}
+   .search-toggle:hover svg{stroke:var(--white)}
+   .search-panel{position:absolute;top:100%;right:0;width:420px;max-width:90vw;background:var(--dark-card);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:0;display:none;box-shadow:0 16px 48px rgba(0,0,0,0.45);z-index:200}
+   .search-panel.active{display:block}
+   .search-input-wrap{display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.06)}
+   .search-input-wrap svg{width:16px;height:16px;stroke:var(--gray-400);stroke-width:2;fill:none;flex-shrink:0;margin-right:10px}
+   .search-input{flex:1;background:none;border:none;color:var(--white);font-size:0.9375rem;font-family:inherit;outline:none}
+   .search-input::placeholder{color:var(--gray-400)}
+   .search-results{max-height:420px;overflow-y:auto;padding:8px 0}
+   .search-result{display:block;padding:10px 16px;text-decoration:none;transition:background 0.1s;border-bottom:1px solid rgba(255,255,255,0.03)}
+   .search-result:last-child{border-bottom:none}
+   .search-result:hover{background:rgba(255,255,255,0.04)}
+   .search-result-title{font-size:0.875rem;font-weight:600;color:var(--white);margin-bottom:3px;line-height:1.3}
+   .search-result-title mark{background:rgba(0,149,224,0.25);color:var(--blue-light);border-radius:2px;padding:0 1px}
+   .search-result-snippet{font-size:0.75rem;color:var(--gray-400);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+   .search-result-meta{display:flex;align-items:center;gap:8px;margin-top:4px}
+   .search-result-cat{font-size:0.625rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;padding:2px 6px;border-radius:2px}
+   .search-empty{padding:24px 16px;text-align:center;color:var(--gray-400);font-size:0.875rem}
+   .search-overlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:150;display:none}
+   .search-overlay.active{display:block}
+   @media(max-width:768px){.search-panel{position:fixed;top:64px;left:0;right:0;max-width:100vw;border-radius:0;border-left:none;border-right:none}}
+    .article-header{background:var(--black);color:var(--white);padding:calc(64px + 64px) 24px 64px;position:relative;overflow:hidden}
+   .article-header::before{content:'';position:absolute;top:-30%;right:-20%;width:500px;height:500px;background:radial-gradient(circle,var(--blue-glow) 0%,transparent 70%);pointer-e <a href="Week_14_industrial-network-monitoring-system-memantau-jaringan-ot-tanpa-henti.html">monitoring jaringan OT</a> vents:none}
+   .article-header-inner{max-width:var(--content-max);margin:0 auto;position:relative;z-index:1}
+   .article-tag{display:inline-block;background:rgba(0,149,224,0.15);color:var(--blue-light);font-size:0.75rem;font-weight:600;padding:4px 12px;border-radius:2px;margin-bottom:16px;text-transform:uppercase;letter-spacing:0.06em}
+   .article-header h1{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:800;line-height:1.15;letter-spacing:-0.02em;margin-bottom:16px}.lang-toggle{display:inline-flex;align-items:center;gap:6px;margin-top:12px}
+.lang-toggle a{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,0.08);color:var(--gray-300);text-decoration:none;font-size:0.75rem;font-weight:500;padding:4px 10px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);transition:all 0.15s}
+.lang-toggle a:hover{background:rgba(255,255,255,0.14);color:var(--white);border-color:rgba(255,255,255,0.2)}
+.lang-toggle .active-lang{background:var(--blue);color:var(--white);border-color:var(--blue)}
+   .article-header .article-meta{color:var(--text-muted);font-size:0.875rem;display:flex;gap:20px}
+   .article-body{max-width:var(--content-max);margin:0 auto;padding:64px 24px}
+   .article-body h2{font-size:1.5rem;font-weight:700;color:var(--near-black);margin:48px 0 16px;letter-spacing:-0.01em}
+   .article-body h3{font-size:1.25rem;font-weight:600;color:var(--near-black);margin:32px 0 12px}
+   .article-body p{color:var(--gray-500);font-size:1.0625rem;margin-bottom:20px;line-height:1.8}
+   .article-body ul,.article-body ol{color:var(--gray-500);font-size:1.0625rem;margin-bottom:20px;padding-left:24px}
+   .article-body li{margin-bottom:8px;line-height:1.7}
+   .article-body strong{color:var(--text-dark);font-weight:600}
+   .article-body a{color:var(--blue);text-decoration:underline}
+   .article-body a:hover{color:var(--blue-light)}
+   .article-body hr{border:none;border-top:1px solid var(--gray-100);margin:48px 0}
+   .table-wrap{overflow-x:auto;margin:28px 0;border-radius:6px;border:1px solid var(--gray-100);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+   .article-body table{width:100%;border-collapse:collapse;font-size:0.875rem;line-height:1.5;min-width:600px}
+   .article-body thead th{background:linear-gradient(180deg,#E8F0F8 0%,#D4E4F2 100%);color:var(--blue-dark);font-weight:600;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.03em;padding:12px 14px;text-align:left;border-bottom:2px solid #B8D0E8;border-right:1px solid #C8D8E8;white-space:nowrap;position:sticky;top:0}
+   .article-body thead th:last-child{border-right:none}
+   .article-body tbody td{padding:10px 14px;border-bottom:1px solid var(--gray-100);border-right:1px solid var(--gray-100);color:var(--gray-500);vertical-align:top}
+   .article-body tbody td:last-child{border-right:none}
+   .article-body tbody tr:nth-child(even) td{background:var(--gray-50)}
+   .article-body tbody tr:hover td{background:var(--blue-bg)}
+   .article-body tbody td:first-child{font-weight:500;color:var(--text-dark)}
+   .related-section{background:var(--off-white);padding:64px 24px}
+   .related-inner{max-width:var(--content-max);margin:0 auto}
+   .related-inner h2{font-size:1.5rem;font-weight:700;margin-bottom:24px;letter-spacing:-0.01em}
+   .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+   .related-card{background:var(--white);border:1px solid var(--gray-100);border-radius:var(--radius-md);padding:20px;text-decoration:none;transition:box-shadow 0.2s}
+   .related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.06)}
+   .related-card h3{font-size:0.9375rem;font-weight:600;color:var(--text-dark);margin-bottom:4px}
+   .related-card .tag{font-size:0.6875rem;color:var(--blue);font-weight:600;text-transform:uppercase;letter-spacing:0.04em}
+   .article-nav{max-width:var(--content-max);margin:0 auto;padding:0 24px}
+   .article-nav-inner{display:flex;justify-content:space-between;align-items:flex-start;padding:32px 0;border-top:1px solid var(--gray-100)}
+   .article-nav-inner a{display:flex;align-items:center;gap:8px;color:var(--gray-500);text-decoration:none;font-size:0.875rem;max-width:45%}
+   .article-nav-inner a:hover{color:var(--blue)}
+   .article-nav-inner .prev{text-align:left}
+   .article-nav-inner .next{text-align:right}
+   .article-nav-inner .nav-label{color:var(--gray-400);font-size:0.6875rem;display:block;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:2px}
+   .article-nav-inner .nav-title{color:var(--text-dark);font-weight:600;line-height:1.3}
+   .article-nav-back{text-align:center;padding-bottom:40px}
+   .article-nav-back a{color:var(--blue);text-decoration:none;font-weight:600;font-size:0.875rem}
+   .footer{background:var(--near-black);color:var(--text-muted);padding:48px 24px 32px;border-top:1px solid rgba(255,255,255,0.06)}
+   .footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-size:0.8125rem}
+   .footer-inner a{color:var(--blue-light);text-decoration:none}
+   @media(max-width:768px){.article-header{padding:calc(64px + 40px) 16px 40px}.article-body{padding:40px 16px}.nav-links{display:none}}
+   </style>
+   </head>
+   <body>
+   <nav class="nav"><div class="nav-inner"><div class="nav-left"><a href="../" class="nav-logo"><img src="../logo.png" alt="Scodeno" class="nav-logo-img"><span class="nav-logo-text">Scodeno<span class="nav-logo-indonesia">Indonesia</span></span></a><ul class="nav-links"><li class="nav-dropdown"><a href="../#products">Products</a><div class="nav-dropdown-menu">
+   <span class="sub-label">Industrial Switch</span><a href="../#products">PoE</a><a href="../#products">Non-PoE</a>
+   <span class="sub-label">Commercial Switch</span><a href="../#products">PoE</a><a href="../#products">Non-PoE</a>
+   <a href="../#products">Data Center Switch</a>
+   <span class="sub-label">SFP Modules</span><a href="../#products">Industrial</a><a href="../#products">Commercial</a>
+   <a href="../#products">IoT Smart Box</a>
+   </div></li><li class="nav-dropdown"><a href="../#articles">Articles</a><div class="nav-dropdown-menu"><a href="../#articles">Fundamental</a><a href="../#articles">Selection Guide</a><a href="../#articles">Technology</a><a href="../#articles">Deployment</a><a href="../#articles">Network Design</a></div></li><li><a href="../#about">About</a></li><li class="nav-search"><button class="search-toggle" onclick="toggleSearch()" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="17" y1="17" x2="22" y2="22"/></svg></button><div class="search-panel" id="searchPanel"><div class="search-input-wrap"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="17" y1="17" x2="22" y2="22"/></svg><input type="text" class="search-input" id="searchInput" placeholder="Cari artikel atau produk..." oninput="doSearch()" onkeydown="if(event.key==='Escape')closeSearch()"></div><div class="search-results" id="searchResults"></div></div><div class="search-overlay" id="searchOverlay" onclick="closeSearch()"></div></li></ul></div>
+      <a href="../#contact" class="nav-cta">Request Quote</a></div></nav>
+   <header class="article-header"><div class="article-header-inner"><span class="article-tag">Selection Guide</span><h1>Managed vs Unmanaged Industrial Switch: Mana yang Tepat untuk Jaringan Anda?</h1><div class="article-meta"><span>8 min read</span></div></div><div class="lang-toggle"><a href="https://scodenoindonesia.com/articles/Week_06_managed-vs-unmanaged-industrial-switch-mana-yang-tepat.html" class="active-lang">🇮🇩 ID</a><a href="https://en.scodenoindonesia.com/articles/Week_06_managed-vs-unmanaged-industrial-switch-mana-yang-tepat.html">🇬🇧 EN</a></div></header>
+   <article class="article-body">
+   <p>Colok. Hidup. Jalan.</p>
+   <p>Itulah seluruh "konfigurasi" yang dibutuhkan unmanaged switch. Tidak ada web GUI. Tidak ada CLI. Tidak ada VLAN. Begitu kabel tertancap, switch langsung bekerja — meneruskan frame dari satu port ke port lain tanpa pernah bertanya.</p>
+   <p>Tapi justru di situlah masalahnya.</p>
+   <p>Di jaringan industri modern, "tidak pernah bertanya" bisa menjadi bencana. Bagaimana jika seseorang mencolokkan laptop tak dikenal ke port kosong? Bagaimana jika loop terbentuk dan menjatuhkan seluruh segmen? Bagaimana jika trafik multicast dari kamera membanjiri jaringan kontrol PLC?</p>
+   <p>Pertanyaan-pertanyaan ini membawa kita ke inti perbandingan <strong>managed vs unmanaged industrial switch</strong>. Artikel ini mengupas perbedaan keduanya dari sisi fitur, keamanan, dan skala.</p>
+   <hr>
+   <h2>Apa Itu Unmanaged Switch?</h2>
+   <p>Unmanaged switch adalah switch dalam bentuk paling dasar. Fungsinya tunggal: menerima frame Ethernet di satu port dan meneruskannya ke port tujuan berdasarkan MAC address.</p>
+   <p>Spurgeon dan Zimmerman dalam <em>Ethernet Switches</em> (O'Reilly, 2013) menjelaskan bahwa switch beroperasi sebagai transparent bridge — mempelajari alamat MAC perangkat yang terhubung, menyimpannya di tabel address filtering, dan menggunakan tabel itu untuk memutuskan ke port mana setiap frame harus dikirim. Ini berlaku untuk semua switch, managed maupun unmanaged.</p>
+   <p>Yang membedakan: unmanaged switch berhenti di situ. Tidak ada lapisan konfigurasi. Tidak ada kontrol.</p>
+   <p>Karakteristik <strong>unmanaged switch industry</strong>:</p>
+   <ul><li>Plug and play — tidak memerlukan setup</li><li>Tidak punya interface manajemen (web, CLI, atau SNMP)</li><li>Tidak mendukung VLAN</li><li>Tidak mendukung Quality of Service (QoS)</li><li>Tidak punya port mirroring untuk troubleshooting</li><li>Tidak punya mekanisme redundansi (RSTP, ring)</li><li>Tidak punya logging atau alert</li></ul>
+   <p>Satu-satunya keunggulan: sederhana dan murah.</p>
+   <p>Tapi ada pengecualian penting. Beberapa switch unmanaged — termasuk dari Scodeno — dilengkapi DIP switch fisik yang memungkinkan konfigurasi dasar tanpa interface software. Fitur ini menjembatani gap antara unmanaged dan managed tanpa menambah kompleksitas.</p>
+   <h2>Apa Itu Managed Switch?</h2>
+   <p>Managed switch menjalankan semua fungsi forwarding dasar yang sama. Bedanya: di atas lapisan forwarding itu ada lapisan kontrol penuh.</p>
+   <p>Spurgeon dan Zimmerman (2013) menjelaskan bahwa switch dengan harga menengah ke atas biasanya menyertakan interface manajemen berbasis web. Interface ini memungkinkan administrator mengonfigurasi kecepatan port, fitur autonegotiation, spanning tree protocol, VLAN, dan berbagai fitur lanjutan.</p>
+   <p>Lebih jauh, switch managed mendukung Simple Network Management Protocol (SNMP) — protokol vendor-netral untuk mengekstrak informasi operasional: traffic rate per port, error counter, status link.</p>
+   <p><strong>Managed industrial switch</strong> membawa semua ini ke lingkungan pabrik, ditambah fitur-fitur spesifik otomasi:</p>
+   <ul><li>VLAN (802.1Q) — segmentasi jaringan logis</li><li>Quality of Service (802.1p CoS) — prioritas trafik</li><li>IGMP snooping — kontrol multicast untuk kamera dan vision system</li><li>Port mirroring — troubleshooting tanpa mengganggu operasi</li><li>Redundansi ring (ERPS, Turbo Ring) — failover &lt;20 ms</li><li>SNMP traps dan syslog — alert real-time</li><li>Port security (MAC filtering, 802.1X) — mencegah akses tidak sah</li><li>Redundant power input — kelangsungan daya</li></ul>
+   <h2>Perbandingan Langsung</h2>
+   <div class="table-wrap"><table>
+   <thead><tr><th>Fitur</th><th>Unmanaged Switch</th><th>Managed Switch</th></tr></thead>
+   <tbody>
+   <tr><td>Plug and play</td><td>✅</td><td>✅</td></tr>
+   <tr><td>Web GUI / CLI</td><td>❌</td><td>✅</td></tr>
+   <tr><td>SNMP monitoring</td><td>❌</td><td>✅</td></tr>
+   <tr><td>VLAN (802.1Q)</td><td>❌</td><td>✅</td></tr>
+   <tr><td>QoS / CoS</td><td>❌</td><td>✅</td></tr>
+   <tr><td>IGMP snooping</td><td>❌</td><td>✅</td></tr>
+   <tr><td>Port mirroring</td><td>❌</td><td>✅</td></tr>
+   <tr><td>Ring redundancy</td><td>❌</td><td>✅ (&lt;20 ms)</td></tr>
+   <tr><td>Port security</td><td>❌</td><td>✅</td></tr>
+   <tr><td>Syslog / alert</td><td>❌</td><td>✅</td></tr>
+   <tr><td>Harga</td><td>Rendah</td><td>Menengah-Tinggi</td></tr>
+   <tr><td><strong>DIP switch (VLAN/QoS/Isolasi)</strong></td><td><strong>✅ (Scodeno XPTN-9000)</strong></td><td>✅ (via software)</td></tr>
+   </tbody>
+   </table></div>
+   <h2>Kapan Unmanaged Switch Cukup?</h2>
+   <p>Tidak semua aplikasi membutuhkan managed switch. Ada skenario di mana <strong>unmanaged switch industry</strong> adalah pilihan rasional:</p>
+   <p><strong>Test bench dan lab.</strong> Setup sementara untuk pengujian PLC, HMI, atau modul I/O. Tidak perlu VLAN. Tidak perlu redundansi. Colok, tes, bongkar.</p>
+   <p><strong>Segmen terisolasi non-kritis.</strong> Misalnya jaringan printer produksi, digital signage di kantin pabrik, atau access point Wi-Fi tamu yang terpisah secara fisik dari jaringan kontrol.</p>
+   <p><strong>Budget terbatas untuk proyek kecil.</strong> Panel kontrol dengan dua PLC dan satu HMI. Semua dalam satu enclosure. Tidak ada kebutuhan ekspansi.</p>
+   <p><strong>Legacy equipment.</strong> Mesin-mesin tua yang hanya support protokol sederhana dan tidak akan diintegrasikan ke sistem yang lebih besar.</p>
+   <p>Aturan praktis: unmanaged switch hanya untuk jaringan yang (1) kecil, (2) terisolasi, (3) tidak kritis terhadap downtime, dan (4) tidak akan berkembang.</p>
+   <h2>Unmanaged dengan DIP Switch: Jalan Tengah yang Sering Terlewat</h2>
+   <p>Di antara "benar-benar bodoh" (unmanaged) dan "sepenuhnya pintar" (managed), ada kategori yang jarang dibahas: unmanaged switch dengan DIP switch.</p>
+   <p>Switch ini secara fundamental tetap unmanaged — tidak ada web GUI, tidak ada CLI, tidak ada SNMP. Tapi di sisi sasisnya ada deretan sakelar fisik kecil (DIP switch) yang bisa diaktifkan untuk fitur-fitur penting:</p>
+   <ul>
+   <li><strong>Port Isolation</strong> — mencegah komunikasi antar port, setiap port hanya bisa bicara ke uplink. Ideal untuk aplikasi di mana perangkat edge tidak boleh saling melihat (misalnya: setiap port ke kamera CCTV yang berbeda).</li>
+   <li><strong>VLAN</strong> — segmentasi port-based. Sekelompok port diisolasi dari kelompok lain. Bukan 802.1Q tagging, tapi cukup untuk memisahkan trafik kontrol dari trafik monitoring.</li>
+   <li><strong>QoS</strong> — prioritas trafik sederhana. Memastikan paket kontrol tidak tertunda oleh trafik data besar.</li>
+   <li><strong>Flow Control</strong> — mencegah packet loss saat port penerima tidak mampu mengimbangi kecepatan pengirim.</li>
+   <li><strong>PoE Watchdog</strong> — auto-restart perangkat PoE yang hang. Kritis untuk kamera atau access point yang dipasang di lokasi sulit dijangkau.</li>
+   <li><strong>250m Extend</strong> — memperpanjang jarak transmisi di luar standar 100 meter (dengan trade-off kecepatan turun ke 10 Mbps).</li>
+   </ul>
+   <p>Keunggulannya: fitur managed switch yang paling esensial (segmentasi + prioritas) hadir tanpa kompleksitas, tanpa biaya managed, dan tanpa perlu engineer jaringan untuk konfigurasi.</p>
+   <p>Cocok untuk: panel kontrol yang butuh isolasi sederhana, jaringan kamera kecil dengan PoE watchdog, atau proyek di mana managed switch terlalu mahal tapi unmanaged biasa terlalu berisiko.</p>
+   <p>Ini bukan pengganti managed switch — tidak ada SNMP, tidak ada ring redundancy, tidak ada port mirroring. Tapi untuk banyak aplikasi industri skala kecil-menengah, ini adalah sweet spot yang tepat.</p>
+   <h2>Smart Managed: Jembatan ke Fully Managed</h2>
+   <p>Tidak semua managed switch harus serumit CLI enterprise. Banyak vendor — termasuk Scodeno — menyediakan switch "smart managed" atau "web-managed" yang memberikan fitur esensial (VLAN, QoS, IGMP snooping) lewat antarmuka web sederhana.</p>
+   <p>Ini menjembatani gap antara "terlalu sederhana" (unmanaged) dan "terlalu kompleks" (fully managed). Cocok untuk integrator yang butuh segmentasi VLAN dan prioritas trafik tanpa harus menguasai command-line.</p>
+   <h2>Kapan Managed Switch Wajib?</h2>
+   <p>Di sisi lain, <strong>managed industrial switch</strong> menjadi keharusan begitu jaringan tumbuh melampaui satu panel:</p>
+   <h3>1. Segmentasi Jaringan dengan VLAN</h3>
+   <p>Pabrik modern menjalankan banyak jenis trafik dalam satu infrastruktur: kontrol PLC, video CCTV, data SCADA, voice. Tanpa VLAN, semua trafik bercampur. Broadcast dari satu segmen membanjiri segmen lain.</p>
+   <p>Spurgeon dan Zimmerman menjelaskan: "VLAN berfungsi seolah-olah Anda membagi switch 8-port menjadi dua switch 4-port independen". Broadcast dari VLAN 100 tidak bocor ke VLAN 200.</p>
+   <h3>2. Keamanan Fisik Port</h3>
+   <p>Unmanaged switch tidak peduli siapa yang mencolok. Siapa pun dengan akses fisik ke panel kontrol bisa mencolokkan laptop dan masuk ke jaringan. Managed switch bisa mengunci port berdasarkan MAC address (sticky MAC), men-disable port yang tidak digunakan, dan mengirim alert via SNMP jika terjadi pelanggaran.</p>
+   <h3>3. Redundansi Jaringan</h3>
+   <p>Satu-satunya mekanisme failover di unmanaged switch adalah: tidak ada. Kabel putus, segmen mati. Managed switch mendukung Rapid Spanning Tree Protocol (RSTP) atau ring redundancy seperti ERPS dengan recovery time di bawah 20 milidetik. Di lini produksi, 20 ms adalah perbedaan antara "baik-baik saja" dan "kenapa mesin berhenti?"</p>
+   <h3>4. Troubleshooting dan Monitoring</h3>
+   <p>Ketika jaringan bermasalah, unmanaged switch tidak memberikan informasi apa pun. Managed switch menyediakan port mirroring — kemampuan menyalin trafik dari port tertentu ke port monitor untuk dianalisis dengan Wireshark. Plus SNMP traps yang mengirim alert saat link down, suhu tinggi, atau anomali trafik.</p>
+   <h2>Kesimpulan</h2>
+   <p>Pertanyaan <strong>managed vs unmanaged industrial switch</strong> pada akhirnya adalah pertanyaan tentang risiko.</p>
+   <p>Unmanaged switch tidak punya mekanisme untuk mencegah, mendeteksi, atau merespons masalah. Ia bekerja — sampai tidak. Dan ketika tidak, Anda tidak tahu kenapa.</p>
+   <p>Managed switch memberi Anda visibilitas dan kontrol. Visibilitas: apa yang terjadi di jaringan? Siapa yang terhubung? Berapa trafik per port? Kontrol: siapa yang boleh terhubung? Bagaimana trafik diprioritaskan? Apa yang terjadi jika kabel putus?</p>
+   <p>Untuk jaringan kecil, terisolasi, dan tidak kritis: unmanaged — terutama yang dilengkapi DIP switch — masih bisa diterima. Tapi begitu jaringan mulai membawa trafik produksi, terhubung ke sistem yang lebih besar, atau harus memenuhi standar keamanan — <strong>managed industrial switch</strong> bukan lagi opsi. Ini standar minimum — dan <a href="../">Scodeno Indonesia</a> menyediakan kedua opsi dengan dukungan teknis lokal.</p>
+   <hr>
+   <p><strong>Sumber:</strong></p>
+   <ol><li>Spurgeon, Charles E. &amp; Zimmerman, Joann. <em>Ethernet Switches</em>. O'Reilly Media, 2013. Bab 2.</li><li>Industrial IT Systems. "Managed vs Unmanaged Ethernet Switches." 2024.</li></ol>
+   </article>
+   <nav class="article-nav"><div class="article-nav-inner"><a href="Week_05_industrial-switch-dengan-sfp-port-fungsi-dan-kegunaannya.html" class="prev"><span class="nav-arrow">←</span><span><span class="nav-label">Previous</span><span class="nav-title">Industrial Switch dengan SFP Port: Fungsi dan Kegunaannya</span></span></a><a href="Week_07_industrial-switch-dengan-poe-kapan-dibutuhkan.html" class="next"><span><span class="nav-label">Next</span><span class="nav-title">Industrial Switch dengan PoE: Kapan Dibutuhkan?</span></span><span class="nav-arrow">→</span></a></div><div class="article-nav-back"><a href="../#articles">← Kembali ke Semua Artikel</a></div></nav>
+   <section class="related-section"><div class="related-inner"><h2>Artikel Terkait</h2><div class="related-grid"><a href="Week_04_industrial-gigabit-switch-vs-fast-ethernet-switch.html" class="related-card"><span class="tag">Selection Guide</span><h3>Industrial Gigabit Switch vs Fast Ethernet Switch</h3></a><a href="Week_05_industrial-switch-dengan-sfp-port-fungsi-dan-kegunaannya.html" class="related-card"><span class="tag">Technology</span><h3>Industrial Switch dengan SFP Port</h3></a><a href="Week_10_vlan-dalam-industrial-ethernet-network.html" class="related-card"><span class="tag">Technology</span><h3>VLAN dalam Industrial Ethernet Network</h3></a><a href="Week_09_industrial-switch-vs-commercial-switch-apa-perbedaannya.html" class="related-card"><span class="tag">Technology</span><h3>Industrial Switch vs Commercial Switch</h3></a></div></div></section>
+   <footer class="footer"><div class="footer-inner"><span>&copy; 2024 Scodeno Indonesia</span><span>Didistribusikan oleh <a href="../">PT Konexindo Unitama</a></span></div></footer>
+   <script>
+   let searchIndex=[];
+   searchIndex=[{"title": "Scodeno Switch: Panduan Lengkap Industrial Ethernet Switch untuk Jaringan Industri", "url": "articles/Week_00_scodeno-switch-panduan-lengkap.html", "snippet": "Satu switch. Ratusan perangkat. Ribuan jam operasi tanpa henti.", "category": "Artikel", "tag": "Selection Guide"}, {"title": "Kenapa Industrial Switch Menggunakan Desain Fanless", "url": "articles/Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html", "snippet": "Di balik keandalan jaringan otomasi pabrik, sistem transportasi cerdas, dan infrastruktur energi, terdapat satu komponen", "category": "Artikel", "tag": "Fundamental"}, {"title": "Apa Itu DIN-Rail Industrial Switch dan Mengapa Banyak Dipakai di Pabrik", "url": "articles/Week_02_apa-itu-din-rail-industrial-switch-dan-mengapa-banyak-dipakai-di-pabrik.html", "snippet": "Di era Industri 4.0, konektivitas yang andal di lantai produksi bukan lagi nilai tambah, melainkan kebutuhan mutlak. Set", "category": "Artikel", "tag": "Fundamental"}, {"title": "IP Rating pada Industrial Ethernet Switch — Apa Artinya?", "url": "articles/Week_03_ip-rating-pada-industrial-ethernet-switch-apa-artinya.html", "snippet": "Di lantai pabrik, segalanya berbeda. Udara tidak sejuk seperti di ruang server berpendingin. Di sana, debu beterbangan d", "category": "Artikel", "tag": "Fundamental"}, {"title": "Industrial Gigabit Switch vs Fast Ethernet Switch: Mana yang Dibutuhkan Jaringan Anda?", "url": "articles/Week_04_industrial-gigabit-switch-vs-fast-ethernet-switch.html", "snippet": "Sepuluh kali lebih cepat.", "category": "Artikel", "tag": "Selection Guide"}, {"title": "Industrial Switch dengan SFP Port: Fungsi dan Kegunaannya", "url": "articles/Week_05_industrial-switch-dengan-sfp-port-fungsi-dan-kegunaannya.html", "snippet": "Port SFP.", "category": "Artikel", "tag": "Technology"}, {"title": "Managed vs Unmanaged Industrial Switch: Mana yang Tepat?", "url": "articles/Week_06_managed-vs-unmanaged-industrial-switch-mana-yang-tepat.html", "snip... [truncated]
+   function toggleSearch(){
+    const panel=document.getElementById('searchPanel');
+    const overlay=document.getElementById('searchOverlay');
+    const input=document.getElementById('searchInput');
+    const active=panel.classList.contains('active');
+    if(active){closeSearch()}else{
+      panel.classList.add('active');
+      overlay.classList.add('active');
+      setTimeout(()=>input.focus(),100);
+      doSearch();
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      color: var(--text-dark); background: var(--white);
-      line-height: 1.7; -webkit-font-smoothing: antialiased;
+   }
+   function closeSearch(){
+    document.getElementById('searchPanel').classList.remove('active');
+    document.getElementById('searchOverlay').classList.remove('active');
+    document.getElementById('searchInput').value='';
+    document.getElementById('searchResults').innerHTML='';
+   }
+   function doSearch(){
+    const q=document.getElementById('searchInput').value.toLowerCase().trim();
+    const container=document.getElementById('searchResults');
+    if(!q){showDefaultResults(container);return}
+    const results=searchIndex.filter(item=>{
+      const haystack=(item.title+' '+item.snippet+' '+item.tag+' '+item.category).toLowerCase();
+      return haystack.includes(q);
+    }).slice(0,12);
+    if(results.length===0){
+      container.innerHTML='<div class="search-empty">Tidak ditemukan. Coba kata kunci lain.</div>';
+      return
     }
-
-    /* ===== NAVIGATION ===== */
-    .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(10,14,20,0.94); backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .nav-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 24px; height: 64px;
-    }
-    .nav-left { display: flex; align-items: center; gap: 32px; }
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .nav-logo-img { height: 28px; width: auto; }
-    .nav-logo-text { font-weight: 800; font-size: 1.0625rem; color: var(--white); letter-spacing: -0.01em; white-space: nowrap; }
-    .nav-logo-indonesia { color: var(--blue-light); margin-left: 2px; }
-    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
-    .nav-links a { color: var(--gray-300); text-decoration: none; font-size: 0.8125rem; font-weight: 500; padding: 8px 12px; border-radius: 4px; transition: all 0.15s; white-space: nowrap; }
-    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
-
-    /* Dropdown */
-    .nav-dropdown { position: relative; }
-    .nav-dropdown > a { display: flex; align-items: center; gap: 4px; }
-    .nav-dropdown > a::after { content: '▾'; font-size: 0.625rem; margin-left: 2px; }
-    .nav-dropdown-menu {
-      position: absolute; top: 100%; left: 0; min-width: 200px;
-      background: var(--dark-card); border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 6px; padding: 6px 0; opacity: 0; visibility: hidden;
-      transform: translateY(4px); transition: all 0.18s ease;
-      box-shadow: 0 12px 32px rgba(0,0,0,0.35);
-    }
-    .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-    .nav-dropdown-menu a {
-      display: block; padding: 8px 16px !important; font-size: 0.8125rem !important;
-      color: var(--gray-300) !important; border-radius: 0 !important;
-    }
-    .nav-dropdown-menu a:hover { background: rgba(255,255,255,0.06) !important; color: var(--white) !important; }
-    .nav-dropdown-menu .dropdown-label {
-      font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.06em;
-      color: var(--gray-400); padding: 6px 16px 2px; font-weight: 600;
-    }
-
-    .nav-cta {
-      background: var(--blue); color: var(--white) !important;
-      padding: 8px 18px !important; border-radius: 4px !important;
-      font-weight: 600 !important; font-size: 0.8125rem !important;
-    }
-    .nav-cta:hover { background: var(--blue-light) !important; }
-
-    /* ===== ARTICLE HEADER ===== */
-    .article-header {
-      background: var(--black); color: var(--white);
-      padding: calc(64px + 64px) 24px 64px;
-      position: relative; overflow: hidden;
-    }
-    .article-header::before {
-      content: ''; position: absolute; top: -30%; right: -20%;
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, var(--blue-glow) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .article-header-inner { max-width: var(--content-max); margin: 0 auto; position: relative; z-index: 1; }
-    .article-tag {
-      display: inline-block; background: rgba(0,149,224,0.15); color: var(--blue-light);
-      font-size: 0.75rem; font-weight: 600; padding: 4px 12px;
-      border-radius: 2px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.06em;
-    }
-    .article-header h1 {
-      font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800;
-      line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px;
-    }
-    .article-header .article-meta { color: var(--text-muted); font-size: 0.875rem; display: flex; gap: 20px; }
-
-    /* ===== ARTICLE BODY ===== */
-    .article-body {
-      max-width: var(--content-max); margin: 0 auto;
-      padding: 64px 24px;
-    }
-    .article-body h2 {
-      font-size: 1.5rem; font-weight: 700; color: var(--near-black);
-      margin: 48px 0 16px; letter-spacing: -0.01em;
-    }
-    .article-body h3 {
-      font-size: 1.25rem; font-weight: 600; color: var(--near-black);
-      margin: 32px 0 12px;
-    }
-    .article-body h4 {
-      font-size: 1.0625rem; font-weight: 600; color: var(--gray-500);
-      margin: 24px 0 8px;
-    }
-    .article-body p {
-      color: var(--gray-500); font-size: 1.0625rem;
-      margin-bottom: 20px; line-height: 1.8;
-    }
-    .article-body ul, .article-body ol {
-      color: var(--gray-500); font-size: 1.0625rem;
-      margin-bottom: 20px; padding-left: 24px;
-    }
-    .article-body li { margin-bottom: 8px; line-height: 1.7; }
-    .article-body strong { color: var(--text-dark); font-weight: 600; }
-    .article-body a { color: var(--blue); text-decoration: underline; }
-    .article-body a:hover { color: var(--blue-light); }
-    .article-body hr { border: none; border-top: 1px solid var(--gray-100); margin: 48px 0; }
-    .article-body blockquote {
-      border-left: 3px solid var(--blue); padding-left: 20px;
-      margin: 24px 0; color: var(--gray-500); font-style: italic;
-    }
-
-    /* ===== EXCEL-STYLE TABLE ===== */
-    .table-wrap {
-      overflow-x: auto; margin: 28px 0; border-radius: 6px;
-      border: 1px solid var(--gray-100);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-    }
-    .article-body table {
-      width: 100%; border-collapse: collapse;
-      font-size: 0.875rem; line-height: 1.5;
-      min-width: 600px;
-    }
-    .article-body thead th {
-      background: linear-gradient(180deg, #E8F0F8 0%, #D4E4F2 100%);
-      color: var(--blue-dark); font-weight: 600; font-size: 0.8125rem;
-      text-transform: uppercase; letter-spacing: 0.03em;
-      padding: 12px 14px; text-align: left;
-      border-bottom: 2px solid #B8D0E8;
-      border-right: 1px solid #C8D8E8;
-      white-space: nowrap; position: sticky; top: 0;
-    }
-    .article-body thead th:last-child { border-right: none; }
-    .article-body tbody td {
-      padding: 10px 14px; border-bottom: 1px solid var(--gray-100);
-      border-right: 1px solid var(--gray-100); color: var(--gray-500);
-      vertical-align: top;
-    }
-    .article-body tbody td:last-child { border-right: none; }
-    .article-body tbody tr:nth-child(even) td {
-      background: var(--gray-50);
-    }
-    .article-body tbody tr:hover td {
-      background: var(--blue-bg);
-    }
-    .article-body tbody td:first-child {
-      font-weight: 500; color: var(--text-dark);
-    }
-
-    /* ===== RELATED ARTICLES ===== */
-    .related-section {
-      background: var(--off-white); padding: 64px 24px;
-    }
-    .related-inner { max-width: var(--content-max); margin: 0 auto; }
-    .related-inner h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.01em; }
-    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-    .related-card {
-      background: var(--white); border: 1px solid var(--gray-100);
-      border-radius: var(--radius-md); padding: 20px; text-decoration: none;
-      transition: box-shadow 0.2s;
-    }
-    .related-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
-    .related-card h3 { font-size: 0.9375rem; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
-    .related-card .tag { font-size: 0.6875rem; color: var(--blue); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
-
-    /* ===== FOOTER ===== */
-    .footer {
-      background: var(--near-black); color: var(--text-muted);
-      padding: 48px 24px 32px; border-top: 1px solid rgba(255,255,255,0.06);
-    }
-    .footer-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: 0.8125rem;
-    }
-    .footer-inner a { color: var(--blue-light); text-decoration: none; }
-    .footer-inner a:hover { color: var(--white); }
-
-    @media (max-width: 768px) {
-      .article-header { padding: calc(64px + 40px) 16px 40px; }
-      .article-body { padding: 40px 16px; }
-      .nav-links { display: none; }
-    }
-  </style>
-</head>
-<body>
-
-<nav class="nav">
-  <div class="nav-inner">
-    <div class="nav-left">
-      <a href="../index.html" class="nav-logo">
-        <img src="../logo.png" alt="Scodeno" class="nav-logo-img">
-        <span class="nav-logo-text">Scodeno<span class="nav-logo-indonesia">Indonesia</span></span>
-      </a>
-      <ul class="nav-links">
-        <li class="nav-dropdown">
-          <a href="../index.html#products">Products</a>
-          <div class="nav-dropdown-menu">
-            <a href="../index.html#products">Unmanaged Switches</a>
-            <a href="../index.html#products">Managed Switches</a>
-            <a href="../index.html#products">PoE Switches</a>
-            <a href="../index.html#products">Data Center</a>
-            <a href="../index.html#products">xPON / Fiber</a>
-            <a href="../index.html#products">Smart Box &amp; IoT</a>
-          </div>
-        </li>
-        <li class="nav-dropdown">
-          <a href="../index.html#articles">Articles</a>
-          <div class="nav-dropdown-menu">
-            <a href="../index.html#articles">Fundamental</a>
-            <a href="../index.html#articles">Selection Guide</a>
-            <a href="../index.html#articles">Technology</a>
-            <a href="../index.html#articles">Deployment</a>
-            <a href="../index.html#articles">Network Design</a>
-          </div>
-        </li>
-        <li><a href="../index.html#about">About</a></li>
-      </ul>
-    </div>
-    <a href="../index.html#contact" class="nav-cta">Request Quote</a>
-  </div>
-</nav>
-
-<header class="article-header">
-  <div class="article-header-inner">
-    <span class="article-tag">Selection Guide</span>
-    <h1>Managed vs Unmanaged Industrial Switch: Mana yang Tepat?</h1>
-    <div class="article-meta">
-      <span>12 min read</span>
-    </div>
-  </div>
-</header>
-
-<article class="article-body">
-<h2>Memahami Anatomi Dasar: Managed vs Unmanaged Switch</h2>
-<p>Sebelum masuk ke perbandingan teknis, kita perlu mendudukkan definisi dengan jelas.</p>
-<p><strong>Unmanaged switch</strong> adalah perangkat <em>layer 2</em> yang beroperasi tanpa bisa dikonfigurasi. Ia meneruskan frame Ethernet dari satu port ke port lain berdasarkan MAC address. Tidak ada VLAN, tidak ada QoS, tidak ada SNMP. Colok kabel, nyala, data mengalir. Itu saja fungsinya. Dalam konteks industri, switch tipe ini sering hadir dengan housing kokoh berstandar IP40 hingga IP67 dan rentang suhu operasi -40°C sampai 75°C—tangguh secara fisik, minimalis secara fungsional.</p>
-<p>Di sisi lain, <strong>managed industrial switch</strong> menambahkan lapisan kecerdasan pada ketangguhan fisik tadi. Perangkat ini memungkinkan engineer mengonfigurasi, memonitor, dan mengelola trafik jaringan secara granular melalui antarmuka web, CLI, atau SNMP. Fitur seperti VLAN tagging, port mirroring, link aggregation, dan rapid spanning tree protocol menjadi senjata standar. Di sinilah letak perbedaan besar: managed switch bukan sekadar menghubungkan perangkat, ia mengelola <em>bagaimana</em> koneksi itu terjadi.</p>
-<hr>
-<h2>Perbandingan Teknis: Bukan Sekadar Fitur, tapi Filosofi</h2>
-<h3>1. Kontrol dan Segmentasi Jaringan</h3>
-<p><em>Unmanaged switch industry</em> tidak mengenal segmentasi. Semua perangkat yang terhubung berada dalam satu broadcast domain. Begitu sebuah PLC mengirimkan broadcast ARP, seluruh node kebanjiran paket yang tidak relevan. Di jaringan kecil dengan kurang dari 10 perangkat, ini tidak terasa. Tapi di plant dengan puluhan atau ratusan node, akumulasi broadcast storm bisa melumpuhkan komunikasi deterministik.</p>
-<p>Managed switch menawarkan VLAN (IEEE 802.1Q) untuk mempartisi jaringan secara logis. Anda bisa mengisolasi trafik SCADA dari trafik kamera CCTV, memisahkan jaringan safety instrument dari jaringan administrasi kantor. Port-based VLAN atau tag-based VLAN memberi fleksibilitas penuh. Hasilnya: latensi turun, throughput naik, dan keamanan meningkat karena zona kritis tidak bisa diakses sembarangan.</p>
-<h3>2. Redundansi dan Waktu Pemulihan</h3>
-<p>Topologi ring adalah arsitektur umum di otomasi pabrik. Jika satu kabel putus, data harus segera mencari jalur alternatif. <em>Managed industrial switch</em> menjalankan protokol seperti RSTP (Rapid Spanning Tree Protocol) atau protokol proprietary dengan waktu pemulihan di bawah 20 milidetik. Beberapa bahkan mencatatkan recovery sub-5 ms—cukup cepat untuk menjaga komunikasi PLC tanpa memicu watchdog timer.</p>
-<p><em>Unmanaged switch industry</em> tidak punya kecerdasan ini. Ia tidak bisa berpartisipasi dalam topologi ring tanpa menimbulkan loop yang mematikan jaringan. Penggunaan di arsitektur star sederhana masih aman, tapi begitu kebutuhan redundansi muncul, keterbatasannya langsung telanjang.</p>
-<h3>3. Keamanan dan Akses Port</h3>
-<p>Akses fisik ke port switch di area produksi kerap luput dari pengawasan ketat. Siapa pun bisa mencolokkan laptop dan mulai mengirim perintah ke PLC—skenario mengerikan yang lebih sering terjadi daripada yang diakui. Managed switch menyediakan port security berbasis MAC address, 802.1X authentication, bahkan ACL (Access Control List). Port yang tidak terpakai bisa di-shutdown secara administratif.</p>
-<p>Unmanaged switch? Ia menerima siapa saja yang menancapkan kabel. Tidak ada otentikasi, tidak ada logging, tidak ada jejak.</p>
-<h3>4. Diagnostik dan Monitoring</h3>
-<p>Ketika plant berhenti di tengah malam, technician butuh visibilitas instan: di mana letak masalahnya? Managed switch menyediakan SNMP trap, syslog, email alert, hingga mirror port untuk analisis paket via Wireshark. Engineer bisa membaca statistik error per port—CRC error, runt, jabber—dan melacak kabel rusak atau transceiver SFP yang sekarat sebelum benar-benar mati.</p>
-<p>Unmanaged switch hanya menawarkan LED indikator. Hijau berarti hidup, kuning berarti ada aktivitas. Tidak lebih. Blind spot total.</p>
-<hr>
-<h2>Tabel Perbandingan Cepat</h2>
-<div class="table-wrap"><table>
-<thead>
-<tr><th>Aspek</th><th>Managed Industrial Switch</th><th>Unmanaged Industrial Switch</th></tr>
-</thead>
-<tbody>
-<tr><td>Konfigurasi</td><td>Via Web GUI, CLI, SNMP</td><td>Tidak ada</td></tr>
-<tr><td>VLAN</td><td>802.1Q, port-based</td><td>Tidak ada</td></tr>
-<tr><td>Redundansi</td><td>RSTP, ERPS, ring proprietary</td><td>Tidak ada (hanya star)</td></tr>
-<tr><td>Monitoring</td><td>SNMP, syslog, mirror port</td><td>Indikator LED</td></tr>
-<tr><td>Keamanan Port</td><td>MAC filtering, 802.1X, ACL</td><td>Tidak ada</td></tr>
-<tr><td>QoS</td><td>Traffic prioritization (802.1p)</td><td>Tidak ada</td></tr>
-<tr><td>Harga</td><td>Menengah hingga tinggi</td><td>Rendah</td></tr>
-<tr><td>Kompleksitas Instalasi</td><td>Butuh engineer terlatih</td><td>Plug-and-play</td></tr>
-</tbody>
-</table></div>
-<hr>
-<h2>Kapan Memilih Unmanaged Industrial Switch?</h2>
-<p>Jangan salah sangka. <em>Unmanaged switch industry</em> bukan produk inferior. Di arena yang tepat, ia justru pilihan paling rasional.</p>
-<p><strong>1. Jaringan terisolasi berskala kecil.</strong> Hubungan point-to-multipoint sederhana, misalnya empat HMI yang membaca data dari satu PLC tanpa perlu segmentasi. Tidak ada kebutuhan routing antar VLAN, tidak ada ancaman loop.</p>
-<p><strong>2. Prototipe dan test bench.</strong> Saat engineer sedang melakukan FAT (Factory Acceptance Test) atau membangun simulasi sistem, kecepatan setup lebih penting dari kecanggihan fitur. Unmanaged switch langsung berfungsi tanpa perlu IP address untuk management interface.</p>
-<p><strong>3. Lingkungan ekstrem tanpa akses remote.</strong> Di area tambang bawah tanah atau anjungan lepas pantai, switch mungkin hanya berfungsi sebagai <em>media converter with extra ports</em>. Tidak ada yang akan mengakses konfigurasinya selama bertahun-tahun. Di sini, ketahanan fisik—ingress protection, ketahanan vibrasi, suhu operasi—lebih kritis daripada fitur layer 2.</p>
-<p><strong>4. Budget-constrained project.</strong> Harga <em>managed industrial switch</em> bisa berkali lipat dibanding versi unmanaged. Jika aplikasi tidak memerlukan fitur manajemen, memaksakan managed switch adalah pemborosan CAPEX yang sulit dijustifikasi.</p>
-<hr>
-<h2>Kapan Managed Industrial Switch Menjadi Keharusan?</h2>
-<p>Titik balik dari cukup menjadi wajib terjadi saat beberapa kondisi berikut bertemu.</p>
-<p><strong>1. Jaringan multi-zone dengan persyaratan keamanan ketat.</strong> Plant yang memisahkan zona OT dan IT wajib menggunakan VLAN. Regulasi seperti IEC 62443 mendorong segmentasi dan kontrol akses ketat—fitur yang hanya tersedia di <a href="Week_08_fitur-penting-industrial-ethernet-switch-yang-harus-anda-ketahui.html">managed industrial switch</a>.</p>
-<p><strong>2. Topologi ring atau mesh untuk high availability.</strong> Jika proses tidak bisa mentolerir kehilangan komunikasi walau sedetik, redundansi adalah keniscayaan. Managed switch menjalankan protokol ring dengan recovery time yang deterministik.</p>
-<p><strong>3. Aplikasi time-sensitive.</strong> Sinkronisasi presisi via PTP (Precision Time Protocol) IEEE 1588v2, prioritisasi trafik via QoS—penting untuk motion control, merging unit di substation, atau sistem vision inspection berkecepatan tinggi.</p>
-<p><strong>4. Remote monitoring dan predictive maintenance.</strong> Managed switch mengirim SNMP trap saat port flap, suhu melewati ambang, atau SFP transmit power melemah. Data ini memungkinkan tim maintenance mengambil tindakan sebelum kegagalan total terjadi.</p>
-<hr>
-<h2>Mitos: Managed Switch Selalu Lebih Lambat</h2>
-<p>Ada anggapan keliru bahwa managed switch menambah latensi karena proses inspeksi paket. Faktanya, forwarding decision pada managed switch layer 2 tetap berbasis ASIC, bukan CPU. Store-and-forward latency pada managed dan unmanaged switch dari chipset setara bisa identik: di kisaran 5–10 mikrodetik per hop. CPU pada managed switch sibuk hanya saat melayani SNMP request atau sesi web GUI—tidak menyentuh data plane.</p>
-<p>Yang perlu dicermati justru fitur tambahan seperti inter-VLAN routing (karena kini switch layer 3) atau deep packet inspection. Itu yang bisa menambah latensi. Tapi itu adalah pilihan desain, bukan cacat inheren.</p>
-<hr>
-<h2>Total Cost of Ownership: Lebih dari Harga Pembelian</h2>
-<p>Perbandingan harga unit adalah jebakan klasik. Engineer yang matang menghitung TCO.</p>
-<p>Unmanaged switch memang murah di awal. Tapi coba hitung biaya satu jam downtime di line produksi otomotif atau fasilitas pengolahan minyak. Ketika masalah jaringan muncul dan technician harus berjalan ke setiap panel sambil membawa laptop dan tone generator—tanpa log, tanpa mirror port—waktu pelacakan bisa memakan jam. Managed switch memungkinkan identifikasi masalah dari ruang kontrol, bahkan dari kota berbeda via VPN.</p>
-<p>Dari sisi inventory, managed switch juga lebih efisien. Satu model managed switch bisa dikonfigurasi secara berbeda untuk berbagai peran: edge switch di satu lokasi, distribution switch di lokasi lain. Unmanaged switch hanya bisa menjadi satu hal: switch yang tidak terkelola. Konsekuensinya, Anda mungkin perlu menyetok lebih banyak tipe unmanaged switch untuk skenario berbeda.</p>
-<hr>
-<h2>Memahami Managed Industrial Switch dari Scodeno</h2>
-<p>Scodeno merancang managed industrial switch dengan filosofi <em>hardened intelligence</em>. Perangkat ini dibangun dari sirkuit yang tahan lonjakan tegangan hingga 3 kV, komponen industrial-grade dengan MTBF di atas 700.000 jam, dan housing yang lolos uji jatuh serta getar sesuai IEC 60068. Di luar ketangguhan fisik, fitur manajemennya dirancang intuitif: web GUI yang responsif tanpa memerlukan training berhari-hari, CLI dengan sintaks mirip standar industri yang familiar bagi network engineer.</p>
-<p>Dukungan SFP slot memungkinkan konektivitas fiber optik single-mode hingga 80 km tanpa repeater—penting untuk aplikasi seperti jaringan pipa gas atau sistem SCADA pertambangan yang tersebar luas. Protokol ring proprietary memastikan recovery time di bawah 20 ms pada topologi hingga 30 node.</p>
-<hr>
-<h2>Memilih dengan Kerangka yang Jelas</h2>
-<p>Gunakan checklist ini saat berhadapan dengan dilema <em>managed vs unmanaged industrial switch</em>:</p>
-<ul>
-<li><strong>Jumlah node:</strong> Di bawah 10? Unmanaged bisa dipertimbangkan. Di atas 20? Managed mulai wajib.</li>
-<li><strong>Topologi:</strong> Star sederhana atau ring/chain dengan redundansi?</li>
-<li><strong>Risiko keamanan fisik:</strong> Apakah port mudah dijangkau orang tidak berwenang?</li>
-<li><strong>Jarak:</strong> Apakah perlu fiber optic? SFP slot hanya ada di managed switch.</li>
-<li><strong>Regulasi industri:</strong> Apakah plant harus comply dengan IEC 62443?</li>
-<li><strong>Kemampuan tim:</strong> Apakah ada engineer yang bisa mengelola managed switch jangka panjang? Jika tidak, pertimbangkan managed switch dengan konfigurasi awal yang mudah.</li>
-</ul>
-<p>Tidak ada jawaban universal. Sebuah jaringan sensor cuaca di perkebunan dengan 8 node dan koneksi point-to-multipoint tidak butuh managed switch. Sebaliknya, network backbone yang menghubungkan 50 VFD, 10 PLC, dan server SCADA jelas memerlukannya. Tugas engineer adalah membaca konteks, bukan menghafal spesifikasi.</p>
-<hr>
-<h2>Penutup</h2>
-<p>Pilihan antara managed dan unmanaged industrial switch pada dasarnya adalah pilihan antara kontrol dan kesederhanaan. Kesederhanaan menggoda karena ia rendah friksi di awal. Namun saat jaringan bertumbuh, saat downtime mendadak menjadi sangat mahal, kesederhanaan yang sama berubah menjadi penghalang.</p>
-<p>Di dunia industri yang semakin terhubung—di mana data dari sensor kecil di ujung plant bisa memicu keputusan manajemen di lantai atas—visibilitas dan kontrol bukan lagi kemewahan. Ia adalah fondasi operasi yang tangguh.</p>
-<p>Kunjungi halaman <a href="Week_08_fitur-penting-industrial-ethernet-switch-yang-harus-anda-ketahui.html">managed industrial switch</a> Scodeno untuk mempelajari lebih lanjut bagaimana seri managed switch kami mendukung arsitektur jaringan industri modern. Butuh konsultasi langsung? Tim engineer kami siap membantu Anda merancang topologi yang tepat—bukan yang termahal atau termurah, tapi yang paling sesuai dengan kebutuhan operasi Anda.</p>
-</article>
-
-<section class="related-section">
-  <div class="related-inner">
-    <h2>Artikel Terkait</h2>
-    <div class="related-grid">
-      <a href="Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html" class="related-card"><span class="tag">Fundamental</span><h3>Kenapa Industrial Switch Menggunakan Desain Fanless</h3></a>
-      <a href="Week_02_apa-itu-din-rail-industrial-switch-dan-mengapa-banyak-dipakai-di-pabrik.html" class="related-card"><span class="tag">Fundamental</span><h3>Apa Itu DIN-Rail Industrial Switch dan Mengapa Banyak Dipakai di Pabrik</h3></a>
-      <a href="Week_03_ip-rating-pada-industrial-ethernet-switch-apa-artinya.html" class="related-card"><span class="tag">Fundamental</span><h3>IP Rating pada Industrial Ethernet Switch: Apa Artinya?</h3></a>
-      <a href="Week_04_industrial-gigabit-switch-vs-fast-ethernet-switch.html" class="related-card"><span class="tag">Selection Guide</span><h3>Industrial Gigabit Switch vs Fast Ethernet Switch</h3></a>
-    </div>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="footer-inner">
-    <span>&copy; 2024 Scodeno Indonesia</span>
-    <span>Didistribusikan oleh <a href="../index.html">PT Konexindo Unitama</a></span>
-  </div>
-</footer>
-  <nav class="article-nav" style="max-width:780px;margin:48px auto 0;padding:0 24px;border-top:1px solid #E8ECF0;"><div style="display:flex;justify-content:space-between;padding:24px 0;"><a href="Week_05_industrial-switch-dengan-sfp-port-fungsi-dan-kegunaannya.html" style="color:#6B7280;text-decoration:none;font-size:0.875rem;"><span style="font-size:1.25rem;">←</span> Previous<br><strong>SFP Port</strong></a><a href="Week_07_industrial-switch-dengan-poe-kapan-dibutuhkan.html" style="color:#6B7280;text-decoration:none;font-size:0.875rem;text-align:right;">Next <span style="font-size:1.25rem;">→</span><br><strong>PoE</strong></a></div><div style="text-align:center;padding-bottom:24px;"><a href="../index.html#articles" style="color:#0068B4;text-decoration:none;font-weight:600;">← Kembali ke Semua Artikel</a></div></nav>
-
-</body>
-</html>
+    container.innerHTML=results.map(r=>{
+      const title=highlight(r.title,q);
+      const snip=r.snippet.substring(0,100);
+      const catClass=r.category==='Artikel'?'cat-artikel':'cat-produk';
+      return `<a href="${r.url}" class="search-result">
+        <div class="search-result-title">${title}</div>
+        <div class="search-result-snippet">${snip}</div>
+        <div class="search-result-meta"><span class="search-result-cat ${catClass}">${r.category}</span><span style="font-size:0.625rem;color:var(--gray-500)">${r.tag}</span></div>
+      </a>`;
+    }).join('');
+   }
+   function showDefaultResults(container){
+    const shuffled=searchIndex.sort(()=>Math.random()-0.5).slice(0,6);
+    container.innerHTML=shuffled.map(r=>{
+      const catClass=r.category==='Artikel'?'cat-artikel':'cat-produk';
+      return `<a href="${r.url}" class="search-result">
+        <div class="search-result-title">${r.title}</div>
+        <div class="search-result-snippet">${r.snippet.substring(0,100)}</div>
+        <div class="search-result-meta"><span class="search-result-cat ${catClass}">${r.category}</span><span style="font-size:0.625rem;color:var(--gray-500)">${r.tag}</span></div>
+      </a>`;
+    }).join('');
+   }
+   function highlight(text,q){
+    const regex=new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`,'gi');
+    return text.replace(regex,'<mark>$1</mark>');
+   }
+   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSearch()});
+   </script>
+   <script>(function(){var h=window.location.hostname;var links=document.querySelectorAll('.lang-toggle a');links.forEach(function(a){a.classList.remove('active-lang');if(h.includes('en.')&&a.href.includes('en.scodeno'))a.classList.add('active-lang');if(!h.includes('en.')&&a.href.includes('scodenoindonesia.com')&&!a.href.includes('en.scodeno'))a.classList.add('active-lang')})})()</script>
+</body></html>
+   

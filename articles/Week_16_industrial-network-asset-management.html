@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Industrial Network Asset Management — Scodeno Indonesia</title>
+<meta name="description" content="Panduan industrial network asset management: LLDP untuk topology discovery, SNMP untuk device inventory, dan strategi lifecycle management untuk jaringan industri.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#0068B4;--blue-light:#0095E0;--blue-dark:#004A82;--blue-bg:#E7F3FB;--blue-glow:rgba(0,104,180,0.20);--black:#0A0E14;--near-black:#141A22;--dark-card:#1A202A;--white:#FFFFFF;--off-white:#F5F7FA;--gray-50:#F9FAFB;--gray-100:#E8ECF0;--gray-200:#C8CDD4;--gray-300:#9BA2AB;--gray-400:#6B7280;--gray-500:#4B5563;--text-dark:#1A1A1A;--text-muted:#9BA2AB;--content-max:780px}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--text-dark);background:var(--white);line-height:1.7}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,20,0.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.06)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:64px}
+.nav-left{display:flex;align-items:center;gap:32px}.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-img{height:28px;width:auto}.nav-logo-text{font-weight:800;font-size:1.0625rem;color:var(--white)}
+.nav-logo-indonesia{color:var(--blue-light);margin-left:2px}.nav-links{display:flex;align-items:center;gap:4px;list-style:none}
+.nav-links a{color:var(--gray-300);text-decoration:none;font-size:0.8125rem;font-weight:500;padding:8px 12px;border-radius:4px}
+.nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.06)}.nav-dropdown{position:relative}
+.nav-dropdown>a::after{content:'▾';font-size:0.625rem;margin-left:2px}
+.nav-dropdown-menu{position:absolute;top:100%;left:0;min-width:200px;background:var(--dark-card);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:6px 0;opacity:0;visibility:hidden;transform:translateY(4px);transition:all 0.18s ease;box-shadow:0 12px 32px rgba(0,0,0,0.35)}
+.nav-dropdown:hover .nav-dropdown-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.nav-dropdown-menu a{display:block;padding:8px 16px!important;font-size:0.8125rem!important;color:var(--gray-300)!important;border-radius:0!important}
+.nav-dropdown-menu a:hover{background:rgba(255,255,255,0.06)!important;color:var(--white)!important}
+.nav-cta{background:var(--blue);color:var(--white)!important;padding:8px 18px!important;border-radius:4px!important;font-weight:600!important}
+.article-header{background:var(--black);color:var(--white);padding:calc(64px + 64px) 24px 64px;position:relative;overflow:hidden}
+.article-header::before{content:'';position:absolute;top:-30%;right:-20%;width:500px;height:500px;background:radial-gradient(circle,var(--blue-glow) 0%,transparent 70%)}
+.article-header-inner{max-width:var(--content-max);margin:0 auto;position:relative;z-index:1}
+.article-tag{display:inline-block;background:rgba(0,149,224,0.15);color:var(--blue-light);font-size:0.75rem;font-weight:600;padding:4px 12px;border-radius:2px;margin-bottom:16px;text-transform:uppercase;letter-spacing:0.06em}
+.article-header h1{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:800;line-height:1.15;letter-spacing:-0.02em;margin-bottom:16px}.lang-toggle{display:inline-flex;align-items:center;gap:6px;margin-top:12px}
+.lang-toggle a{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,0.08);color:var(--gray-300);text-decoration:none;font-size:0.75rem;font-weight:500;padding:4px 10px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);transition:all 0.15s}
+.lang-toggle a:hover{background:rgba(255,255,255,0.14);color:var(--white);border-color:rgba(255,255,255,0.2)}
+.lang-toggle .active-lang{background:var(--blue);color:var(--white);border-color:var(--blue)}
+.article-meta{color:var(--text-muted);font-size:0.875rem}.article-body{max-width:var(--content-max);margin:0 auto;padding:64px 24px}
+.article-body h2{font-size:1.5rem;font-weight:700;color:var(--near-black);margin:48px 0 16px}
+.article-body h3{font-size:1.25rem;font-weight:600;color:var(--near-black);margin:32px 0 12px}
+.article-body p{color:var(--gray-500);font-size:1.0625rem;margin-bottom:20px;line-height:1.8}
+.article-body ul,.article-body ol{color:var(--gray-500);font-size:1.0625rem;margin-bottom:20px;padding-left:24px}
+.article-body li{margin-bottom:8px}.article-body strong{color:var(--text-dark);font-weight:600}
+.article-body a{color:var(--blue);text-decoration:underline}.article-body hr{border:none;border-top:1px solid var(--gray-100);margin:48px 0}
+.related-section{background:var(--off-white);padding:64px 24px}.related-inner{max-width:var(--content-max);margin:0 auto}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.related-card{background:var(--white);border:1px solid var(--gray-100);border-radius:4px;padding:20px;text-decoration:none}
+.related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.06)}.related-card h3{font-size:0.9375rem;font-weight:600;color:var(--text-dark)}
+.related-card .tag{font-size:0.6875rem;color:var(--blue);font-weight:600;text-transform:uppercase}
+.article-nav{max-width:var(--content-max);margin:0 auto;padding:0 24px}
+.article-nav-inner{display:flex;justify-content:space-between;padding:32px 0;border-top:1px solid var(--gray-100)}
+.article-nav-inner a{display:flex;align-items:center;gap:8px;color:var(--gray-500);text-decoration:none;font-size:0.875rem;max-width:45%}
+.article-nav-inner a:hover{color:var(--blue)}.article-nav-inner .nav-label{color:var(--gray-400);font-size:0.6875rem;display:block;text-transform:uppercase;margin-bottom:2px}
+.article-nav-inner .nav-title{color:var(--text-dark);font-weight:600}.article-nav-back{text-align:center;padding-bottom:40px}
+.article-nav-back a{color:var(--blue);text-decoration:none;font-weight:600}.footer{background:var(--near-black);color:var(--text-muted);padding:48px 24px 32px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;font-size:0.8125rem}
+.footer-inner a{color:var(--blue-light);text-decoration:none}@media(max-width:768px){.nav-links{display:none}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><div class="nav-left"><a href="../" class="nav-logo"><img src="../logo.png" alt="Scodeno" class="nav-logo-img"><span class="nav-logo-text">Scodeno<span class="nav-logo-indonesia">Indonesia</span></span></a><ul class="nav-links"><li class="nav-dropdown"><a href="../#products">Products</a><div class="nav-dropdown-menu"><span class="sub-label">Industrial Switch</span><a href="../#products">PoE</a><a href="../#products">Non-PoE</a><span class="sub-label">Commercial Switch</span><a href="../#products">PoE</a><a href="../#products">Non-PoE</a><a href="../#products">Data Center Switch</a><span class="sub-label">SFP Modules</span><a href="../#products">Industrial</a><a href="../#products">Commercial</a><a href="../#products">IoT Smart Box</a></div></li><li class="nav-dropdown"><a href="../#articles">Articles</a><div class="nav-dropdown-menu"><a href="../#articles">Fundamental</a><a href="../#articles">Selection Guide</a><a href="../#articles">Technology</a><a href="../#articles">Deployment</a><a href="../#articles">Network Design</a></div></li><li><a href="../#about">About</a></li></ul></div><a href="../#contact" class="nav-cta">Request Quote</a></div></nav>
+<header class="article-header"><div class="article-header-inner"><span class="article-tag">Deployment</span><h1>Industrial Network Asset Management</h1><div class="article-meta"><span>6 min read</span></div></div><div class="lang-toggle"><a href="https://scodenoindonesia.com/articles/Week_16_industrial-network-asset-management.html" class="active-lang">🇮🇩 ID</a><a href="https://en.scodenoindonesia.com/articles/Week_16_industrial-network-asset-management.html">🇬🇧 EN</a></div></header>
+<article class="article-body">
+<p>Anda mengelola 200 switch di 12 lokasi pabrik. Salah satu switch di Plant 3 mulai menunjukkan CRC error. Tapi yang mana? Kapan terakhir firmware-nya diupdate? Siapa vendornya? Di rak nomor berapa?</p>
+<p>Tanpa asset management, pertanyaan-pertanyaan ini hanya bisa dijawab dengan naik mobil ke Plant 3. Membuka panel satu per satu. Mencatat manual. Itu kalau dokumentasinya masih ada.</p>
+<p><strong>Industrial network asset management</strong> mengubah kekacauan ini menjadi database yang terstruktur. Bukan sekadar daftar perangkat — tapi sistem yang tahu apa yang Anda punya, di mana lokasinya, bagaimana statusnya, dan kapan harus di-maintain.</p>
+<hr>
+<h2>Mengapa Asset Management di Jaringan Industri Berbeda</h2>
+<p>Jaringan enterprise bisa mengandalkan tool otomatis seperti Active Directory atau SCCM. Perangkat join domain. Software terinstall. Inventori terbangun sendiri.</p>
+<p>Jaringan industri tidak semewah itu. PLC tidak join domain. HMI berjalan di embedded Windows yang tidak bisa diinstall agen. Switch terdistribusi di panel-panel yang tersebar di seluruh lantai produksi. Tidak ada DHCP server yang rapi. Tidak ada naming convention yang konsisten.</p>
+<p><strong>Network asset tracking</strong> di lingkungan industri harus bekerja dari bawah ke atas — dari physical layer — karena perangkat di atasnya seringkali tidak kooperatif terhadap tools manajemen tradisional.</p>
+<h2>Fondasi: Discovery dan Identifikasi</h2>
+<p>Langkah pertama asset management adalah mengetahui apa yang ada di jaringan Anda. Ini bukan tugas trivial di lingkungan OT.</p>
+<h3>LLDP: Peta Topologi Otomatis</h3>
+<p>Link Layer Discovery Protocol (LLDP) — standar IEEE 802.1ab — adalah fondasi <strong>industrial network asset management</strong>. Setiap switch yang mendukung LLDP secara periodik mengirimkan informasi tentang dirinya ke tetangga langsung: nama perangkat, deskripsi port, kapabilitas sistem, alamat manajemen.</p>
+<p>Switch penerima menyimpan informasi ini dalam MIB (Management Information Base) mereka. Network management system kemudian bisa melakukan query ke satu switch. Membaca tabel LLDP neighbors. Lalu melompat ke switch berikutnya. Peta topologi terbangun selangkah demi selangkah — dari satu switch ke seluruh jaringan.</p>
+<p>Protokol sejenis Cisco Discovery Protocol (CDP) melakukan hal yang sama di perangkat dengan IOS. Tapi LLDP bersifat vendor-neutral — bekerja di switch dari berbagai merek, termasuk yang mendukung standar IEEE penuh (Spurgeon &amp; Zimmerman, 2013).</p>
+<h3>SNMP: Interogasi dan Inventori</h3>
+<p>Begitu topologi diketahui, SNMP mengambil alih. Setiap managed switch menyimpan informasi identitasnya di MIB standar:</p>
+<ul>
+<li><strong>System MIB</strong> (RFC 1213): sysName, sysDescr, sysLocation, sysContact</li>
+<li><strong>Interface MIB</strong>: jumlah port, tipe port, kecepatan, status administratif</li>
+<li><strong>Entity MIB</strong> (RFC 4133): informasi fisik — nomor seri, model, versi hardware, versi firmware</li>
+</ul>
+<p>Network management system menginterogasi semua switch secara terjadwal. Hasilnya: inventori lengkap semua perangkat jaringan — model, firmware version, serial number, port configuration — tanpa perlu menyentuh fisik perangkat satu pun.</p>
+<h3>Tools untuk Network Asset Discovery</h3>
+<p>Beberapa tools open-source dan komersial memanfaatkan SNMP dan LLDP untuk membangun inventori otomatis. InterMapper menemukan dan mendokumentasikan jaringan Layer 2 dan Layer 3. NetBrain mampu mendiscovery dan mendiagramkan topologi Layer 2 secara otomatis. SolarWinds menyediakan suite tools monitoring performa switch via SNMP (Spurgeon &amp; Zimmerman, 2013).</p>
+<p>Untuk lingkungan industri yang lebih kecil, bahkan tools gratis seperti PRTG atau Zabbix sudah cukup untuk memulai <strong>network asset tracking</strong>. Mereka mendeteksi perangkat baru, mencatat perubahan, dan mengirim alert saat perangkat hilang dari jaringan.</p>
+<h2>Lifecycle Management: Lebih dari Sekadar Inventori</h2>
+<p>Asset management bukan hanya tahu apa yang Anda punya. Tapi juga tahu kapan harus bertindak.</p>
+<h3>Firmware dan Configuration Management</h3>
+<p>Switch industri punya siklus hidup panjang — 7 hingga 15 tahun. Dalam rentang waktu itu, firmware diupdate beberapa kali. Fitur baru ditambahkan. Bug keamanan ditambal. Tanpa asset management, Anda tidak tahu switch mana yang masih menjalankan firmware versi lama dengan vulnerability yang sudah dipatch di versi terbaru.</p>
+<p>Sistem asset management mencatat versi firmware setiap switch. Saat vulnerability disclosure muncul — misalnya CVE di stack TCP/IP tertentu — Anda bisa query dalam hitungan detik: switch mana yang terpengaruh? Di mana lokasinya? Siapa yang harus kirim teknisi?</p>
+<h3>End-of-Life dan Spare Parts</h3>
+<p>Switch industrial bukan barang consumable. Tapi mereka tetap punya end-of-life. Vendor mengumumkan end-of-sale, lalu end-of-support. Asset management mencatat tanggal-tanggal ini dan memberikan peringatan dini — sehingga penggantian bisa direncanakan dalam siklus budget, bukan dalam mode darurat.</p>
+<p>Begitu juga spare parts. Power supply redundant. SFP module. Kipas (kalau ada). Asset management mencatat stok spare part, lokasi penyimpanan, dan kompatibilitas dengan switch yang terpasang.</p>
+<h2>Dari Reaktif ke Proaktif</h2>
+<p>Tanpa asset management, maintenance jaringan industri selalu reaktif. Switch mati → teknisi dikirim → ternyata model sudah discontinued → cari pengganti darurat → downtime berkepanjangan.</p>
+<p>Dengan asset management:</p>
+<p>Switch terpantau usianya → penggantian dijadwalkan 6 bulan sebelum end-of-support → model baru sudah diuji kompatibilitasnya → pergantian dilakukan saat scheduled maintenance → nol downtime.</p>
+<p>Framework analitik IoT menggambarkan transformasi ini sebagai pergerakan dari level deskriptif dan diagnostik menuju prediktif dan preskriptif (Hanes et al.). Data historis tentang kesehatan perangkat — uptime, error rate, suhu operasi — digunakan untuk memprediksi kegagalan sebelum terjadi.</p>
+<h2>Fitur Asset Management di Switch Industrial</h2>
+<p>Switch industrial managed modern mendukung protokol-protokol kunci untuk <strong>industrial network asset management</strong>:</p>
+<p><strong>LLDP</strong> (IEEE 802.1ab) untuk topology discovery. Setiap switch mengumumkan identitasnya ke tetangga — membentuk peta konektivitas yang bisa dibaca oleh NMS manapun.</p>
+<p><strong>SNMP v2c/v3</strong> dengan MIB standar — system MIB untuk identitas, interface MIB untuk kapasitas, entity MIB untuk hardware inventory. SNMP v3 menambahkan keamanan melalui enkripsi dan autentikasi.</p>
+<p><strong>Syslog</strong> untuk event logging terpusat. Setiap perubahan — port up/down, login attempt, configuration change — tercatat dan bisa dikorelasikan dengan inventori.</p>
+<p>Kombinasi LLDP + SNMP + syslog memungkinkan <strong>network asset tracking</strong> yang komprehensif — dari physical layer hingga application layer — tanpa agen software tambahan di endpoint.</p>
+<p>Untuk pendekatan yang lebih terintegrasi, baca panduan kami tentang <a href="/industrial-network-redundancy">manajemen aset jaringan</a>.</p>
+<h2>Kesimpulan</h2>
+<p><strong>Industrial network asset management</strong> bukan sekadar daftar perangkat dalam spreadsheet. Ini adalah fondasi untuk troubleshooting cepat, lifecycle management yang terencana, dan transisi dari maintenance reaktif ke prediktif.</p>
+<p>LLDP memberi peta topologi. SNMP memberi data inventori. Syslog memberi rekam jejak. Ketiganya — didukung oleh tools yang tepat — mengubah jaringan industri dari sekumpulan perangkat yang tidak dikenal menjadi sistem yang terdokumentasi, terpantau, dan terkelola.</p>
+<hr>
+<h3>Sumber</h3>
+<ol>
+<li>Spurgeon, Charles E. &amp; Zimmerman, Joann. <em>Ethernet Switches: An Introduction to Network Design with Switches</em>. O'Reilly Media, 2013.</li>
+<li>Hanes, David; Salgueiro, Gonzalo; Grossetete, Patrick; Barton, Robert; Henry, Jerome. <em>IoT Fundamentals: Networking Technologies, Protocols, and Use Cases for the Internet of Things</em>. Cisco Press, 2017.</li>
+<li>"Best Practices Series: Network Discovery." WhatsUp Gold, Progress Software. https://www.whatsupgold.com/blog/best-practices-series-network-discovery</li>
+<li>"A Comprehensive Guide to Network Discovery." Auvik Networks. https://www.auvik.com/franklyit/blog/what-is-network-discovery/</li>
+</ol>
+</article>
+<nav class="article-nav"><div class="article-nav-inner"><a href="Week_15_industrial-network-diagnostics-dan-troubleshooting.html"><span class="nav-label">← Previous</span><span class="nav-title">Industrial Network Diagnostics dan Troubleshooting</span></a><a href="Week_17_vlan-segmentation-industrial-network.html"><span class="nav-label">Next →</span><span class="nav-title">VLAN Segmentation untuk Industrial Network</span></a></div></nav>
+<div class="article-nav-back"><a href="../#articles">← Back to All Articles</a></div>
+<section class="related-section"><div class="related-inner"><h2 style="font-size:1.5rem;font-weight:700;color:var(--near-black);margin-bottom:32px">Related Articles</h2><div class="related-grid">
+<a href="Week_15_industrial-network-diagnostics-dan-troubleshooting.html" class="related-card"><span class="tag">Deployment</span><h3>Industrial Network Diagnostics dan Troubleshooting</h3></a>
+<a href="Week_06_managed-vs-unmanaged-industrial-switch-kapan-harus-upgrade.html" class="related-card"><span class="tag">Selection Guide</span><h3>Managed vs Unmanaged Industrial Switch: Kapan Harus Upgrade?</h3></a>
+<a href="Week_12_peran-switch-industrial-dalam-jaringan-redundan.html" class="related-card"><span class="tag">Network Design</span><h3>Peran Switch Industrial dalam Jaringan Redundan</h3></a>
+<a href="Week_13_memahami-downtime-jaringan-industri-penyebab-dan-solusinya.html" class="related-card"><span class="tag">Deployment</span><h3>Memahami Downtime Jaringan Industri: Penyebab dan Solusinya</h3></a>
+</div></div></section>
+<footer class="footer"><div class="footer-inner"><span>&copy; 2025 Scodeno Indonesia. All rights reserved.</span><a href="../#contact">Contact</a></div></footer>
+<script>(function(){var h=window.location.hostname;var links=document.querySelectorAll('.lang-toggle a');links.forEach(function(a){a.classList.remove('active-lang');if(h.includes('en.')&&a.href.includes('en.scodeno'))a.classList.add('active-lang');if(!h.includes('en.')&&a.href.includes('scodenoindonesia.com')&&!a.href.includes('en.scodeno'))a.classList.add('active-lang')})})()</script>
+</body>
+</html>

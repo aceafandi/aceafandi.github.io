@@ -1,0 +1,499 @@
+     <!DOCTYPE html>
+     <html lang="id">
+     <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Scodeno Switch: Panduan Lengkap Industrial Ethernet Switch untuk Jaringan Industri — Scodeno Indonesia</title>
+      <meta name="description" content="Panduan lengkap Scodeno switch: lini produk unmanaged, managed, PoE, fitur DIP switch, desain fanless, wide temperature, dan cara memilih industrial ethernet switch yang tepat.">
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+      <style>
+      :root {
+        --blue: #0068B4; --blue-light: #0095E0; --blue-dark: #004A82; --blue-bg: #E7F3FB;
+        --blue-glow: rgba(0,104,180,0.20);
+        --black: #0A0E14; --near-black: #141A22; --dark-card: #1A202A;
+        --white: #FFFFFF; --off-white: #F5F7FA; --gray-50: #F9FAFB; --gray-100: #E8ECF0;
+        --gray-200: #C8CDD4; --gray-300: #9BA2AB; --gray-400: #6B7280; --gray-500: #4B5563;
+        --text-dark: #1A1A1A; --text-light: #E2E8F0; --text-muted: #9BA2AB;
+        --content-max: 780px; --radius-sm: 2px; --radius-md: 4px;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        color: var(--text-dark); background: var(--white);
+        line-height: 1.7; -webkit-font-smoothing: antialiased;
+      }
+      .nav {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+        background: rgba(10,14,20,0.94); backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+      }
+      .nav-inner {
+        max-width: 1200px; margin: 0 auto;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 0 24px; height: 64px;
+      }
+      .nav-left { display: flex; align-items: center; gap: 32px; }
+      .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+      .nav-logo-img { height: 28px; width: auto; }
+      .nav-logo-text { font-weight: 800; font-size: 1.0625rem; color: var(--white); letter-spacing: -0.01em; white-space: nowrap; }
+      .nav-logo-indonesia { color: var(--blue-light); margin-left: 2px; }
+      .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+      .nav-links a { color: var(--gray-300); text-decoration: none; font-size: 0.8125rem; font-weight: 500; padding: 8px 12px; border-radius: 4px; transition: all 0.15s; white-space: nowrap; }
+      .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+      .nav-dropdown { position: relative; }
+      .nav-dropdown > a { display: flex; align-items: center; gap: 4px; }
+      .nav-dropdown > a::after { content: '▾'; font-size: 0.625rem; margin-left: 2px; }
+      .nav-dropdown-menu {
+        position: absolute; top: 100%; left: 0; min-width: 200px;
+        background: var(--dark-card); border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 6px; padding: 6px 0; opacity: 0; visibility: hidden;
+        transform: translateY(4px); transition: all 0.18s ease;
+        box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+      }
+      .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+      .nav-dropdown-menu a {
+        display: block; padding: 8px 16px !important; font-size: 0.8125rem !important;
+        color: var(--gray-300) !important; border-radius: 0 !important;
+      }
+      .nav-dropdown-menu a:hover { background: rgba(255,255,255,0.06) !important; color: var(--white) !important; }
+      .nav-cta {
+        background: var(--blue); color: var(--white) !important;
+        padding: 8px 18px !important; border-radius: 4px !important;
+        font-weight: 600 !important; font-size: 0.8125rem !important;
+      }
+      .nav-cta:hover { background: var(--blue-light) !important; }
+      .article-header {
+        background: var(--black); color: var(--white);
+        padding: calc(64px + 64px) 24px 64px;
+        position: relative; overflow: hidden;
+      }
+      .article-header::before {
+        content: ''; position: absolute; top: -30%; right: -20%;
+        width: 500px; height: 500px;
+        background: radial-gradient(circle, var(--blue-glow) 0%, transparent 70%);
+        pointer-events: none;
+      }
+      .article-header-inner { max-width: var(--content-max); margin: 0 auto; position: relative; z-index: 1; }
+      .article-tag {
+        display: inline-block; background: rgba(0,149,224,0.15); color: var(--blue-light);
+        font-size: 0.75rem; font-weight: 600; padding: 4px 12px;
+        border-radius: 2px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.06em;
+      }
+      .article-header h1 {
+        font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800;
+        line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px;
+      }.lang-toggle{display:inline-flex;align-items:center;gap:6px;margin-top:12px}
+.lang-toggle a{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,0.08);color:var(--gray-300);text-decoration:none;font-size:0.75rem;font-weight:500;padding:4px 10px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);transition:all 0.15s}
+.lang-toggle a:hover{background:rgba(255,255,255,0.14);color:var(--white);border-color:rgba(255,255,255,0.2)}
+.lang-toggle .active-lang{background:var(--blue);color:var(--white);border-color:var(--blue)}
+      .article-header .article-meta { color: var(--text-muted); font-size: 0.875rem; display: flex; gap: 20px; }
+      .article-body {
+        max-width: var(--content-max); margin: 0 auto;
+        padding: 64px 24px;
+      }
+      .article-body h2 {
+        font-size: 1.5rem; font-weight: 700; color: var(--near-black);
+        margin: 48px 0 16px; letter-spacing: -0.01em;
+      }
+      .article-body h3 {
+        font-size: 1.25rem; font-weight: 600; color: var(--near-black);
+        margin: 32px 0 12px;
+      }
+      .article-body p {
+        color: var(--gray-500); font-size: 1.0625rem;
+        margin-bottom: 20px; line-height: 1.8;
+      }
+      .article-body ul, .article-body ol {
+        color: var(--gray-500); font-size: 1.0625rem;
+        margin-bottom: 20px; padding-left: 24px;
+      }
+      .article-body li { margin-bottom: 8px; line-height: 1.7; }
+      .article-body strong { color: var(--text-dark); font-weight: 600; }
+      .article-body a { color: var(--blue); text-decoration: underline; }
+      .article-body a:hover { color: var(--blue-light); }
+      .article-body hr { border: none; border-top: 1px solid var(--gray-100); margin: 48px 0; }
+      .table-wrap {
+        overflow-x: auto; margin: 28px 0; border-radius: 6px;
+        border: 1px solid var(--gray-100);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      }
+      .article-body table {
+        width: 100%; border-collapse: collapse;
+        font-size: 0.875rem; line-height: 1.5;
+        min-width: 600px;
+      }
+      .article-body thead th {
+        background: linear-gradient(180deg, #E8F0F8 0%, #D4E4F2 100%);
+        color: var(--blue-dark); font-weight: 600; font-size: 0.8125rem;
+        text-transform: uppercase; letter-spacing: 0.03em;
+        padding: 12px 14px; text-align: left;
+        border-bottom: 2px solid #B8D0E8;
+        border-right: 1px solid #C8D8E8;
+        white-space: nowrap; position: sticky; top: 0;
+      }
+      .article-body thead th:last-child { border-right: none; }
+      .article-body tbody td {
+        padding: 10px 14px; border-bottom: 1px solid var(--gray-100);
+        border-right: 1px solid var(--gray-100); color: var(--gray-500);
+        vertical-align: top;
+      }
+      .article-body tbody td:last-child { border-right: none; }
+      .article-body tbody tr:nth-child(even) td { background: var(--gray-50); }
+      .article-body tbody tr:hover td { background: var(--blue-bg); }
+      .article-body tbody td:first-child { font-weight: 500; color: var(--text-dark); }
+      .related-section {
+        background: var(--off-white); padding: 64px 24px;
+      }
+      .related-inner { max-width: var(--content-max); margin: 0 auto; }
+      .related-inner h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.01em; }
+      .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+      .related-card {
+        background: var(--white); border: 1px solid var(--gray-100);
+        border-radius: var(--radius-md); padding: 20px; text-decoration: none;
+        transition: box-shadow 0.2s;
+      }
+      .related-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+      .related-card h3 { font-size: 0.9375rem; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
+      .related-card .tag { font-size: 0.6875rem; color: var(--blue); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+      .article-nav {
+        max-width: var(--content-max); margin: 0 auto; padding: 0 24px;
+      }
+      .article-nav-inner {
+        display: flex; justify-content: space-between; align-items: flex-start;
+        padding: 32px 0; border-top: 1px solid var(--gray-100);
+      }
+      .article-nav-inner a {
+        display: flex; align-items: center; gap: 8px;
+        color: var(--gray-500); text-decoration: none;
+        font-size: 0.875rem; max-width: 45%;
+      }
+      .article-nav-inner a:hover { color: var(--blue); }
+      .article-nav-inner .prev { text-align: left; }
+      .article-nav-inner .next { text-align: right; }
+      .article-nav-inner .nav-label {
+        color: var(--gray-400); font-size: 0.6875rem; display: block;
+        text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px;
+      }
+      .article-nav-inner .nav-title {
+        color: var(--text-dark); font-weight: 600; line-height: 1.3;
+      }
+      .article-nav-back {
+        text-align: center; padding-bottom: 40px;
+      }
+      .article-nav-back a {
+        color: var(--blue); text-decoration: none; font-weight: 600; font-size: 0.875rem;
+      }
+      .footer {
+        background: var(--near-black); color: var(--text-muted);
+        padding: 48px 24px 32px; border-top: 1px solid rgba(255,255,255,0.06);
+      }
+      .footer-inner {
+        max-width: 1200px; margin: 0 auto;
+        display: flex; justify-content: space-between; align-items: center;
+        font-size: 0.8125rem;
+      }
+      .footer-inner a { color: var(--blue-light); text-decoration: none; }
+      @media (max-width: 768px) {
+        .article-header { padding: calc(64px + 40px) 16px 40px; }
+        .article-body { padding: 40px 16px; }
+        .nav-links { display: none; }
+      }
+   /* ===== SEARCH ===== */
+      .nav-search{position:relative;display:flex;align-items:center}
+      .search-toggle{background:none;border:none;cursor:pointer;padding:8px;display:flex;align-items:center;justify-content:center;border-radius:4px;transition:background 0.15s}
+      .search-toggle:hover{background:rgba(255,255,255,0.06)}
+      .search-toggle svg{width:18px;height:18px;stroke:var(--gray-300);stroke-width:2;fill:none;transition:stroke 0.15s}
+      .search-toggle:hover svg{stroke:var(--white)}
+      .search-panel{position:absolute;top:100%;right:0;width:420px;max-width:90vw;background:var(--dark-card);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:0;display:none;box-shadow:0 16px 48px rgba(0,0,0,0.45);z-index:200}
+      .search-panel.active{display:block}
+      .search-input-wrap{display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.06)}
+      .search-input-wrap svg{width:16px;height:16px;stroke:var(--gray-400);stroke-width:2;fill:none;flex-shrink:0;margin-right:10px}
+      .search-input{flex:1;background:none;border:none;color:var(--white);font-size:0.9375rem;font-family:inherit;outline:none}
+      .search-input::placeholder{color:var(--gray-400)}
+      .search-results{max-height:420px;overflow-y:auto;padding:8px 0}
+      .search-result{display:block;padding:10px 16px;text-decoration:none;transition:background 0.1s;border-bottom:1px solid rgba(255,255,255,0.03)}
+      .search-result:last-child{border-bottom:none}
+      .search-result:hover{background:rgba(255,255,255,0.04)}
+      .search-result-title{font-size:0.875rem;font-weight:600;color:var(--white);margin-bottom:3px;line-height:1.3}
+      .search-result-title mark{background:rgba(0,149,224,0.25);color:var(--blue-light);border-radius:2px;padding:0 1px}
+      .search-result-snippet{font-size:0.75rem;color:var(--gray-400);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+      .search-result-meta{display:flex;align-items:center;gap:8px;margin-top:4px}
+      .search-result-cat{font-size:0.625rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;padding:2px 6px;border-radius:2px}
+      .cat-artikel{background:rgba(0,149,224,0.12);color:var(--blue-light)}
+      .cat-produk{background:rgba(0,180,120,0.12);color:#00B478}
+      .search-empty{padding:24px 16px;text-align:center;color:var(--gray-400);font-size:0.875rem}
+      .search-overlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:150;display:none}
+      .search-overlay.active{display:block}
+      @media(max-width:768px){.search-panel{position:fixed;top:64px;left:0;right:0;max-width:100vw;border-radius:0;border-left:none;border-right:none}}
+   </style>
+   </head>
+   <body>
+   <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <a href="../" class="nav-logo">
+          <img src="../logo.png" alt="Scodeno" class="nav-logo-img">
+          <span class="nav-logo-text">Scodeno<span class="nav-logo-indonesia">Indonesia</span></span>
+        </a>
+        <ul class="nav-links">
+          <li class="nav-dropdown">
+            <a href="../#products">Products</a>
+            <div class="nav-dropdown-menu">
+              <span class="sub-label">Industrial Switch</span>
+              <a href="../#products">PoE</a>
+              <a href="../#products">Non-PoE</a>
+              <span class="sub-label">Commercial Switch</span>
+              <a href="../#products">PoE</a>
+              <a href="../#products">Non-PoE</a>
+              <a href="../#products">Data Center Switch</a>
+              <span class="sub-label">SFP Modules</span>
+              <a href="../#products">Industrial</a>
+              <a href="../#products">Commercial</a>
+              <a href="../#products">IoT Smart Box</a>
+            </div>
+          </li>
+          <li class="nav-dropdown">
+            <a href="../#articles">Articles</a>
+            <div class="nav-dropdown-menu">
+              <a href="../#articles">Fundamental</a>
+              <a href="../#articles">Selection Guide</a>
+              <a href="../#articles">Technology</a>
+              <a href="../#articles">Deployment</a>
+              <a href="../#articles">Network Design</a>
+            </div>
+          </li>
+          <li><a href="../#about">About</a></li>
+          <li class="nav-search"><button class="search-toggle" onclick="toggleSearch()" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="17" y1="17" x2="22" y2="22"/></svg></button><div class="search-panel" id="searchPanel"><div class="search-input-wrap"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="17" y1="17" x2="22" y2="22"/></svg><input type="text" class="search-input" id="searchInput" placeholder="Cari artikel atau produk..." oninput="doSearch()" onkeydown="if(event.key==='Escape')closeSearch()"></div><div class="search-results" id="searchResults"></div></div><div class="search-overlay" id="searchOverlay" onclick="closeSearch()"></div></li>
+        </ul>
+      </div>
+      <a href="../#contact" class="nav-cta">Request Quote</a>
+    </div>
+   </nav>
+   <header class="article-header">
+    <div class="article-header-inner">
+      <span class="article-tag">Selection Guide</span>
+      <h1>Scodeno Switch: Panduan Lengkap Industrial Ethernet Switch untuk Jaringan Industri</h1>
+      <div class="article-meta">
+        <span>10 min read</span>
+      </div>
+    </div><div class="lang-toggle"><a href="https://scodenoindonesia.com/articles/Week_00_scodeno-switch-panduan-lengkap.html" class="active-lang">🇮🇩 ID</a><a href="https://en.scodenoindonesia.com/articles/Week_00_scodeno-switch-panduan-lengkap.html">🇬🇧 EN</a></div>
+   </header>
+   <article class="article-body">
+   <p>Satu switch. Ratusan perangkat. Ribuan jam operasi tanpa henti.</p>
+   <p>Di balik setiap lantai pabrik yang berjalan 24 jam, setiap gardu listrik yang tak pernah padam, dan setiap sistem transportasi yang mengalirkan jutaan penumpang — ada perangkat kecil yang luput dari perhatian: industrial switch.</p>
+   <p>Bukan switch sembarangan. Bukan switch kantoran yang didinginkan AC dan dibersihkan setiap bulan. Switch industrial dirancang untuk bertahan di lingkungan yang akan membunuh switch komersial dalam hitungan minggu.</p>
+   <p>Dan di antara vendor yang bermain di segmen ini, Scodeno hadir dengan pendekatan berbeda. Bukan sekadar "switch yang di-hardened." Melainkan rangkaian produk yang dibangun dari pemahaman mendalam tentang apa yang sebenarnya terjadi di medan: debu, panas, getaran, dan ekspektasi bahwa jaringan tidak boleh mati.</p>
+   <p>Artikel ini adalah panduan lengkap — dari pengenalan lini produk hingga fitur teknis yang membedakan, dari kriteria pemilihan hingga seri artikel pendalaman untuk setiap topik.</p>
+   <hr>
+   <h2>Mengenal Scodeno</h2>
+   <p>Scodeno Technology adalah pabrikan peralatan jaringan industri yang berbasis di Shenzhen, dengan pusat R&D di Beijing, Fujian, dan Hangzhou. Didirikan pada 2014, perusahaan ini kini memiliki lebih dari 240 karyawan — 70 di antaranya insinyur R&D — dan produknya telah menjangkau lebih dari 180 negara.</p>
+   <p>Di Indonesia, Scodeno didistribusikan secara eksklusif melalui PT Konexindo Unitama, yang menyediakan konsultasi teknis, survey lapangan, konfigurasi khusus, dan dukungan purna-jual dalam bahasa Indonesia.</p>
+   <p>Spurgeon dan Zimmerman (2013) dalam <em>Ethernet Switches</em> menjelaskan bahwa switch Ethernet pada dasarnya menjalankan fungsi <em>bridging</em>: meneruskan frame antar port berdasarkan alamat MAC. Yang membedakan switch industrial dari switch komersial adalah <em>bagaimana</em> fungsi itu dijalankan — dalam kondisi apa, dengan toleransi kegagalan seperti apa, dan dengan jaminan keandalan setinggi apa.</p>
+   <p>Scodeno menjawab pertanyaan itu dengan portofolio yang mencakup seluruh spektrum kebutuhan jaringan industri.</p>
+   <hr>
+   <h2>Lini Produk Scodeno Switch</h2>
+   <p>Scodeno membagi switch-nya dalam tiga kategori utama. Masing-masing dirancang untuk use case spesifik — dari yang paling sederhana hingga yang paling menuntut.</p>
+   <h3>Unmanaged Switch: Plug-and-Play, Tanpa Konfigurasi</h3>
+   <p>Switch unmanaged adalah switch dalam bentuk paling dasar. Colok kabel, hidup, jalan. Tidak ada interface web. Tidak ada command-line. Tidak perlu engineer jaringan.</p>
+   <p>Cocok untuk jaringan kecil, terisolasi, dan tidak kritis — test bench, panel kontrol sederhana, segmen non-kritis seperti printer produksi atau digital signage.</p>
+   <p>Namun di sinilah Scodeno membuat lompatan yang tidak dilakukan vendor lain. Switch unmanaged seri <strong>XPTN-9000</strong> dilengkapi <strong>DIP switch</strong> fisik — deretan sakelar kecil di sisi sasis yang mengaktifkan fitur-fitur esensial tanpa software:</p>
+   <ul>
+   <li><strong>Port Isolation</strong>: setiap port hanya bicara ke uplink</li>
+   <li><strong>VLAN port-based</strong>: segmentasi tanpa 802.1Q</li>
+   <li><strong>QoS</strong>: prioritas trafik berbasis port</li>
+   <li><strong>Flow Control</strong>: mencegah packet loss</li>
+   <li><strong>PoE Watchdog</strong>: auto-restart perangkat yang hang</li>
+   <li><strong>250m Extend</strong>: transmisi jarak jauh</li>
+   </ul>
+   <p>Artinya: switch tetap unmanaged (tanpa GUI, CLI, SNMP), tapi memiliki kemampuan segmentasi dan prioritas yang biasanya hanya ditemukan di switch managed. Ini adalah <em>sweet spot</em> yang tidak ada di switch unmanaged pada umumnya.</p>
+   <p>Baca lebih dalam: <a href="Week_06_managed-vs-unmanaged-industrial-switch-mana-yang-tepat.html">Managed vs Unmanaged Industrial Switch: Mana yang Tepat?</a></p>
+   <h3>Managed Switch: Kontrol Penuh dari Layer 2 hingga Layer 3</h3>
+   <p>Ketika jaringan tumbuh melampaui satu panel, managed switch menjadi standar minimum. Managed switch Scodeno mendukung:</p>
+   <ul>
+   <li><strong>VLAN 802.1Q</strong> — segmentasi logis penuh</li>
+   <li><strong>QoS dengan 802.1p CoS dan DSCP</strong> — prioritas trafik granular</li>
+   <li><strong>IGMP snooping</strong> — kontrol multicast untuk sistem kamera dan vision</li>
+   <li><strong>Redundansi ring ERPS</strong> — failover di bawah 20 milidetik</li>
+   <li><strong>SNMP, syslog, port mirroring</strong> — monitoring dan troubleshooting</li>
+   <li><strong>Port security</strong> (MAC filtering, 802.1X) — perlindungan akses fisik</li>
+   <li><strong>Dual power input</strong> — redundansi catu daya</li>
+   </ul>
+   <p>Semua managed switch Scodeno hadir dengan tiga jalur manajemen: Web GUI, CLI, dan SNMP — memberikan fleksibilitas penuh bagi administrator jaringan dengan preferensi berbeda.</p>
+   <p>Baca lebih dalam: <a href="Week_10_vlan-dalam-industrial-ethernet-network.html">VLAN dalam Industrial Ethernet Network</a> · <a href="Week_11_qos-dalam-industrial-network.html">QoS dalam Industrial Network</a> · <a href="Week_12_network-segmentation-pada-jaringan-industri.html">Network Segmentation pada Jaringan Industri</a></p>
+   <h3>PoE Switch: Data dan Daya dalam Satu Kabel</h3>
+   <p>Power over Ethernet menghilangkan kebutuhan kabel daya terpisah untuk perangkat edge: kamera CCTV, access point, sensor, telepon VoIP. Scodeno menawarkan switch PoE industrial di kedua kategori — unmanaged dan managed — dengan fitur yang tidak dimiliki switch PoE komersial:</p>
+   <ul>
+   <li><strong>PoE Watchdog</strong>: mendeteksi perangkat hang dan auto-restart — tanpa intervensi manusia</li>
+   <li><strong>VIP Power Port</strong>: prioritas daya ke port kritikal saat total budget habis</li>
+   <li><strong>Budget hingga 240W</strong>, mendukung 802.3af/at</li>
+   <li><strong>DIP switch dengan triple combo</strong>: Port Isolation + QoS + PoE Watchdog — semua dalam satu switch unmanaged</li>
+   </ul>
+   <p>Baca lebih dalam: <a href="Week_07_industrial-switch-dengan-poe-kapan-dibutuhkan.html">Industrial Switch dengan PoE: Kapan Dibutuhkan?</a></p>
+   <hr>
+   <h2>Fitur yang Membedakan Scodeno</h2>
+   <p>Setelah membaca spesifikasi di atas, pertanyaan logisnya: apa yang benar-benar membedakan Scodeno dari switch industrial lainnya? Jawabannya ada di tiga area:</p>
+   <h3>1. DIP Switch: Filosofi "Kendali Tanpa Kompleksitas"</h3>
+   <p>DIP switch adalah jawaban Scodeno untuk pertanyaan yang tidak ditanyakan vendor lain: <em>bagaimana jika engineer panel kontrol butuh isolasi port, tapi tidak punya akses ke laptop, tidak punya IP address, dan tidak bisa konfigurasi software?</em></p>
+   <p>DIP switch menghadirkan fitur managed yang paling esensial — isolasi, VLAN, QoS — melalui sakelar fisik. Tanpa software. Tanpa IP. Tanpa engineer jaringan. Ini adalah jembatan antara "terlalu sederhana" (unmanaged biasa) dan "terlalu kompleks" (managed penuh).</p>
+   <p>Fitur ini tersedia di seri XPTN-9000 unmanaged — dan tidak ditemukan di switch unmanaged dari vendor lain.</p>
+   <h3>2. Desain Fanless: Keandalan Tanpa Komponen Bergerak</h3>
+   <p>Semua switch industrial Scodeno menggunakan desain fanless. Tidak ada kipas. Tidak ada komponen bergerak. Panas dibuang melalui casing aluminium bergelombang yang berfungsi sebagai heat sink raksasa — mengandalkan konduksi, konveksi alami, dan radiasi termal.</p>
+   <p>Mengapa ini penting? Kipas adalah komponen elektromekanis dengan MTBF paling rendah di switch manapun. Di lingkungan berdebu, kipas menyedot partikel ke dalam sasis. Di suhu ekstrem, pelumas bearing mengental atau menguap. Di pabrik 24/7, satu kipas mati bisa menghentikan produksi.</p>
+   <p>Tanpa kipas, tidak ada yang aus. Tidak ada yang disedot. Tidak ada yang perlu diganti. Operating temperature: -40°C hingga 75°C.</p>
+   <p>Baca lebih dalam: <a href="Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html">Kenapa Industrial Switch Menggunakan Desain Fanless</a></p>
+   <h3>3. Industrial-Grade, Tanpa Kompromi</h3>
+   <p>Setiap switch Scodeno — termasuk seri unmanaged termurah — hadir dengan:</p>
+   <ul>
+   <li><strong>Dual DC power input</strong> — redundansi daya dari dua sumber terpisah</li>
+   <li><strong>IP40 protection</strong> — terlindung dari debu dan partikel</li>
+   <li><strong>Terminal block</strong>, bukan DC jack — koneksi daya yang tidak longgar karena getaran</li>
+   <li><strong>DIN-rail mounting</strong> — standar panel kontrol industri</li>
+   <li><strong>Conformal coating</strong> pada PCB — perlindungan anti-korosi di lingkungan lembap</li>
+   </ul>
+   <p>Baca lebih dalam: <a href="Week_02_apa-itu-din-rail-industrial-switch-dan-mengapa-banyak-dipakai-di-pabrik.html">Apa Itu DIN-Rail Industrial Switch</a> · <a href="Week_03_ip-rating-pada-industrial-ethernet-switch-apa-artinya.html">IP Rating pada Industrial Ethernet Switch</a> · <a href="Week_09_industrial-switch-vs-commercial-switch-apa-perbedaannya.html">Industrial Switch vs Commercial Switch</a></p>
+   <hr>
+   <h2>Bagaimana Memilih Scodeno Switch yang Tepat?</h2>
+   <p>Memilih switch bukan tentang mencari yang termurah, juga bukan tentang mencari yang paling banyak fitur. Ini tentang mencocokkan kebutuhan operasional dengan spesifikasi — dan tidak melewatkan fitur yang akan Anda sesali saat jaringan bermasalah pukul 2 pagi.</p>
+   <p>Berikut kerangka keputusan praktis:</p>
+   <div class="table-wrap"><table>
+   <thead>
+   <tr><th>Pertanyaan</th><th>Jika "Ya"</th><th>Jika "Tidak"</th></tr>
+   </thead>
+   <tbody>
+   <tr><td>Jaringan punya &gt;1 jenis trafik (kontrol + video + SCADA)?</td><td>Butuh VLAN → <strong>Managed</strong> atau <strong>DIP Switch</strong></td><td>Unmanaged cukup</td></tr>
+   <tr><td>Ada kamera/AP/sensor tanpa akses listrik?</td><td><strong>PoE Switch</strong></td><td>Non-PoE</td></tr>
+   <tr><td>Jarak antar perangkat &gt;100m?</td><td><strong>Switch dengan SFP port</strong> + fiber</td><td>RJ45 cukup</td></tr>
+   <tr><td>Butuh failover &lt;1 detik jika kabel putus?</td><td><strong>Managed</strong> dengan ring redundancy</td><td>—</td></tr>
+   <tr><td>Jaringan akan berkembang dalam 2-3 tahun?</td><td><strong>Managed</strong> dari awal</td><td>Unmanaged bisa</td></tr>
+   <tr><td>Butuh monitoring real-time (SNMP/syslog)?</td><td><strong>Managed</strong></td><td>Unmanaged</td></tr>
+   <tr><td>Anggaran terbatas, tapi butuh isolasi port/VLAN/QoS?</td><td><strong>DIP Switch Scodeno</strong> — <em>sweet spot</em></td><td>—</td></tr>
+   </tbody>
+   </table></div>
+   <p>Baca lebih dalam: <a href="Week_08_fitur-penting-industrial-ethernet-switch-yang-harus-anda-ketahui.html">11 Fitur Penting Industrial Ethernet Switch yang Harus Anda Ketahui</a> · <a href="Week_04_industrial-gigabit-switch-vs-fast-ethernet-switch.html">Industrial Gigabit Switch vs Fast Ethernet Switch</a> · <a href="Week_05_industrial-switch-dengan-sfp-port-fungsi-dan-kegunaannya.html">Industrial Switch dengan SFP Port</a></p>
+   <hr>
+   <h2>Panduan Mendalam per Topik</h2>
+   <p>Setiap aspek teknis industrial switch memiliki nuansa yang tidak bisa dijelaskan dalam satu paragraf. Untuk itu, kami telah menyusun seri artikel mendalam:</p>
+   <div class="table-wrap"><table>
+   <thead>
+   <tr><th>Topik</th><th>Artikel</th><th>Waktu Baca</th></tr>
+   </thead>
+   <tbody>
+   <tr><td>Desain Fanless</td><td><a href="Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html">Kenapa Industrial Switch Menggunakan Desain Fanless</a></td><td>10 menit</td></tr>
+   <tr><td>DIN-Rail Mounting</td><td><a href="Week_02_apa-itu-din-rail-industrial-switch-dan-mengapa-banyak-dipakai-di-pabrik.html">Apa Itu DIN-Rail Industrial Switch</a></td><td>12 menit</td></tr>
+   <tr><td>IP Rating</td><td><a href="Week_03_ip-rating-pada-industrial-ethernet-switch-apa-artinya.html">IP Rating pada Industrial Ethernet Switch</a></td><td>8 menit</td></tr>
+   <tr><td>Gigabit vs Fast</td><td><a href="Week_04_industrial-gigabit-switch-vs-fast-ethernet-switch.html">Industrial Gigabit Switch vs Fast Ethernet Switch</a></td><td>7 menit</td></tr>
+   <tr><td>SFP &amp; Fiber</td><td><a href="Week_05_industrial-switch-dengan-sfp-port-fungsi-dan-kegunaannya.html">Industrial Switch dengan SFP Port</a></td><td>7 menit</td></tr>
+   <tr><td>Managed vs Unmanaged</td><td><a href="Week_06_managed-vs-unmanaged-industrial-switch-mana-yang-tepat.html">Managed vs Unmanaged Industrial Switch</a></td><td>8 menit</td></tr>
+   <tr><td>PoE</td><td><a href="Week_07_industrial-switch-dengan-poe-kapan-dibutuhkan.html">Industrial Switch dengan PoE: Kapan Dibutuhkan?</a></td><td>7 menit</td></tr>
+   <tr><td>Buyer's Guide</td><td><a href="Week_08_fitur-penting-industrial-ethernet-switch-yang-harus-anda-ketahui.html">11 Fitur Penting Industrial Ethernet Switch</a></td><td>14 menit</td></tr>
+   <tr><td>Industrial vs Commercial</td><td><a href="Week_09_industrial-switch-vs-commercial-switch-apa-perbedaannya.html">Industrial Switch vs Commercial Switch</a></td><td>7 menit</td></tr>
+   <tr><td>VLAN</td><td><a href="Week_10_vlan-dalam-industrial-ethernet-network.html">VLAN dalam Industrial Ethernet Network</a></td><td>7 menit</td></tr>
+   <tr><td>QoS</td><td><a href="Week_11_qos-dalam-industrial-network.html">QoS dalam Industrial Network</a></td><td>8 menit</td></tr>
+   <tr><td>Network Segmentation</td><td><a href="Week_12_network-segmentation-pada-jaringan-industri.html">Network Segmentation pada Jaringan Industri</a></td><td>7 menit</td></tr>
+   <tr><td>Monitoring</td><td><a href="Week_14_industrial-network-monitoring-system-memantau-jaringan-ot-tanpa-henti.html">Industrial Network Monitoring System</a></td><td>10 menit</td></tr>
+   </tbody>
+   </table></div>
+   <hr>
+   <h2>Kesimpulan</h2>
+   <p><a href="../">Scodeno switch</a> bukan sekadar perangkat jaringan. Ini adalah hasil dari filosofi rekayasa yang memahami satu hal sederhana: di lantai pabrik, di gardu listrik, di tambang bawah tanah — <em>downtime bukan opsi</em>.</p>
+   <p>Dari switch unmanaged dengan DIP switch untuk isolasi port, hingga managed switch Layer 2+ dengan ring redundancy dan SNMP monitoring — Scodeno menyediakan spektrum lengkap untuk setiap skala dan anggaran.</p>
+   <p>Perbedaan mendasarnya bukan pada jumlah port atau kecepatan switching — itu bisa ditiru. Melainkan pada keputusan desain yang tidak terlihat: casing aluminium sebagai heat sink, terminal block yang tidak longgar, dual power input yang memastikan switch tetap hidup saat satu sumber mati, dan DIP switch yang memberi kendali tanpa kompleksitas.</p>
+   <p>Untuk memulai: tentukan kebutuhan jaringan Anda menggunakan kerangka keputusan di atas, lalu jelajahi seri artikel teknis untuk pendalaman. Tim <a href="../">Scodeno Indonesia</a> siap membantu dari pemilihan model hingga dukungan teknis di lapangan.</p>
+   <hr>
+   <p><strong>Sumber:</strong></p>
+   <ol>
+   <li>Spurgeon, Charles E. & Zimmerman, Joann. *Ethernet Switches: An Introduction to Network Design with Switches*. O'Reilly Media, 2013.</li>
+   <li>Scodeno Technology Co., Ltd. XPTN-9000 Series Industrial Ethernet Switches — Product Specifications.</li>
+   <li>Lowe, Doug. *Networking for Dummies*, 11th Edition. John Wiley & Sons, 2016.</li>
+   </ol>
+   </article>
+   <nav class="article-nav">
+    <div class="article-nav-inner">
+        <div></div>
+        <a href="Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html" class="next"><span><span class="nav-label">Next</span><span class="nav-title">Kenapa Industrial Switch Menggunakan Desain Fanless</span></span><span class="nav-arrow">→</span></a>
+    </div>
+    <div class="article-nav-back">
+      <a href="../#articles">← Kembali ke Semua Artikel</a>
+    </div>
+   </nav>
+   <section class="related-section">
+    <div class="related-inner">
+      <h2>Artikel Terkait</h2>
+      <div class="related-grid">
+        <a href="Week_06_managed-vs-unmanaged-industrial-switch-mana-yang-tepat.html" class="related-card"><span class="tag">Selection Guide</span><h3>Managed vs Unmanaged Industrial Switch: Mana yang Tepat?</h3></a>
+        <a href="Week_08_fitur-penting-industrial-ethernet-switch-yang-harus-anda-ketahui.html" class="related-card"><span class="tag">Fundamental</span><h3>11 Fitur Penting Industrial Ethernet Switch</h3></a>
+        <a href="Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html" class="related-card"><span class="tag">Fundamental</span><h3>Kenapa Industrial Switch Menggunakan Desain Fanless</h3></a>
+        <a href="Week_09_industrial-switch-vs-commercial-switch-apa-perbedaannya.html" class="related-card"><span class="tag">Technology</span><h3>Industrial Switch vs Commercial Switch</h3></a>
+      </div>
+    </div>
+   </section>
+   <footer class="footer">
+    <div class="footer-inner">
+      <span>&copy; 2024 Scodeno Indonesia</span>
+      <span>Didistribusikan oleh <a href="../">PT Konexindo Unitama</a></span>
+    </div>
+   </footer>
+   <script>
+   let searchIndex=[];
+   searchIndex=[{"title": "Scodeno Switch: Panduan Lengkap Industrial Ethernet Switch untuk Jaringan Industri", "url": "articles/Week_00_scodeno-switch-panduan-lengkap.html", "snippet": "Satu switch. Ratusan perangkat. Ribuan jam operasi tanpa henti.", "category": "Artikel", "tag": "Selection Guide"}, {"title": "Kenapa Industrial Switch Menggunakan Desain Fanless", "url": "articles/Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html", "snippet": "Di balik keandalan jaringan otomasi pabrik, sistem transportasi cerdas, dan infrastruktur energi, terdapat satu komponen", "category": "Artikel", "tag": "Fundamental"}, {"title": "Apa Itu DIN-Rail Industrial Switch dan Mengapa Banyak Dipakai di Pabrik", "url": "articles/Week_02_apa-itu-din-rail-industrial-switch-dan-mengapa-banyak-dipakai-di-pabrik.html", "snippet": "Di era Industri 4.0, konektivitas yang andal di lantai produksi bukan lagi nilai tambah, melainkan kebutuhan mutlak. Set", "category": "Artikel", "tag": "Fundamental"}, {"title": "IP Rating pada Industrial Ethernet Switch — Apa Artinya?", "url": "articles/Week_03_ip-rating-pada-industrial-ethernet-switch-apa-artinya.html", "snippet": "Di lantai pabrik, segalanya berbeda. Udara tidak sejuk seperti di ruang server berpendingin. Di sana, debu beterbangan d", "category": "Artikel", "tag": "Fundamental"}, {"title": "Industrial Gigabit Switch vs Fast Ethernet Switch: Mana yang Dibutuhkan Jaringan Anda?", "url": "articles/Week_04_industrial-gigabit-switch-vs-fast-ethernet-switch.html", "snippet": "Sepuluh kali lebih cepat.", "category": "Artikel", "tag": "Selection Guide"}, {"title": "Industrial Switch dengan SFP Port: Fungsi dan Kegunaannya", "url": "articles/Week_05_industrial-switch-dengan-sfp-port-fungsi-dan-kegunaannya.html", "snippet": "Port SFP.", "category": "Artikel", "tag": "Technology"}, {"title": "Managed vs Unmanaged Industrial Switch: Mana yang Tepat?", "url": "articles/Week_06_managed-vs-unmanaged-industrial-switch-mana-yang-tepat.html", "snip... [truncated]
+   function toggleSearch(){
+    const panel=document.getElementById('searchPanel');
+    const overlay=document.getElementById('searchOverlay');
+    const input=document.getElementById('searchInput');
+    const active=panel.classList.contains('active');
+    if(active){closeSearch()}else{
+      panel.classList.add('active');
+      overlay.classList.add('active');
+      setTimeout(()=>input.focus(),100);
+      doSearch();
+    }
+   }
+   function closeSearch(){
+    document.getElementById('searchPanel').classList.remove('active');
+    document.getElementById('searchOverlay').classList.remove('active');
+    document.getElementById('searchInput').value='';
+    document.getElementById('searchResults').innerHTML='';
+   }
+   function doSearch(){
+    const q=document.getElementById('searchInput').value.toLowerCase().trim();
+    const container=document.getElementById('searchResults');
+    if(!q){showDefaultResults(container);return}
+    const results=searchIndex.filter(item=>{
+      const haystack=(item.title+' '+item.snippet+' '+item.tag+' '+item.category).toLowerCase();
+      return haystack.includes(q);
+    }).slice(0,12);
+    if(results.length===0){
+      container.innerHTML='<div class="search-empty">Tidak ditemukan. Coba kata kunci lain.</div>';
+      return
+    }
+    container.innerHTML=results.map(r=>{
+      const title=highlight(r.title,q);
+      const snip=r.snippet.substring(0,100);
+      const catClass=r.category==='Artikel'?'cat-artikel':'cat-produk';
+      return `<a href="${r.url}" class="search-result">
+        <div class="search-result-title">${title}</div>
+        <div class="search-result-snippet">${snip}</div>
+        <div class="search-result-meta"><span class="search-result-cat ${catClass}">${r.category}</span><span style="font-size:0.625rem;color:var(--gray-500)">${r.tag}</span></div>
+      </a>`;
+    }).join('');
+   }
+   function showDefaultResults(container){
+    const shuffled=searchIndex.sort(()=>Math.random()-0.5).slice(0,6);
+    container.innerHTML=shuffled.map(r=>{
+      const catClass=r.category==='Artikel'?'cat-artikel':'cat-produk';
+      return `<a href="${r.url}" class="search-result">
+        <div class="search-result-title">${r.title}</div>
+        <div class="search-result-snippet">${r.snippet.substring(0,100)}</div>
+        <div class="search-result-meta"><span class="search-result-cat ${catClass}">${r.category}</span><span style="font-size:0.625rem;color:var(--gray-500)">${r.tag}</span></div>
+      </a>`;
+    }).join('');
+   }
+   function highlight(text,q){
+    const regex=new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`,'gi');
+    return text.replace(regex,'<mark>$1</mark>');
+   }
+   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSearch()});
+   </script>
+   <script>(function(){var h=window.location.hostname;var links=document.querySelectorAll('.lang-toggle a');links.forEach(function(a){a.classList.remove('active-lang');if(h.includes('en.')&&a.href.includes('en.scodeno'))a.classList.add('active-lang');if(!h.includes('en.')&&a.href.includes('scodenoindonesia.com')&&!a.href.includes('en.scodeno'))a.classList.add('active-lang')})})()</script>
+</body>
+   </html>

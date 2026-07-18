@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Industrial Network Scalability — Scodeno Indonesia</title>
+<meta name="description" content="Strategi industrial network scalability: hierarchical design, switch stacking, modular vs fixed, dan hierarki produk Scodeno dari access hingga core.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#0068B4;--blue-light:#0095E0;--blue-dark:#004A82;--blue-bg:#E7F3FB;--blue-glow:rgba(0,104,180,0.20);--black:#0A0E14;--near-black:#141A22;--dark-card:#1A202A;--white:#FFFFFF;--off-white:#F5F7FA;--gray-50:#F9FAFB;--gray-100:#E8ECF0;--gray-200:#C8CDD4;--gray-300:#9BA2AB;--gray-400:#6B7280;--gray-500:#4B5563;--text-dark:#1A1A1A;--text-muted:#9BA2AB;--content-max:780px}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--text-dark);background:var(--white);line-height:1.7}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,20,0.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.06)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:64px}
+.nav-left{display:flex;align-items:center;gap:32px}.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-img{height:28px;width:auto}.nav-logo-text{font-weight:800;font-size:1.0625rem;color:var(--white)}
+.nav-logo-indonesia{color:var(--blue-light);margin-left:2px}.nav-links{display:flex;align-items:center;gap:4px;list-style:none}
+.nav-links a{color:var(--gray-300);text-decoration:none;font-size:0.8125rem;font-weight:500;padding:8px 12px;border-radius:4px}
+.nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.06)}.nav-dropdown{position:relative}
+.nav-dropdown>a::after{content:'▾';font-size:0.625rem;margin-left:2px}
+.nav-dropdown-menu{position:absolute;top:100%;left:0;min-width:200px;background:var(--dark-card);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:6px 0;opacity:0;visibility:hidden;transform:translateY(4px);transition:all 0.18s ease;box-shadow:0 12px 32px rgba(0,0,0,0.35)}
+.nav-dropdown:hover .nav-dropdown-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.nav-dropdown-menu a{display:block;padding:8px 16px!important;font-size:0.8125rem!important;color:var(--gray-300)!important;border-radius:0!important}
+.nav-dropdown-menu a:hover{background:rgba(255,255,255,0.06)!important;color:var(--white)!important}
+.nav-cta{background:var(--blue);color:var(--white)!important;padding:8px 18px!important;border-radius:4px!important;font-weight:600!important}
+.article-header{background:var(--black);color:var(--white);padding:calc(64px + 64px) 24px 64px;position:relative;overflow:hidden}
+.article-header::before{content:'';position:absolute;top:-30%;right:-20%;width:500px;height:500px;background:radial-gradient(circle,var(--blue-glow) 0%,transparent 70%)}
+.article-header-inner{max-width:var(--content-max);margin:0 auto;position:relative;z-index:1}
+.article-tag{display:inline-block;background:rgba(0,149,224,0.15);color:var(--blue-light);font-size:0.75rem;font-weight:600;padding:4px 12px;border-radius:2px;margin-bottom:16px;text-transform:uppercase;letter-spacing:0.06em}
+.article-header h1{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:800;line-height:1.15;letter-spacing:-0.02em;margin-bottom:16px}.lang-toggle{display:inline-flex;align-items:center;gap:6px;margin-top:12px}
+.lang-toggle a{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,0.08);color:var(--gray-300);text-decoration:none;font-size:0.75rem;font-weight:500;padding:4px 10px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);transition:all 0.15s}
+.lang-toggle a:hover{background:rgba(255,255,255,0.14);color:var(--white);border-color:rgba(255,255,255,0.2)}
+.lang-toggle .active-lang{background:var(--blue);color:var(--white);border-color:var(--blue)}
+.article-meta{color:var(--text-muted);font-size:0.875rem}.article-body{max-width:var(--content-max);margin:0 auto;padding:64px 24px}
+.article-body h2{font-size:1.5rem;font-weight:700;color:var(--near-black);margin:48px 0 16px}
+.article-body h3{font-size:1.25rem;font-weight:600;color:var(--near-black);margin:32px 0 12px}
+.article-body p{color:var(--gray-500);font-size:1.0625rem;margin-bottom:20px;line-height:1.8}
+.article-body ul,.article-body ol{color:var(--gray-500);font-size:1.0625rem;margin-bottom:20px;padding-left:24px}
+.article-body li{margin-bottom:8px}.article-body strong{color:var(--text-dark);font-weight:600}
+.article-body a{color:var(--blue);text-decoration:underline}.article-body hr{border:none;border-top:1px solid var(--gray-100);margin:48px 0}
+.related-section{background:var(--off-white);padding:64px 24px}.related-inner{max-width:var(--content-max);margin:0 auto}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.related-card{background:var(--white);border:1px solid var(--gray-100);border-radius:4px;padding:20px;text-decoration:none}
+.related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.06)}.related-card h3{font-size:0.9375rem;font-weight:600;color:var(--text-dark)}
+.related-card .tag{font-size:0.6875rem;color:var(--blue);font-weight:600;text-transform:uppercase}
+.article-nav{max-width:var(--content-max);margin:0 auto;padding:0 24px}
+.article-nav-inner{display:flex;justify-content:space-between;padding:32px 0;border-top:1px solid var(--gray-100)}
+.article-nav-inner a{display:flex;align-items:center;gap:8px;color:var(--gray-500);text-decoration:none;font-size:0.875rem;max-width:45%}
+.article-nav-inner a:hover{color:var(--blue)}.article-nav-inner .nav-label{color:var(--gray-400);font-size:0.6875rem;display:block;text-transform:uppercase;margin-bottom:2px}
+.article-nav-inner .nav-title{color:var(--text-dark);font-weight:600}.article-nav-back{text-align:center;padding-bottom:40px}
+.article-nav-back a{color:var(--blue);text-decoration:none;font-weight:600}.footer{background:var(--near-black);color:var(--text-muted);padding:48px 24px 32px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;font-size:0.8125rem}
+.footer-inner a{color:var(--blue-light);text-decoration:none}@media(max-width:768px){.nav-links{display:none}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><div class="nav-left"><a href="../" class="nav-logo"><img src="../logo.png" alt="Scodeno" class="nav-logo-img"><span class="nav-logo-text">Scodeno<span class="nav-logo-indonesia">Indonesia</span></span></a><ul class="nav-links"><li class="nav-dropdown"><a href="../#products">Products</a><div class="nav-dropdown-menu"><span class="sub-label">Industrial Switch</span><a href="../#products">PoE</a><a href="../#products">Non-PoE</a><span class="sub-label">Commercial Switch</span><a href="../#products">PoE</a><a href="../#products">Non-PoE</a><a href="../#products">Data Center Switch</a><span class="sub-label">SFP Modules</span><a href="../#products">Industrial</a><a href="../#products">Commercial</a><a href="../#products">IoT Smart Box</a></div></li><li class="nav-dropdown"><a href="../#articles">Articles</a><div class="nav-dropdown-menu"><a href="../#articles">Fundamental</a><a href="../#articles">Selection Guide</a><a href="../#articles">Technology</a><a href="../#articles">Deployment</a><a href="../#articles">Network Design</a></div></li><li><a href="../#about">About</a></li></ul></div><a href="../#contact" class="nav-cta">Request Quote</a></div></nav>
+<header class="article-header"><div class="article-header-inner"><span class="article-tag">Network Design</span><h1>Industrial Network Scalability</h1><div class="article-meta"><span>5 min read</span></div></div><div class="lang-toggle"><a href="https://scodenoindonesia.com/articles/Week_21_industrial-network-scalability.html" class="active-lang">🇮🇩 ID</a><a href="https://en.scodenoindonesia.com/articles/Week_21_industrial-network-scalability.html">🇬🇧 EN</a></div></header>
+<article class="article-body">
+<p>Dimulai dari 5 switch. Setahun kemudian: 12. Dua tahun: 28 — plus tiga switch yang entah siapa yang pasang, kapan dipasang, dan terhubung ke mana.</p>
+<p>Ini cerita umum di pabrik yang berkembang. Switch ditambahkan secara ad-hoc. Kabel ditarik seperlunya. Tidak ada dokumentasi. Tidak ada hierarki. Akhirnya: broadcast storm misterius setiap Selasa pagi, latency spike yang tidak bisa direproduksi, dan teknisi yang sudah pasrah.</p>
+<p>Spurgeon dan Zimmerman (2013) menyebutnya "fur ball" design — jaringan yang tumbuh tanpa rencana, menggumpal seperti bola bulu kucing.</p>
+<p><strong>Industrial network scalability</strong> adalah antidotenya. Bukan sekadar menambah port — tapi mendesain jaringan yang tumbuh tanpa runtuh.</p>
+<hr>
+<h2>Hierarki: Fondasi Skalabilitas</h2>
+<p>Jaringan yang scalable tidak tumbuh secara horizontal — switch ke switch ke switch. Ia tumbuh secara vertikal — dalam layer.</p>
+<p>Desain hierarkis tiga layer adalah arsitektur paling terbukti untuk jaringan skala besar: <strong>Core</strong>, <strong>Distribution</strong>, dan <strong>Access</strong> (Spurgeon &amp; Zimmerman, 2013).</p>
+<p><strong>Access layer:</strong> switch yang terhubung langsung ke perangkat akhir — PLC, HMI, IP camera, sensor. Switch di layer ini biasanya port-count rendah (4-16 port), dipasang dekat perangkat, dalam enclosure kecil.</p>
+<p><strong>Distribution layer:</strong> switch yang mengagregasi traffic dari access switch. Terletak di panel utama atau ruang kontrol. Port-count lebih tinggi (16-24 port), bandwidth lebih besar, dan — yang paling penting — menjalankan protokol redundancy.</p>
+<p><strong>Core layer:</strong> switch backbone yang menghubungkan distribution switch antar gedung atau antar area. Bandwidth tertinggi. Port fiber dominan. Redundansi penuh.</p>
+<p>Setiap layer punya peran spesifik. Pemisahan peran ini membuat setiap layer bisa diskalakan secara independen.</p>
+<h2>Stacking: Satu Switch Logis, Banyak Switch Fisik</h2>
+<p>Switch stacking memungkinkan beberapa switch fisik dikelola sebagai satu switch logis. Empat switch 24-port di-stack menjadi satu switch 96-port — dengan satu IP manajemen, satu konfigurasi, satu control plane.</p>
+<p><strong>Port density tanpa kompleksitas.</strong> Tambah port = tambah switch ke stack. Tidak perlu konfigurasi tambahan. Tidak perlu spanning tree antar switch dalam stack.</p>
+<p><strong>Failover otomatis.</strong> Satu switch dalam stack gagal — switch lain tetap beroperasi. Replacement switch bisa di-drop-in dan otomatis mengambil konfigurasi dari stack (Spurgeon &amp; Zimmerman, 2013).</p>
+<p><strong>Bandwidth backplane.</strong> Stacking cable menyediakan backplane antar switch dengan bandwidth jauh di atas uplink Ethernet biasa — hingga puluhan gigabit per detik.</p>
+<p>Keterbatasan: stacking bersifat vendor-proprietary. Tidak ada standar IEEE. Anda tidak bisa men-stack switch dari merek berbeda.</p>
+<h2>Modular vs Fixed: Dua Jalur Skalabilitas</h2>
+<p><strong>Fixed-configuration switch</strong> memiliki jumlah port tetap — 8, 16, 24, 48. Skalabilitas dicapai dengan stacking atau uplink ke distribution switch.</p>
+<p><strong>Modular switch</strong> — juga disebut chassis-based — memiliki slot yang bisa diisi line card. Butuh lebih banyak port fiber? Pasang line card SFP+. Butuh 10G uplink? Tukar line card. Skalabilitas modular tidak terbatas pada jumlah port — tapi juga tipe port dan kecepatan.</p>
+<p>Trade-off: modular switch lebih mahal di awal, tapi lebih murah dalam jangka panjang untuk jaringan yang tumbuh cepat. Fixed switch lebih murah di awal, tapi setiap ekspansi berarti beli switch baru.</p>
+<h2>Produk Scodeno dalam Hierarki</h2>
+<p><strong>Scalable industrial network</strong> membutuhkan switch yang tepat di setiap layer — dari access hingga core. Scodeno menyediakan hierarki produk yang jelas untuk setiap tingkatan:</p>
+<p><strong>Access layer</strong>: XPTN-9000-45 series (4-5 port, unmanaged, DIN-rail) dan XPTN-9000-77 series (8-16 port, managed, DIN-rail). Untuk koneksi langsung ke PLC, sensor, dan perangkat tepi.</p>
+<p><strong>Distribution/Aggregation</strong>: Industrial Aggregation Switch series dengan 16-24 port Gigabit, SFP uplink, dan dukungan penuh ERPS/RSTP. Switch ini menjadi titik agregasi untuk access switch di satu zona produksi.</p>
+<p><strong>Core/Backbone</strong>: 10G Switch series dan 48-Port 10G Uplink switches untuk backbone antar gedung. Port fiber dominan. Redundansi penuh.</p>
+<p>Dengan hierarki ini, pabrik bisa mulai dari 5 switch access dan 1 distribution — lalu berkembang ke 50 access switch dengan 4 distribution dan 2 core — tanpa arsitektur yang berubah.</p>
+<h2>Risiko Pertumbuhan Tanpa Rencana</h2>
+<p>Apa yang terjadi jika jaringan tumbuh tanpa hierarki?</p>
+<p><strong>Diameter berlebihan.</strong> Standar 802.1D merekomendasikan maksimum tujuh hop antar dua stasiun. Setiap switch yang ditambahkan secara ad-hoc menambah hop.</p>
+<p><strong>Broadcast domain raksasa.</strong> Tanpa distribusi yang memisahkan layer, seluruh jaringan menjadi satu broadcast domain. ARP broadcast dari satu PLC mencapai semua switch.</p>
+<p><strong>Bottleneck tersembunyi.</strong> Switch access yang di-daisy-chain lima tingkat menciptakan bottleneck di link antar switch.</p>
+<p><strong>Konfigurasi tidak konsisten.</strong> VLAN yang berbeda di switch berbeda. STP priority yang tidak direncanakan. Root bridge bergeser setiap kali switch reboot.</p>
+<h2>Kesimpulan</h2>
+<p><strong>Industrial network scalability</strong> bukan tentang switch terbesar atau termahal. Ia tentang desain.</p>
+<p>Mulai dengan hierarki tiga layer. Pisahkan access, distribution, dan core. Gunakan stacking untuk ekspansi port tanpa menambah hop. Pilih switch yang sesuai dengan layer-nya.</p>
+<p>Dan yang paling penting: rencanakan pertumbuhan sebelum pertumbuhan itu terjadi. Karena memperbaiki fur-ball lebih mahal daripada mendesain dengan benar sejak awal.</p>
+<p>Untuk pembahasan lebih dalam, baca panduan kami tentang <a href="/industrial-network-architecture">skalabilitas jaringan industri</a>.</p>
+<hr>
+<h3>Sumber</h3>
+<ol>
+<li>Spurgeon, Charles E. &amp; Zimmerman, Joann. <em>Ethernet Switches: An Introduction to Network Design with Switches</em>. O'Reilly Media, 2013.</li>
+<li>Batra, Neera &amp; Goyal, Sonali. <em>IoT Fundamentals with a Practical Approach</em>. 2022.</li>
+</ol>
+</article>
+<nav class="article-nav"><div class="article-nav-inner"><a href="Week_20_topologi-ring-vs-star-dalam-jaringan-industri.html"><span class="nav-label">← Previous</span><span class="nav-title">Topologi Ring vs Star dalam Jaringan Industri</span></a><a href="Week_22_industrial-network-security-basics.html"><span class="nav-label">Next →</span><span class="nav-title">Industrial Network Security Basics</span></a></div></nav>
+<div class="article-nav-back"><a href="../#articles">← Back to All Articles</a></div>
+<section class="related-section"><div class="related-inner"><h2 style="font-size:1.5rem;font-weight:700;color:var(--near-black);margin-bottom:32px">Related Articles</h2><div class="related-grid">
+<a href="Week_20_topologi-ring-vs-star-dalam-jaringan-industri.html" class="related-card"><span class="tag">Network Design</span><h3>Topologi Ring vs Star dalam Jaringan Industri</h3></a>
+<a href="Week_19_ring-redundancy-vs-star-redundancy.html" class="related-card"><span class="tag">Network Design</span><h3>Ring Redundancy vs Star Redundancy</h3></a>
+<a href="Week_12_peran-switch-industrial-dalam-jaringan-redundan.html" class="related-card"><span class="tag">Network Design</span><h3>Peran Switch Industrial dalam Jaringan Redundan</h3></a>
+<a href="Week_06_managed-vs-unmanaged-industrial-switch-kapan-harus-upgrade.html" class="related-card"><span class="tag">Selection Guide</span><h3>Managed vs Unmanaged Industrial Switch</h3></a>
+</div></div></section>
+<footer class="footer"><div class="footer-inner"><span>&copy; 2025 Scodeno Indonesia. All rights reserved.</span><a href="../#contact">Contact</a></div></footer>
+<script>(function(){var h=window.location.hostname;var links=document.querySelectorAll('.lang-toggle a');links.forEach(function(a){a.classList.remove('active-lang');if(h.includes('en.')&&a.href.includes('en.scodeno'))a.classList.add('active-lang');if(!h.includes('en.')&&a.href.includes('scodenoindonesia.com')&&!a.href.includes('en.scodeno'))a.classList.add('active-lang')})})()</script>
+</body>
+</html>

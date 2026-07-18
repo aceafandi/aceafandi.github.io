@@ -1,337 +1,472 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Industrial Switch dengan SFP Port: Fungsi dan Kegunaannya — Scodeno Indonesia</title>
-<meta name="description" content="Industrial Switch dengan SFP Port: Fungsi dan Kegunaannya">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root {
---blue: #0068B4; --blue-light: #0095E0; --blue-dark: #004A82; --blue-bg: #E7F3FB;
---blue-glow: rgba(0,104,180,0.20);
---black: #0A0E14; --near-black: #141A22; --dark-card: #1A202A;
---white: #FFFFFF; --off-white: #F5F7FA; --gray-50: #F9FAFB; --gray-100: #E8ECF0;
---gray-200: #C8CDD4; --gray-300: #9BA2AB; --gray-400: #6B7280; --gray-500: #4B5563;
---text-dark: #1A1A1A; --text-light: #E2E8F0; --text-muted: #9BA2AB;
---content-max: 780px; --radius-sm: 2px; --radius-md: 4px;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-font-family: 'Inter', system-ui, -apple-system, sans-serif;
-color: var(--text-dark); background: var(--white);
-line-height: 1.7; -webkit-font-smoothing: antialiased;
-}
-    /* ===== NAVIGATION ===== */
-.nav {
-position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-background: rgba(10,14,20,0.94); backdrop-filter: blur(12px);
-border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-.nav-inner {
-max-width: 1200px; margin: 0 auto;
-display: flex; align-items: center; justify-content: space-between;
-padding: 0 24px; height: 64px;
-}
-.nav-left { display: flex; align-items: center; gap: 32px; }
-.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.nav-logo-img { height: 28px; width: auto; }
-.nav-logo-text { font-weight: 800; font-size: 1.0625rem; color: var(--white); letter-spacing: -0.01em; white-space: nowrap; }
-.nav-logo-indonesia { color: var(--blue-light); margin-left: 2px; }
-.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
-.nav-links a { color: var(--gray-300); text-decoration: none; font-size: 0.8125rem; font-weight: 500; padding: 8px 12px; border-radius: 4px; transition: all 0.15s; white-space: nowrap; }
-.nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
-    /* Dropdown */
-.nav-dropdown { position: relative; }
-.nav-dropdown > a { display: flex; align-items: center; gap: 4px; }
-.nav-dropdown > a::after { content: '▾'; font-size: 0.625rem; margin-left: 2px; }
-.nav-dropdown-menu {
-position: absolute; top: 100%; left: 0; min-width: 200px;
-background: var(--dark-card); border: 1px solid rgba(255,255,255,0.08);
-border-radius: 6px; padding: 6px 0; opacity: 0; visibility: hidden;
-transform: translateY(4px); transition: all 0.18s ease;
-box-shadow: 0 12px 32px rgba(0,0,0,0.35);
-}
-.nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-.nav-dropdown-menu a {
-display: block; padding: 8px 16px !important; font-size: 0.8125rem !important;
-color: var(--gray-300) !important; border-radius: 0 !important;
-}
-.nav-dropdown-menu a:hover { background: rgba(255,255,255,0.06) !important; color: var(--white) !important; }
-.nav-dropdown-menu .dropdown-label {
-font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.06em;
-color: var(--gray-400); padding: 6px 16px 2px; font-weight: 600;
-}
-    .nav-cta {
-background: var(--blue); color: var(--white) !important;
-padding: 8px 18px !important; border-radius: 4px !important;
-font-weight: 600 !important; font-size: 0.8125rem !important;
-}
-.nav-cta:hover { background: var(--blue-light) !important; }
-    /* ===== ARTICLE HEADER ===== */
-.article-header {
-background: var(--black); color: var(--white);
-padding: calc(64px + 64px) 24px 64px;
-position: relative; overflow: hidden;
-}
-.article-header::before {
-content: ''; position: absolute; top: -30%; right: -20%;
-width: 500px; height: 500px;
-background: radial-gradient(circle, var(--blue-glow) 0%, transparent 70%);
-pointer-events: none;
-}
-.article-header-inner { max-width: var(--content-max); margin: 0 auto; position: relative; z-index: 1; }
-.article-tag {
-display: inline-block; background: rgba(0,149,224,0.15); color: var(--blue-light);
-font-size: 0.75rem; font-weight: 600; padding: 4px 12px;
-border-radius: 2px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.06em;
-}
-.article-header h1 {
-font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800;
-line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px;
-}
-.article-header .article-meta { color: var(--text-muted); font-size: 0.875rem; display: flex; gap: 20px; }
-    /* ===== ARTICLE BODY ===== */
-.article-body {
-max-width: var(--content-max); margin: 0 auto;
-padding: 64px 24px;
-}
-.article-body h2 {
-font-size: 1.5rem; font-weight: 700; color: var(--near-black);
-margin: 48px 0 16px; letter-spacing: -0.01em;
-}
-.article-body h3 {
-font-size: 1.25rem; font-weight: 600; color: var(--near-black);
-margin: 32px 0 12px;
-}
-.article-body h4 {
-font-size: 1.0625rem; font-weight: 600; color: var(--gray-500);
-margin: 24px 0 8px;
-}
-.article-body p {
-color: var(--gray-500); font-size: 1.0625rem;
-margin-bottom: 20px; line-height: 1.8;
-}
-.article-body ul, .article-body ol {
-color: var(--gray-500); font-size: 1.0625rem;
-margin-bottom: 20px; padding-left: 24px;
-}
-.article-body li { margin-bottom: 8px; line-height: 1.7; }
-.article-body strong { color: var(--text-dark); font-weight: 600; }
-.article-body a { color: var(--blue); text-decoration: underline; }
-.article-body a:hover { color: var(--blue-light); }
-.article-body hr { border: none; border-top: 1px solid var(--gray-100); margin: 48px 0; }
-.article-body blockquote {
-border-left: 3px solid var(--blue); padding-left: 20px;
-margin: 24px 0; color: var(--gray-500); font-style: italic;
-}
-    /* ===== EXCEL-STYLE TABLE ===== */
-.table-wrap {
-overflow-x: auto; margin: 28px 0; border-radius: 6px;
-border: 1px solid var(--gray-100);
-box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.article-body table {
-width: 100%; border-collapse: collapse;
-font-size: 0.875rem; line-height: 1.5;
-min-width: 600px;
-}
-.article-body thead th {
-background: linear-gradient(180deg, #E8F0F8 0%, #D4E4F2 100%);
-color: var(--blue-dark); font-weight: 600; font-size: 0.8125rem;
-text-transform: uppercase; letter-spacing: 0.03em;
-padding: 12px 14px; text-align: left;
-border-bottom: 2px solid #B8D0E8;
-border-right: 1px solid #C8D8E8;
-white-space: nowrap; position: sticky; top: 0;
-}
-.article-body thead th:last-child { border-right: none; }
-.article-body tbody td {
-padding: 10px 14px; border-bottom: 1px solid var(--gray-100);
-border-right: 1px solid var(--gray-100); color: var(--gray-500);
-vertical-align: top;
-}
-.article-body tbody td:last-child { border-right: none; }
-.article-body tbody tr:nth-child(even) td {
-background: var(--gray-50);
-}
-.article-body tbody tr:hover td {
-background: var(--blue-bg);
-}
-.article-body tbody td:first-child {
-font-weight: 500; color: var(--text-dark);
-}
-    /* ===== RELATED ARTICLES ===== */
-.related-section {
-background: var(--off-white); padding: 64px 24px;
-}
-.related-inner { max-width: var(--content-max); margin: 0 auto; }
-.related-inner h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.01em; }
-.related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-.related-card {
-background: var(--white); border: 1px solid var(--gray-100);
-border-radius: var(--radius-md); padding: 20px; text-decoration: none;
-transition: box-shadow 0.2s;
-}
-.related-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
-.related-card h3 { font-size: 0.9375rem; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
-.related-card .tag { font-size: 0.6875rem; color: var(--blue); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
-    /* ===== FOOTER ===== */
-.footer {
-background: var(--near-black); color: var(--text-muted);
-padding: 48px 24px 32px; border-top: 1px solid rgba(255,255,255,0.06);
-}
-.footer-inner {
-max-width: 1200px; margin: 0 auto;
-display: flex; justify-content: space-between; align-items: center;
-font-size: 0.8125rem;
-}
-.footer-inner a { color: var(--blue-light); text-decoration: none; }
-.footer-inner a:hover { color: var(--white); }
-    @media (max-width: 768px) {
-.article-header { padding: calc(64px + 40px) 16px 40px; }
-.article-body { padding: 40px 16px; }
-.nav-links { display: none; }
-}
-</style>
-</head>
-<body>
-<nav class="nav">
-<div class="nav-inner">
-<div class="nav-left">
-<a href="../index.html" class="nav-logo">
-<img src="../logo.png" alt="Scodeno" class="nav-logo-img">
-<span class="nav-logo-text">Scodeno<span class="nav-logo-indonesia">Indonesia</span></span>
-</a>
-<ul class="nav-links">
-<li class="nav-dropdown">
-<a href="../index.html#products">Products</a>
-<div class="nav-dropdown-menu">
-<a href="../index.html#products">Unmanaged Switches</a>
-<a href="../index.html#products">Managed Switches</a>
-<a href="../index.html#products">PoE Switches</a>
-<a href="../index.html#products">Data Center</a>
-<a href="../index.html#products">xPON / Fiber</a>
-<a href="../index.html#products">Smart Box &amp; IoT</a>
-</div>
-</li>
-<li class="nav-dropdown">
-<a href="../index.html#articles">Articles</a>
-<div class="nav-dropdown-menu">
-<a href="../index.html#articles">Fundamental</a>
-<a href="../index.html#articles">Selection Guide</a>
-<a href="../index.html#articles">Technology</a>
-<a href="../index.html#articles">Deployment</a>
-<a href="../index.html#articles">Network Design</a>
-</div>
-</li>
-<li><a href="../index.html#about">About</a></li>
-</ul>
-</div>
-<a href="../index.html#contact" class="nav-cta">Request Quote</a>
-</div>
-</nav>
-<header class="article-header">
-<div class="article-header-inner">
-<span class="article-tag">Technology</span>
-<h1>Industrial Switch dengan SFP Port: Fungsi dan Kegunaannya</h1>
-<div class="article-meta">
-<span>7 min read</span>
-</div>
-</div>
-</header>
-<article class="article-body">
-<p>Di bentang pabrik yang membentang puluhan hektar atau di sepanjang jalur pipa gas yang menembus hutan, kestabilan jaringan data bukan lagi sekadar kemudahan—ia adalah nyawa operasi. Di sinilah peran <em>industrial switch</em> dengan port SFP menemukan urgensinya. Peranti ini bukan hanya meneruskan paket data, melainkan menjamin agar instruksi kendali sampai tanpa cacat, tanpa tunda, dan tanpa putus meski jarak membentang jauh melampaui batas kabel tembaga.</p>
-<p>Ketika Anda merancang atau merawat jaringan industri, pilihan media transmisi kerap menjadi simpang kritis. Port SFP pada <em>industrial switch</em> hadir justru untuk meruntuhkan sekat itu. Dengan satu slot modular kecil, Anda bisa menentukan sendiri: tetap pakai kabel tembaga, atau beralih ke serat optik. Fleksibilitas ini yang membuat topologi jaringan modern di sektor manufaktur, energi, dan transportasi kerap meletakkan <em>industrial switch SFP port</em> sebagai tulang punggung.</p>
-<h2>Mengenal Port SFP pada Sakelar Industri</h2>
-<p>Port SFP—singkatan dari <em>Small Form-factor Pluggable</em>—adalah slot antarmuka berukuran mungil yang memungkinkan pengguna memasang modul <em>transceiver</em> sesuai kebutuhan media. Modul ini bisa berupa modul tembaga RJ45 untuk kabel <em>twisted pair</em>, tetapi jauh lebih sering dimanfaatkan sebagai modul serat optik, baik <em>single-mode</em> untuk jarak puluhan kilometer maupun <em>multi-mode</em> untuk lingkungan dalam gedung.</p>
-<p>Pada <em>industrial switch</em>, port SFP dirancang lebih tangguh ketimbang versi komersialnya. Komponen ini tahan terhadap getaran, kelembapan, dan suhu ekstrem yang lazim di lantai produksi atau gardu listrik. Sebagaimana dijelaskan dalam artikel kami tentang <a href="Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html">industrial ethernet switch</a>, perangkat ini dibangun dengan sertifikasi seperti IEC 61850-3 atau IEEE 1613 untuk memastikan keandalan di lingkungan paling keras sekalipun.</p>
-<p>Keberadaan port SFP memberikan kebebasan migrasi jaringan tanpa mengganti seluruh perangkat. Cukup lepas modul yang ada dan pasang modul lain, laju data bisa ditingkatkan dari 100 Mbps ke Gigabit, atau dari serat <em>multi-mode</em> ke <em>single-mode</em> tanpa menyentuh konfigurasi inti.</p>
-<h2>Fungsi Utama Port SFP dalam Arsitektur Jaringan Industri</h2>
-<p>Port SFP bukan sekadar lubang tambahan. Ia menjalankan beberapa fungsi strategis yang langsung menyentuh ketersediaan dan keandalan sistem.</p>
-<ol>
-<li><strong>Perpanjangan Jarak Tanpa Pengulang</strong></li>
-</ol>
-<p>Kabel tembaga memiliki batas fisik 100 meter untuk Ethernet. Dengan modul SFP serat optik, jarak itu melompat hingga 10 km, 40 km, bahkan 80 km. Di tambang bawah tanah atau ladang minyak lepas pantai, kemampuan ini membuat <em>industrial switch SFP port</em> menjadi pilihan yang nyaris tanpa alternatif.</p>
-<ol>
-<li><strong>Isolasi Listrik dan Ketahanan Derau</strong></li>
-</ol>
-<p>Tembaga rentan terhadap interferensi elektromagnetik (EMI) dan beda potensial tanah yang bisa merusak peralatan. Serat optik, sebagai medium kaca yang tidak menghantarkan listrik, menghilangkan potensi <em>ground loop</em> dan menjaga integritas data di sekitar mesin las, motor berdaya besar, atau saluran tegangan tinggi.</p>
-<ol>
-<li><strong>Agregasi Jalur dan Redundansi</strong></li>
-</ol>
-<p><em>Industrial switch</em> dengan dua atau empat port SFP dapat membentuk jalur <em>uplink</em> berkecepatan tinggi ke pusat kendali. Duplikasi jalur ini mendukung protokol ring seperti MRP (Media Redundancy Protocol) sehingga pemulihan jaringan terjadi dalam milidetik saat ada kabel putus.</p>
-<ol>
-<li><strong>Fleksibilitas Arsitektur Jaringan</strong></li>
-</ol>
-<p>Satu perangkat bisa menjalankan fungsi ganda: port tembaga melayani perangkat lapangan seperti sensor dan PLC, sementara port SFP menghubungkan segmen jarak jauh atau menjadi <em>backbone</em> serat optik. Kombinasi ini menyederhanakan topologi dan menekan jumlah peranti di ruang panel yang terbatas.</p>
-<h2>Kegunaan Nyata di Lapangan</h2>
-<p>Kegunaan <em>industrial switch</em> dengan port SFP tersebar di berbagai sektor. Berikut beberapa penerapan yang umum dijumpai:</p>
-<ul>
-<li><strong>Otomasi Pabrik</strong>: Menghubungkan sel-sel produksi yang terpisah gedung ke satu <em>supervisory control and data acquisition</em> (SCADA) dengan latensi rendah.</li>
-<li><strong>Pembangkit dan Transmisi Listrik</strong>: Mengirim data proteksi dan pemantauan dari gardu induk ke pusat kontrol beban melalui jaringan serat optik yang kebal terhadap lonjakan tegangan.</li>
-<li><strong>Pertambangan</strong>: Menjangkau area kerja yang terus bergeser tanpa harus menanam kabel baru; cukup tarik kabel serat dan hubungkan ke modul SFP.</li>
-<li><strong>Sistem Transportasi Cerdas</strong>: Mengintegrasikan kamera pemantau lalu lintas, papan informasi variabel, dan sensor jalan raya ke pusat manajemen kota dengan tulang punggung serat optik.</li>
-<li><strong>Minyak dan Gas</strong>: Memastikan komunikasi di atas anjungan lepas pantai yang terisolasi tetap stabil, meski kondisi cuaca ekstrem dan jarak jauh dari daratan.</li>
-</ul>
-<h2>Kelebihan Fiber Industrial Switch</h2>
-<p>Ketika seluruh port SFP diisi modul serat optik, terbentuklah apa yang sering disebut sebagai <em>fiber industrial switch</em> atau sakelar industri serat optik. Konfigurasi ini memberikan sejumlah keunggulan yang menjawab tantangan khas sektor industri berat:</p>
-<ul>
-<li><strong>Imunitas Total terhadap EMI dan RFI</strong>: Tidak ada lagi data yang korup akibat mesin <em>stamping</em> atau motor inverter di dekat jalur komunikasi.</li>
-<li><strong>Bandwidth Besar dan Konstan</strong>: Laju data gigabit bahkan 10 gigabit per detik dimungkinkan tanpa penurunan kualitas seiring bertambahnya panjang kabel.</li>
-<li><strong>Keamanan Data yang Lebih Baik</strong>: Penyadapan pada serat optik jauh lebih sulit dan mudah terdeteksi karena membutuhkan pemutusan fisik yang langsung menurunkan daya sinyal.</li>
-<li><strong>Bobot dan Volume Kabel Lebih Ringan</strong>: Sepasang serat optik mampu membawa banyak kanal komunikasi sekaligus, mengurangi beban baki kabel dan memudahkan penarikan di jalur sempit.</li>
-</ul>
-<p>Kombinasi kelebihan ini membuat <em>fiber industrial switch</em> menjadi komponen kritis di jaringan yang tidak bisa menoleransi waktu henti, seperti sistem keselamatan <em>fire and gas</em> atau jaringan <em>interlock</em> pabrik kimia.</p>
-<h2>Panduan Memilih Industrial Switch dengan Port SFP</h2>
-<p>Tidak semua <em>industrial switch</em> dengan port SFP diciptakan setara. Beberapa kriteria berikut membantu Anda menyusun spesifikasi yang tepat:</p>
-<ul>
-<li><strong>Jumlah dan Tipe Port SFP</strong>: Pastikan jumlahnya mencukupi untuk kebutuhan <em>uplink</em> dan cadangan. Modul SFP mendukung kecepatan Fast Ethernet, Gigabit, atau 10G—sesuaikan dengan laju data backbone yang ada.</li>
-<li><strong>Rentang Suhu Operasi</strong>: Untuk lingkungan luar ruangan atau dekat tungku, pilih peranti dengan rentang operasi minimal -40°C hingga 75°C.</li>
-<li><strong>Catu Daya Redundan</strong>: Cari dukungan <em>dual power input</em> agar peranti tetap hidup meski satu sumber listrik mati.</li>
-<li><strong>Sertifikasi Lingkungan</strong>: Standar seperti IEC 61850-3 (gardu listrik), EN 50155 (kereta api), atau ATEX (area berpotensi ledakan) menjamin kesesuaian untuk sektor spesifik.</li>
-<li><strong>Fitur Manajemen</strong>: Protokol ring, VLAN, <em>Quality of Service</em>, dan SNMP menjadi penting untuk jaringan skala besar agar administrasinya tetap terkendali.</li>
-<li><strong>Dukungan Modul SFP dari Pihak Ketiga</strong>: Meski banyak vendor mensyaratkan modul bermerek sendiri, pilih sakelar yang lebih terbuka namun tetap menyediakan jaminan keandalan.</li>
-</ul>
-<h2>Implementasi di Gardu Induk: Sebuah Gambaran Ringkas</h2>
-<p>Sebuah perusahaan listrik negara di Asia Tenggara memutakhirkan gardu induk tegangan tinggi mereka yang sebelumnya hanya mengandalkan komunikasi serial. Tim rekayasa memasang <em>industrial switch</em> dengan empat port SFP di setiap gardu. Satu port SFP digunakan untuk membentuk cincin serat optik antar-gardu, dua port untuk jalur redundan ke pusat kontrol, dan satu port sisanya sebagai cadangan. Hasilnya, waktu pemulihan jaringan saat uji putus kabel kurang dari 20 milidetik—angka yang menjaga operasi proteksi tetap bekerja tanpa gangguan. Pengalaman ini menegaskan bahwa pemilihan <em>industrial switch SFP port</em> yang tepat dapat secara langsung menurunkan risiko pemadaman dan meningkatkan keandalan sistem.</p>
-<h2>Menuju Infrastruktur Jaringan Industri yang Tangguh</h2>
-<p>Mengintegrasikan port SFP ke dalam <em>industrial ethernet switch</em> adalah keputusan strategis yang mencerminkan visi jangka panjang. Anda tidak sekadar membeli perangkat; Anda menyiapkan fondasi jaringan yang siap menempuh jarak, bertahan dari derau, dan menyesuaikan diri dengan teknologi esok tanpa bongkar pasang besar-besaran.</p>
-<p>Bagi Anda yang tengah merancang atau meningkatkan infrastruktur jaringan industri, Scodeno menyediakan berbagai pilihan <em>industrial switch</em> dengan port SFP yang telah teruji di medan berat. Dari pabrik manufaktur hingga gardu transmisi, solusi kami membantu menjaga data tetap mengalir, detik demi detik. Kunjungi situs Scodeno untuk menelusuri katalog lengkap dan dapatkan konsultasi teknis tanpa biaya agar Anda mendapatkan konfigurasi paling pas untuk kebutuhan spesifik Anda.</p>
-</article>
-
-  <!-- Article Navigation -->
-  <nav class="article-nav" style="max-width: var(--content-max); margin: 48px auto 0; padding: 0 24px; border-top: 1px solid var(--gray-100);">
-    <div style="display: flex; justify-content: space-between; align-items: center; padding: 24px 0;">
-      <a href="Week_04_industrial-gigabit-switch-vs-fast-ethernet-switch.html" style="display: flex; align-items: center; gap: 8px; color: var(--gray-500); text-decoration: none; font-size: 0.875rem; max-width: 40%;">
-        <span style="font-size:1.25rem;">←</span>
-        <span><small style="color:var(--gray-400);">Previous</small><br><strong style="color:var(--text-dark);">Industrial Gigabit Switch vs Fast Ethernet Switch...</strong></span>
-      </a>
-      <a href="Week_06_managed-vs-unmanaged-industrial-switch-mana-yang-tepat.html" style="display: flex; align-items: center; gap: 8px; color: var(--gray-500); text-decoration: none; font-size: 0.875rem; text-align: right; max-width: 40%;">
-        <span><small style="color:var(--gray-400);">Next</small><br><strong style="color:var(--text-dark);">Managed vs Unmanaged Industrial Switch: Mana yang ...</strong></span>
-        <span style="font-size:1.25rem;">→</span>
-      </a>
-    </div>
-    <div style="text-align: center; padding-bottom: 24px;">
-      <a href="../index.html#articles" style="color: var(--blue); text-decoration: none; font-weight: 600; font-size: 0.875rem;">← Kembali ke Semua Artikel</a>
-    </div>
-  </nav>
-<section class="related-section">
-<div class="related-inner">
-<h2>Artikel Terkait</h2>
-<div class="related-grid">
-<a href="Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html" class="related-card"><span class="tag">Fundamental</span><h3>Kenapa Industrial Switch Menggunakan Desain Fanless</h3></a>
-<a href="Week_02_apa-itu-din-rail-industrial-switch-dan-mengapa-banyak-dipakai-di-pabrik.html" class="related-card"><span class="tag">Fundamental</span><h3>Apa Itu DIN-Rail Industrial Switch dan Mengapa Banyak Dipakai di Pabrik</h3></a>
-<a href="Week_03_ip-rating-pada-industrial-ethernet-switch-apa-artinya.html" class="related-card"><span class="tag">Fundamental</span><h3>IP Rating pada Industrial Ethernet Switch: Apa Artinya?</h3></a>
-<a href="Week_04_industrial-gigabit-switch-vs-fast-ethernet-switch.html" class="related-card"><span class="tag">Selection Guide</span><h3>Industrial Gigabit Switch vs Fast Ethernet Switch</h3></a>
-</div>
-</div>
-</section>
-<footer class="footer">
-<div class="footer-inner">
-<span>&copy; 2024 Scodeno Indonesia</span>
-<span>Didistribusikan oleh <a href="../index.html">PT Konexindo Unitama</a></span>
-</div>
-</footer>
+     <!DOCTYPE html>
+     <html lang="id">
+     <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Industrial Switch dengan SFP Port: Fungsi dan Kegunaannya — Scodeno Indonesia</title>
+     <meta name="description" content="Apa itu SFP port pada industrial switch? Panduan lengkap fungsi, jenis transceiver (single-mode vs multimode), kapan menggunakan fiber, dan perbandingan dengan RJ45.">
+     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+     <style>
+   :root {
+   --blue: #0068B4; --blue-light: #0095E0; --blue-dark: #004A82; --blue-bg: #E7F3FB;
+   --blue-glow: rgba(0,104,180,0.20);
+   --black: #0A0E14; --near-black: #141A22; --dark-card: #1A202A;
+   --white: #FFFFFF; --off-white: #F5F7FA; --gray-50: #F9FAFB; --gray-100: #E8ECF0;
+   --gray-200: #C8CDD4; --gray-300: #9BA2AB; --gray-400: #6B7280; --gray-500: #4B5563;
+   --text-dark: #1A1A1A; --text-light: #E2E8F0; --text-muted: #9BA2AB;
+   --content-max: 780px; --radius-sm: 2px; --radius-md: 4px;
+   }
+   * { box-sizing: border-box; margin: 0; padding: 0; }
+   body {
+   font-family: 'Inter', system-ui, -apple-system, sans-serif;
+   color: var(--text-dark); background: var(--white);
+   line-height: 1.7; -webkit-font-smoothing: antialiased;
+   }
+   .nav {
+   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+   background: rgba(10,14,20,0.94); backdrop-filter: blur(12px);
+   border-bottom: 1px solid rgba(255,255,255,0.06);
+   }
+   .nav-inner {
+   max-width: 1200px; margin: 0 auto;
+   display: flex; align-items: center; justify-content: space-between;
+   padding: 0 24px; height: 64px;
+   }
+   .nav-left { display: flex; align-items: center; gap: 32px; }
+   .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+   .nav-logo-img { height: 28px; width: auto; }
+   .nav-logo-text { font-weight: 800; font-size: 1.0625rem; color: var(--white); letter-spacing: -0.01em; white-space: nowrap; }
+   .nav-logo-indonesia { color: var(--blue-light); margin-left: 2px; }
+   .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+   .nav-links a { color: var(--gray-300); text-decoration: none; font-size: 0.8125rem; font-weight: 500; padding: 8px 12px; border-radius: 4px; transition: all 0.15s; white-space: nowrap; }
+   .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+   .nav-dropdown { position: relative; }
+   .nav-dropdown > a { display: flex; align-items: center; gap: 4px; }
+   .nav-dropdown > a::after { content: '▾'; font-size: 0.625rem; margin-left: 2px; }
+   .nav-dropdown-menu {
+   position: absolute; top: 100%; left: 0; min-width: 200px;
+   background: var(--dark-card); border: 1px solid rgba(255,255,255,0.08);
+   border-radius: 6px; padding: 6px 0; opacity: 0; visibility: hidden;
+   transform: translateY(4px); transition: all 0.18s ease;
+   box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+   }
+   .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+   .nav-dropdown-menu a {
+   display: block; padding: 8px 16px !important; font-size: 0.8125rem !important;
+   color: var(--gray-300) !important; border-radius: 0 !important;
+   }
+   .nav-dropdown-menu a:hover { background: rgba(255,255,255,0.06) !important; color: var(--white) !important; }
+   .nav-dropdown-menu .dropdown-label {
+   font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.06em;
+   color: var(--gray-400); padding: 6px 16px 2px; font-weight: 600;
+   }
+   .nav-cta {
+   background: var(--blue); color: var(--white) !important;
+   padding: 8px 18px !important; border-radius: 4px !important;
+   font-weight: 600 !important; font-size: 0.8125rem !important;
+   }
+   .nav-cta:hover { background: var(--blue-light) !important; }
+    .nav-search{position:relative;display:flex;align-items:center}
+   .search-toggle{background:none;border:none;cursor:pointer;padding:8px;display:flex;align-items:center;justify-content:center;border-radius:4px;transition:background 0.15s}
+   .search-toggle:hover{background:rgba(255,255,255,0.06)}
+   .search-toggle svg{width:18px;height:18px;stroke:var(--gray-300);stroke-width:2;fill:none;transition:stroke 0.15s}
+   .search-toggle:hover svg{stroke:var(--white)}
+   .search-panel{position:absolute;top:100%;right:0;width:420px;max-width:90vw;background:var(--dark-card);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:0;display:none;box-shadow:0 16px 48px rgba(0,0,0,0.45);z-index:200}
+   .search-panel.active{display:block}
+   .search-input-wrap{display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.06)}
+   .search-input-wrap svg{width:16px;height:16px;stroke:var(--gray-400);stroke-width:2;fill:none;flex-shrink:0;margin-right:10px}
+   .search-input{flex:1;background:none;border:none;color:var(--white);font-size:0.9375rem;font-family:inherit;outline:none}
+   .search-input::placeholder{color:var(--gray-400)}
+   .search-results{max-height:420px;overflow-y:auto;padding:8px 0}
+   .search-result{display:block;padding:10px 16px;text-decoration:none;transition:background 0.1s;border-bottom:1px solid rgba(255,255,255,0.03)}
+   .search-result:last-child{border-bottom:none}
+   .search-result:hover{background:rgba(255,255,255,0.04)}
+   .search-result-title{font-size:0.875rem;font-weight:600;color:var(--white);margin-bottom:3px;line-height:1.3}
+   .search-result-title mark{background:rgba(0,149,224,0.25);color:var(--blue-light);border-radius:2px;padding:0 1px}
+   .search-result-snippet{font-size:0.75rem;color:var(--gray-400);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+   .search-result-meta{display:flex;align-items:center;gap:8px;margin-top:4px}
+   .search-result-cat{font-size:0.625rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;padding:2px 6px;border-radius:2px}
+   .search-empty{padding:24px 16px;text-align:center;color:var(--gray-400);font-size:0.875rem}
+   .search-overlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:150;display:none}
+   .search-overlay.active{display:block}
+   @media(max-width:768px){.search-panel{position:fixed;top:64px;left:0;right:0;max-width:100vw;border-radius:0;border-left:none;border-right:none}}
+    .article-header {
+   background: var(--black); color: var(--white);
+   padding: calc(64px + 64px) 24px 64px;
+   position: relative; overflow: hidden;
+   }
+   .article-header::before {
+   content: ''; position: absolute; top: -30%; right: -20%;
+   width: 500px; height: 500px;
+   background: radial-gradient(circle, var(--blue-glow) 0%, transparent 70%);
+   pointer-events: none;
+   }
+   .article-header-inner { max-width: var(--content-max); margin: 0 auto; position: relative; z-index: 1; }
+   .article-tag {
+   display: inline-block; background: rgba(0,149,224,0.15); color: var(--blue-light);
+   font-size: 0.75rem; font-weight: 600; padding: 4px 12px;
+   border-radius: 2px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.06em;
+   }
+   .article-header h1 {
+   font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800;
+   line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px;
+   }.lang-toggle{display:inline-flex;align-items:center;gap:6px;margin-top:12px}
+.lang-toggle a{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,0.08);color:var(--gray-300);text-decoration:none;font-size:0.75rem;font-weight:500;padding:4px 10px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);transition:all 0.15s}
+.lang-toggle a:hover{background:rgba(255,255,255,0.14);color:var(--white);border-color:rgba(255,255,255,0.2)}
+.lang-toggle .active-lang{background:var(--blue);color:var(--white);border-color:var(--blue)}
+   .article-header .article-meta { color: var(--text-muted); font-size: 0.875rem; display: flex; gap: 20px; }
+   .article-body {
+   max-width: var(--content-max); margin: 0 auto;
+   padding: 64px 24px;
+   }
+   .article-body h2 {
+   font-size: 1.5rem; font-weight: 700; color: var(--near-black);
+   margin: 48px 0 16px; letter-spacing: -0.01em;
+   }
+   .article-body h3 {
+   font-size: 1.25rem; font-weight: 600; color: var(--near-black);
+   margin: 32px 0 12px;
+   }
+   .article-body h4 {
+   font-size: 1.0625rem; font-weight: 600; color: var(--gray-500);
+   margin: 24px 0 8px;
+   }
+   .article-body p {
+   color: var(--gray-500); font-size: 1.0625rem;
+   margin-bottom: 20px; line-height: 1.8;
+   }
+   .article-body ul, .article-body ol {
+   color: var(--gray-500); font-size: 1.0625rem;
+   margin-bottom: 20px; padding-left: 24px;
+   }
+   .article-body li { margin-bottom: 8px; line-height: 1.7; }
+   .article-body strong { color: var(--text-dark); font-weight: 600; }
+   .article-body a { color: var(--blue); text-decoration: underline; }
+   .article-body a:hover { color: var(--blue-light); }
+   .article-body hr { border: none; border-top: 1px solid var(--gray-100); margin: 48px 0; }
+   .article-body blockquote {
+   border-left: 3px solid var(--blue); padding-left: 20px;
+   margin: 24px 0; color: var(--gray-500); font-style: italic;
+   }
+   .table-wrap {
+   overflow-x: auto; margin: 28px 0; border-radius: 6px;
+   border: 1px solid var(--gray-100);
+   box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+   }
+   .article-body table {
+   width: 100%; border-collapse: collapse;
+   font-size: 0.875rem; line-height: 1.5;
+   min-width: 600px;
+   }
+   .article-body thead th {
+   background: linear-gradient(180deg, #E8F0F8 0%, #D4E4F2 100%);
+   color: var(--blue-dark); font-weight: 600; font-size: 0.8125rem;
+   text-transform: uppercase; letter-spacing: 0.03em;
+   padding: 12px 14px; text-align: left;
+   border-bottom: 2px solid #B8D0E8;
+   border-right: 1px solid #C8D8E8;
+   white-space: nowrap; position: sticky; top: 0;
+   }
+   .article-body thead th:last-child { border-right: none; }
+   .article-body tbody td {
+   padding: 10px 14px; border-bottom: 1px solid var(--gray-100);
+   border-right: 1px solid var(--gray-100); color: var(--gray-500);
+   vertical-align: top;
+   }
+   .article-body tbody td:last-child { border-right: none; }
+   .article-body tbody tr:nth-child(even) td { background: var(--gray-50); }
+   .article-body tbody tr:hover td { background: var(--blue-bg); }
+   .article-body tbody td:first-child { font-weight: 500; color: var(--text-dark); }
+   .related-section {
+   background: var(--off-white); padding: 64px 24px;
+   }
+   .related-inner { max-width: var(--content-max); margin: 0 auto; }
+   .related-inner h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.01em; }
+   .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+   .related-card {
+   background: var(--white); border: 1px solid var(--gray-100);
+   border-radius: var(--radius-md); padding: 20px; text-decoration: none;
+   transition: box-shadow 0.2s;
+   }
+   .related-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+   .related-card h3 { font-size: 0.9375rem; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
+   .related-card .tag { font-size: 0.6875rem; color: var(--blue); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+   .article-nav {
+   max-width: var(--content-max); margin: 0 auto; padding: 0 24px;
+   }
+   .article-nav-inner {
+   display: flex; justify-content: space-between; align-items: flex-start;
+   padding: 32px 0; border-top: 1px solid var(--gray-100);
+   }
+   .article-nav-inner a {
+   display: flex; align-items: center; gap: 8px;
+   color: var(--gray-500); text-decoration: none;
+   font-size: 0.875rem; max-width: 45%;
+   }
+   .article-nav-inner a:hover { color: var(--blue); }
+   .article-nav-inner .prev { text-align: left; }
+   .article-nav-inner .next { text-align: right; }
+   .article-nav-inner .nav-label {
+   color: var(--gray-400); font-size: 0.6875rem; display: block;
+   text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px;
+   }
+   .article-nav-inner .nav-title { color: var(--text-dark); font-weight: 600; line-height: 1.3; }
+   .article-nav-back { text-align: center; padding-bottom: 40px; }
+   .article-nav-back a { color: var(--blue); text-decoration: none; font-weight: 600; font-size: 0.875rem; }
+   .article-nav-back a:hover { color: var(--blue-light); }
+   .footer {
+   background: var(--near-black); color: var(--text-muted);
+   padding: 48px 24px 32px; border-top: 1px solid rgba(255,255,255,0.06);
+   }
+   .footer-inner {
+   max-width: 1200px; margin: 0 auto;
+   display: flex; justify-content: space-between; align-items: center;
+   font-size: 0.8125rem;
+   }
+   .footer-inner a { color: var(--blue-light); text-decoration: none; }
+   .footer-inner a:hover { color: var(--white); }
+   @media (max-width: 768px) {
+   .article-header { padding: calc(64px + 40px) 16px 40px; }
+   .article-body { padding: 40px 16px; }
+   .nav-links { display: none; }
+   }
+   </style>
+   </head>
+   <body>
+   <nav class="nav">
+   <div class="nav-inner">
+   <div class="nav-left">
+   <a href="../" class="nav-logo">
+   <img src="../logo.png" alt="Scodeno" class="nav-logo-img">
+   <span class="nav-logo-text">Scodeno<span class="nav-logo-indonesia">Indonesia</span></span>
+   </a>
+   <ul class="nav-links">
+   <li class="nav-dropdown">
+   <a href="../#products">Products</a>
+            <div class="nav-dropdown-menu">
+              <span class="sub-label">Industrial Switch</span>
+              <a href="../#products">PoE</a>
+              <a href="../#products">Non-PoE</a>
+              <span class="sub-label">Commercial Switch</span>
+              <a href="../#products">PoE</a>
+              <a href="../#products">Non-PoE</a>
+              <a href="../#products">Data Center Switch</a>
+              <span class="sub-label">SFP Modules</span>
+              <a href="../#products">Industrial</a>
+              <a href="../#products">Commercial</a>
+              <a href="../#products">IoT Smart Box</a>
+            </div>
+   </li>
+   <li class="nav-dropdown">
+   <a href="../#articles">Articles</a>
+   <div class="nav-dropdown-menu">
+   <a href="../#articles">Fundamental</a>
+   <a href="../#articles">Selection Guide</a>
+   <a href="../#articles">Technology</a>
+   <a href="../#articles">Deployment</a>
+   <a href="../#articles">Network Design</a>
+   </div>
+   </li>
+   <li><a href="../#about">About</a></li>
+   <li class="nav-search"><button class="search-toggle" onclick="toggleSearch()" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="17" y1="17" x2="22" y2="22"/></svg></button><div class="search-panel" id="searchPanel"><div class="search-input-wrap"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="17" y1="17" x2="22" y2="22"/></svg><input type="text" class="search-input" id="searchInput" placeholder="Cari artikel atau produk..." oninput="doSearch()" onkeydown="if(event.key==='Escape')closeSearch()"></div><div class="search-results" id="searchResults"></div></div><div class="search-overlay" id="searchOverlay" onclick="closeSearch()"></div></li>
+   </ul>
+   </div>
+   <a href="../#contact" class="nav-cta">Request Quote</a>
+   </div>
+   </nav>
+   <header class="article-header">
+   <div class="article-header-inner">
+   <span class="article-tag">Technology</span>
+   <h1>Industrial Switch dengan SFP Port: Fungsi dan Kegunaannya</h1>
+   <div class="article-meta">
+   <span>8 min read</span>
+   </div>
+   </div><div class="lang-toggle"><a href="https://scodenoindonesia.com/articles/Week_05_industrial-switch-dengan-sfp-port-fungsi-dan-kegunaannya.html" class="active-lang">🇮🇩 ID</a><a href="https://en.scodenoindonesia.com/articles/Week_05_industrial-switch-dengan-sfp-port-fungsi-dan-kegunaannya.html">🇬🇧 EN</a></div>
+   </header>
+   <article class="article-body">
+   <p>Port SFP.</p>
+   <p>Bentuknya kotak kecil. Letaknya di sisi switch. Sering kosong.</p>
+   <p>Sering diabaikan.</p>
+   <p>Tapi justru port inilah pembeda antara switch industrial sungguhan dan switch biasa. Port ini membuat switch tidak terikat pada kabel tembaga RJ45.</p>
+   <p>SFP — Small Form-Factor Pluggable — adalah slot modular. Fungsinya: menghubungkan switch ke jaringan fiber optik. Tanpa slot ini, jarak maksimum 100 meter. Dengan slot ini, satu switch bisa menjangkau gedung lain. Atau area pabrik berbeda. Atau lokasi yang terpisah puluhan kilometer.</p>
+   <p>Artikel ini menjelaskan apa itu <strong>industrial switch SFP port</strong>, bagaimana cara kerjanya, dan kapan Anda benar-benar membutuhkannya.</p>
+   <hr>
+   <h2>Apa Itu SFP Port?</h2>
+   <p>SFP adalah singkatan dari Small Form-Factor Pluggable. Secara fisik, ia adalah slot kecil di sisi switch yang bisa diisi dengan modul transceiver — perangkat yang mengubah sinyal listrik menjadi sinyal optik, dan sebaliknya.</p>
+   <p>Konsep ini bukan hal baru. Sebelum SFP, industri menggunakan GBIC (Gigabit Ethernet Interface Converter) — modul yang lebih besar dan memakan lebih banyak ruang. SFP hadir sebagai pengganti yang lebih ringkas, memungkinkan lebih banyak port dalam ruang yang sama (Odom, 2024).</p>
+   <p>Evolusinya berlanjut:</p>
+   <ul>
+   <li><strong>SFP</strong> — untuk Gigabit Ethernet (1 Gbps)</li>
+   <li><strong>SFP+</strong> — dimensi sama, kecepatan 10 Gbps</li>
+   <li><strong>SFP28</strong> — 25 Gbps</li>
+   <li><strong>QSFP/QSFP28</strong> — 40/100 Gbps</li>
+   </ul>
+   <p>Untuk jaringan industri, SFP (1G) dan SFP+ (10G) adalah yang paling relevan.</p>
+   <p>Keunggulan utama SFP: fleksibilitas.</p>
+   <p>Switch dengan <strong>industrial switch SFP port</strong> tidak mengunci Anda pada satu jenis media. Anda bisa memasang modul fiber multimode hari ini untuk jarak 500 meter. Lalu menggantinya dengan modul single-mode untuk jarak 20 kilometer besok. Tanpa mengganti switch.</p>
+   <p>Ini adalah <em>future-proofing</em> dalam bentuk paling praktis.</p>
+   <h2>RJ45 vs SFP: Kapan Menggunakan yang Mana?</h2>
+   <p>Port RJ45 dan SFP sering berdampingan di switch yang sama. Masing-masing punya peran berbeda.</p>
+   <p>Port RJ45 menggunakan kabel twisted-pair tembaga (Cat5e/Cat6). Standar, murah, dan mendukung Power over Ethernet (PoE) — kemampuan mengirim listrik bersama data. Tapi RJ45 punya batasan: jarak maksimum 100 meter. Di lingkungan pabrik dengan motor listrik besar dan Variable Frequency Drive (VFD), kabel tembaga rentan terhadap interferensi elektromagnetik (EMI).</p>
+   <p>Odom menjelaskan perbandingan ini dengan ringkas: "UTP mungkin bekerja buruk di lingkungan yang bising secara elektrik seperti pabrik, karena UTP dapat terpengaruh oleh interferensi elektromagnetik (EMI)".</p>
+   <p>SFP fiber tidak punya masalah ini. Sinyal optik kebal terhadap EMI. Tidak ada arus liar dari motor 500 kW yang bisa mengganggu pulsa cahaya di dalam kabel fiber.</p>
+   <p>Berikut perbandingan teknisnya:</p>
+   <div class="table-wrap"><table>
+   <thead>
+   <tr><th>Parameter</th><th>RJ45 (Tembaga)</th><th>SFP Fiber</th></tr>
+   </thead>
+   <tbody>
+   <tr><td>Jarak maksimum</td><td>100 m</td><td>300 m (multimode) — 80+ km (single-mode)</td></tr>
+   <tr><td>EMI immunity</td><td>Rentan, butuh shielding</td><td>Kebal (fiber = non-konduktor)</td></tr>
+   <tr><td>PoE</td><td>Ya</td><td>Tidak</td></tr>
+   <tr><td>Latensi</td><td>~10-30 µs (1G)</td><td>~0.5-1 µs</td></tr>
+   <tr><td>Konsumsi daya</td><td>0.7-1.0 W (1G)</td><td>0.8-1.2 W</td></tr>
+   <tr><td>Biaya per port</td><td>Lebih murah</td><td>Lebih mahal (butuh transceiver)</td></tr>
+   </tbody>
+   </table></div>
+   <p>Aturan praktis: RJ45 untuk koneksi perangkat akhir di area yang sama — PLC, HMI, sensor, kamera dengan PoE. SFP untuk uplink antar-switch, koneksi antar gedung, dan area dengan EMI tinggi.</p>
+   <h2>Memilih Transceiver: Single-Mode vs Multimode</h2>
+   <p>Slot SFP adalah wadah kosong. Yang menentukan karakteristik koneksi adalah modul transceiver yang dimasukkan ke dalamnya. Dua tipe utama: single-mode dan multimode.</p>
+   <p><strong>Multimode fiber (MM)</strong> menggunakan diameter inti yang lebih besar — sekitar 50-62.5 mikron. Cahaya dipantulkan dalam berbagai sudut (mode) saat merambat di dalam inti. Sumber cahaya: LED. Hasilnya: jarak terbatas, tapi biaya lebih rendah.</p>
+   <p>Odom menjelaskan: "Multimode meningkatkan jarak maksimum dibandingkan UTP, dan menggunakan transmitter yang lebih murah dibandingkan single-mode".</p>
+   <p><strong>Single-mode fiber (SM)</strong> menggunakan inti yang sangat kecil — sekitar 9 mikron, atau seperlima diameter multimode. Sumber cahaya: laser. Hanya satu mode cahaya yang merambat lurus. Hasilnya: jarak sangat jauh, bandwidth tinggi.</p>
+   <p>"Single-mode memungkinkan jarak hingga puluhan kilometer, tapi dengan perangkat keras SFP/SFP+ yang sedikit lebih mahal," tulis Odom.</p>
+   <p>Perbandingan jarak tipikal:</p>
+   <div class="table-wrap"><table>
+   <thead>
+   <tr><th>Tipe</th><th>Standar</th><th>Jarak Maksimum</th></tr>
+   </thead>
+   <tbody>
+   <tr><td>Multimode (OM3/OM4)</td><td>1000BASE-SX</td><td>550 m</td></tr>
+   <tr><td>Multimode (OM4)</td><td>10GBASE-SR</td><td>400 m</td></tr>
+   <tr><td>Single-mode</td><td>1000BASE-LX</td><td>10 km</td></tr>
+   <tr><td>Single-mode</td><td>10GBASE-LR</td><td>10 km</td></tr>
+   <tr><td>Single-mode</td><td>10GBASE-ER</td><td>40 km</td></tr>
+   </tbody>
+   </table></div>
+   <p>Kapan pakai multimode: koneksi antar gedung dalam satu kawasan industri — jarak di bawah 500 meter, anggaran terbatas.</p>
+   <p>Kapan pakai single-mode: koneksi antar pabrik yang terpisah, jalur pipa, jaringan smart city, atau backbone kawasan industri yang membentang kilometer.</p>
+   <h2>Aplikasi SFP di Jaringan Industri</h2>
+   <p><strong>Fiber industrial switch</strong> dengan port SFP menjawab tiga tantangan spesifik di lingkungan pabrik:</p>
+   <h3>1. Jarak Jauh Antar Zona Produksi</h3>
+   <p>Pabrik besar sering terdiri dari beberapa bangunan — gedung produksi, warehouse, water treatment, boiler house — yang terpisah puluhan hingga ratusan meter. Kabel tembaga tidak bisa menjangkaunya. Fiber bisa.</p>
+   <p>Dua switch di dua gedung berbeda, masing-masing dengan satu SFP transceiver single-mode, dihubungkan oleh satu kabel fiber optik. Tidak perlu repeater. Tidak perlu switch tambahan. Satu kabel, puluhan kilometer.</p>
+   <h3>2. Imunitas EMI di Area Bising</h3>
+   <p>Lantai produksi dengan motor-motor besar, VFD, mesin las, dan peralatan tegangan tinggi adalah medan perang elektromagnetik. Kabel tembaga berfungsi seperti antena — menangkap noise yang bisa merusak data.</p>
+   <p>Kurose dan Ross (2017) menegaskan: serat optik "kebal terhadap interferensi elektromagnetik, memiliki atenuasi sinyal sangat rendah hingga 100 kilometer, dan sangat sulit disadap".</p>
+   <p>Inilah alasan mengapa switch dengan SFP port menjadi pilihan wajib di pabrik baja, pertambangan, pembangkit listrik, dan fasilitas pengolahan minyak dan gas.</p>
+   <h3>3. Uplink dan Agregasi Backbone</h3>
+   <p>Dalam arsitektur jaringan hierarkis, switch di edge mengumpulkan trafik dari perangkat — PLC, HMI, kamera — lalu mengirimkannya ke switch core. Jalur ini disebut uplink.</p>
+   <p>Port SFP di switch edge, dipasangkan dengan SFP di switch core, menciptakan jalur fiber berkecepatan gigabit yang tidak terpengaruh oleh jarak maupun EMI. Inilah fondasi jaringan industri yang skalabel.</p>
+   <h2>Hal yang Perlu Diperhatikan Sebelum Membeli</h2>
+   <p>Tidak semua SFP kompatibel dengan semua switch. Beberapa hal yang harus diverifikasi:</p>
+   <p><strong>Kompatibilitas transceiver.</strong> Banyak vendor mengunci switch mereka agar hanya menerima modul SFP bermerek sendiri. Pastikan switch yang Anda pilih mendukung transceiver pihak ketiga, atau transceiver dari merek yang sama tersedia dengan harga wajar.</p>
+   <p><strong>Jenis konektor fiber.</strong> Konektor yang paling umum adalah LC (duplex). Tapi pastikan juga jenis kabel fiber yang sudah terpasang — SC, ST, atau LC — cocok dengan transceiver yang akan dibeli.</p>
+   <p><strong>Jarak aktual.</strong> Spesifikasi "10 km" pada transceiver single-mode adalah jarak teoritis. Kondisi lapangan — jumlah sambungan, kualitas kabel, usia instalasi — bisa mengurangi jarak efektif. Selalu sisakan margin.</p>
+   <p><strong>Budget transceiver.</strong> Harga SFP bervariasi signifikan. Multimode SFP untuk 550 meter bisa didapat dengan harga terjangkau. Single-mode SFP untuk 40 km bisa beberapa kali lipat lebih mahal. Hitung TCO — termasuk biaya kabel fiber dan terminasi — bukan hanya harga transceiver.</p>
+   <p>Memahami dasar-dasar <a href="https://scodeno.com/apa-itu-industrial-ethernet-switch">industrial ethernet switch</a> sebelum berinvestasi akan menghindarkan dari kesalahan pembelian yang mahal.</p>
+   <h2>Kesimpulan</h2>
+   <p>Port SFP bukan fitur mewah. Di lingkungan industri, port ini adalah kebutuhan.</p>
+   <p>RJ45 menangani koneksi lokal — PLC di panel yang sama, kamera di tiang yang sama, sensor di mesin yang sama. Tapi begitu jarak melampaui 100 meter, begitu EMI mulai mengganggu, begitu Anda perlu backbone antar gedung — jawabannya selalu fiber.</p>
+   <p><strong>Industrial switch SFP port</strong> dari <a href="../">Scodeno Indonesia</a> memberikan fleksibilitas itu. Satu switch, satu slot, dan Anda bisa memilih: multimode untuk 500 meter, atau single-mode untuk 20 kilometer. Tanpa ganti perangkat. Tanpa downtime.</p>
+   <p>Di era Industry 4.0 — di mana data harus mengalir dari sensor paling ujung ke cloud analytics tanpa hambatan — infrastruktur fiber dengan switch SFP-ready adalah fondasi yang tidak bisa ditawar.</p>
+   <hr>
+   <p><strong>Sumber:</strong></p>
+   <ol>
+   <li>Odom, Wendell. <em>CCNA 200-301 Official Cert Guide, Volume 1</em>, 2nd Edition. Cisco Press, 2024. Bab 2.</li>
+   <li>Kurose, James F. &amp; Ross, Keith W. <em>Computer Networking: A Top-Down Approach</em>, 7th Edition. Pearson, 2017. Bab 1.</li>
+   <li>network-switch.com. "SFP vs RJ45: Engineering Guide." 2026.</li>
+   <li>Omnitron Systems. "Single Mode SFP vs Multimode SFP." 2024.</li>
+   </ol>
+   </article>
+   <nav class="article-nav">
+   <div class="article-nav-inner">
+   <a href="Week_04_industrial-gigabit-switch-vs-fast-ethernet-switch.html" class="prev"><span class="nav-arrow">←</span><span><span class="nav-label">Previous</span><span class="nav-title">Industrial Gigabit Switch vs Fast Ethernet Switch</span></span></a>
+   <a href="Week_06_managed-vs-unmanaged-industrial-switch-mana-yang-tepat.html" class="next"><span><span class="nav-label">Next</span><span class="nav-title">Managed vs Unmanaged Industrial Switch: Mana yang Tepat?</span></span><span class="nav-arrow">→</span></a>
+   </div>
+   <div class="article-nav-back">
+   <a href="../#articles">← Kembali ke Semua Artikel</a>
+   </div>
+   </nav>
+   <section class="related-section">
+   <div class="related-inner">
+   <h2>Artikel Terkait</h2>
+   <div class="related-grid">
+   <a href="Week_04_industrial-gigabit-switch-vs-fast-ethernet-switch.html" class="related-card"><span class="tag">Selection Guide</span><h3>Industrial Gigabit Switch vs Fast Ethernet Switch</h3></a>
+   <a href="Week_06_managed-vs-unmanaged-industrial-switch-mana-yang-tepat.html" class="related-card"><span class="tag">Selection Guide</span><h3>Managed vs Unmanaged Industrial Switch: Mana yang Tepat?</h3></a>
+   <a href="Week_09_industrial-switch-vs-commercial-switch-apa-perbedaannya.html" class="related-card"><span class="tag">Technology</span><h3>Industrial Switch vs Commercial Switch: Apa Perbedaannya?</h3></a>
+   <a href="Week_10_vlan-dalam-industrial-ethernet-network.html" class="related-card"><span class="tag">Technology</span><h3>VLAN dalam Industrial Ethernet Network</h3></a>
+   </div>
+   </div>
+   </section>
+   <footer class="footer">
+   <div class="footer-inner">
+   <span>&copy; 2024 Scodeno Indonesia</span>
+   <span>Didistribusikan oleh <a href="../">PT Konexindo Unitama</a></span>
+   </div>
+   </footer>
+   <script>
+   let searchIndex=[];
+   searchIndex=[{"title": "Scodeno Switch: Panduan Lengkap Industrial Ethernet Switch untuk Jaringan Industri", "url": "articles/Week_00_scodeno-switch-panduan-lengkap.html", "snippet": "Satu switch. Ratusan perangkat. Ribuan jam operasi tanpa henti.", "category": "Artikel", "tag": "Selection Guide"}, {"title": "Kenapa Industrial Switch Menggunakan Desain Fanless", "url": "articles/Week_01_kenapa-industrial-switch-menggunakan-desain-fanless.html", "snippet": "Di balik keandalan jaringan otomasi pabrik, sistem transportasi cerdas, dan infrastruktur energi, terdapat satu komponen", "category": "Artikel", "tag": "Fundamental"}, {"title": "Apa Itu DIN-Rail Industrial Switch dan Mengapa Banyak Dipakai di Pabrik", "url": "articles/Week_02_apa-itu-din-rail-industrial-switch-dan-mengapa-banyak-dipakai-di-pabrik.html", "snippet": "Di era Industri 4.0, konektivitas yang andal di lantai produksi bukan lagi nilai tambah, melainkan kebutuhan mutlak. Set", "category": "Artikel", "tag": "Fundamental"}, {"title": "IP Rating pada Industrial Ethernet Switch — Apa Artinya?", "url": "articles/Week_03_ip-rating-pada-industrial-ethernet-switch-apa-artinya.html", "snippet": "Di lantai pabrik, segalanya berbeda. Udara tidak sejuk seperti di ruang server berpendingin. Di sana, debu beterbangan d", "category": "Artikel", "tag": "Fundamental"}, {"title": "Industrial Gigabit Switch vs Fast Ethernet Switch: Mana yang Dibutuhkan Jaringan Anda?", "url": "articles/Week_04_industrial-gigabit-switch-vs-fast-ethernet-switch.html", "snippet": "Sepuluh kali lebih cepat.", "category": "Artikel", "tag": "Selection Guide"}, {"title": "Industrial Switch dengan SFP Port: Fungsi dan Kegunaannya", "url": "articles/Week_05_industrial-switch-dengan-sfp-port-fungsi-dan-kegunaannya.html", "snippet": "Port SFP.", "category": "Artikel", "tag": "Technology"}, {"title": "Managed vs Unmanaged Industrial Switch: Mana yang Tepat?", "url": "articles/Week_06_managed-vs-unmanaged-industrial-switch-mana-yang-tepat.html", "snip... [truncated]
+   function toggleSearch(){
+    const panel=document.getElementById('searchPanel');
+    const overlay=document.getElementById('searchOverlay');
+    const input=document.getElementById('searchInput');
+    const active=panel.classList.contains('active');
+    if(active){closeSearch()}else{
+      panel.classList.add('active');
+      overlay.classList.add('active');
+      setTimeout(()=>input.focus(),100);
+      doSearch();
+    }
+   }
+   function closeSearch(){
+    document.getElementById('searchPanel').classList.remove('active');
+    document.getElementById('searchOverlay').classList.remove('active');
+    document.getElementById('searchInput').value='';
+    document.getElementById('searchResults').innerHTML='';
+   }
+   function doSearch(){
+    const q=document.getElementById('searchInput').value.toLowerCase().trim();
+    const container=document.getElementById('searchResults');
+    if(!q){showDefaultResults(container);return}
+    const results=searchIndex.filter(item=>{
+      const haystack=(item.title+' '+item.snippet+' '+item.tag+' '+item.category).toLowerCase();
+      return haystack.includes(q);
+    }).slice(0,12);
+    if(results.length===0){
+      container.innerHTML='<div class="search-empty">Tidak ditemukan. Coba kata kunci lain.</div>';
+      return
+    }
+    container.innerHTML=results.map(r=>{
+      const title=highlight(r.title,q);
+      const snip=r.snippet.substring(0,100);
+      const catClass=r.category==='Artikel'?'cat-artikel':'cat-produk';
+      return `<a href="${r.url}" class="search-result">
+        <div class="search-result-title">${title}</div>
+        <div class="search-result-snippet">${snip}</div>
+        <div class="search-result-meta"><span class="search-result-cat ${catClass}">${r.category}</span><span style="font-size:0.625rem;color:var(--gray-500)">${r.tag}</span></div>
+      </a>`;
+    }).join('');
+   }
+   function showDefaultResults(container){
+    const shuffled=searchIndex.sort(()=>Math.random()-0.5).slice(0,6);
+    container.innerHTML=shuffled.map(r=>{
+      const catClass=r.category==='Artikel'?'cat-artikel':'cat-produk';
+      return `<a href="${r.url}" class="search-result">
+        <div class="search-result-title">${r.title}</div>
+        <div class="search-result-snippet">${r.snippet.substring(0,100)}</div>
+        <div class="search-result-meta"><span class="search-result-cat ${catClass}">${r.category}</span><span style="font-size:0.625rem;color:var(--gray-500)">${r.tag}</span></div>
+      </a>`;
+    }).join('');
+   }
+   function highlight(text,q){
+    const regex=new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`,'gi');
+    return text.replace(regex,'<mark>$1</mark>');
+   }
+   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSearch()});
+   </script>
+   <script>(function(){var h=window.location.hostname;var links=document.querySelectorAll('.lang-toggle a');links.forEach(function(a){a.classList.remove('active-lang');if(h.includes('en.')&&a.href.includes('en.scodeno'))a.classList.add('active-lang');if(!h.includes('en.')&&a.href.includes('scodenoindonesia.com')&&!a.href.includes('en.scodeno'))a.classList.add('active-lang')})})()</script>
 </body>
-</html>
+   </html>
+   

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ring Redundancy vs Star Redundancy — Scodeno Indonesia</title>
+<meta name="description" content="Perbandingan ring redundancy network vs star topology redundancy: ERPS G.8032, RSTP, LACP, recovery time, dan kapan memilih masing-masing untuk jaringan industri.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#0068B4;--blue-light:#0095E0;--blue-dark:#004A82;--blue-bg:#E7F3FB;--blue-glow:rgba(0,104,180,0.20);--black:#0A0E14;--near-black:#141A22;--dark-card:#1A202A;--white:#FFFFFF;--off-white:#F5F7FA;--gray-50:#F9FAFB;--gray-100:#E8ECF0;--gray-200:#C8CDD4;--gray-300:#9BA2AB;--gray-400:#6B7280;--gray-500:#4B5563;--text-dark:#1A1A1A;--text-muted:#9BA2AB;--content-max:780px}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--text-dark);background:var(--white);line-height:1.7}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,20,0.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.06)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:64px}
+.nav-left{display:flex;align-items:center;gap:32px}.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-img{height:28px;width:auto}.nav-logo-text{font-weight:800;font-size:1.0625rem;color:var(--white)}
+.nav-logo-indonesia{color:var(--blue-light);margin-left:2px}.nav-links{display:flex;align-items:center;gap:4px;list-style:none}
+.nav-links a{color:var(--gray-300);text-decoration:none;font-size:0.8125rem;font-weight:500;padding:8px 12px;border-radius:4px}
+.nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.06)}.nav-dropdown{position:relative}
+.nav-dropdown>a::after{content:'▾';font-size:0.625rem;margin-left:2px}
+.nav-dropdown-menu{position:absolute;top:100%;left:0;min-width:200px;background:var(--dark-card);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:6px 0;opacity:0;visibility:hidden;transform:translateY(4px);transition:all 0.18s ease;box-shadow:0 12px 32px rgba(0,0,0,0.35)}
+.nav-dropdown:hover .nav-dropdown-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.nav-dropdown-menu a{display:block;padding:8px 16px!important;font-size:0.8125rem!important;color:var(--gray-300)!important;border-radius:0!important}
+.nav-dropdown-menu a:hover{background:rgba(255,255,255,0.06)!important;color:var(--white)!important}
+.nav-cta{background:var(--blue);color:var(--white)!important;padding:8px 18px!important;border-radius:4px!important;font-weight:600!important}
+.article-header{background:var(--black);color:var(--white);padding:calc(64px + 64px) 24px 64px;position:relative;overflow:hidden}
+.article-header::before{content:'';position:absolute;top:-30%;right:-20%;width:500px;height:500px;background:radial-gradient(circle,var(--blue-glow) 0%,transparent 70%)}
+.article-header-inner{max-width:var(--content-max);margin:0 auto;position:relative;z-index:1}
+.article-tag{display:inline-block;background:rgba(0,149,224,0.15);color:var(--blue-light);font-size:0.75rem;font-weight:600;padding:4px 12px;border-radius:2px;margin-bottom:16px;text-transform:uppercase;letter-spacing:0.06em}
+.article-header h1{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:800;line-height:1.15;letter-spacing:-0.02em;margin-bottom:16px}.lang-toggle{display:inline-flex;align-items:center;gap:6px;margin-top:12px}
+.lang-toggle a{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,0.08);color:var(--gray-300);text-decoration:none;font-size:0.75rem;font-weight:500;padding:4px 10px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);transition:all 0.15s}
+.lang-toggle a:hover{background:rgba(255,255,255,0.14);color:var(--white);border-color:rgba(255,255,255,0.2)}
+.lang-toggle .active-lang{background:var(--blue);color:var(--white);border-color:var(--blue)}
+.article-meta{color:var(--text-muted);font-size:0.875rem}.article-body{max-width:var(--content-max);margin:0 auto;padding:64px 24px}
+.article-body h2{font-size:1.5rem;font-weight:700;color:var(--near-black);margin:48px 0 16px}
+.article-body h3{font-size:1.25rem;font-weight:600;color:var(--near-black);margin:32px 0 12px}
+.article-body p{color:var(--gray-500);font-size:1.0625rem;margin-bottom:20px;line-height:1.8}
+.article-body ul,.article-body ol{color:var(--gray-500);font-size:1.0625rem;margin-bottom:20px;padding-left:24px}
+.article-body li{margin-bottom:8px}.article-body strong{color:var(--text-dark);font-weight:600}
+.article-body a{color:var(--blue);text-decoration:underline}.article-body hr{border:none;border-top:1px solid var(--gray-100);margin:48px 0}
+.related-section{background:var(--off-white);padding:64px 24px}.related-inner{max-width:var(--content-max);margin:0 auto}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.related-card{background:var(--white);border:1px solid var(--gray-100);border-radius:4px;padding:20px;text-decoration:none}
+.related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.06)}.related-card h3{font-size:0.9375rem;font-weight:600;color:var(--text-dark)}
+.related-card .tag{font-size:0.6875rem;color:var(--blue);font-weight:600;text-transform:uppercase}
+.article-nav{max-width:var(--content-max);margin:0 auto;padding:0 24px}
+.article-nav-inner{display:flex;justify-content:space-between;padding:32px 0;border-top:1px solid var(--gray-100)}
+.article-nav-inner a{display:flex;align-items:center;gap:8px;color:var(--gray-500);text-decoration:none;font-size:0.875rem;max-width:45%}
+.article-nav-inner a:hover{color:var(--blue)}.article-nav-inner .nav-label{color:var(--gray-400);font-size:0.6875rem;display:block;text-transform:uppercase;margin-bottom:2px}
+.article-nav-inner .nav-title{color:var(--text-dark);font-weight:600}.article-nav-back{text-align:center;padding-bottom:40px}
+.article-nav-back a{color:var(--blue);text-decoration:none;font-weight:600}.footer{background:var(--near-black);color:var(--text-muted);padding:48px 24px 32px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;font-size:0.8125rem}
+.footer-inner a{color:var(--blue-light);text-decoration:none}@media(max-width:768px){.nav-links{display:none}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><div class="nav-left"><a href="../" class="nav-logo"><img src="../logo.png" alt="Scodeno" class="nav-logo-img"><span class="nav-logo-text">Scodeno<span class="nav-logo-indonesia">Indonesia</span></span></a><ul class="nav-links"><li class="nav-dropdown"><a href="../#products">Products</a><div class="nav-dropdown-menu"><span class="sub-label">Industrial Switch</span><a href="../#products">PoE</a><a href="../#products">Non-PoE</a><span class="sub-label">Commercial Switch</span><a href="../#products">PoE</a><a href="../#products">Non-PoE</a><a href="../#products">Data Center Switch</a><span class="sub-label">SFP Modules</span><a href="../#products">Industrial</a><a href="../#products">Commercial</a><a href="../#products">IoT Smart Box</a></div></li><li class="nav-dropdown"><a href="../#articles">Articles</a><div class="nav-dropdown-menu"><a href="../#articles">Fundamental</a><a href="../#articles">Selection Guide</a><a href="../#articles">Technology</a><a href="../#articles">Deployment</a><a href="../#articles">Network Design</a></div></li><li><a href="../#about">About</a></li></ul></div><a href="../#contact" class="nav-cta">Request Quote</a></div></nav>
+<header class="article-header"><div class="article-header-inner"><span class="article-tag">Network Design</span><h1>Ring Redundancy vs Star Redundancy</h1><div class="article-meta"><span>6 min read</span></div></div><div class="lang-toggle"><a href="https://scodenoindonesia.com/articles/Week_19_ring-redundancy-vs-star-redundancy.html" class="active-lang">🇮🇩 ID</a><a href="https://en.scodenoindonesia.com/articles/Week_19_ring-redundancy-vs-star-redundancy.html">🇬🇧 EN</a></div></header>
+<article class="article-body">
+<p>Dua filosofi. Satu pertanyaan: bagaimana menjaga jaringan tetap hidup saat kabel putus?</p>
+<p>Di satu sisi: ring. Switch tersambung membentuk lingkaran. Satu link gagal, traffic memutar lewat jalur sebaliknya. Recovery dalam milidetik.</p>
+<p>Di sisi lain: star. Setiap switch punya dua uplink ke core. Satu link gagal, core mengambil alih. Lebih sederhana. Tapi lebih lambat.</p>
+<p><strong>Ring redundancy network</strong> vs <strong>star topology redundancy</strong> — ini bukan debat akademis. Pilihan topology menentukan recovery time, biaya kabel, dan kompleksitas konfigurasi. Artikel ini membandingkan keduanya secara teknis.</p>
+<hr>
+<h2>Ring Redundancy: Cepat tapi Kompleks</h2>
+<p>Topologi ring adalah desain paling intuitif untuk <strong>ring redundancy network</strong> di lingkungan industri. Bayangkan lingkaran: setiap switch terkoneksi ke dua tetangga — satu searah jarum jam, satu berlawanan. Dalam kondisi normal, satu link di-blok (Ring Protection Link) untuk mencegah loop. Saat terjadi kegagalan di titik manapun, RPL terbuka. Traffic mengalir lewat jalur alternatif.</p>
+<h3>Protokol Ring: ERPS dan REP</h3>
+<p>Ethernet Ring Protection Switching (ERPS, ITU-T G.8032) adalah standar internasional untuk ring redundancy. Recovery time: di bawah 50 ms. Cukup cepat sehingga PLC tidak sempat mendeteksi link failure.</p>
+<p>Resilient Ethernet Protocol (REP) — digunakan di arsitektur CPwE — menawarkan performa serupa. Detection mechanism REP menggunakan loss of signal (LOS): saat fiber putus, switch langsung tahu tanpa menunggu hello timer. Keunggulan REP: tidak ada batasan jumlah node per segmen, berbeda dengan STP tradisional yang terbatas 7 device (Hanes et al., 2017).</p>
+<p>Meskipun G.8032 adalah standar ITU-T, adopsi di pasar masih terbatas dibandingkan REP yang sudah matang di ekosistem industrial. Keduanya sama-sama menawarkan recovery sub-50 ms — perbedaannya lebih ke ekosistem vendor dan ketersediaan.</p>
+<h3>Kelebihan Ring</h3>
+<p><strong>Recovery time tercepat.</strong> Sub-50 ms dengan ERPS/REP. Bandingkan dengan RSTP yang butuh 1-2 detik. Di lantai produksi, perbedaan 950 ms adalah perbedaan antara conveyor berhenti dan conveyor terus berjalan.</p>
+<p><strong>Deterministik.</strong> Engineer tahu persis jalur mana yang akan diambil saat failover. Tidak ada kalkulasi ulang topology seperti di spanning tree.</p>
+<p><strong>Efisien kabel.</strong> Setiap switch hanya butuh dua koneksi — ke tetangga kiri dan kanan. Tidak perlu dedicated uplink ke core switch.</p>
+<h3>Kekurangan Ring</h3>
+<p><strong>Kompleksitas konfigurasi.</strong> Setiap switch dalam ring harus dikonfigurasi dengan segment ID, control VLAN, dan RPL owner. Salah konfigurasi = loop = jaringan mati.</p>
+<p><strong>Ketergantungan protokol.</strong> Semua switch dalam ring harus support ERPS atau REP. Switch mixed-vendor kadang bermasalah — implementasi G.8032 tidak selalu interoperable antar merek.</p>
+<p><strong>Single ring failure domain.</strong> Jika dua link gagal bersamaan, ring terpecah menjadi dua segmen terisolasi.</p>
+<h2>Star Redundancy: Sederhana tapi Lebih Lambat</h2>
+<p>Dalam topologi star redundant — juga dikenal sebagai dual homing — setiap access switch memiliki dua uplink ke dua aggregation atau core switch yang berbeda. Ini adalah fondasi <strong>star topology redundancy</strong>: satu uplink aktif, satu standby (jika menggunakan RSTP) atau keduanya aktif (jika menggunakan LACP).</p>
+<p>Topologi star dengan switch di pusat adalah desain paling umum di jaringan modern — dari kantor hingga data center (Kurose &amp; Ross). Di lingkungan industri, desain ini dimodifikasi dengan redundant core untuk menghilangkan single point of failure.</p>
+<h3>Protokol Star: RSTP dan Flex Links</h3>
+<p>RSTP (802.1w) memblokir salah satu uplink untuk mencegah loop. Konvergensi: 1-2 detik. Cukup untuk jaringan enterprise. Untuk otomasi industri, 2 detik terlalu lama.</p>
+<p>Flex Links — fitur di switch industrial — mengatasi kelemahan ini. Mekanismenya: satu port aktif, satu port standby. Tidak ada spanning tree — tidak ada kalkulasi ulang. Begitu link aktif gagal, link standby langsung mengambil alih. Cisco IE Switch Guide mencatat FlexLink bahkan mendukung multicast fast convergence untuk mengurangi recovery time tambahan pada traffic multicast.</p>
+<p>LACP (802.3ad) menawarkan pendekatan berbeda: kedua uplink aktif simultan. Traffic di-load balance. Jika satu link gagal, traffic otomatis pindah ke link yang tersisa — tanpa konvergensi sama sekali. Recovery time: nol. Tapi bandwidth aggregate berkurang setengah.</p>
+<h3>Kelebihan Star</h3>
+<p><strong>Konfigurasi sederhana.</strong> Setiap access switch cukup punya dua uplink. Tidak perlu koordinasi ring-wide seperti ERPS.</p>
+<p><strong>Fleksibilitas topology.</strong> Star bisa diimplementasikan di topologi apapun — tidak harus lingkaran sempurna. Ideal untuk layout pabrik yang tidak beraturan.</p>
+<p><strong>Isolasi kegagalan.</strong> Satu switch access yang gagal tidak mempengaruhi switch lain. Bandingkan dengan ring: kegagalan satu switch memaksa seluruh ring melakukan failover.</p>
+<h3>Kekurangan Star</h3>
+<p><strong>Konsumsi kabel lebih tinggi.</strong> Setiap access switch butuh dua kabel ke core. Di pabrik besar dengan switch tersebar, ini berarti kabel fiber dua kali lebih banyak.</p>
+<p><strong>Recovery time lebih lambat.</strong> Dengan RSTP: 1-2 detik. Bahkan Flex Links yang lebih cepat masih di atas 100 ms dalam beberapa implementasi.</p>
+<p><strong>Core switch sebagai bottleneck.</strong> Dua core switch menangani semua traffic. Jika keduanya gagal — meskipun jarang — seluruh jaringan mati.</p>
+<h2>Perbandingan Ring vs Star</h2>
+<div class="table-wrap"><table><thead><tr><th>Dimensi</th><th>Ring (ERPS/REP)</th><th>Star (RSTP/FlexLink/LACP)</th></tr></thead><tbody>
+<tr><td>Recovery time</td><td>&lt; 50 ms</td><td>0 ms (LACP) hingga 2 detik (RSTP)</td></tr>
+<tr><td>Kompleksitas</td><td>Tinggi — koordinasi ring-wide</td><td>Rendah — konfigurasi per-switch</td></tr>
+<tr><td>Kebutuhan kabel</td><td>2 koneksi per switch</td><td>2 uplink ke core per switch</td></tr>
+<tr><td>Determinisme</td><td>Ya — jalur terdefinisi</td><td>Tergantung protokol</td></tr>
+<tr><td>Toleransi multi-failure</td><td>Rentan (2 link putus = ring pecah)</td><td>Lebih tahan (isolasi per switch)</td></tr>
+<tr><td>Skalabilitas</td><td>Terbatas</td><td>Fleksibel</td></tr>
+</tbody></table></div>
+<h2>Kapan Pakai yang Mana?</h2>
+<p><strong>Pilih ring</strong> jika: layout pabrik memungkinkan topologi loop, recovery time kritis (&lt;50 ms), dan Anda menggunakan switch dari satu family produk yang kompatibel. Ring ideal untuk jalur conveyor, cell production, atau area dengan perangkat yang tersusun linear membentuk lingkaran alami.</p>
+<p><strong>Pilih star</strong> jika: layout tidak beraturan, Anda butuh fleksibilitas untuk ekspansi masa depan, atau recovery time 1-2 detik masih dalam toleransi aplikasi. Star juga lebih cocok untuk lingkungan multi-vendor — setiap access switch bisa berbeda merek selama mendukung RSTP.</p>
+<p><strong>Pertimbangkan hybrid.</strong> Tidak ada aturan yang melarang kombinasi. Core network dengan redundant star untuk backbone. Cell/area zone dengan ring untuk recovery time tercepat. Desain CPwE justru menggunakan pendekatan ini — REP untuk cell/area zone dan redundant star untuk distribution layer (Hanes et al., 2017).</p>
+<h2>Implementasi</h2>
+<p>Switch managed industrial modern mendukung kedua topology. Seri XPTN-9000 dari Scodeno, misalnya, mendukung ERPS (G.8032), RSTP (802.1w), STP (802.1d), dan LACP (802.3ad) dalam satu perangkat. Untuk aplikasi dengan requirement fail-safe absolut, Bypass Series Scodeno menambahkan hardware bypass — menjaga kontinuitas physical link bahkan saat switch mati total.</p>
+<p>Untuk pembahasan lebih dalam tentang implementasi redundancy, baca panduan kami tentang <a href="/industrial-network-redundancy">ring redundancy</a>.</p>
+<h2>Kesimpulan</h2>
+<p>Tidak ada topology yang selalu benar. Ring memberi kecepatan. Star memberi fleksibilitas.</p>
+<p>Kuncinya: pahami recovery time yang dibutuhkan aplikasi Anda. Jika PLC Anda timeout dalam 100 ms, ring dengan ERPS adalah satu-satunya pilihan. Jika aplikasi lebih toleran, star dengan LACP menawarkan kesederhanaan yang sulit dikalahkan.</p>
+<p>Atau — seperti kebanyakan jaringan industri modern — pakai keduanya.</p>
+<hr>
+<h3>Sumber</h3>
+<ol>
+<li>Hanes, David; Salgueiro, Gonzalo; Grossetete, Patrick; Barton, Robert; Henry, Jerome. <em>IoT Fundamentals: Networking Technologies, Protocols, and Use Cases for the Internet of Things</em>. Cisco Press, 2017.</li>
+<li>Kurose, James F. &amp; Ross, Keith W. <em>Computer Networking: A Top-Down Approach</em>, 8th Edition. Pearson, 2020.</li>
+<li>Donahue, Gary A. <em>Network Warrior</em>, 2nd Edition. O'Reilly Media, 2011.</li>
+</ol>
+</article>
+<nav class="article-nav"><div class="article-nav-inner"><a href="Week_18_industrial-network-failover-mechanism.html"><span class="nav-label">← Previous</span><span class="nav-title">Industrial Network Failover Mechanism</span></a><a href="Week_20_network-design-for-harsh-environments.html"><span class="nav-label">Next →</span><span class="nav-title">Network Design for Harsh Environments</span></a></div></nav>
+<div class="article-nav-back"><a href="../#articles">← Back to All Articles</a></div>
+<section class="related-section"><div class="related-inner"><h2 style="font-size:1.5rem;font-weight:700;color:var(--near-black);margin-bottom:32px">Related Articles</h2><div class="related-grid">
+<a href="Week_18_industrial-network-failover-mechanism.html" class="related-card"><span class="tag">Network Design</span><h3>Industrial Network Failover Mechanism</h3></a>
+<a href="Week_12_peran-switch-industrial-dalam-jaringan-redundan.html" class="related-card"><span class="tag">Network Design</span><h3>Peran Switch Industrial dalam Jaringan Redundan</h3></a>
+<a href="Week_17_industrial-network-maintenance-strategy.html" class="related-card"><span class="tag">Deployment</span><h3>Industrial Network Maintenance Strategy</h3></a>
+<a href="Week_15_industrial-network-diagnostics-dan-troubleshooting.html" class="related-card"><span class="tag">Deployment</span><h3>Industrial Network Diagnostics dan Troubleshooting</h3></a>
+</div></div></section>
+<footer class="footer"><div class="footer-inner"><span>&copy; 2025 Scodeno Indonesia. All rights reserved.</span><a href="../#contact">Contact</a></div></footer>
+<script>(function(){var h=window.location.hostname;var links=document.querySelectorAll('.lang-toggle a');links.forEach(function(a){a.classList.remove('active-lang');if(h.includes('en.')&&a.href.includes('en.scodeno'))a.classList.add('active-lang');if(!h.includes('en.')&&a.href.includes('scodenoindonesia.com')&&!a.href.includes('en.scodeno'))a.classList.add('active-lang')})})()</script>
+</body>
+</html>
