@@ -3,5 +3,7 @@
 CacheDisable public /articles/
 </IfModule>
 
-# Prevent directory listing
-Options -Indexes
+# Force UTF-8 encoding — prevent unicode corruption
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .html
+
