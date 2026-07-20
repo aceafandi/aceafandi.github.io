@@ -97,51 +97,55 @@
     em { color: #4a3a22; }
     hr { border: none; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
 
-    /* Comparison Cards */
-    .comparison {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+    /* Tables */
+    .evidence-table {
+      width: 100%;
+      border-collapse: collapse;
       margin: 1.5rem 0;
-    }
-    .cmp-card {
-      background: var(--quote-bg);
-      border: 1px solid var(--rule);
-      border-radius: 4px;
-      padding: 1.2rem;
       font-size: 0.95rem;
     }
-    .cmp-card h4 {
+    .evidence-table th {
       font-family: 'Amiri', serif;
       font-size: 1rem;
       color: var(--accent);
-      margin-bottom: 0.6rem;
-      border-bottom: 1px dashed var(--rule);
-      padding-bottom: 0.4rem;
+      text-align: left;
+      padding: 0.6rem 0.8rem;
+      border-bottom: 2px solid var(--rule);
+      font-weight: 700;
     }
-    .cmp-card p { margin-bottom: 0.3rem; }
-
-    /* Evidence list */
-    .evidence-list {
-      list-style: none;
-      margin: 1.5rem 0;
-    }
-    .evidence-list li {
-      padding: 0.8rem 0;
+    .evidence-table td {
+      padding: 0.7rem 0.8rem;
       border-bottom: 1px solid var(--rule);
+      vertical-align: top;
     }
-    .evidence-list li:last-child { border-bottom: none; }
-    .evidence-list .label {
-      font-weight: 600;
-      color: var(--accent);
-      font-family: 'Amiri', serif;
-      font-size: 1.05rem;
-    }
-    .evidence-list .counter {
-      color: var(--muted);
-      font-style: italic;
+    .evidence-table tr:last-child td { border-bottom: none; }
+    .evidence-table td:first-child { font-weight: 600; width: 45%; }
+    .evidence-table td:last-child { color: var(--muted); font-style: italic; }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
       font-size: 0.95rem;
     }
+    .comparison-table th {
+      font-family: 'Amiri', serif;
+      font-size: 1rem;
+      color: #fff;
+      text-align: left;
+      padding: 0.7rem 1rem;
+      background: var(--accent);
+    }
+    .comparison-table th:first-child { border-radius: 4px 0 0 0; }
+    .comparison-table th:last-child { border-radius: 0 4px 0 0; background: #8b4513; }
+    .comparison-table td {
+      padding: 0.7rem 1rem;
+      border: 1px solid var(--rule);
+      vertical-align: top;
+    }
+    .comparison-table tr:last-child td:first-child { border-radius: 0 0 0 4px; }
+    .comparison-table tr:last-child td:last-child { border-radius: 0 0 4px 0; }
+    .comparison-table td:first-child { background: var(--quote-bg); }
 
     .signature { text-align: right; font-style: italic; color: var(--muted); margin-top: 2rem; }
     .footnotes {
@@ -169,7 +173,8 @@
       body { font-size: 1.1rem; padding: 1.2rem 1rem 3rem; }
       h1 { font-size: 1.7rem; }
       .dropcap::first-letter { font-size: 3.4rem; }
-      .comparison { grid-template-columns: 1fr; }
+      .evidence-table, .comparison-table { font-size: 0.85rem; }
+      .evidence-table td, .comparison-table td { padding: 0.5rem; }
     }
   </style>
   <link rel="stylesheet" href="assets/blog-common.css">
@@ -184,7 +189,7 @@
   <span class="reading-time" id="readingTime"></span>
 </header>
 
-<!-- 🖼️ HERO — Armada Abu Bakr II -->
+<!-- HERO — Armada Abu Bakr II -->
 <figure class="hero-image">
   <img src="images/hero-sebelum-columbus.webp" alt="Armada kapal kayu Afrika abad pertengahan berlayar ke barat menuju Lautan Kegelapan — ekspedisi Abu Bakr II yang tak pernah kembali" loading="lazy" width="700" height="394">
   <figcaption class="img-label">Ilustrasi armada Abu Bakr II berlayar ke Atlantik — ekspedisi yang menghilang tanpa jejak</figcaption>
@@ -206,7 +211,7 @@
 
 <p>Al-Umari mencatat percakapan ini. Catatannya masih ada.</p>
 
-<!-- 🖼️ Mansa Musa di Kairo -->
+<!-- Mansa Musa di Kairo -->
 <figure class="hero-image">
   <img src="images/sebelum-columbus-mansa-musa.webp" alt="Mansa Musa, raja Afrika berkulit hitam dengan jubah kerajaan, berdiri di jalanan Kairo abad ke-14 dikelilingi unta dan batangan emas" loading="lazy" width="700" height="875">
   <figcaption class="img-label">Mansa Musa di Kairo, 1324 — emas yang ia bagikan mengguncang ekonomi Mesir selama satu dekade</figcaption>
@@ -218,17 +223,13 @@
 
 <p>Mari kita jujur tentang apa yang kita punya.</p>
 
-<p>Kita punya <strong>satu sumber primer.</strong> Bukan "konon" atau "kata orang." Al-Umari menulis ini dalam <em>Masalik al-Absar</em> setelah berbicara langsung dengan Mansa Musa. Sejarawan kontemporer yang mewawancarai saksi utama. Kalau kita menerapkan standar kritik sejarah yang adil, ini bukan legenda — ini kesaksian.</p>
+<p>Kita punya <strong>satu catatan sejarah yang serius.</strong> Al-Umari menulis ini dalam <em>Masalik al-Absar</em> — ia mewawancarai saksi-saksi yang hadir saat kunjungan Mansa Musa ke Kairo pada 1324. Ia bukan saksi langsung percakapan itu — tapi ia mencatatnya dari orang-orang yang hadir. Dalam standar kritik sejarah, ini adalah sumber awal yang kuat. Bukan legenda.</p>
 
 <p>Tapi itulah yang kita punya. <strong>Hanya itu.</strong></p>
 
-<p>Tidak ada bangkai kapal. Tidak ada prasasti. Tidak ada perkakas Afrika di tanah Amerika yang bisa dikaitkan dengan ekspedisi ini. Tidak ada catatan dari sisi penerima — suku asli Amerika yang seharusnya bertemu rombongan 2.000 kapal Afrika tidak meninggalkan catatan tertulis, dan tradisi lisan mereka tidak menyebutnya.</p>
+<p>Tidak ada bangkai kapal. Tidak ada prasasti. Tidak ada perkakas Afrika di tanah Amerika yang bisa dikaitkan dengan ekspedisi ini. Tidak ada catatan tertulis dari pihak penerima — suku asli Amerika yang seharusnya bertemu rombongan 2.000 kapal Afrika tidak meninggalkan catatan tertulis. Bukti tradisi lisan juga belum menghasilkan konfirmasi yang diterima luas oleh para sejarawan.</p>
 
-<blockquote>
-  <p>Satu kesaksian yang sangat serius — tanpa satu pun barang bukti.</p>
-</blockquote>
-
-<p>Inilah ketegangan di jantung seluruh perdebatan.</p>
+<p>Inilah ketegangan di jantung seluruh perdebatan: <strong>satu kesaksian yang sangat serius — tanpa satu pun barang bukti.</strong></p>
 
 <hr>
 
@@ -236,34 +237,36 @@
 
 <p>Tiga abad sebelum Mansa Musa, al-Masudi (w. 956 M) — geografer dan sejarawan Arab yang dijuluki "Pliny-nya Arab," merujuk pada naturalis Romawi yang menulis ensiklopedia raksasa tentang dunia — mencatat kisah yang lebih awal.</p>
 
-<p>Dalam <em>Muruj al-Dhahab</em>-nya, ia menulis tentang <strong>Khashkhash ibn Sa'id ibn Aswad,</strong> seorang pelaut dari Cordoba, Andalusia. Ia berlayar ke barat melintasi "Lautan Kegelapan" — nama Arab untuk Atlantik — dan kembali dengan membawa harta.</p>
+<p>Dalam <em>Muruj al-Dhahab</em>-nya, ia menulis tentang <strong>Khashkhash ibn Sa'id ibn Aswad,</strong> seorang pelaut dari Cordoba, Andalusia. Ia berlayar ke barat melintasi "Lautan Kegelapan" — nama Arab untuk Atlantik — dan, menurut catatan al-Masudi, kembali dengan selamat.</p>
 
 <p>Al-Masudi bukan penulis dongeng. Ia menghabiskan hidupnya berkeliling dunia, dari India sampai Afrika Timur, mencatat geografi dan sejarah. Tulisannya tentang tempat-tempat yang ia kunjungi sendiri terbukti akurat. Tapi untuk kisah Khashkhash, ia mencatat dari sumber kedua — seseorang yang mendengar dari seseorang. Satu lapis lebih lemah dari cerita Mansa Musa.</p>
 
 <p>Sekali lagi: sumbernya ada. Isinya spesifik. Tapi tidak ada konfirmasi arkeologis.</p>
 
-<!-- 🖼️ Khashkhash ibn Sa'id — Pelaut Cordoba -->
+<!-- Khashkhash ibn Sa'id — Pelaut Cordoba -->
 <figure class="hero-image">
   <img src="images/sebelum-columbus-khashkhash.webp" alt="Kapal layar Arab abad pertengahan (dhow) dengan layar lateen segitiga berlayar ke barat menuju lautan gelap misterius, golden sunset" loading="lazy" width="700" height="394">
-  <figcaption class="img-label">Khashkhash ibn Sa'id dari Cordoba — berlayar ke "Lautan Kegelapan" dan kembali dengan harta, tiga abad sebelum Mansa Musa</figcaption>
+  <figcaption class="img-label">Khashkhash ibn Sa'id dari Cordoba — berlayar ke "Lautan Kegelapan" dan kembali dengan selamat, tiga abad sebelum Mansa Musa</figcaption>
 </figure>
 
 <hr>
 
 <h2>Bukti yang Bukan Bukti (Tapi Layak Dicatat)</h2>
 
-<p>Lalu ada <strong>Leo Wiener.</strong> Profesor linguistik Harvard. Bukan Muslim. Bukan aktivis dakwah. Tahun 1920, ia menerbitkan <em>Africa and the Discovery of America</em> — tiga jilid tebal yang membandingkan bahasa, tanaman, dan artefak dari kedua sisi Atlantik.</p>
+<p>Lalu ada <strong>Leo Wiener.</strong> Profesor linguistik Harvard. Tahun 1920, ia menerbitkan <em>Africa and the Discovery of America</em> — tiga jilid tebal yang membandingkan bahasa, tanaman, dan artefak dari kedua sisi Atlantik. Statusnya sebagai akademisi non-Muslim tidak membuktikan teorinya — yang relevan adalah kualitas bukti dan metodenya, dan keduanya telah diperdebatkan.</p>
 
 <p>Wiener mengklaim menemukan paralel linguistik antara bahasa Mandinka (Afrika Barat) dan bahasa penduduk asli Karibia. Ia mencatat bahwa tanaman tertentu — kapas, ubi jalar, mungkin juga tembakau — muncul di kedua sisi Atlantik sebelum Columbus. Bagaimana mungkin?</p>
 
-<p>Argumen paling kuat dari jalur ini adalah <strong>kapas tetraploid.</strong> Tanaman ini adalah hibrida alami dari spesies kapas Afrika dan spesies kapas Amerika. Hibrida ini sudah ada di Amerika sebelum Columbus tiba. Bagaimana dua tanaman dari benua berbeda bisa kawin silang tanpa campur tangan manusia?</p>
+<p>Argumen paling kuat dari jalur ini adalah <strong>kapas tetraploid.</strong> Tanaman ini adalah hibrida alami dari spesies kapas Afrika dan spesies kapas Amerika, dan hibrida ini sudah ada di Amerika sebelum Columbus tiba. Kedengarannya seperti bukti kontak — dua tanaman dari benua berbeda yang "bertemu" di satu tempat.</p>
 
-<p>Mayoritas botanis berpendapat: biji kapas bisa terbawa arus laut, atau burung, atau — penjelasan yang lebih hemat — spesies itu terpisah jutaan tahun lalu saat benua masih menyatu, dan masing-masing berevolusi sendiri. Tidak ada ahli botani arus utama yang menganggap hipotesis "kapas dibawa manusia" sebagai penjelasan utama. Tapi mereka juga tidak bisa membuktikan sebaliknya. Perdebatan ini belum selesai.</p>
+<p>Tapi para botanis memperingatkan: <strong>jangan loncat ke kesimpulan.</strong> Spesies kapas Afrika dan Amerika bisa saja terpisah jutaan tahun lalu — saat benua masih menyatu — dan masing-masing berevolusi sendiri. Hibridisasi tetraploid bisa terjadi melalui penyebaran alami tanpa campur tangan manusia: biji kapas terbawa arus laut, atau burung, atau badai. Keberadaan hibrida itu sendiri tidak bisa, tanpa bukti tambahan, membedakan antara sejarah evolusioner dan kontak manusia.</p>
 
-<!-- 🖼️ Kapas & Samudra -->
+<p>Kasus kapas justru mengajarkan pelajaran yang penting: <strong>kesamaan biologis lintas Atlantik tidak otomatis berarti kontak manusia.</strong> Dan pelajaran ini sejalan dengan tesis utama artikel ini: bukti yang tampak menggoda bisa memiliki penjelasan lain yang lebih sederhana.</p>
+
+<!-- Kapas & Samudra -->
 <figure class="hero-image">
   <img src="images/sebelum-columbus-kapas.webp" alt="Still life konseptual: boll kapas terbuka dengan serat beterbangan di atas peta kuno yang menunjukkan Afrika Barat dan Karibia, siluet kapal hantu di latar" loading="lazy" width="700" height="467">
-  <figcaption class="img-label">Kapas tetraploid — hibrida Afrika-Amerika yang sudah ada sebelum Columbus. Bagaimana dua tanaman dari benua berbeda bisa kawin silang?</figcaption>
+  <figcaption class="img-label">Kapas tetraploid — hibrida Afrika-Amerika yang sudah ada sebelum Columbus. Tapi jangan loncat ke kesimpulan.</figcaption>
 </figure>
 
 <div class="section-ornament">✦ ✦ ✦</div>
@@ -272,32 +275,18 @@
 
 <p>Jadi apa yang sebenarnya kita tahu?</p>
 
-<ul class="evidence-list">
-  <li>
-    <span class="label">Sumber primer:</span> Mansa Musa sendiri mengatakan pendahulunya berlayar ke Atlantik<br>
-    <span class="counter">Tidak ada bukti arkeologis. Satu sumber, tanpa konfirmasi.</span>
-  </li>
-  <li>
-    <span class="label">Sumber primer:</span> Al-Masudi mencatat pelaut Cordoba abad ke-10 menyeberangi Atlantik<br>
-    <span class="counter">Al-Masudi menulis dari sumber kedua, bukan saksi langsung.</span>
-  </li>
-  <li>
-    <span class="label">Indikasi botani:</span> Kapas hibrida Afrika-Amerika ada sebelum Columbus<br>
-    <span class="counter">Penjelasan non-kontak masih mungkin dan lebih hemat.</span>
-  </li>
-  <li>
-    <span class="label">Indikasi linguistik:</span> Kata-kata Afrika Barat dan Karibia menunjukkan paralel (Wiener)<br>
-    <span class="counter">Metodologi dikritik terlalu longgar.</span>
-  </li>
-  <li>
-    <span class="label">Plausibilitas geografis:</span> Arus Atlantik dari Afrika Barat langsung menuju Karibia<br>
-    <span class="counter">Perjalanan pulang mungkin mustahil tanpa pengetahuan navigasi yang canggih.</span>
-  </li>
-</ul>
+<table class="evidence-table">
+  <tr><th>Kita punya…</th><th>Tapi…</th></tr>
+  <tr><td><strong>Sumber awal:</strong> Al-Umari mencatat laporan yang dikaitkan dengan Mansa Musa tentang pendahulunya yang berlayar ke Atlantik</td><td>Tidak ada bukti arkeologis. Satu sumber, tanpa konfirmasi independen</td></tr>
+  <tr><td><strong>Sumber awal:</strong> Al-Masudi mencatat pelaut Cordoba abad ke-10 menyeberangi Atlantik</td><td>Al-Masudi menulis dari sumber kedua, bukan saksi langsung</td></tr>
+  <tr><td><strong>Indikasi botani:</strong> Kapas hibrida Afrika-Amerika ada sebelum Columbus</td><td>Penjelasan non-kontak masih mungkin dan lebih hemat</td></tr>
+  <tr><td><strong>Indikasi linguistik:</strong> Kata-kata Afrika Barat dan Karibia menunjukkan paralel (Wiener)</td><td>Metodologi dikritik terlalu longgar</td></tr>
+  <tr><td><strong>Plausibilitas geografis:</strong> Arus Atlantik dari Afrika Barat langsung menuju Karibia</td><td>Perjalanan pulang mungkin mustahil tanpa pengetahuan navigasi yang canggih</td></tr>
+</table>
 
 <p>Ini bukan "terbukti." Tapi ini juga bukan "ngawur." Ini adalah <strong>sekumpulan petunjuk yang mengarah ke kemungkinan — bukan kesimpulan.</strong></p>
 
-<!-- 🖼️ Peta Kuno Bahr al-Zulumat -->
+<!-- Peta Kuno Bahr al-Zulumat -->
 <figure class="hero-image">
   <img src="images/sebelum-columbus-peta.webp" alt="Peta dunia Islam abad pertengahan di atas perkamen tua, Samudra Atlantik bertuliskan Bahr al-Zulumat dalam kaligrafi Arab, monster laut dan wilayah tak dikenal di tepi barat" loading="lazy" width="700" height="700">
   <figcaption class="img-label">"Bahr al-Zulumat" — Lautan Kegelapan. Peta abad pertengahan menunjukkan Atlantik sebagai misteri yang belum terpecahkan</figcaption>
@@ -311,32 +300,23 @@
 
 <p>Semua itu <strong>hoaks.</strong> Suku asli Amerika sendiri menggugat penerbit buku teks yang menyebarkan klaim itu — dan menang.</p>
 
-<div class="comparison">
-  <div class="cmp-card">
-    <h4>Perdebatan Akademik</h4>
-    <p>Sumber primer ada (al-Umari, al-Masudi)</p>
-    <p>Diperdebatkan di jurnal dan buku akademik</p>
-    <p>Ilmuwan non-Muslim terlibat dalam perdebatan</p>
-    <p>Kesimpulan: "menarik, belum terbukti"</p>
-  </div>
-  <div class="cmp-card">
-    <h4>Hoaks Viral</h4>
-    <p>Tidak ada sumber primer</p>
-    <p>Disebarkan di blog salin-tempel</p>
-    <p>Hanya Muslim yang menyebarkan</p>
-    <p>Kesimpulan: "terbukti, pasti benar"</p>
-  </div>
-</div>
+<p>Perbedaannya:</p>
+
+<table class="comparison-table">
+  <tr><th>Perdebatan Akademik</th><th>Hoaks Viral</th></tr>
+  <tr><td>Sumber primer ada (al-Umari, al-Masudi)</td><td>Tidak ada sumber primer</td></tr>
+  <tr><td>Diperdebatkan di jurnal dan buku akademik</td><td>Disebarkan di blog salin-tempel</td></tr>
+  <tr><td>Ilmuwan non-Muslim terlibat dalam perdebatan</td><td>Disebarkan tanpa verifikasi sumber</td></tr>
+  <tr><td>Kesimpulan: "menarik, belum terbukti"</td><td>Kesimpulan: "terbukti, pasti benar"</td></tr>
+</table>
 
 <p>Perbedaan paling penting: dalam perdebatan akademik, <strong>ketiadaan bukti diakui.</strong> Justru di situlah letak kejujurannya.</p>
 
 <hr>
 
-<h2>Penutup: Hak untuk Dipercaya</h2>
-
 <p>Mungkin artikel ini tidak akan viral. Ia tidak menawarkan kepastian. Ia tidak memberi Anda bahan untuk berkata "Islam sampai Amerika duluan!" di kolom komentar. Ia hanya menawarkan apa yang sebenarnya dimiliki oleh sains: <strong>satu kesaksian yang menarik, beberapa petunjuk yang menggoda, dan ketidakmampuan untuk menyimpulkan.</strong></p>
 
-<p>Tapi justru di situlah letak integritasnya. Karena ketika kita berhenti mengklaim kepastian untuk hal-hal yang belum pasti, kita tidak kehilangan apa pun. Yang kita dapatkan adalah sesuatu yang lebih langka: <strong>hak untuk dipercaya.</strong></p>
+<p>Tapi justru di situlah letak integritasnya. Karena ketika kita berhenti mengklaim kepastian untuk hal-hal yang belum pasti, kita tidak kehilangan sejarah. Kita hanya berhenti menambahkan sesuatu yang tidak dimilikinya. Dan mungkin, di zaman yang penuh kepastian murah, itulah cara paling sederhana untuk mendapatkan kembali sesuatu yang langka: <strong>hak untuk dipercaya.</strong></p>
 
 <p class="signature">— ALIM</p>
 
@@ -345,14 +325,14 @@
 <div class="closing-ornament">❦</div>
 
 <div class="footnotes">
-  <p><strong>Sumber primer:</strong></p>
+  <p><em>Catatan editorial: Sumber Wikipedia digunakan hanya untuk verifikasi fakta dasar dan tinjauan historiografi, bukan sebagai sumber primer.</em></p>
+  <p style="margin-top:1rem;"><strong>Sumber primer:</strong></p>
   <p>1. Al-Umari (w. 1349). <em>Masalik al-Absar fi Mamalik al-Amsar</em> — wawancara dengan saksi-saksi yang hadir saat kunjungan Mansa Musa ke Kairo, 1324. Sumber paling otoritatif untuk klaim ekspedisi Abu Bakr II.</p>
   <p>2. Al-Masudi (w. 956). <em>Muruj al-Dhahab wa Ma'adin al-Jawhar</em> — catatan tentang pelaut Cordoba, Khashkhash ibn Sa'id. Sumber kedua, bukan saksi langsung.</p>
-  <p><strong>Sumber sekunder:</strong></p>
+  <p style="margin-top:0.5rem;"><strong>Sumber sekunder:</strong></p>
   <p>3. Wiener, Leo (1920–1922). <em>Africa and the Discovery of America.</em> 3 jilid. Argumen linguistik dan botani; metodologi dikritik, tetapi tetap dirujuk dalam perdebatan.</p>
   <p>4. Van Sertima, Ivan (1976). <em>They Came Before Columbus.</em> Populer, tetapi kontroversial di kalangan akademisi arus utama.</p>
   <p>5. Needham, Joseph. <em>Science and Civilisation in China</em> — komentar tentang keterbatasan navigasi kapal pra-modern melintasi Atlantik.</p>
-  <p style="margin-top:1rem; font-style:italic;">Catatan editorial: Sumber Wikipedia digunakan hanya untuk verifikasi fakta dasar dan tinjauan historiografi, bukan sebagai sumber primer.</p>
 </div>
 
 <div class="related-posts">
