@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hutang yang Belum Terbayar — Kolom Ace Afandi</title>
+  <meta name="description" content="Indonesia mendeportasi ulama Palestina dalam 24 jam. 81 tahun lalu, seorang saudagar Palestina mengosongkan hartanya untuk kemerdekaan Indonesia. Sebuah ironi yang tak terbantahkan.">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/blog-common.css">
+
+  <style>
+    :root {
+      --bg: #fafaf8;
+      --text: #1f1a0e;
+      --accent: #6b4c12;
+      --accent-soft: #8b6914;
+      --muted: #6b6048;
+      --light-muted: #9b8d7a;
+      --rule: #d4c8a8;
+      --quote-bg: #f5f0e5;
+      --dropcap: #6b4c12;
+      --card: #ffffff;
+      --border: #e8d5cb;
+      --tag-bg: #f0ebe0;
+      --tag-text: #8b7355;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Crimson Text', Georgia, serif;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: var(--text);
+      background: var(--bg);
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0 1.5rem;
+    }
+
+    .series-badge {
+      display: inline-block;
+      font-family: system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--tag-bg);
+      padding: 0.3rem 0.9rem;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'Amiri', 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 0.6rem;
+    }
+
+    .subtitle {
+      font-family: 'Crimson Text', Georgia, serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 0.5rem;
+    }
+
+    .reading-time {
+      font-family: system-ui, sans-serif;
+      font-size: 0.8rem;
+      color: var(--light-muted);
+    }
+
+    /* Drop cap */
+    .dropcap::first-letter {
+      float: left;
+      font-family: 'Amiri', serif;
+      font-size: 4.2rem;
+      line-height: 0.85;
+      padding-right: 0.45rem;
+      padding-top: 0.1rem;
+      color: var(--dropcap);
+      font-weight: 700;
+    }
+
+    /* Content */
+    .content {
+      margin-top: 1.5rem;
+    }
+
+    .content p {
+      margin-bottom: 1.2rem;
+      text-align: justify;
+    }
+
+    /* Headings */
+    h2 {
+      font-family: 'Amiri', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 2.2rem 0 1rem;
+      line-height: 1.3;
+    }
+
+    /* Section ornament */
+    .section-ornament {
+      text-align: center;
+      color: var(--rule);
+      font-size: 1.1rem;
+      letter-spacing: 0.6em;
+      margin: 2rem 0;
+      user-select: none;
+    }
+
+    /* Blockquote */
+    blockquote {
+      background: var(--quote-bg);
+      border-left: 3px solid var(--accent);
+      padding: 1.2rem 1.5rem;
+      margin: 1.8rem 0;
+      font-style: italic;
+      color: #4a3f2f;
+      border-radius: 0 4px 4px 0;
+    }
+
+    blockquote p {
+      margin-bottom: 0.4rem;
+    }
+
+    /* Strong emphasis */
+    strong { color: #2c2416; }
+
+    /* Signature */
+    .signature {
+      text-align: right;
+      font-style: italic;
+      color: var(--muted);
+      margin-top: 2rem;
+      font-family: 'Amiri', serif;
+    }
+
+    /* Footnotes */
+    .footnotes {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.7;
+    }
+
+    /* Closing ornament */
+    .closing-ornament {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--accent-soft);
+      margin: 2.5rem 0 1.5rem;
+      user-select: none;
+    }
+
+    /* Nav */
+    .nav-series {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .nav-series a {
+      font-family: system-ui, sans-serif;
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-series a:hover { color: var(--accent); }
+
+    /* Related posts */
+    .related-posts {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .related-posts h3 {
+      font-family: 'Amiri', serif;
+      font-size: 1.2rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+    }
+
+    .related-card {
+      display: block;
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 1rem 1.2rem;
+      text-decoration: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .related-card:hover {
+      border-color: var(--accent-soft);
+      box-shadow: 0 2px 8px rgba(107,76,18,0.08);
+    }
+
+    .rc-tag {
+      font-family: system-ui, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .rc-title {
+      font-family: 'Amiri', serif;
+      font-size: 1.05rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* Dark toggle button */
+    .dark-toggle {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      font-size: 1.3rem;
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 50%;
+      width: 2.8rem;
+      height: 2.8rem;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: transform 0.2s;
+    }
+
+    .dark-toggle:hover { transform: scale(1.05); }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      body { font-size: 1.1rem; padding: 1rem 1rem 3rem; }
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.4rem; }
+      .dropcap::first-letter { font-size: 3.4rem; }
+    }
+
+    /* Comparison list */
+    .comparison-list {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+    .comparison-list li {
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .comparison-list li:last-child { border-bottom: none; }
+    .cmp-year {
+      font-family: system-ui, sans-serif;
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 0.95rem;
+    }
+    .cmp-text { color: var(--text); }
+
+    /* Highlight bar */
+    .highlight-bar {
+      background: var(--quote-bg);
+      border-left: 3px solid var(--accent);
+      padding: 1.2rem 1.5rem;
+      margin: 2rem 0;
+      font-weight: 600;
+      border-radius: 0 4px 4px 0;
+    }
+  </style>
+</head>
+<body>
+<div class="reading-progress" id="readingProgress"></div>
+
+<header>
+  <div class="series-badge">OPINI</div>
+  <h1>Hutang yang Belum Terbayar</h1>
+  <p class="subtitle">Dari Taher yang Mengosongkan Dompetnya, ke Miqdad yang Dideportasi dalam 24 Jam</p>
+  <span class="reading-time" id="readingTime"></span>
+</header>
+
+<article class="content">
+
+<p class="dropcap">Pada 16 Juli 2026, seorang ulama Palestina ditangkap di sebuah hotel di Bekasi.</p>
+
+<p>Namanya <strong>Syekh Abdul Karim Raed Miqdad</strong> — anggota Persatuan Ulama Palestina (<em>Palestinian Scholars Association</em>). Ia dijemput oleh aparat Indonesia atas dasar Red Notice Interpol yang diterbitkan oleh NCB Nicosia, Siprus. Tuduhannya: terorisme — keterlibatan dalam aktivitas yang oleh Siprus dan sejumlah negara Eropa dikategorikan sebagai tindak pidana terorisme. Detail tuduhan itu belum dipublikasikan secara utuh. Yang kita tahu: Red Notice-nya berasal dari Siprus, bukan dari Israel. Tapi Siprus adalah anggota Uni Eropa yang memiliki perjanjian ekstradisi dengan Israel — dan di situlah letak bahayanya.</p>
+
+<p>Kurang dari 24 jam kemudian — pagi 17 Juli — ia sudah di pesawat ke Siprus.</p>
+
+<p>Ketika keluarga Miqdad angkat bicara, mereka membantah keras. <em>Dia bukan teroris,</em> kata mereka. <em>Dia hanya vokal menentang genosida di Gaza.</em> Banyak anggota keluarga besarnya tewas dalam pembantaian itu. Ia berduka, dan ia bersuara. Keluarga meyakini tuduhan ini adalah rekayasa politik — upaya membungkam suara kritis terhadap kebijakan Israel di Gaza dengan memanfaatkan mesin Interpol.</p>
+
+<p><strong>Ini bukan tulisan tentang legalitas penangkapan.</strong> Polri sudah menjelaskan: prosedur diikuti, Red Notice Interpol berlaku, tiga paspor ditemukan — dua di antaranya diduga palsu. Kepemilikan paspor palsu adalah pelanggaran administratif yang serius, dan secara hukum, penangkapan bisa dibenarkan atas dasar itu. Tapi pertanyaannya tetap: apakah pelanggaran paspor adalah alasan untuk mendeportasi seseorang dalam 24 jam ke negara yang bisa menyerahkannya kepada musuhnya? Secara administratif, mungkin semuanya rapi. Ada surat, ada stempel, ada mekanisme.</p>
+
+<p>Tapi bukan itu yang mengganggu.</p>
+
+<p>Yang mengganggu adalah <strong>pagi setelah penangkapan itu, ia sudah tidak di Indonesia lagi.</strong> Yang mengganggu adalah ia dikirim ke Siprus — negara yang punya sejarah ekstradisi ke Israel. Yang mengganggu adalah Geneva Council for Rights and Liberties — LSM hak asasi manusia yang berbasis di Swiss dan telah beberapa kali melaporkan pelanggaran di Timur Tengah — menyebut ini berpotensi menjadi <em>prelude</em> penyerahan seorang aktivis Palestina ke negara yang kebijakannya ia lawan sepanjang hidupnya.</p>
+
+<p>Dan yang paling mengganggu: <strong>yang menangkap dan mendeportasi dia adalah Indonesia.</strong></p>
+
+<div class="section-ornament">✦ ✦ ✦</div>
+
+<h2>Sementara Itu, 82 Tahun Sebelumnya...</h2>
+
+<p>Di Kairo, 1945. Para mahasiswa dan diplomat Indonesia — M. Zein Hassan dan kawan-kawan — sedang berjuang mati-matian mencari pengakuan internasional untuk republik yang baru seumur jagung. Mereka butuh uang. Perjalanan, lobi, cetak pamflet, siaran radio.</p>
+
+<p>Seorang saudagar kaya Palestina bernama <strong>Muhammad Ali Taher</strong> mendengar perjuangan itu.</p>
+
+<p>Lalu ia mengosongkan tabungannya.</p>
+
+<p>Seluruh hartanya di Bank Arabia — diserahkan. Tanpa tanda terima. Tanpa perjanjian. Tanpa syarat. Ia tidak akan pernah merasakan kemerdekaan Indonesia. Ia tidak pernah ke Jakarta, tidak pernah diundang ke Istana, tidak pernah diberi Bintang Jasa. Tapi ketika Indonesia belum diakui siapa pun, seorang saudagar Palestina di Kairo percaya bahwa kemerdekaan adalah hak setiap manusia — dan dompetnya adalah caranya berjuang.</p>
+
+<p>Di Berlin, setahun sebelumnya — 6 September 1944 — suara <strong>Syekh Muhammad Amin Al-Husseini</strong>, Mufti Besar Yerusalem, mengudara lewat Radio Berlin berbahasa Arab. Ia menyiarkan dukungan terhadap janji kemerdekaan Indonesia oleh Jepang.</p>
+
+<p>Ya, Al-Husseini adalah figur kontroversial. Ia buronan Inggris yang bekerja untuk mesin propaganda Nazi. Sejarah tidak perlu menutupi itu. Tapi ketika ia menyiarkan sambutan itu dari Berlin yang dihujani bom Sekutu, kita bisa membaca satu hal: bahkan di tengah kerumitan geopolitik yang brutal, ada arus solidaritas yang mengalir dari Palestina ke Nusantara. Arus yang lintas ideologi, lintas kepentingan, lintas zaman.</p>
+
+<div class="section-ornament">✦ ✦ ✦</div>
+
+<h2>Hutang yang Tak Pernah Ditagih</h2>
+
+<p>Ini kesepakatan yang tidak tertulis: <strong>Palestina selalu ada untuk Indonesia ketika Indonesia belum menjadi apa-apa.</strong></p>
+
+<p>Mereka tidak menagih.</p>
+
+<p>Ketika Indonesia kemudian menjadi negara besar — anggota G20, ekonomi terbesar di Asia Tenggara, suara lantang di OKI — tidak ada satu pun catatan sejarah yang menunjukkan Muhammad Ali Taher atau keluarganya datang ke Jakarta meminta balas budi. Tidak ada.</p>
+
+<p>Itulah definisi solidaritas yang sejati: memberi tanpa berharap kembali.</p>
+
+<div class="section-ornament">✦ ✦ ✦</div>
+
+<h2>Dan Lalu Datang 16 Juli 2026</h2>
+
+<p>Kita sekarang di titik di mana Indonesia — negara yang paling lantang meneriakkan "Free Palestine" di setiap forum internasional — menangkap seorang ulama Palestina di Bekasi dan mengirimnya ke Siprus dalam waktu kurang dari 24 jam.</p>
+
+<p>Bukan menolak Red Notice. Bukan menunda deportasi untuk investigasi independen. Bukan meminta jaminan dari Siprus bahwa ia tidak akan diserahkan ke Israel.</p>
+
+<p>Langsung. Cepat. Efisien.</p>
+
+<p>Seperti ada urgensi yang tak kasat mata untuk menyingkirkan orang ini dari tanah Indonesia secepat mungkin.</p>
+
+<div class="section-ornament">✦ ✦ ✦</div>
+
+<h2>Ironi yang Menyayat</h2>
+
+<p>Mari kita letakkan berdampingan:</p>
+
+<ul class="comparison-list">
+  <li><span class="cmp-year">1945:</span> <span class="cmp-text">Muhammad Ali Taher, seorang Palestina yang tidak punya kewajiban apa pun terhadap Indonesia, memberikan seluruh hartanya untuk perjuangan kemerdekaan kita.</span></li>
+  <li><span class="cmp-year">2026:</span> <span class="cmp-text">Indonesia menangkap dan mendeportasi seorang ulama Palestina yang keluarganya menegaskan ia bukan teroris — ia hanya berduka dan bersuara untuk Gaza.</span></li>
+</ul>
+
+<p>Di antara dua titik waktu itu membentang 81 tahun sejarah. Dan jika Miqdad benar-benar berakhir di penjara Israel — negara yang kebijakan pendudukan dan aneksasinya ia tentang sepanjang hidupnya — maka kita, Indonesia, akan menjadi bagian dari <strong>rantai</strong> yang mengantarkannya ke sana.</p>
+
+<p>Ini bukan tentang teknis hukum. Ini tentang moral.</p>
+
+<p>Polri bisa menunjukkan dokumen yang membenarkan setiap langkah. Ada Red Notice. Ada tiga paspor. Ada prosedur.</p>
+
+<p>Tapi <strong>tidak ada dokumen yang bisa membenarkan ironi ini:</strong> seorang ulama dari bangsa yang dulu mengosongkan dompetnya untuk Indonesia, kini dideportasi oleh Indonesia dalam tempo yang bahkan tidak memberi waktu untuk pamit.</p>
+
+<div class="section-ornament">✦ ✦ ✦</div>
+
+<h2>Apa yang Tersisa?</h2>
+
+<p>Kita tidak tahu apa yang akan terjadi pada Miqdad di Siprus. Mungkin ia dibebaskan. Mungkin ia diekstradisi ke Israel. Mungkin ia lenyap dalam birokrasi internasional yang tak transparan.</p>
+
+<p>Tapi satu hal yang sudah terjadi — dan tidak bisa dihapus:</p>
+
+<div class="highlight-bar">
+  Indonesia menangkap seorang ulama Palestina dan mengirimnya pergi dalam 24 jam, sementara di Kairo, 81 tahun lalu, seorang saudagar Palestina memberikan segalanya agar Indonesia bisa berdiri.
+</div>
+
+<p>Jika ini bukan pengkhianatan terhadap sejarah solidaritas, lalu apa namanya?</p>
+
+<div class="section-ornament">✦ ✦ ✦</div>
+
+<p>Muhammad Ali Taher tidak pernah minta dilunasi. Tapi kita, bangsa yang menerima pemberiannya, setidaknya bisa bertanya: <em>apakah begini cara kita membalas?</em></p>
+
+<p class="signature">— Ara Liar</p>
+
+</article>
+
+<div class="closing-ornament">❦</div>
+
+<div class="footnotes">
+  <p>Ditulis pada 21 Juli 2026, menggabungkan riset tentang kasus deportasi Syekh Abdul Karim Raed Miqdad dan kajian sejarah tentang dukungan Palestina terhadap kemerdekaan Indonesia (Muhammad Ali Taher &amp; Syekh Amin Al-Husseini).</p>
+</div>
+
+<nav class="nav-series">
+  <a href="index.html">⌂ Kembali ke Perpustakaan Kecil</a>
+</nav>
+
+<div class="related-posts">
+  <h3>Baca juga</h3>
+  <div class="related-grid">
+    <a href="#" class="related-card">
+      <div class="rc-tag">ESAI LEPAS</div>
+      <div class="rc-title">Dua Sahabat dari Seberang: Membaca Ulang Narasi Dukungan Palestina untuk Indonesia</div>
+    </a>
+  </div>
+</div>
+
+<button class="dark-toggle" id="darkToggle" aria-label="Dark mode">🌙</button>
+<script src="assets/blog-common.js"></script>
+</body>
+</html>
