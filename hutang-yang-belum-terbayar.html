@@ -7,8 +7,6 @@
   <meta name="description" content="Indonesia mendeportasi ulama Palestina dalam 24 jam. 81 tahun lalu, seorang saudagar Palestina mengosongkan hartanya untuk kemerdekaan Indonesia. Sebuah ironi yang tak terbantahkan.">
   
   <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/blog-common.css">
-
   <style>
     :root {
       --bg: #fafaf8;
@@ -96,51 +94,27 @@
     }
     blockquote p { margin: 0; }
 
-    /* Signature */
-    .signature {
-      text-align: right;
-      font-style: italic;
-      color: var(--muted);
-      margin-top: 2rem;
-      font-family: 'Amiri', serif;
-    }
-
-    /* Footnotes */
+    .signature { text-align: right; font-style: italic; color: var(--muted); margin-top: 2rem; }
     .footnotes {
       margin-top: 3rem;
       padding-top: 1.5rem;
       border-top: 1px solid var(--rule);
-      font-size: 0.95rem;
-      color: var(--muted);
-      font-style: italic;
-      line-height: 1.7;
-    }
-
-    /* Closing ornament */
-    .closing-ornament {
-      text-align: center;
-      font-size: 2rem;
-      color: var(--accent);
-      margin: 2.5rem 0 1.5rem;
-    }
-
-    /* Nav */
-    .nav-series {
-      text-align: center;
-      margin-top: 2rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--rule);
-    }
-
-    .nav-series a {
-      font-family: system-ui, sans-serif;
       font-size: 0.9rem;
       color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
+      line-height: 1.6;
     }
-
-    .nav-series a:hover { color: var(--accent); }
+    .footnotes p { margin-bottom: 0.5rem; }
+    .closing-ornament { text-align: center; color: var(--rule); margin: 3rem 0 1rem; }
+    .nav-series {
+      display: flex;
+      justify-content: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.95rem;
+    }
+    .nav-series a { color: var(--accent); text-decoration: none; font-style: italic; }
+    .nav-series a:hover { text-decoration: underline; }
 
     /* Related posts */
     .related-posts {
@@ -216,9 +190,8 @@
 
     /* Responsive */
     @media (max-width: 600px) {
-      body { font-size: 1.1rem; padding: 1rem 1rem 3rem; }
-      h1 { font-size: 2rem; }
-      h2 { font-size: 1.4rem; }
+      body { font-size: 1.1rem; padding: 1.2rem 1rem 3rem; }
+      h1 { font-size: 1.7rem; }
       .dropcap::first-letter { font-size: 3.4rem; }
     }
 
@@ -250,6 +223,8 @@
       border-radius: 0 4px 4px 0;
     }
   </style>
+
+<link rel="stylesheet" href="assets/blog-common.css">
 </head>
 <body>
 <div class="reading-progress" id="readingProgress"></div>
