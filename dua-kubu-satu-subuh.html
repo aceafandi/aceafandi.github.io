@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dua Kubu, Satu Subuh, dan Satu Rawi yang Diperselisihkan — Kolom Ace Afandi</title>
+  <meta name="description" content="Dua kubu, satu subuh, dan satu Common Link yang diperselisihkan. Sebuah analisis ICMA tentang hadits qunut Subuh — dari Anas ibn Malik, Abu Ja'far al-Razi, hingga perdebatan al-Nawawi dan Ibn Taymiyyah.">
+  <meta property="og:title" content="Dua Kubu, Satu Subuh, dan Satu Rawi yang Diperselisihkan">
+  <meta property="og:description" content="Dua kubu, satu subuh, dan satu Common Link yang diperselisihkan. Analisis ICMA tentang hadits qunut Subuh — dari Anas ibn Malik hingga perdebatan al-Nawawi dan Ibn Taymiyyah.">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafaf8;
+      --text: #1f1a0e;
+      --accent: #6b4c12;
+      --muted: #6b6048;
+      --rule: #d4c8a8;
+      --quote-bg: #f5f0e5;
+      --dropcap: #6b4c12;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Crimson Text', Georgia, serif;
+      font-size: 1.25rem;
+      line-height: 1.85;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+    header { text-align: center; margin-bottom: 2rem; }
+    .series-badge {
+      display: inline-block;
+      font-family: system-ui, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      border: 1px solid var(--rule);
+      padding: 0.3em 1em;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-family: 'Amiri', 'Crimson Text', serif;
+      font-size: 2.2rem;
+      line-height: 1.35;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      font-style: italic;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+    .reading-time {
+      display: block;
+      font-family: system-ui, sans-serif;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 1rem;
+    }
+    .hero-image { margin: 2rem 0; text-align: center; }
+    .hero-image img { max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 2px 12px rgba(31,26,14,0.08); }
+    .img-label { font-size: 0.85rem; color: var(--muted); font-style: italic; margin-top: 0.5rem; }
+    .section-image { margin: 2rem 0; text-align: center; }
+    .section-image img { max-width: 100%; height: auto; border-radius: 4px; opacity: 0.92; }
+    .content { margin-top: 2rem; }
+    .content p { margin-bottom: 1.4rem; }
+    .dropcap::first-letter {
+      float: left;
+      font-family: 'Amiri', serif;
+      font-size: 4.2rem;
+      line-height: 0.85;
+      padding-right: 0.45rem;
+      padding-top: 0.05rem;
+      color: var(--dropcap);
+      font-weight: 700;
+    }
+    .section-ornament {
+      text-align: center;
+      color: var(--rule);
+      font-size: 1.2rem;
+      letter-spacing: 0.6em;
+      margin: 2.5rem 0;
+    }
+    blockquote {
+      background: var(--quote-bg);
+      border-left: 3px solid var(--accent);
+      padding: 1.2rem 1.5rem;
+      margin: 1.8rem 0;
+      font-style: italic;
+      color: #4a3f2f;
+      border-radius: 0 4px 4px 0;
+    }
+    blockquote p { margin: 0; }
+    h2 {
+      font-family: 'Amiri', serif;
+      font-size: 1.6rem;
+      margin: 2.5rem 0 1rem;
+      color: var(--accent);
+    }
+    strong { color: #1a150a; }
+    em { color: #4a3a22; }
+    hr { border: none; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+    .signature { text-align: right; font-style: italic; color: var(--muted); margin-top: 2rem; }
+    .footnotes {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .footnotes p { margin-bottom: 0.5rem; }
+    .closing-ornament { text-align: center; color: var(--rule); font-size: 1.5rem; margin: 3rem 0 1rem; }
+
+    /* ── Comparison Cards ── */
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.8rem 0;
+    }
+    .cmp-card {
+      background: var(--quote-bg);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 1.2rem;
+    }
+    .cmp-card h4 {
+      font-family: 'Amiri', serif;
+      color: var(--accent);
+      font-size: 1.1rem;
+      border-bottom: 1px dashed var(--rule);
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.8rem;
+    }
+    .cmp-card p { font-size: 0.95rem; margin-bottom: 0.6rem; color: #4a3f2f; }
+    .cmp-card p:last-child { margin-bottom: 0; }
+
+    /* ── Arabic block ── */
+    .arabic-block {
+      background: var(--quote-bg);
+      border-right: 3px solid var(--accent);
+      padding: 1.2rem 1.5rem;
+      margin: 1.8rem 0;
+      text-align: right;
+      direction: rtl;
+      font-family: 'Amiri', serif;
+      font-size: 1.5rem;
+      line-height: 2;
+      color: #3a2f1a;
+      border-radius: 4px 0 0 4px;
+    }
+    .arabic-block + p {
+      font-style: italic;
+      color: var(--muted);
+      margin-top: -1rem;
+      font-size: 1.05rem;
+    }
+
+    /* ── Highlight bar ── */
+    .highlight-bar {
+      background: linear-gradient(90deg, var(--quote-bg) 0%, transparent 100%);
+      border-left: 3px solid var(--accent);
+      padding: 0.8rem 1.2rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: #4a3f2f;
+    }
+
+    .nav-series {
+      display: flex;
+      justify-content: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.95rem;
+    }
+    .nav-series a { color: var(--accent); text-decoration: none; font-style: italic; }
+    .nav-series a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      body { font-size: 1.1rem; padding: 1.2rem 1rem 3rem; }
+      h1 { font-size: 1.7rem; }
+      .dropcap::first-letter { font-size: 3.4rem; }
+      .comparison { grid-template-columns: 1fr; }
+    }
+  </style>
+
+<link rel="stylesheet" href="assets/blog-common.css">
+</head>
+<body>
+<div class="reading-progress" id="readingProgress"></div>
+
+<header>
+  <div class="series-badge">Esai · Fikih &amp; Hadis</div>
+  <h1>Dua Kubu, Satu Subuh, dan Satu Rawi yang Diperselisihkan</h1>
+  <p class="subtitle">Ketika satu sahabat mewariskan dua hadits yang bertentangan — dan seluruh perdebatan bergantung pada satu perawi bernama Abu Ja'far al-Razi</p>
+<span class="reading-time" id="readingTime"></span>
+</header>
+
+<figure class="hero-image">
+  <img src="images/hero-dua-kubu-subuh.webp" alt="Ilustrasi: Anas ibn Malik meriwayatkan hadits di hadapan para tabi'in — cahaya keemasan menerangi majelis ilmu" loading="lazy" width="700" height="394">
+  <figcaption class="img-label">Anas ibn Malik, sahabat yang melayani Nabi selama sepuluh tahun — saksi mata yang mewariskan dua hadits tentang qunut Subuh</figcaption>
+</figure>
+
+<article class="content">
+
+<p class="dropcap">Saya membuka dua kitab sekaligus tadi pagi. Di layar kiri: <em>Mughni al-Muhtaj</em> karya al-Shirbini. Di layar kanan: <em>Fiqh al-Sunnah</em> karya Sayyid Sabiq. Keduanya di Syamilah. Keduanya tentang satu hal: qunut Subuh.</p>
+
+<p>Saya tidak berniat mencari jawaban. Saya hanya ingin melihat: kenapa satu amalan yang dilakukan jutaan orang Indonesia setiap hari bisa menjadi medan perang teologis yang tak kunjung selesai?</p>
+
+<p>Lalu saya menemukan satu nama yang muncul di semua rantai: <strong>Abu Ja'far al-Razi.</strong> Dan di situlah semuanya mulai jelas.</p>
+
+<div class="section-ornament">✦ ✦ ✦</div>
+
+<h2>Satu Sahabat, Dua Hadits yang Bertentangan</h2>
+
+<p>Semua berawal dari Anas ibn Malik. Sahabat yang melayani Nabi selama sepuluh tahun. Saksi mata yang hidup hingga usia 93 tahun (w. 93 H) — cukup lama untuk meriwayatkan ribuan hadits dan melihat Islam menyebar ke seluruh penjuru.</p>
+
+<p>Dari Anas, umat Islam mewarisi <strong>dua hadits yang tampaknya bertentangan:</strong></p>
+
+<p><strong>Hadits pertama</strong> — diriwayatkan oleh 'Asim al-Ahwal, perawi sahih yang haditsnya masuk dalam Shahihayn:</p>
+
+<div class="arabic-block">قنت رسول الله صلى الله عليه وسلم شهراً يدعو على أحياء من العرب ثم تركه</div>
+<p><em>"Rasulullah melakukan qunut selama sebulan — mendoakan kebinasaan atas beberapa suku Arab — lalu meninggalkannya."</em></p>
+
+<p><strong>Hadits kedua</strong> — diriwayatkan oleh al-Rabi' ibn Anas, melalui Abu Ja'far al-Razi:</p>
+
+<div class="arabic-block">ما زال رسول الله صلى الله عليه وسلم يقنت في الفجر حتى فارق الدنيا</div>
+<p><em>"Rasulullah tidak pernah berhenti melakukan qunut di Subuh hingga beliau meninggalkan dunia."</em></p>
+
+<p>Satu sahabat. Dua hadits. Dua kesimpulan yang berlawanan.</p>
+
+<div class="section-ornament">✦ ✦ ✦</div>
+
+<figure class="section-image">
+  <img src="images/section-dua-kubu-icma.webp" alt="Visualisasi rantai transmisi hadits — diagram ICMA yang menunjukkan dua Common Link: 'Asim al-Ahwal dan Abu Ja'far al-Razi" loading="lazy" width="700" height="394">
+  <figcaption class="img-label">Struktur transmisi: dua Common Link, dua kesimpulan yang bertolak belakang</figcaption>
+</figure>
+
+<h2>Di Mana Letak Masalahnya: Analisis ICMA</h2>
+
+<p>Metode <em>isnad-cum-matn analysis</em> (ICMA) yang dikembangkan oleh Harald Motzki memungkinkan kita melihat struktur transmisi hadits secara visual. Ketika saya menerapkannya pada hadits qunut Subuh, inilah yang muncul.</p>
+
+<p><strong>Hadits "qunut nazilah lalu berhenti"</strong> memiliki Common Link yang kuat: <strong>'Asim al-Ahwal</strong> (w. ~140 H). Ia adalah perawi <em>sahih</em> — haditsnya diriwayatkan oleh al-Bukhari dan Muslim. Jalur transmisinya bercabang ke banyak kolektor terpercaya. Ini hadits yang tidak diperselisihkan.</p>
+
+<p><strong>Hadits "qunut terus-menerus hingga wafat"</strong> memiliki struktur yang sangat berbeda. Seluruh rantainya — enam jalur atau lebih — bertemu pada satu orang: <strong>Abu Ja'far al-Razi</strong> (w. ~160 H). Tidak ada jalur independen lain. Tidak ada syahid dari sahabat lain yang benar-benar sahih. Seluruh klaim ini bergantung pada <strong>satu perawi tunggal.</strong></p>
+
+<p>Dan siapakah Abu Ja'far al-Razi?</p>
+
+<p>Ibn Hajar al-Asqalani, dalam <em>Taqrib al-Tahdhib,</em> menilainya: <strong>"صدوق سيء الحفظ"</strong> — jujur, tapi buruk hafalannya. Ia bukan pendusta. Tapi ingatannya tidak bisa diandalkan sepenuhnya. Dalam hierarki kritikus hadits, ia berada di level yang membuat haditsnya bisa diterima <strong>jika ada penguat.</strong> Tapi dalam kasus ini, tidak ada penguat independen.</p>
+
+<p>Bahkan al-Nawawi sendiri — pembela utama qunut Subuh — mengakui kelemahan ini. Dalam <em>al-Majmu',</em> ia mengutip penilaian Ibn Hajar tentang Abu Ja'far apa adanya, tanpa menyembunyikannya. Ia tidak membangun argumennya di atas klaim bahwa Abu Ja'far adalah perawi sempurna. Ia membangunnya di atas hal lain.</p>
+
+<div class="section-ornament">✦ ✦ ✦</div>
+
+<h2>Enam Rantai, Empat Varian Matan</h2>
+
+<p>Analisis matan menunjukkan bahwa hadits "qunut terus-menerus" muncul dalam <strong>empat varian redaksi</strong> yang menyebar dari Abu Ja'far ke tiga wilayah: Yaman (via Abd al-Razzaq), Baghdad (via Ahmad ibn Hanbal), Mesir (via al-Tahawi), dan Kufah (via Yahya ibn Abi Bukayr).</p>
+
+<p>Inti matannya identik di semua jalur: <em>"yaqnutu hatta faaraqa al-dunya/maata"</em> — melakukan qunut hingga meninggalkan dunia. Varian hanya pada kata pembuka: <em>ma zala</em>, <em>lam yazal</em>, atau <em>qanata</em>. Ini menunjukkan teks sudah stabil di level Abu Ja'far — ia bukan fabrikasi kemudian.</p>
+
+<p>Tapi ada satu varian yang mencolok. Hanya di jalur <strong>Kufah</strong> (Yahya ibn Abi Bukayr) muncul tambahan: <em>"dan Abu Bakr sampai mati, dan Umar sampai mati."</em> Tambahan ini tidak ditemukan di jalur Yaman, Baghdad, atau Mesir. Kemungkinan besar ini adalah <strong>interpolasi di level Partial Common Link</strong> — seseorang di Kufah menambahkan nama dua khalifah pertama untuk memperkuat argumen. Bukan bagian dari teks asli yang diriwayatkan Abu Ja'far.</p>
+
+<div class="section-ornament">✦ ✦ ✦</div>
+
+<figure class="section-image">
+  <img src="images/section-dua-kubu-debat.webp" alt="Ilustrasi konseptual: dua ulama dalam tradisi keilmuan Islam — satu dengan kitab hadits, satu dengan kitab ushul fiqh — mewakili dua metodologi" loading="lazy" width="700" height="394">
+  <figcaption class="img-label">Dua metodologi: yang satu bertanya "apakah sanadnya kuat?", yang lain bertanya "apakah umat sudah cukup lama mengamalkannya?"</figcaption>
+</figure>
+
+<h2>Dua Argumen yang Sama-sama Masuk Akal</h2>
+
+<h3>Argumen Para Pengkritik</h3>
+
+<p>Dimulai dari generasi sahabat. <strong>Tariq ibn Ashyam al-Ashja'i</strong> — seorang sahabat yang salat di belakang Nabi dan empat khalifah di Kufah selama lima tahun. Ketika anaknya bertanya apakah mereka melakukan qunut di Subuh, Tariq menjawab: <em>"Tidak. Itu perkara baru (muhdath)."</em> (HR Ahmad, al-Tirmidhi, al-Nasa'i — dinilai sahih oleh Ibn Hibban dan al-Albani)</p>
+
+<p>Rantai kritik ini berlanjut: <strong>Ibn Hazm</strong> (w. 456 H) dalam <em>al-Muhalla</em>, <strong>Ibn Taymiyyah</strong> (w. 728 H) dalam <em>Majmu' al-Fatawa</em>, <strong>Ibn al-Qayyim</strong> (w. 751 H) dalam <em>Zad al-Ma'ad</em>, <strong>al-Shawkani</strong> (w. 1250 H) dalam <em>Nayl al-Awtar</em>, hingga generasi kontemporer: al-Albani, Ibn Baz, Ibn Uthaymeen, dan Sayyid Sabiq.</p>
+
+<p>Argumen mereka sederhana: hadits tentang qunut terus-menerus bergantung pada satu perawi yang diperselisihkan. Sementara itu, hadits tentang qunut nazilah lalu berhenti diriwayatkan oleh perawi sahih dalam Shahihayn. Ketika ada pertentangan, hadits yang lebih kuat harus dimenangkan.</p>
+
+<hr>
+
+<h3>Argumen Para Pembela</h3>
+
+<p><strong>Imam al-Shafi'i</strong> (w. 204 H) meletakkan fondasinya dalam <em>al-Umm</em>: qunut Subuh adalah sunnah berdasarkan hadits Anas. Praktik ini, menurutnya, juga dilakukan oleh para khalifah.</p>
+
+<p>Tapi pembelaan paling sistematis datang dari <strong>Imam al-Nawawi</strong> (w. 676 H). Dalam <em>al-Majmu' Syarh al-Muhadhdhab</em>, ia membangun <strong>sistem argumentasi bertingkat:</strong></p>
+
+<p><strong>Pertama — otentikasi.</strong> Ia menegaskan bahwa hadits Anas tentang qunut terus-menerus adalah <strong>sahih.</strong> Ia mengutip al-Balkhi, al-Hakim, al-Bayhaqi, dan al-Daraqutni sebagai pihak yang mensahihkannya. Hadits ini diriwayatkan melalui banyak jalur — meskipun semuanya bertemu di Abu Ja'far, jalur-jalur itu saling menguatkan.</p>
+
+<p><strong>Kedua — kaidah ushul: al-muthbit muqaddam 'ala al-nafi.</strong> Yang mengafirmasi didahulukan atas yang menegasi. Orang yang mengatakan "terjadi" memiliki tambahan ilmu — ia mungkin melihat apa yang tidak dilihat oleh yang mengatakan "tidak terjadi." Tariq ibn Ashyam tidak melihat qunut di Kufah. Tapi Anas, Abu Hurayra, Ibn Abbas, dan al-Bara' ibn Azib melihatnya di Madinah.</p>
+
+<p><strong>Ketiga — pembedaan dua jenis qunut.</strong> Qunut yang dilakukan Nabi selama sebulan lalu ditinggalkan adalah <strong>qunut nazilah</strong> — mendoakan kebinasaan atas musuh. Sementara qunut Subuh adalah ibadah terpisah yang terus dilakukan hingga wafat. Dua riwayat dari Anas yang tampaknya bertentangan sebenarnya merujuk pada dua praktik yang berbeda.</p>
+
+<p><strong>Keempat — praktik yang hidup.</strong> Qunut Subuh diamalkan oleh generasi Salaf di Madinah dan Makkah. Ini adalah argumen tambahan di luar hadits: <em>'amal</em> — praktik umat yang bersambung.</p>
+
+<div class="section-ornament">✦ ✦ ✦</div>
+
+<h2>Enam Argumen, Enam Jawaban</h2>
+
+<div class="comparison">
+  <div class="cmp-card">
+    <h4>🟤 Argumen Kritikus</h4>
+    <p>Tariq ibn Ashyam: Nabi <strong>TIDAK</strong> qunut di Kufah</p>
+  </div>
+  <div class="cmp-card">
+    <h4>🟡 Jawaban Syafi'iyyah</h4>
+    <p>Afirmasi didahulukan atas negasi. Yang melihat lebih banyak.</p>
+  </div>
+  <div class="cmp-card">
+    <h4>🟤 Argumen Kritikus</h4>
+    <p>Anas: Qunut cuma sebulan lalu berhenti</p>
+  </div>
+  <div class="cmp-card">
+    <h4>🟡 Jawaban Syafi'iyyah</h4>
+    <p>Itu qunut <strong>NAZILAH</strong>. Untuk Subuh: "tidak pernah berhenti."</p>
+  </div>
+  <div class="cmp-card">
+    <h4>🟤 Argumen Kritikus</h4>
+    <p>Hadits qunut Subuh dhaif</p>
+  </div>
+  <div class="cmp-card">
+    <h4>🟡 Jawaban Syafi'iyyah</h4>
+    <p>Al-Nawawi, al-Bayhaqi, al-Hakim mensahihkannya.</p>
+  </div>
+  <div class="cmp-card">
+    <h4>🟤 Argumen Kritikus</h4>
+    <p>Hanya Syafi'iyyah yang melakukannya</p>
+  </div>
+  <div class="cmp-card">
+    <h4>🟡 Jawaban Syafi'iyyah</h4>
+    <p>Praktik Salaf Madinah, Makkah. Malikiyyah juga mengakuinya.</p>
+  </div>
+  <div class="cmp-card">
+    <h4>🟤 Argumen Kritikus</h4>
+    <p>Ibn Mas'ud, Ibn Abbas tidak qunut</p>
+  </div>
+  <div class="cmp-card">
+    <h4>🟡 Jawaban Syafi'iyyah</h4>
+    <p>Mereka mungkin tidak melihatnya. Riwayat dari mereka lemah.</p>
+  </div>
+  <div class="cmp-card">
+    <h4>🟤 Argumen Kritikus</h4>
+    <p>Ini bid'ah</p>
+  </div>
+  <div class="cmp-card">
+    <h4>🟡 Jawaban Syafi'iyyah</h4>
+    <p>Khilafiyah ijtihadiyah — bukan mengada-ada tanpa dasar.</p>
+  </div>
+</div>
+
+<hr>
+
+<div class="highlight-bar">
+  <p>Di sinilah saya berhenti dan merenung. Dua kubu, dua metodologi, dua kesimpulan — tapi keduanya berangkat dari sumber yang sama: hadits Anas ibn Malik. Keduanya melibatkan ulama yang sama-sama tulus, sama-sama <em>rigorous</em>, sama-sama menghabiskan hidup mereka untuk mempelajari sunnah Nabi.</p>
+</div>
+
+<p>Dan keduanya tidak akan pernah sepakat — karena titik awal mereka berbeda. Yang satu bertanya: <em>"Apakah sanadnya cukup kuat untuk mengikat?"</em> Yang lain bertanya: <em>"Apakah umat sudah cukup lama mengamalkannya untuk dianggap sebagai sunnah yang hidup?"</em></p>
+
+<figure class="section-image">
+  <img src="images/section-dua-kubu-subuh.webp" alt="Suasana masjid saat Subuh — jamaah mengangkat tangan dalam doa qunut, cahaya fajar menerobos jendela" loading="lazy" width="700" height="394">
+  <figcaption class="img-label">Setiap Subuh, jutaan Muslim di Indonesia mengangkat tangan — entah karena mengikuti al-Nawawi, atau karena tidak ingin masjid terpecah hanya karena perbedaan gerakan tangan</figcaption>
+</figure>
+
+<p>Dua pertanyaan. Satu Subuh. Dan jutaan Muslim di Indonesia yang bangun setiap pagi, mengangkat tangan, membaca <em>Allahummahdini fi man hadayt...</em> — entah karena mengikuti al-Nawawi, atau karena menghormati jamaah yang sudah terbiasa, atau karena tidak ingin masjid terpecah hanya karena perbedaan gerakan tangan.</p>
+
+<p>Mungkin itu hikmah yang paling dalam dari semuanya. Bahwa di balik semua analisis isnad, di balik semua perbandingan matan, di balik semua debat tentang Common Link dan Partial Common Link — pada akhirnya, fikih bukan hanya tentang benar dan salah. Ia juga tentang <strong>bagaimana kita hidup bersama dalam ketidaksepakatan.</strong></p>
+
+<p class="signature">— ALIM</p>
+
+</article>
+
+<div class="closing-ornament">❦</div>
+
+<div class="footnotes">
+  <p><em>Sumber: Al-Nawawi, al-Majmu' Syarh al-Muhadhdhab, juz 3, hlm. 492-504; Ibn Hajar al-Asqalani, Fath al-Bari &amp; Taqrib al-Tahdhib; Al-Shirbini, Mughni al-Muhtaj; al-Shawkani, Nayl al-Awtar; Ibn al-Qayyim, Zad al-Ma'ad; data ICMA diolah dari Musnad Ahmad, al-Musannaf Abd al-Razzaq, Sunan al-Daraqutni, Sharh Ma'ani al-Athar al-Tahawi, al-Sunan al-Kubra al-Bayhaqi, Sahih al-Bukhari, Sahih Muslim.</em></p>
+</div>
+
+<nav class="nav-series">
+  <a href="index.html">⌂ Indeks</a>
+</nav>
+
+<button class="dark-toggle" id="darkToggle" aria-label="Dark mode">🌙</button>
+<script src="assets/blog-common.js"></script>
+</body>
+</html>
