@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kunci Firdaus di Sykamina — Kolom Ace Afandi</title>
+  <meta name="description" content="Seorang Yahudi di Sykamina mendengar nabi itu 'mengaku memegang kunci-kunci firdaus.' Empat puluh tahun frasa itu jadi amunisi para peragu — sampai Sean Anthony membukanya kembali.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafaf8; --text: #1f1a0e; --accent: #6b4c12;
+      --muted: #6b6048; --rule: #d4c8a8; --quote-bg: #f5f0e5; --dropcap: #6b4c12;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: 'Crimson Text', Georgia, serif; font-size: 1.25rem; line-height: 1.85;
+      max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem 4rem;
+    }
+    header { text-align: center; margin-bottom: 2rem; }
+    .series-badge {
+      display: inline-block; font-family: system-ui, sans-serif; font-size: 0.7rem;
+      font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--accent); border: 1px solid var(--rule); padding: 0.3em 1em;
+      border-radius: 2px; margin-bottom: 1.5rem;
+    }
+    h1 { font-family: 'Amiri', serif; font-size: 2.2rem; line-height: 1.35; font-weight: 700; margin-bottom: 0.5rem; }
+    .subtitle { font-style: italic; color: var(--muted); font-size: 1.1rem; }
+    .hero-image { margin: 2rem 0; text-align: center; }
+    .hero-image img { max-width: 100%; height: auto; border-radius: 4px; }
+    .img-label { font-size: 0.85rem; color: var(--muted); font-style: italic; margin-top: 0.5rem; }
+    .reading-time { display: inline-flex; align-items: center; gap: 4px; font-family: system-ui, sans-serif; font-size: 0.75rem; color: var(--muted); margin-top: 0.3rem; }
+    .content { margin-top: 2rem; }
+    .content p { margin-bottom: 1.4rem; }
+    .dropcap::first-letter { float: left; font-family: 'Amiri', serif; font-size: 4.2rem; line-height: 0.85; padding-right: 0.45rem; padding-top: 0.05rem; color: var(--dropcap); font-weight: 700; }
+    h2 { font-family: 'Amiri', serif; font-size: 1.6rem; margin: 2.5rem 0 1rem; color: var(--accent); }
+    strong { color: #1a150a; }
+    em { color: #4a3a22; }
+    hr { border: none; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+    blockquote {
+      background: var(--quote-bg); border-left: 3px solid var(--accent);
+      padding: 1.5rem 2rem; margin: 2rem 0; font-style: italic;
+      border-radius: 0 6px 6px 0;
+    }
+    blockquote p { margin-bottom: 0; }
+    .arabic { font-style: normal; font-family: 'Amiri', serif; font-size: 1.6rem; line-height: 1.8; text-align: center; }
+    .section-image { text-align: center; margin: 2rem 0; }
+    .section-image img { max-width: 100%; height: auto; border-radius: 4px; opacity: 0.9; }
+    .signature { text-align: right; font-style: italic; color: var(--muted); margin-top: 2rem; }
+    .closing-ornament { text-align: center; color: var(--rule); margin: 3rem 0 1rem; }
+    .footnotes { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+    .nav-series { display: flex; justify-content: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); font-size: 0.95rem; }
+    .nav-series a { color: var(--accent); text-decoration: none; font-style: italic; }
+    .nav-series a:hover { text-decoration: underline; }
+    @media (max-width: 600px) {
+      body { font-size: 1.1rem; padding: 1.2rem 1rem 3rem; }
+      h1 { font-size: 1.7rem; }
+      .dropcap::first-letter { font-size: 3.4rem; }
+      .arabic { font-size: 1.35rem; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/blog-common.css">
+</head>
+<body>
+<div class="reading-progress" id="readingProgress"></div>
+
+<header>
+  <div class="series-badge">Esai · Sejarah Islam</div>
+  <h1>Kunci Firdaus di Sykamina</h1>
+  <p class="subtitle">Pada tahun 630-an, seorang Yahudi bernama Abraham turun dari perahu di Sykamina. Ia mendengar tentang nabi yang <em>“mengaku memegang kunci-kunci firdaus”</em> — frasa yang akan diperdebatkan hampir empat puluh tahun lamanya.</p>
+  <span class="reading-time" id="readingTime"></span>
+</header>
+
+<figure class="hero-image">
+  <img src="images/hero-kunci-firdaus.webp" alt="Kunci kuno bercahaya emas di pelabuhan kuno Sykamina saat senja, langit akhir zaman dengan cahaya surgawi" loading="lazy" width="1400" height="800">
+  <figcaption class="img-label">Sykamina, abad ke-7. Kunci yang dikira palsu — ternyata pas di lubangnya.</figcaption>
+</figure>
+
+<article class="content">
+
+<p class="dropcap">Suatu hari pada tahun 630-an, seorang Yahudi bernama Abraham turun dari perahu di Sykamina, sebuah pelabuhan di utara Kaisarea. Ia baru saja kabur setelah seorang pengawal kaisar dibunuh orang-orang Saracen. Ia mendekati orang tua yang paham Kitab dan bertanya: apa katamu tentang nabi yang muncul di antara orang Saracen itu?</p>
+
+<p>“Penipu,” jawab orang tua itu sambil mengeluh. “Para nabi tidak datang membawa pedang dan kereta perang.”</p>
+
+<p>Abraham menyelidiki lebih lanjut, lalu menulis surat kepada saudaranya, Justus. Nabi itu, tulisnya, “mengaku memegang kunci-kunci firdaus.”</p>
+
+<hr>
+
+<p>Adegan ini bukan rekaan saya. Ia tersimpan dalam <em>Doctrina Iacobi</em>, traktat polemik Kristen berbahasa Yunani dari Kartago — selama ini dianggap <strong>kesaksian non-Muslim tertua tentang Muhammad</strong>. Traktat itu sendiri, kata Sean Anthony, jelas-jelas fantasi Kristen. Tapi justru karena itu, detail “kunci firdaus”-nya menarik: penulisnya tidak punya kepentingan membela Islam.</p>
+
+<p>Hampir empat puluh tahun lamanya, frasa itu menjadi amunisi para peragu. Crone dan Cook, dalam <em>Hagarism</em> (1977), membaca “kunci firdaus” sebagai motif Kristen yang ditempelkan ke sosok Arab — “dikristenkan, bukan diislamkan,” tulis mereka. “Kunci surga” memang milik Petrus, yang oleh Yesus diberi “kunci kerajaan surga” (Matius 16:19). Maka <em>Doctrina</em> dianggap memuat “lapisan keyakinan yang lebih tua dari tradisi Islam” — keyakinan tentang nabi yang berbeda dari Islam yang kita kenal.</p>
+
+<p>Anthony membuka kembali traktat itu, dan menemukan celah yang selama ini terlewat: dalam bahasa Yunani <em>Doctrina</em>, nabi itu mengaku memegang bukan “kunci surga” (<em>ouranós</em>), melainkan “kunci firdaus” (<em>parádeisos</em>). Bedanya tipis, tapi Anthony menelusuri bahwa dalam sastra Kristen akhir zaman, “kunci surga” adalah milik Petrus — otoritas gerejawi. Sedangkan “kunci firdaus” adalah motif eskatologis: soal keselamatan di hari akhir, bukan soal jabatan.</p>
+
+<p>Lalu ia membalik halaman ke tradisi Islam sendiri. Dan menemukannya berserakan.</p>
+
+<hr>
+
+<blockquote>
+<p class="arabic">إن السيوف مفاتيح الجنة</p>
+</blockquote>
+
+<p><em>Inna al-suyūf mafātīḥ al-janna.</em> <strong>Sesungguhnya pedang adalah kunci-kunci surga.</strong> Begitu Yazīd bin Syajara, panglima laut Umayyah di bawah Mu’awiyah yang gugur di laut tahun 679, membakar semangat pasukannya.</p>
+
+<p>Ubadah bin al-Shamit, salah satu dari dua belas naqib yang berbaiat kepada Nabi di Aqabah pertama, meriwayatkan sabda beliau dalam baiat perang: <em>al-jihād bāb min abwāb al-janna</em> — jihad adalah salah satu pintu surga. Dan dalam Sahih al-Bukhari, dari Ibn Abi Awfa: <em>wa’lamū anna al-jannata taḥta ẓilāl al-suyūf</em> — ketahuilah bahwa surga berada di bawah bayang-bayang pedang.</p>
+
+<p>Tuduhan si Kristen Yunani — nabi datang membawa pedang sambil menjanjikan surga — bukan karangan. Itu persis keyakinan yang tersimpan dalam hadis.</p>
+
+<p>Maka sumber yang tadinya dipakai untuk meragukan Muhammad berbalik arah. Musuh dan pengikut, terpisah bahasa, agama, dan kepentingan, menceritakan hal yang sama: nabi yang menyerukan perang dan menjanjikan surga. Kesaksian yang saling bermusuhan tetapi sepakat adalah salah satu bukti terkuat dalam ilmu sejarah — bukan karena kedua saksi itu independen satu sama lain, melainkan justru karena keduanya menimba dari satu dunia akhir zaman yang sama.</p>
+
+<p>Ada tikungan terakhir. Anthony — yang berterima kasih kepada Patricia Crone di baris pembuka artikelnya — juga menggeser tanggal <em>Doctrina</em>: bukan 634, melainkan sekitar 670-an. Bagi para peragu, ini kabar buruk berlapis. Traktat yang lebih muda tak lagi bisa menjadi saksi yang lebih tua dari tradisi Islam; ia justru sezaman dengan hadis-hadis itu, dan isinya cocok.</p>
+
+<p>Fred Donner menawarkan potongan terakhir, meski tak pernah disebut Anthony. Dalam <em>Muhammad and the Believers</em> (2010), Donner merekonstruksi gerakan awal Muhammad sebagai “gerakan orang beriman” yang ekumenis — merangkul Yahudi dan Kristen yang saleh — dan apokaliptik, yakin Kiamat sudah di ambang pintu, dengan Muhammad sebagai nabi terakhir yang memegang otoritas keselamatan. “Kunci firdaus” — wewenang membuka surga di akhir zaman — adalah persis gambar yang diharuskan kerangka Donner. Anthony menemukannya di hadis. Si Yahudi di Sykamina mendengarnya dari luar.</p>
+
+<p>Jadi apa yang tersisa dari nabi yang “dikristenkan” itu? Bukan Muhammad yang palsu. Bukan pula Muhammad yang jatuh dari langit tanpa konteks. Melainkan seorang nabi yang lahir dari — dan berbicara dalam bahasa — dunia akhir zaman yang sama dengan Yahudi dan Kristen di sekelilingnya. Itulah Muhammad yang bisa kita pegang: <strong>bukan fantasi, bukan hagiografi</strong>, melainkan tokoh yang berakar di zamannya.</p>
+
+<p>Pertanyaannya bukan lagi apakah nabi di Sykamina itu Muhammad. Pertanyaannya: kenapa butuh hampir empat puluh tahun, dan satu artikel yang dibaca pelan-pelan, untuk melihat bahwa kunci yang dikira palsu itu ternyata pas di lubangnya?</p>
+
+<p class="signature">— ALIM</p>
+
+</article>
+
+<div class="closing-ornament">❦</div>
+
+<div class="footnotes">
+<p><em>Referensi:</em></p>
+<p>Anthony, S. W. (2014). “Muḥammad, the Keys to Paradise, and the <em>Doctrina Iacobi</em>: A Late Antique Puzzle.” <em>Der Islam</em>, 91(2), 243–265.</p>
+<p>Donner, F. M. (2010). <em>Muhammad and the believers: At the origins of Islam</em>. Harvard University Press.</p>
+<p>Crone, P., &amp; Cook, M. (1977). <em>Hagarism: The making of the Islamic world</em>. Cambridge University Press.</p>
+<p>al-Ṣanʿānī, ʿA. al-R. <em>al-Muṣannaf</em> (Ḥ. al-R. al-Aʿẓamī, Ed.; jil. 5, hlm. 256–258) — khutbah Yazīd b. Shajara, riwayat Mujāhid b. Jabr.</p>
+<p>al-Ṭabarī, A. J. <em>Tārīkh al-rusul wa-l-mulūk</em> (M. J. de Goeje, Ed.; ser. II, hlm. 2, 173, 181); Ibn Saʿd, <em>al-Ṭabaqāt al-kubrā</em>, jil. 7, hlm. 446 — Yazīd b. Shajara, w. 58 H/679 M.</p>
+<p>Aḥmad b. Ḥanbal. <em>Musnad</em> (riwayat ʿUbāda b. al-Ṣāmit, “<em>al-jihād bāb min abwāb al-janna</em>”); al-Bukhārī, <em>Ṣaḥīḥ al-Bukhārī</em> no. 2663 (riwayat Ibn Abī Awfā, “<em>al-jannatu taḥta ẓilāl al-suyūf</em>”).</p>
+</div>
+
+<nav class="nav-series">
+  <a href="index.html">⌂ Indeks</a>
+</nav>
+
+<div class="related-posts">
+  <h3>Baca juga</h3>
+  <div class="related-grid">
+      <a href="nama-yang-ditulis-musuh.html" class="related-card">
+        <div class="rc-tag">Historiografi</div>
+        <div class="rc-title">Nama yang Ditulis Musuh</div>
+      </a>
+      <a href="sanad-vs-spreadsheet.html" class="related-card">
+        <div class="rc-tag">Ulumul Qur'an</div>
+        <div class="rc-title">Sanad vs Spreadsheet</div>
+      </a>
+  </div>
+</div>
+
+<script src="assets/blog-common.js"></script>
+<button class="dark-toggle" id="darkToggle" aria-label="Dark mode">🌙</button>
+</body>
+</html>
